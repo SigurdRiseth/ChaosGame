@@ -2,7 +2,7 @@
  * This class forms a 2x2 matrix, and does so using 4 fields that define the places where numbers
  * stand in a matrix.
  *
- * @author Theodor
+ * @author Theodor Sjetnan Utvik, Sigurd Riseth
  * @since 06.02.2024
  * @version 0.0.0
  */
@@ -18,10 +18,10 @@ public class Matrix2x2 {
   /**
    * Constructor for the 2x2 matrix and its values a00, a01, a10 and a11.
    *
-   * @param a00
-   * @param a01
-   * @param a10
-   * @param a11
+   * @param a00 the value in the first row and first column of the matrix.
+   * @param a01 the value in the first row and second column of the matrix.
+   * @param a10 the value in the second row and first column of the matrix.
+   * @param a11 the value in the second row and second column of the matrix.
    */
   public Matrix2x2 (double a00, double a01, double a10, double a11){
     this.a00 = a00;
@@ -33,7 +33,7 @@ public class Matrix2x2 {
   /**
    * The method multiplies a matrix and a vector from the Vector2D class.
    *
-   * @param vector
+   * @param vector the vector to be multiplied with the matrix.
    * @see Vector2D
    * @return the product of the matrix and the vector.
    */
