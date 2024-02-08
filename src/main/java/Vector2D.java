@@ -1,13 +1,13 @@
 /**
  * A class to represent a 2D vector.
- * <p>
- *   This class is used to represent a 2D vector and perform operations on it.
- *   The operations are listed below:
- *   <ul>
- *     <li>add</li>
- *     <li>subtract</li>
- *   </ul>
- * </p>
+ *
+ * <p>This class is used to represent a 2D vector and perform operations on it. The operations are
+ * listed below:
+ *
+ * <ul>
+ *   <li>add
+ *   <li>subtract
+ * </ul>
  *
  * @version 0.0.1
  * @since 06.02.2024
@@ -65,5 +65,4 @@ public class Vector2D {
   public Vector2D subtract(Vector2D other) {
     return new Vector2D((x0 - other.getX0()), (x1 - other.getX1()));
   }
-
 }
