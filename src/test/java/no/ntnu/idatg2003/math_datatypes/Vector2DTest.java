@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003;
+package no.ntnu.idatg2003.math_datatypes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,15 +6,15 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
 import org.junit.jupiter.api.Test;
 
 /**
- * Test class for the no.ntnu.idatg2003.math_datatypes.Vector2D class.
+ * Test class for the Vector2D class.
  * <p>
- *   Tests the add and subtract methods of the no.ntnu.idatg2003.math_datatypes.Vector2D class.
+ *   Tests the add and subtract methods of the Vector2D class.
  * </p>
  */
 class Vector2DTest {
 
   /**
-   * Test for the add method in the no.ntnu.idatg2003.math_datatypes.Vector2D class.
+   * Test for the add method in the Vector2D class.
    * <p>
    *   Adds the v1 vector to the v2 vector and checks if the result is correct.
    * </p>
@@ -29,7 +29,7 @@ class Vector2DTest {
   }
 
   /**
-   * Test for the subtract method in the no.ntnu.idatg2003.math_datatypes.Vector2D class.
+   * Test for the subtract method in the Vector2D class.
    * <p>
    *   Subtracts the v2 vector from the v1 vector and checks if the result is correct.
    * </p>

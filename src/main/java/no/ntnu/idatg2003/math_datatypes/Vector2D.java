@@ -20,7 +20,7 @@ public class Vector2D {
   private double x1;
 
   /**
-   * Constructor for the no.ntnu.idatg2003.math_datatypes.Vector2D class.
+   * Constructor for the Vector2D class.
    *
    * @param x0 the x0 value of the vector
    * @param x1 the x1 value of the vector

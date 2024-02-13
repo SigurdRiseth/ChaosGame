@@ -30,7 +30,7 @@ public class Matrix2x2 {
   }
 
   /**
-   * The method multiplies a matrix and a vector from the no.ntnu.idatg2003.math_datatypes.Vector2D class.
+   * The method multiplies a matrix and a vector from the Vector2D class.
    *
    * @param vector the vector to be multiplied with the matrix.
    * @see Vector2D

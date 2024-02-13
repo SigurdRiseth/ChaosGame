@@ -1,8 +1,8 @@
 package no.ntnu.idatg2003.math_datatypes;
 
 /**
- * This class is a subclass of no.ntnu.idatg2003.math_datatypes.Vector2D and takes in the parameters: realPart and imaginaryPart. The
- * class has method which returns the square root of a complex number, using methods from no.ntnu.idatg2003.math_datatypes.Vector2D.
+ * This class is a subclass of Vector2D and takes in the parameters: realPart and imaginaryPart. The
+ * class has method which returns the square root of a complex number, using methods from Vector2D.
  *
  * @see Vector2D
  * @since 08.02.2024

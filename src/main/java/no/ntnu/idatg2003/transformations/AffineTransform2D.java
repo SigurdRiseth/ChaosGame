@@ -25,7 +25,7 @@ public class AffineTransform2D implements Transform2D {
    * Method to transform a vector using the Affine transformation.
    *
    * @param point the vector to transform, known as x
-   * @return Affine transformed no.ntnu.idatg2003.math_datatypes.Vector2D
+   * @return Affine transformed Vector2D
    */
   public Vector2D transform(Vector2D point) {
     return matrix.multiply(point).add(vector);

@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003;
+package no.ntnu.idatg2003.transformations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,7 +8,7 @@ import no.ntnu.idatg2003.transformations.AffineTransform2D;
 import org.junit.jupiter.api.Test;
 
 /**
- * This class is a test class for the no.ntnu.idatg2003.transformations.AffineTransform2D class.
+ * This class is a test class for the AffineTransform2D class.
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.1

@@ -40,7 +40,7 @@ public class JuliaTransform implements Transform2D {
    * </p>
    *
    * @param point the point to transform
-   * @return Julia transformed no.ntnu.idatg2003.math_datatypes.Vector2D
+   * @return Julia transformed Vector2D
    */
   public Vector2D transform(Vector2D point) {
     Complex complexPoint = new Complex(point.getX0() - this.point.getX0(),

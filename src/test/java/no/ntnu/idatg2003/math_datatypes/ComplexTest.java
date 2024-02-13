@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003;
+package no.ntnu.idatg2003.math_datatypes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,7 +6,7 @@ import no.ntnu.idatg2003.math_datatypes.Complex;
 import org.junit.jupiter.api.Test;
 
 /**
- * This class is a test class for the no.ntnu.idatg2003.math_datatypes.Complex class.
+ * This class is a test class for the Complex class.
  *
  * @see Complex
  * @author Theodor Sjetnan Utvik, Sigurd Riseth
