@@ -1,3 +1,5 @@
+package no.ntnu.idatg2003.math_datatypes;
+
 /**
  * This class forms a 2x2 matrix, and does so using 4 fields that define the places where numbers
  * stand in a matrix.
@@ -28,7 +30,7 @@ public class Matrix2x2 {
   }
 
   /**
-   * The method multiplies a matrix and a vector from the Vector2D class.
+   * The method multiplies a matrix and a vector from the no.ntnu.idatg2003.math_datatypes.Vector2D class.
    *
    * @param vector the vector to be multiplied with the matrix.
    * @see Vector2D

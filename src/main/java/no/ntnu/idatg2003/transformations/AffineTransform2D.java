@@ -1,5 +1,10 @@
+package no.ntnu.idatg2003.transformations;
+
+import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.math_datatypes.Vector2D;
+
 /**
- * Class to represent the Affine transformation x -> Ax+b
+ * Class to represent the Affine transformation x → Ax+b
  */
 public class AffineTransform2D implements Transform2D {
   private Matrix2x2 matrix;
@@ -20,7 +25,7 @@ public class AffineTransform2D implements Transform2D {
    * Method to transform a vector using the Affine transformation.
    *
    * @param point the vector to transform, known as x
-   * @return Affine transformed Vector2D
+   * @return Affine transformed no.ntnu.idatg2003.math_datatypes.Vector2D
    */
   public Vector2D transform(Vector2D point) {
     return matrix.multiply(point).add(vector);

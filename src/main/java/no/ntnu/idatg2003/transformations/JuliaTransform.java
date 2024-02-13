@@ -1,3 +1,8 @@
+package no.ntnu.idatg2003.transformations;
+
+import no.ntnu.idatg2003.math_datatypes.Complex;
+import no.ntnu.idatg2003.math_datatypes.Vector2D;
+
 /**
  * Class to represent the Julia transformation.
  *
@@ -29,11 +34,13 @@ public class JuliaTransform implements Transform2D {
   /**
    * Method to transform a point using the Julia transformation.
    * <p>
-   * z -> +-sqrt(z - c) Where z is the parameter and c is the point specified in the constructor.
+   *   <b>Formula:</b> z → ±sqrt(z - c)
+   *   <br>
+   *  Where z is the parameter, c is the point specified in the constructor and ± part depends on sign.
    * </p>
    *
    * @param point the point to transform
-   * @return Julia transformed Vector2D
+   * @return Julia transformed no.ntnu.idatg2003.math_datatypes.Vector2D
    */
   public Vector2D transform(Vector2D point) {
     Complex complexPoint = new Complex(point.getX0() - this.point.getX0(),
