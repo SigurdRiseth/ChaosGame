@@ -17,17 +17,17 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
  */
 public class JuliaTransform implements Transform2D {
 
-  private Complex point;
+  private Complex complexConstant;
   private int sign;
 
   /**
    * Constructor for the Julia transformation.
    *
-   * @param point the complex constant
+   * @param complexConstant the complex constant
    * @param sign  the sign of the transformation
    */
-  public JuliaTransform(Complex point, int sign) {
-    this.point = point;
+  public JuliaTransform(Complex complexConstant, int sign) {
+    this.complexConstant = complexConstant;
     this.sign = (int) Math.signum(sign);
   }
 
@@ -36,15 +36,15 @@ public class JuliaTransform implements Transform2D {
    * <p>
    *   <b>Formula:</b> z → ±sqrt(z - c)
    *   <br>
-   *  Where z is the parameter, c is the point specified in the constructor and ± part depends on sign.
+   *  Where z is the parameter, c is the complexConstant and ± part depends on the sign field.
    * </p>
    *
    * @param point the point to transform
    * @return Julia transformed Vector2D
    */
   public Vector2D transform(Vector2D point) {
-    Complex complexPoint = new Complex(point.getX0() - this.point.getX0(),
-        point.getX1() - this.point.getX1());
+    Complex complexPoint = new Complex(point.getX0() - complexConstant.getX0(),
+        point.getX1() - complexConstant.getX1());
     complexPoint = complexPoint.sqrt();
     return new Vector2D(sign * complexPoint.getX0(), sign * complexPoint.getX1());
   }
