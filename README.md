@@ -1,15 +1,14 @@
 # Portfolio project IDATG2003 - 2024
 This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
 
+Project Name: ChaosGame
+
 Group Members: Theodor Sjetnan Utvik, Sigurd Riseth
 
 ## Project description
 
 [//]: # (TODO: Write a short description of your project/product here.)
-A system for displaying traindepartures from a single station. Shows planned departure time, delays (if any), line name and destination, train number and what track the train will depart from.
-Allows user to create new and edit existing train departures. The system revolves around a "station-clock" and only trains with departure times after it are displayed (unless delayed).
-
-The system is limited by the fact that it does not consider the date or if there are any departures the next day. It only supports one station, and the clock has to be manually updated from the UI.
+ChaosGame is an application for generating and visualizing [fractals](https://en.wikipedia.org/wiki/Fractal) digitally.
 
 ## Project structure
 
@@ -20,23 +19,26 @@ The project structure is displayed in the directory tree below.
 ├── src
 │   ├── main
 │   │   └── java
-│   │       └── edu.ntnu.stud
-│   │           ├── station
-│   │           │   └── Station.java
-│   │           ├── traindeparture
-│   │           │   └── TrainDeparture.java
-│   │           ├── userinterface
-│   │           │   ├── InputReader.java
-│   │           │   ├── Printer.java
-│   │           │   └── UserInterface.java
-│   │           └── TrainDispatchApp.java
+│   │       └── no.ntnu.idatg1003
+│   │           ├── transformations
+│   │           │   ├── AffineTransform.java
+│   │           │   ├── JuliaTransform.java
+│   │           │   └── Transform2D.java
+│   │           ├── math_datatypes
+│   │           │   ├── Complex.java
+│   │           │   ├── Matrix2x2.java
+│   │           │   └── Vector2D.java
+│   │           └── // Senere utvidelser
 │   └── test
 │       └── java
-│           └── edu.ntnu.stud
-│               ├── station
-│               │   └── StationTest.java
-│               └── traindeparture
-│                   └── TrainDepartureTest.java
+│           └── no.ntnu.idatg1003
+│               ├── transformations
+│               │   ├── AffineTransform2DTest.java
+│               │   └── JuliaTransformTest.java
+│               └── math_datatypes
+│                   ├── ComplexTest.java
+│                   ├── Matrix2x2Test.java
+│                   └── Vector2DTest.java
 ├── target
 │   └── // Compiled bytecode and generated JAR files
 ├── .gitignore
@@ -47,7 +49,7 @@ The project structure is displayed in the directory tree below.
 
 [//]: # (TODO: Describe the structure of your project here. How have you used packages in your structure. Where are all sourcefiles stored. Where are all JUnit-test classes stored. etc.)
 
-The src-folder is divided into two parts; main containing the main source code of the application, and test containing the test classes for the source code. 
+The src-folder is divided into two parts; Main containing the main source code of the application, and test containing the test classes for the source code. These are divided in the same package structure for ease of navigation.
 
 ## Link to repository
 
