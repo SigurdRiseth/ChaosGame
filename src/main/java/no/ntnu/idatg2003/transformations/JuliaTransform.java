@@ -17,8 +17,8 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
  */
 public class JuliaTransform implements Transform2D {
 
-  private Complex point;
-  private int sign;
+  private final Complex point;
+  private final int sign;
 
   /**
    * Constructor for the Julia transformation.

@@ -9,10 +9,10 @@ package no.ntnu.idatg2003.math_datatypes;
  * @version 0.0.1
  */
 public class Matrix2x2 {
-  private double a00;
-  private double a01;
-  private double a10;
-  private double a11;
+  private final double a00;
+  private final double a01;
+  private final double a10;
+  private final double a11;
 
   /**
    * Constructor for the 2x2 matrix and its values a00, a01, a10 and a11.

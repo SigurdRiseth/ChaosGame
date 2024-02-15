@@ -3,8 +3,9 @@ package no.ntnu.idatg2003.math_datatypes;
 /**
  * A class to represent a 2D vector.
  *
- * <p>This class is used to represent a 2D vector and perform operations on it. The operations are
- * listed below:
+ * <p>
+ *   his class is used to represent a 2D vector and perform operations on it.
+ *   The operations are listed below:
  *
  * <ul>
  *   <li>add
@@ -16,8 +17,8 @@ package no.ntnu.idatg2003.math_datatypes;
  * @author Sigurd Riseth
  */
 public class Vector2D {
-  private double x0;
-  private double x1;
+  private final double x0;
+  private final double x1;
 
   /**
    * Constructor for the Vector2D class.

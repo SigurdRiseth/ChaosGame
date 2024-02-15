@@ -7,8 +7,8 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
  * Class to represent the Affine transformation x → Ax+b
  */
 public class AffineTransform2D implements Transform2D {
-  private Matrix2x2 matrix;
-  private Vector2D vector;
+  private final Matrix2x2 matrix;
+  private final Vector2D vector;
 
   /**
    * Constructor for the Affine transformation.
