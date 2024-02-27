@@ -6,7 +6,7 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
 /**
  * Class to represent the Julia transformation.
  *
- * <p>This class is used to represent the Julia transformation and perform operations on it. </p>
+ * <p>This class is used to represent the Julia transformation and perform operations on it.
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.1
@@ -24,7 +24,7 @@ public class JuliaTransform implements Transform2D {
    * Constructor for the Julia transformation.
    *
    * @param complexConstant the complex constant
-   * @param sign  the sign of the transformation
+   * @param sign the sign of the transformation
    */
   public JuliaTransform(Complex complexConstant, int sign) {
     this.complexConstant = complexConstant;
@@ -33,20 +33,18 @@ public class JuliaTransform implements Transform2D {
 
   /**
    * Method to transform a point using the Julia transformation.
-   * <p>
-   *   <b>Formula:</b> z → ±sqrt(z - c)
-   *   <br>
-   *  Where z is the parameter, c is the complexConstant and ± part depends on the sign field.
-   * </p>
+   *
+   * <p><b>Formula:</b> z → ±sqrt(z - c) <br>
+   * Where z is the parameter, c is the complexConstant and ± part depends on the sign field.
    *
    * @param point the point to transform
    * @return Julia transformed Vector2D
    */
   public Vector2D transform(Vector2D point) {
-    Complex complexPoint = new Complex(point.getX0() - complexConstant.getX0(),
-        point.getX1() - complexConstant.getX1());
+    Complex complexPoint =
+        new Complex(
+            point.getX0() - complexConstant.getX0(), point.getX1() - complexConstant.getX1());
     complexPoint = complexPoint.sqrt();
     return new Vector2D(sign * complexPoint.getX0(), sign * complexPoint.getX1());
   }
-
 }

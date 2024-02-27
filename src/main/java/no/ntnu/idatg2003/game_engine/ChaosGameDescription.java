@@ -8,7 +8,7 @@ import no.ntnu.idatg2003.transformations.Transform2D;
  * This class gives the description for the Chaos Game. It contains the minimum and maximum
  * coordinates for the game, as well as a list of transformations.
  *
- * @since 02.27.2024
+ * @since 27.02.2024
  * @version 0.0.1
  * @see Vector2D
  * @see Transform2D

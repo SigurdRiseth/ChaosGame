@@ -5,6 +5,13 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
 
 /**
  * Class to represent the Affine transformation x → Ax+b
+ *
+ * @since 12.02.2024
+ * @version 0.0.1
+ * @see Transform2D
+ * @see Matrix2x2
+ * @see Vector2D
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
 public class AffineTransform2D implements Transform2D {
   private final Matrix2x2 matrix;
