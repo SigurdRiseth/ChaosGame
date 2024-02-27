@@ -59,7 +59,7 @@ public class ChaosGameDescription {
    *
    * @return a list of transformations
    */
-  public List<Transform2D> getTransforms() { // TODO: Should this be an iterator?
+  public List<Transform2D> getTransforms() { // TODO: Sho uld this be an iterator?
     return transforms;
   }
 }

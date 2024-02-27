@@ -74,7 +74,7 @@ public class ChaosCanvas {
   }
 
   /**
-   * The method gives the canvas array.
+   * The method returns the canvas array.
    *
    * @return the canvas array
    */
