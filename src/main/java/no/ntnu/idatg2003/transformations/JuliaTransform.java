@@ -47,4 +47,15 @@ public class JuliaTransform implements Transform2D {
     complexPoint = complexPoint.sqrt();
     return new Vector2D(sign * complexPoint.getX0(), sign * complexPoint.getX1());
   }
+
+  /**
+   * Method to get the transformation as a string.
+   *
+   * @return the transformation as a string
+   */
+  @Override
+  public String toString() {
+    return String.format("%s, %s", complexConstant.getX0(), complexConstant.getX1());
+  }
+
 }

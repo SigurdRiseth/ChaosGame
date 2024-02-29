@@ -9,6 +9,23 @@ package no.ntnu.idatg2003.math_datatypes;
  * @version 0.0.1
  */
 public class Matrix2x2 {
+
+  public double getA00() {
+    return a00;
+  }
+
+  public double getA01() {
+    return a01;
+  }
+
+  public double getA10() {
+    return a10;
+  }
+
+  public double getA11() {
+    return a11;
+  }
+
   private final double a00;
   private final double a01;
   private final double a10;

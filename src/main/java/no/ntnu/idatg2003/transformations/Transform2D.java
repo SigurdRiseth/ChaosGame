@@ -16,4 +16,13 @@ public interface Transform2D {
    * @return transformed Vector2D
    */
   Vector2D transform(Vector2D point);
+
+  /**
+   * Method to get the transformation as a string.
+   *
+   * @return the transformation as a string
+   */
+  String toString();
+
+
 }
