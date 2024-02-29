@@ -25,6 +25,32 @@ import no.ntnu.idatg2003.transformations.Transform2D;
 
 public class ChaosGameFileHandler {
 
+  /**
+   * Method to read a ChaosGameDescription from a file. The file should contain the following
+   * information: - The type of transformation (JuliaTransform or AffineTransform2D) - The minimum
+   * and maximum coordinates for the game - The transformations to be applied to the points in the
+   * game. The file should be formatted as follows:
+   * <br> <br>
+   * <b>AffineTransform2D:</b>
+   * <p>Type <br>
+   * minX, minY <br>
+   * maxX, maxY <br>
+   * a00, a01, a10, a11, b0, b1 #1. Transform<br>
+   * a00, a01, a10, a11, b0, b1 #2. Transform<br>
+   * ...<br>
+   * a00, a01, a10, a11, b0, b1 #n. Transform<br>
+   * </p>
+   * <br>
+   * <b>JuliaTransform:</b>
+   * <p>Type <br>
+   * minX, minY <br>
+   * maxX, maxY <br>
+   * Re, Im #Transform<br>
+   *
+   *
+   * @param path the path to the file
+   * @return the ChaosGameDescription
+   */
   public ChaosGameDescription readFromFile(String path) {
     ArrayList<Transform2D> transform2Ds = new ArrayList<>();
     ChaosGameDescription gameDescription = null;
@@ -57,6 +83,29 @@ public class ChaosGameFileHandler {
     return gameDescription;
   }
 
+  /**
+   * Method to write a ChaosGameDescription to a file. The file will be in the format:
+   * <br> <br>
+   * <b>AffineTransform2D:</b>
+   * <p>Type <br>
+   * maxX, maxY <br>
+   * a00, a01, a10, a11, b0, b1 #1. Transform<br>
+   * minX, minY <br>
+   * a00, a01, a10, a11, b0, b1 #2. Transform<br>
+   * ...<br>
+   * a00, a01, a10, a11, b0, b1 #n. Transform<br>
+   * </p>
+   * <br>
+   * <b>JuliaTransform:</b>
+   * <p>Type <br>
+   * minX, minY <br>
+   * maxX, maxY <br>
+   * Re, Im #Transform<br>
+   * </p>
+   *
+   * @param description the ChaosGameDescription to write to the file
+   * @param path the path to the file
+   */
   public static void writeToFile(ChaosGameDescription description, String path) {
     try (BufferedWriter writer = Files.newBufferedWriter(Path.of(path))) {
       Transform2D type = description.getTransforms().get(0);

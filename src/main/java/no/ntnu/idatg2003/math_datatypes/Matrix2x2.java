@@ -9,23 +9,6 @@ package no.ntnu.idatg2003.math_datatypes;
  * @version 0.0.1
  */
 public class Matrix2x2 {
-
-  public double getA00() {
-    return a00;
-  }
-
-  public double getA01() {
-    return a01;
-  }
-
-  public double getA10() {
-    return a10;
-  }
-
-  public double getA11() {
-    return a11;
-  }
-
   private final double a00;
   private final double a01;
   private final double a10;
@@ -58,5 +41,41 @@ public class Matrix2x2 {
     double x1 = this.a10 * vector.getX0() + this.a11 * vector.getX1();
 
     return new Vector2D(x0, x1);
+  }
+
+  /**
+   * Get the value in the first row and first column of the matrix.
+   *
+   * @return the value in the first row and first column of the matrix.
+   */
+  public double getA00() {
+    return a00;
+  }
+
+  /**
+   * Get the value in the first row and second column of the matrix.
+   *
+   * @return the value in the first row and second column of the matrix.
+   */
+  public double getA01() {
+    return a01;
+  }
+
+  /**
+   * Get the value in the second row and first column of the matrix.
+   *
+   * @return the value in the second row and first column of the matrix.
+   */
+  public double getA10() {
+    return a10;
+  }
+
+  /**
+   * Get the value in the second row and second column of the matrix.
+   *
+   * @return the value in the second row and second column of the matrix.
+   */
+  public double getA11() {
+    return a11;
   }
 }
