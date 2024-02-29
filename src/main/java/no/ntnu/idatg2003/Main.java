@@ -13,22 +13,33 @@ import no.ntnu.idatg2003.ui.Ui;
 
 public class Main {
   public static void main(String[] args) {
-    System.out.println("Hello, World!");
 
     AffineTransform2D affine1 = new AffineTransform2D(new Matrix2x2(0.5, 0, 0, 0.5), new Vector2D(0, 0));
-    AffineTransform2D affine2 = new AffineTransform2D(new Matrix2x2(0.5, 0, 0, 0.5), new Vector2D(0.5, 0));
-    AffineTransform2D affine3 = new AffineTransform2D(new Matrix2x2(0.5, 0, 0, 0.5), new Vector2D(0.25, 0.5));
+    AffineTransform2D affine2 = new AffineTransform2D(new Matrix2x2(0.5, 0, 0, 0.5), new Vector2D(5, 0));
+    AffineTransform2D affine3 = new AffineTransform2D(new Matrix2x2(0.5, 0, 0, 0.5), new Vector2D(2.5, 5));
 
-    List<Transform2D> transform = List.of(affine1, affine2, affine3);
+    List<Transform2D> transform1 = List.of(affine1, affine2, affine3);
 
-    ChaosGameDescription description = new ChaosGameDescription(
-        new Vector2D(0, 0), new Vector2D(10, 10), transform);
+    ChaosGameDescription description1 = new ChaosGameDescription(
+        new Vector2D(0, 0), new Vector2D(10, 10), transform1);
 
-    ChaosGame game = new ChaosGame(description, 10, 10);
+    ChaosGame game1 = new ChaosGame(description1, 50*3, 50);
 
-    game.runSteps(10);
+    game1.runSteps(100000);
 
-    Ui.print(game.getCanvas().getCanvasArray());
+    JuliaTransform julia = new JuliaTransform(new Complex(0.3, 0.6), 1);
+
+    List<Transform2D> transform2 = List.of(julia);
+
+    ChaosGameDescription description2 = new ChaosGameDescription(
+        new Vector2D(-1, -1), new Vector2D(1, 1), transform2);
+
+    ChaosGame game2 = new ChaosGame(description2, 50, 50);
+
+    game2.runSteps(100);
+
+    Ui.print(game1.getCanvas().getCanvasArray());
+    Ui.print(game2.getCanvas().getCanvasArray());
 
   }
 }
