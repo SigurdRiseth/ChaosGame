@@ -57,5 +57,4 @@ public class JuliaTransform implements Transform2D {
   public String toString() {
     return String.format("%s, %s", complexConstant.getX0(), complexConstant.getX1());
   }
-
 }

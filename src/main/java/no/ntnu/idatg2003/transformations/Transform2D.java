@@ -5,7 +5,7 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
 /**
  * Interface for 2D transformations.
  *
- * Used in AffineTransform2D and JuliaTransform.
+ * <p>Used in AffineTransform2D and JuliaTransform.
  */
 public interface Transform2D {
 
@@ -23,6 +23,4 @@ public interface Transform2D {
    * @return the transformation as a string
    */
   String toString();
-
-
 }
