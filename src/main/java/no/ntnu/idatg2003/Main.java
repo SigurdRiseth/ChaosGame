@@ -1,15 +1,9 @@
 package no.ntnu.idatg2003;
 
-import java.util.List;
 import no.ntnu.idatg2003.game_engine.ChaosGame;
 import no.ntnu.idatg2003.game_engine.ChaosGameDescription;
 import no.ntnu.idatg2003.game_engine.ChaosGameFileHandler;
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.AffineTransform2D;
-import no.ntnu.idatg2003.transformations.JuliaTransform;
-import no.ntnu.idatg2003.transformations.Transform2D;
-import no.ntnu.idatg2003.math_datatypes.Complex;
+
 import no.ntnu.idatg2003.ui.Ui;
 
 public class Main {
@@ -17,7 +11,7 @@ public class Main {
 
 
 
-    ChaosGameDescription description1 = ChaosGameFileHandler.readFromFile("src/main/resources/barnsley-fern.csv");
+    ChaosGameDescription description1 = ChaosGameFileHandler.readFromFile("src/main/resources/Julia.csv");
 
     ChaosGame game1 = new ChaosGame(description1, 50*3, 50);
 

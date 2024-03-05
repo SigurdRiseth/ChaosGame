@@ -1,12 +1,10 @@
 package no.ntnu.idatg2003.game_engine;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import no.ntnu.idatg2003.math_datatypes.Complex;
 import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
@@ -16,11 +14,11 @@ import no.ntnu.idatg2003.transformations.JuliaTransform;
 import no.ntnu.idatg2003.transformations.Transform2D;
 
 /**
- * This class is responsible for handling the file input and output for the ChaosGame.
- * It will read the file and create the game. It will also write the game to a file.
+ * This class is responsible for handling the file input and output for the ChaosGame. It will read
+ * the file and create the game. It will also write the game to a file.
  *
- * @version 0.0.1
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.1
  */
 
 public class ChaosGameFileHandler {
@@ -32,21 +30,14 @@ public class ChaosGameFileHandler {
    * game. The file should be formatted as follows:
    * <br> <br>
    * <b>AffineTransform2D:</b>
-   * <p>Type <br>
-   * minX, minY <br>
-   * maxX, maxY <br>
-   * a00, a01, a10, a11, b0, b1 #1. Transform<br>
-   * a00, a01, a10, a11, b0, b1 #2. Transform<br>
-   * ...<br>
-   * a00, a01, a10, a11, b0, b1 #n. Transform<br>
+   * <p>Affine2D <br>
+   * minX, minY <br> maxX, maxY <br> a00, a01, a10, a11, b0, b1 #1. Transform<br> a00, a01, a10,
+   * a11, b0, b1 #2. Transform<br> ...<br> a00, a01, a10, a11, b0, b1 #n. Transform<br>
    * </p>
    * <br>
    * <b>JuliaTransform:</b>
-   * <p>Type <br>
-   * minX, minY <br>
-   * maxX, maxY <br>
-   * Re, Im #Transform<br>
-   *
+   * <p>Julia <br>
+   * minX, minY <br> maxX, maxY <br> Re, Im #Transform<br>
    *
    * @param path the path to the file
    * @return the ChaosGameDescription
@@ -55,7 +46,8 @@ public class ChaosGameFileHandler {
     ArrayList<Transform2D> transform2Ds = new ArrayList<>();
     ChaosGameDescription gameDescription = null;
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
-      scanner.useDelimiter(",|#(?<=[#]).{1,}"); // Split on comma, remove # and everything after it, and split on new lines
+      scanner.useDelimiter(
+          ",|#(?<=[#]).{1,}"); // Split on comma, remove # and everything after it, and split on new lines
       int sign = 1;
       String type = scanner.next().trim();
 
@@ -98,28 +90,22 @@ public class ChaosGameFileHandler {
    * Method to write a ChaosGameDescription to a file. The file will be in the format:
    * <br> <br>
    * <b>AffineTransform2D:</b>
-   * <p>Type <br>
-   * maxX, maxY <br>
-   * a00, a01, a10, a11, b0, b1 #1. Transform<br>
-   * minX, minY <br>
-   * a00, a01, a10, a11, b0, b1 #2. Transform<br>
-   * ...<br>
-   * a00, a01, a10, a11, b0, b1 #n. Transform<br>
+   * <p>Affine2D <br>
+   * maxX, maxY <br> a00, a01, a10, a11, b0, b1 #1. Transform<br> minX, minY <br> a00, a01, a10,
+   * a11, b0, b1 #2. Transform<br> ...<br> a00, a01, a10, a11, b0, b1 #n. Transform<br>
    * </p>
    * <br>
    * <b>JuliaTransform:</b>
-   * <p>Type <br>
-   * minX, minY <br>
-   * maxX, maxY <br>
-   * Re, Im #Transform<br>
+   * <p>Julia <br>
+   * minX, minY <br> maxX, maxY <br> Re, Im #Transform<br>
    * </p>
    *
    * @param description the ChaosGameDescription to write to the file
-   * @param path the path to the file
+   * @param path        the path to the file
    */
   public static void writeToFile(ChaosGameDescription description, String path) {
     try (BufferedWriter writer = Files.newBufferedWriter(Path.of(path))) {
-      Transform2D type = description.getTransforms().get(0);
+      Transform2D type = description.getTransforms().getFirst();
       String stringType;
       if (type instanceof AffineTransform2D) {
         stringType = "AffineTransform2D";
@@ -129,9 +115,10 @@ public class ChaosGameFileHandler {
         throw new IllegalArgumentException("Unknown transform type");
       }
       writer.write(stringType + "\n");
-      writer.write(String.format("%f, %f%n", description.getMinCoords().getX0(), description.getMinCoords().getX1()));
-      writer.write(String.format("%f, %f%n", description.getMaxCoords().getX0(), description.getMaxCoords().getX1()));
-      writer.write(description.getMaxCoords().toString() + "\n");
+      writer.write(String.format("%f, %f%n", description.getMinCoords().getX0(),
+          description.getMinCoords().getX1()));
+      writer.write(String.format("%f, %f%n", description.getMaxCoords().getX0(),
+          description.getMaxCoords().getX1()));
       for (Transform2D transform : description.getTransforms()) {
         writer.write(transform.toString() + "\n");
       }
