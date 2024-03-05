@@ -22,7 +22,7 @@ public class ChaosCanvas {
   private int height;
   private Vector2D minCoords;
   private Vector2D maxCoords;
-  private AffineTransform2D transformCoordsToIndices;
+  private final AffineTransform2D transformCoordsToIndices;
 
   /**
    * Constructor for the ChaosCanvas. It initializes the canvas with the given dimensions and

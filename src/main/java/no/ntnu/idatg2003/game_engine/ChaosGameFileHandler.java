@@ -51,34 +51,45 @@ public class ChaosGameFileHandler {
    * @param path the path to the file
    * @return the ChaosGameDescription
    */
-  public ChaosGameDescription readFromFile(String path) {
+  public static ChaosGameDescription readFromFile(String path) {
     ArrayList<Transform2D> transform2Ds = new ArrayList<>();
     ChaosGameDescription gameDescription = null;
-    try (Scanner scanner = new Scanner(Path.of(path))) {
-      scanner.useDelimiter("[,\n]");
-      boolean firstIteration = true;
-      String type = null;
+    try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
+      scanner.useDelimiter(",|#(?<=[#]).{1,}"); // Split on comma, remove # and everything after it, and split on new lines
       int sign = 1;
-      Vector2D minCoords = null;
-      Vector2D maxCoords = null;
+      String type = scanner.next().trim();
+
+      double minX = Double.parseDouble(scanner.next().trim());
+      double minY = Double.parseDouble(scanner.next().trim());
+      Vector2D minCoords = new Vector2D(minX, minY);
+
+      double maxX = Double.parseDouble(scanner.next().trim());
+      double maxY = Double.parseDouble(scanner.next().trim());
+      Vector2D maxCoords = new Vector2D(maxX, maxY);
+
       while (scanner.hasNext()) {
-        if (firstIteration) {
-          type = scanner.next();
-          minCoords = new Vector2D(scanner.nextDouble(), scanner.nextDouble());
-          maxCoords = new Vector2D(scanner.nextDouble(), scanner.nextDouble());
-          firstIteration = false;
-        }
-        if (type.equals("JuliaTransform")) {
-          transform2Ds.add((new JuliaTransform(new Complex(scanner.nextDouble(), scanner.nextDouble()), sign)));
-        } else if (type.equals("AffineTransform2D")) {
-          transform2Ds.add(new AffineTransform2D(
-              new Matrix2x2(scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble(), scanner.nextDouble()),
-              new Vector2D(scanner.nextDouble(), scanner.nextDouble())));
+        try {
+          if (type.equals("Julia")) {
+            double re = Double.parseDouble(scanner.next().trim());
+            double im = Double.parseDouble(scanner.next().trim());
+            transform2Ds.add(new JuliaTransform(new Complex(re, im), sign));
+          } else if (type.equals("Affine2D")) {
+            double a00 = Double.parseDouble(scanner.next().trim());
+            double a01 = Double.parseDouble(scanner.next().trim());
+            double a10 = Double.parseDouble(scanner.next().trim());
+            double a11 = Double.parseDouble(scanner.next().trim());
+            double b0 = Double.parseDouble(scanner.next().trim());
+            double b1 = Double.parseDouble(scanner.next().trim());
+            transform2Ds.add(new AffineTransform2D(new Matrix2x2(a00, a01, a10, a11),
+                new Vector2D(b0, b1)));
+          }
+        } catch (Exception e) {
+          System.out.println("Failed to create transform2D: " + e.getMessage());
         }
       }
       gameDescription = new ChaosGameDescription(minCoords, maxCoords, transform2Ds);
     } catch (IOException e) {
-      System.out.println(e.getMessage());
+      System.out.println("Failed to read the file: " + e.getMessage());
     }
     return gameDescription;
   }
