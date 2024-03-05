@@ -48,7 +48,7 @@ public class ChaosGameFileHandler {
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
       scanner.useDelimiter(
           ",|#(?<=[#]).{1,}"); // Split on comma, remove # and everything after it, and split on new lines
-      int sign = 1;
+      int sign = -1;
       String type = scanner.next().trim();
 
       double minX = Double.parseDouble(scanner.next().trim());
@@ -100,6 +100,7 @@ public class ChaosGameFileHandler {
    * minX, minY <br> maxX, maxY <br> Re, Im #Transform<br>
    * </p>
    *
+   * @throws IllegalArgumentException if the transform type is unknown
    * @param description the ChaosGameDescription to write to the file
    * @param path        the path to the file
    */
