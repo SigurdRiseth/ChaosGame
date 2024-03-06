@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import no.ntnu.idatg2003.math_datatypes.Complex;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  * This class is a test class for the Complex class.
@@ -31,4 +33,30 @@ class ComplexTest {
         -0.395, resultComplex.getX1(),
         0.001, "Expected imaginary part to be -0.395");
   }
+
+  /**
+   * Tests if the sqrt() method returns the correct result.
+   *
+   * @param x0 real part of the complex number
+   * @param x1 imaginary part of the complex number
+   * @param expectedX0 expected real part of the resulting complex number
+   * @param expectedX1 expected imaginary part of the resulting complex number
+   */
+  @ParameterizedTest(name = "sqrt({0}, {1}) = ({2}, {3})")
+  @CsvSource({
+      "0.1, -0.4, 0.506, -0.395",
+      "0.1, 0.4, 0.506, 0.395",
+      "0.1, 0, 0.316, 0"
+  })
+  void sqrtParameterizedTest(double x0, double x1, double expectedX0, double expectedX1) {
+    Complex complex = new Complex(x0, x1);
+    Complex expected = new Complex(expectedX0, expectedX1);
+    Complex result = complex.sqrt();
+    assertEquals(expected.getX0(), result.getX0(), 0.001,
+        "Expected real part to be " + expected.getX0());
+    assertEquals(expected.getX1(), result.getX1(), 0.001,
+        "Expected imaginary part to be " + expected.getX1());
+  }
+
+
 }
