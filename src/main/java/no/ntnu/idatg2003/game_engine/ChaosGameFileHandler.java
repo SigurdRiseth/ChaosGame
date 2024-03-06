@@ -53,7 +53,7 @@ public class ChaosGameFileHandler {
     ChaosGameDescription gameDescription = null;
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
       scanner.useDelimiter(
-          ",|#(?<=[#]).{1,}"); // Split on comma, remove # and everything after it, and split on new
+          ",|(?:#(?<=[#]).{1,}\\n)|#(?<=[#]).{1,}|\n"); // Split on comma, remove # and everything after it, and split on new
                                // lines
       int sign = -1;
       String type = scanner.next().trim();
