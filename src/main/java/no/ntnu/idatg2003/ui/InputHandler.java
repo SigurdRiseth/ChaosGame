@@ -20,18 +20,20 @@ public class InputHandler {
   }
 
   /**
-   * Method to read an integer from the console. If the input is not an integer, an exception will
-   * be thrown.
+   * Method to read an integer from the console. If the input is not an integer, it will prompt the
+   * user to enter an integer.
    *
-   * @throws IllegalArgumentException if the input is not an integer
    * @return the integer
    */
   public int readInt() {
-    int input;
-    try {
-      input = scanner.nextInt();
-    } catch (Exception e) {
-      throw new IllegalArgumentException("Invalid input");
+    int input = -1;
+    while (input == -1) {
+      try {
+        input = scanner.nextInt();
+      } catch (Exception e) {
+        System.out.println("Invalid input. Please enter an integer: ");
+        scanner.nextLine();
+      }
     }
     return input;
   }

@@ -53,8 +53,8 @@ public class ChaosGameFileHandler {
     ChaosGameDescription gameDescription = null;
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
       scanner.useDelimiter(
-          ",|(?:#(?<=[#]).{1,}\\n)|#(?<=[#]).{1,}|\n"); // Split on comma, remove # and everything after it, and split on new
-                               // lines
+          ",|(?:#(?<=[#]).{1,}\\n)|#(?<=[#]).{1,}|\n"); // Split on comma,
+      // remove # and everything after it, and split on new lines
       int sign = -1;
       String type = scanner.next().trim();
 
@@ -139,7 +139,7 @@ public class ChaosGameFileHandler {
         writer.write(transform.toString() + "\n");
       }
     } catch (IOException e) {
-      System.out.println(e.getMessage());
+      System.out.println("Failed to create the file: " + e.getMessage());
     }
   }
 }

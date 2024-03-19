@@ -61,7 +61,7 @@ public class Ui {
 
       switch (input) {
         case 1:
-          runGame();
+          runGameMenu();
           break;
         case 2:
           createGameFile();
@@ -189,7 +189,7 @@ public class Ui {
    * Method to run a game. The user will be prompted to choose which game they want to run, and then
    * the game will be run.
    */
-  public void runGame() {
+  public void runGameMenu() {
     boolean running = true;
 
     while (running) {
@@ -197,59 +197,58 @@ public class Ui {
       System.out.println("1. Sierpinski");
       System.out.println("2. Barnsley Fern");
       System.out.println("3. Julia");
+      System.out.println("4. Custom game");
       System.out.println("0. Return to main menu");
       int input = new InputHandler().readInt();
+      int steps = 0;
+
+      if (input != 0) {
+        System.out.println("Enter the number of steps you want to run: ");
+        steps = new InputHandler().readInt();
+      }
 
       switch (input) {
         case 1:
-          runSierpinski();
+          runGame("Sierpinski", steps);
           break;
         case 2:
-          runBarnsleyFern();
+          runGame("barnsley-fern", steps);
           break;
         case 3:
-          runJulia();
+          runGame("Julia", steps);
+          break;
+        case 4:
+          System.out.println("Enter the name of the game you want to run: ");
+          String gameName = new InputHandler().readString();
+          runGame(gameName, steps);
           break;
         case 0:
           running = false;
           break;
         default:
-          System.out.println("Invalid input");
+          System.out.println("Invalid input. Please enter a number between 0 and 4.");
           break;
       }
     }
   }
 
-  /** Method to run the Sierpinski game. */
-  private void runSierpinski() {
+  /**
+   * Method to run a game. The game will be read from a file and then run for 100000 steps. The
+   * canvas will be printed to the console.
+   *
+   * @param gameName the name of the game to run
+   */
+  private void runGame(String gameName, int steps) {
     ChaosGameDescription description =
-        ChaosGameFileHandler.readFromFile("src/main/resources/Sierpinski.csv");
+        ChaosGameFileHandler.readFromFile("src/main/resources/" + gameName + ".csv");
 
     ChaosGame game = new ChaosGame(description, 50 * 3, 50);
 
-    game.runSteps(100000);
-    print(game.getCanvas().getCanvasArray());
-  }
-
-  /** Method to run the Barnsley Fern game. */
-  private void runBarnsleyFern() {
-    ChaosGameDescription description =
-        ChaosGameFileHandler.readFromFile("src/main/resources/barnsley-fern.csv");
-
-    ChaosGame game = new ChaosGame(description, 50 * 3, 50);
-
-    game.runSteps(100000);
-    print(game.getCanvas().getCanvasArray());
-  }
-
-  /** Method to run the Julia game. */
-  private void runJulia() {
-    ChaosGameDescription description =
-        ChaosGameFileHandler.readFromFile("src/main/resources/Julia.csv");
-
-    ChaosGame game = new ChaosGame(description, 50 * 3, 50);
-
-    game.runSteps(100000);
-    print(game.getCanvas().getCanvasArray());
+    try {
+      game.runSteps(steps);
+      print(game.getCanvas().getCanvasArray());
+    } catch (Exception e) {
+      System.out.println("ERROR: Point outside canvas.");
+    }
   }
 }
