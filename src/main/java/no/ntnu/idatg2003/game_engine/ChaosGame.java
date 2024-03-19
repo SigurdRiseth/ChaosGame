@@ -7,25 +7,41 @@ import no.ntnu.idatg2003.transformations.Transform2D;
 
 public class ChaosGame {
 
+  private Random random;
   private ChaosCanvas canvas;
   private ChaosGameDescription description;
   private Vector2D currentPoint;
-  public Random random;
 
+  /**
+   * Constructor for the ChaosGame.
+   *
+   * @param description the description of the game
+   * @param width the width of the canvas
+   * @param height the height of the canvas
+   */
   public ChaosGame(ChaosGameDescription description, int width, int height) {
     this.description = description;
-    this.canvas = new ChaosCanvas(description.getMinCoords(), description.getMaxCoords(),
-        width, height);
+    this.canvas =
+        new ChaosCanvas(description.getMinCoords(), description.getMaxCoords(), width, height);
     this.currentPoint = new Vector2D(0, 0);
+    this.random = new Random();
   }
 
+  /**
+   * Method to get the canvas.
+   *
+   * @return the canvas
+   */
   public ChaosCanvas getCanvas() {
     return canvas;
   }
 
+  /**
+   * Method to run the game for a given number of steps.
+   *
+   * @param steps the number of steps to run
+   */
   public void runSteps(int steps) {
-    random = new Random(); // Random number.
-
     for (int i = 0; i < steps; i++) {
       int randomTransform = random.nextInt(description.getTransforms().size());
       List<Transform2D> transforms = description.getTransforms();
@@ -33,5 +49,4 @@ public class ChaosGame {
       canvas.putPixel(currentPoint);
     }
   }
-
 }

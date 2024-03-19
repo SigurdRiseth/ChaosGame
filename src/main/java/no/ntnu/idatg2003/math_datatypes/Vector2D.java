@@ -3,9 +3,8 @@ package no.ntnu.idatg2003.math_datatypes;
 /**
  * A class to represent a 2D vector.
  *
- * <p>
- *   his class is used to represent a 2D vector and perform operations on it.
- *   The operations are listed below:
+ * <p>his class is used to represent a 2D vector and perform operations on it. The operations are
+ * listed below:
  *
  * <ul>
  *   <li>add

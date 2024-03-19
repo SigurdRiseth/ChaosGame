@@ -45,7 +45,13 @@ public class AffineTransform2D implements Transform2D {
    */
   @Override
   public String toString() {
-    return String.format("%s, %s, %s, %s, %s,%s", matrix.getA00(), matrix.getA01(), matrix.getA10(),
-        matrix.getA11(), vector.getX0(), vector.getX1());
+    return String.format(
+        "%s, %s, %s, %s, %s,%s",
+        matrix.getA00(),
+        matrix.getA01(),
+        matrix.getA10(),
+        matrix.getA11(),
+        vector.getX0(),
+        vector.getX1());
   }
 }

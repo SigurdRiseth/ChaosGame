@@ -20,6 +20,7 @@ The project structure is displayed in the directory tree below.
 │   ├── main
 │   │   └── java
 │   │       └── no.ntnu.idatg1003
+│   │           ├── Main.java
 │   │           ├── transformations
 │   │           │   ├── AffineTransform.java
 │   │           │   ├── JuliaTransform.java
@@ -28,13 +29,21 @@ The project structure is displayed in the directory tree below.
 │   │           │   ├── Complex.java
 │   │           │   ├── Matrix2x2.java
 │   │           │   └── Vector2D.java
-│   │           └── // Senere utvidelser
+│   │           ├── game_engine
+│   │           │   ├── ChaosGame.java
+│   │           │   ├── ChaosCanvas.java
+│   │           │   ├── ChaosGameDescription.java
+│   │           │   └── ChaosGameFileHandler.java
+│   │           └── ui
+│   │               └── Ui.java
 │   └── test
 │       └── java
 │           └── no.ntnu.idatg1003
 │               ├── transformations
 │               │   ├── AffineTransform2DTest.java
 │               │   └── JuliaTransformTest.java
+│               ├── game_engine
+│               │   └── ChaosCanvasTest.java
 │               └── math_datatypes
 │                   ├── ComplexTest.java
 │                   ├── Matrix2x2Test.java
