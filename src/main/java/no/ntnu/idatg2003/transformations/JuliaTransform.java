@@ -6,7 +6,7 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
 /**
  * Class to represent the Julia transformation.
  *
- * <p>This class is used to represent the Julia transformation and perform operations on it.
+ * <p>This class is used to represent the Julia transformation and perform operations on it.</p>
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.1
@@ -22,6 +22,8 @@ public class JuliaTransform implements Transform2D {
 
   /**
    * Constructor for the Julia transformation.
+   *
+   * <p>Field <code>sign</code> is set to either positive or negative 1 depending on input sign</p>
    *
    * @param complexConstant the complex constant
    * @param sign the sign of the transformation
