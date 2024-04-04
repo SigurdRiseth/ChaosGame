@@ -11,19 +11,19 @@ import javafx.stage.Stage;
 import no.ntnu.idatg2003.game_engine.ChaosCanvas;
 import no.ntnu.idatg2003.game_engine.ChaosGame;
 import no.ntnu.idatg2003.game_engine.ChaosGameDescription;
+import no.ntnu.idatg2003.game_engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.game_engine.ChaosGameFileHandler;
 
 public class GUI extends Application {
 
-  public void appMain(String[] args) {
+  public static void appMain(String[] args) {
     launch(args);
   }
 
   @Override
   public void start(Stage primaryStage) throws Exception {
 
-    ChaosGameDescription description =
-        ChaosGameFileHandler.readFromFile("src/main/resources/Sierpinski.csv");
+    ChaosGameDescription description = ChaosGameDescriptionFactory.createJuliaSet();
 
     ChaosGame game = new ChaosGame(description, 1000, 1000);
     game.runSteps(1000000);

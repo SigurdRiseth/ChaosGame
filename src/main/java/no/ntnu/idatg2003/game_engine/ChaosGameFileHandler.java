@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 import no.ntnu.idatg2003.math_datatypes.Complex;
 import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
@@ -52,9 +53,9 @@ public class ChaosGameFileHandler {
     ArrayList<Transform2D> transform2Ds = new ArrayList<>();
     ChaosGameDescription gameDescription = null;
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
+      scanner.useLocale(Locale.US);
       scanner.useDelimiter(
-          ",|(?:#(?<=[#]).{1,}\\n)|#(?<=[#]).{1,}|\n"); // Split on comma,
-      // remove # and everything after it, and split on new lines
+          ",|#(?<=#).+"); // Split on comma or # and everything following it
       String type = scanner.next().trim();
 
       Vector2D minCoords = readVector2D(scanner);

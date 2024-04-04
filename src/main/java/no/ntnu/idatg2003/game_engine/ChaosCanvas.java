@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.game_engine;
 
+import java.util.ArrayList;
 import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
 import no.ntnu.idatg2003.math_datatypes.Vector2D;
 import no.ntnu.idatg2003.transformations.AffineTransform2D;
@@ -15,7 +16,8 @@ import no.ntnu.idatg2003.transformations.AffineTransform2D;
  * @see Matrix2x2
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
-public class ChaosCanvas {
+public class ChaosCanvas implements ChaosGameSubject {
+  private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
   private final AffineTransform2D transformCoordsToIndices;
   private int[][] canvas;
   private int width;
@@ -88,5 +90,22 @@ public class ChaosCanvas {
   /** The method clears the canvas by creating a new canvas array. */
   public void clear() {
     this.canvas = new int[height][width];
+  }
+
+  @Override
+  public void registerObserver(ChaosGameObserver observer) {
+    observers.add(observer);
+  }
+
+  @Override
+  public void removeObserver(ChaosGameObserver observer) {
+    observers.remove(observer);
+  }
+
+  @Override
+  public void notifyObservers() {
+    for (ChaosGameObserver observer : observers) {
+      observer.update();
+    }
   }
 }

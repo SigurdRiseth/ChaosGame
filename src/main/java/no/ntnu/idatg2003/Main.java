@@ -7,7 +7,6 @@ public class Main {
 
     //Ui ui = new Ui();
     //ui.start();
-    GUI gui = new GUI();
-    gui.appMain(args);
+    GUI.appMain(args);
   }
 }
