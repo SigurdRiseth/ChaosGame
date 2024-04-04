@@ -16,14 +16,11 @@ import no.ntnu.idatg2003.transformations.AffineTransform2D;
  * @see Matrix2x2
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
-public class ChaosCanvas implements ChaosGameSubject {
-  private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
+public class ChaosCanvas {
   private final AffineTransform2D transformCoordsToIndices;
   private int[][] canvas;
-  private int width;
-  private int height;
-  private Vector2D minCoords;
-  private Vector2D maxCoords;
+  private final int width;
+  private final int height;
 
   /**
    * Constructor for the ChaosCanvas. It initializes the canvas with the given dimensions and
@@ -92,20 +89,4 @@ public class ChaosCanvas implements ChaosGameSubject {
     this.canvas = new int[height][width];
   }
 
-  @Override
-  public void registerObserver(ChaosGameObserver observer) {
-    observers.add(observer);
-  }
-
-  @Override
-  public void removeObserver(ChaosGameObserver observer) {
-    observers.remove(observer);
-  }
-
-  @Override
-  public void notifyObservers() {
-    for (ChaosGameObserver observer : observers) {
-      observer.update();
-    }
-  }
 }

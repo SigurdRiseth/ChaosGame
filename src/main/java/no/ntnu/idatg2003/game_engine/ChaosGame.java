@@ -1,12 +1,14 @@
 package no.ntnu.idatg2003.game_engine;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import no.ntnu.idatg2003.math_datatypes.Vector2D;
 import no.ntnu.idatg2003.transformations.Transform2D;
 
-public class ChaosGame {
+public class ChaosGame implements ChaosGameSubject {
 
+  private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
   private Random random;
   private ChaosCanvas canvas;
   private ChaosGameDescription description;
@@ -42,11 +44,36 @@ public class ChaosGame {
    * @param steps the number of steps to run
    */
   public void runSteps(int steps) {
-    for (int i = 0; i < steps; i++) {
-      int randomTransform = random.nextInt(description.getTransforms().size());
-      List<Transform2D> transforms = description.getTransforms();
-      currentPoint = transforms.get(randomTransform).transform(currentPoint);
-      canvas.putPixel(currentPoint);
+    try {
+      for (int i = 0; i < steps; i++) {
+        int randomTransform = random.nextInt(description.getTransforms().size());
+        List<Transform2D> transforms = description.getTransforms();
+        currentPoint = transforms.get(randomTransform).transform(currentPoint);
+        canvas.putPixel(currentPoint);
+      }
+    } catch (Exception e) {
+      System.err.println("Error: " + e.getMessage());
+    }
+    finally {
+      notifyObservers();
     }
   }
+
+  @Override
+  public void registerObserver(ChaosGameObserver observer) {
+    observers.add(observer);
+  }
+
+  @Override
+  public void removeObserver(ChaosGameObserver observer) {
+    observers.remove(observer);
+  }
+
+  @Override
+  public void notifyObservers() {
+    for (ChaosGameObserver observer : observers) {
+      observer.update();
+    }
+  }
+
 }
