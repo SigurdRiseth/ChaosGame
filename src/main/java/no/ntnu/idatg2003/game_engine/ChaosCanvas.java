@@ -33,8 +33,6 @@ public class ChaosCanvas {
    * @param height the height of the canvas
    */
   public ChaosCanvas(Vector2D minCoords, Vector2D maxCoords, int width, int height) {
-    this.minCoords = minCoords;
-    this.maxCoords = maxCoords;
     this.width = width;
     this.height = height;
     this.canvas = new int[height][width];
