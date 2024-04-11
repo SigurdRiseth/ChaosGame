@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.math_datatypes;
+package no.ntnu.idatg2003.model.math_datatypes;
 
 /**
  * This class is a subclass of Vector2D and takes in the parameters: realPart and imaginaryPart. The

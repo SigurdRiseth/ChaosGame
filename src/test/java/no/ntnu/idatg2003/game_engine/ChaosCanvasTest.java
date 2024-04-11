@@ -2,7 +2,8 @@ package no.ntnu.idatg2003.game_engine;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

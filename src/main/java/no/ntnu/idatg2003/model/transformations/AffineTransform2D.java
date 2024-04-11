@@ -1,7 +1,7 @@
-package no.ntnu.idatg2003.transformations;
+package no.ntnu.idatg2003.model.transformations;
 
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
 
 /**
  * Class to represent the Affine transformation x → Ax+b

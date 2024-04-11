@@ -1,12 +1,12 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.model.game_engine;
 
 import java.util.List;
-import no.ntnu.idatg2003.math_datatypes.Complex;
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.AffineTransform2D;
-import no.ntnu.idatg2003.transformations.JuliaTransform;
-import no.ntnu.idatg2003.transformations.Transform2D;
+import no.ntnu.idatg2003.model.math_datatypes.Complex;
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 
 public class ChaosGameDescriptionFactory {
 

@@ -2,7 +2,7 @@ package no.ntnu.idatg2003.math_datatypes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import no.ntnu.idatg2003.math_datatypes.Complex;
+import no.ntnu.idatg2003.model.math_datatypes.Complex;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

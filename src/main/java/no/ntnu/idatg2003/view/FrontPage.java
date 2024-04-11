@@ -1,6 +1,8 @@
-package no.ntnu.idatg2003;
+package no.ntnu.idatg2003.view;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -10,27 +12,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import no.ntnu.idatg2003.game_engine.ChaosCanvas;
-import no.ntnu.idatg2003.game_engine.ChaosGame;
-import no.ntnu.idatg2003.game_engine.ChaosGameDescription;
-import no.ntnu.idatg2003.game_engine.ChaosGameDescriptionFactory;
-import no.ntnu.idatg2003.game_engine.ChaosGameObserver;
+import no.ntnu.idatg2003.controller.FrontPageController;
+import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game_engine.ChaosGame;
+import no.ntnu.idatg2003.model.game_engine.ChaosGameDescription;
+import no.ntnu.idatg2003.model.game_engine.ChaosGameDescriptionFactory;
+import no.ntnu.idatg2003.model.game_engine.ChaosGameObserver;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import javafx.application.*;
-import javafx.stage.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
@@ -42,11 +38,13 @@ import javafx.scene.text.*;
 
 
 
-public class GUI extends Application implements ChaosGameObserver {
+public class FrontPage extends Application implements ChaosGameObserver {
 
   private ChaosGame game;
   private ImageView imageView;
   private Stage primaryStage; // Assume this is initialized appropriately
+
+  private FrontPageController controller;
 
   public static void appMain(String[] args) {
     launch(args);
@@ -59,16 +57,14 @@ public class GUI extends Application implements ChaosGameObserver {
     primaryStage.setTitle("Chaos Game");
 
     MenuBox menu = new MenuBox(
-        new MenuItem("Sierpinski Triangle", () -> loadGame("Sierpinski")),
-        new MenuItem("Barnsley Fern", () -> loadGame("Barnsley")),
-        new MenuItem("Julia Set", () -> loadGame("Julia"))
+        //new MenuItem("Run a Game", (ActionEvent event) -> controller.openRunGameScene(event)),
+     //   new MenuItem("Create a Custom Game", () -> controller.openCreateGameScene()),
+        //new MenuItem("Exit", () -> controller.exit())
     );
-
 
     try(InputStream is = Files.newInputStream(Paths.get("src/main/resources/CoolFractalArt.jpeg"))){
       ImageView img = new ImageView(new Image(is));
       img.setPreserveRatio(true);
-
 
       borderPane.getChildren().add(img);
     }
@@ -91,15 +87,14 @@ public class GUI extends Application implements ChaosGameObserver {
   private void loadGame(String gameType) {
     Scene gameScene = null;
     switch (gameType) {
-      case "Sierpinski":
-        gameScene = new Scene(createSierpinskiContent(), 800, 600);
+      case "run":
+        //gameScene = FrontPageController.runGameButton();
         break;
-      case "Barnsley":
-        gameScene = new Scene(createBarnsleyContent(), 800, 600);
+      case "custom":
+        //gameScene = FrontPageController.createGameButton();
         break;
-      case "Julia":
-        gameScene = new Scene(createJuliaContent(), 800, 600);
-        break;
+      case "exit":
+        //FrontPageController.exit();
       default:
         System.out.println("Game type not recognized");
         return;
@@ -209,7 +204,7 @@ public class GUI extends Application implements ChaosGameObserver {
 
 
   private static class MenuItem extends StackPane {
-    public MenuItem(String name, Runnable action) {
+    public MenuItem(String name, EventHandler<ActionEvent> actionHandler) {
       LinearGradient gradient = new LinearGradient(0, 0, 1, 0, true, CycleMethod.NO_CYCLE,
           new Stop(0, Color.DARKBLUE),
           new Stop(0.1, Color.BLACK),
@@ -225,7 +220,7 @@ public class GUI extends Application implements ChaosGameObserver {
 
       setAlignment(Pos.CENTER);
       getChildren().addAll(bg, text);
-      setupEventHandling(gradient, bg, text, action);
+      //setupEventHandling(gradient, bg, text, actionHandler);
     }
 
     private void setupEventHandling(LinearGradient gradient, Rectangle bg, Text text, Runnable action) {
@@ -263,8 +258,6 @@ public class GUI extends Application implements ChaosGameObserver {
       getChildren().addAll(bg,text);
     }
   }
-
-
 }
 
 

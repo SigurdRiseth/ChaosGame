@@ -1,8 +1,8 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.model.game_engine;
 
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 
 /**
  * This class represents a canvas for the Chaos Game. It contains a 2D array of integers, and
