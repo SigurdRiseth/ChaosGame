@@ -41,5 +41,4 @@ public class ChaosGameDescriptionFactory {
     Vector2D max = new Vector2D(0, 0.6);
     return new ChaosGameDescription(min, max, transforms);
   }
-
 }

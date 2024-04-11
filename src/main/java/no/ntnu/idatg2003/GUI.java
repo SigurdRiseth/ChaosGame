@@ -77,6 +77,7 @@ public class GUI extends Application implements ChaosGameObserver {
     }
 
     Title title = new Title("C H A O S   G A M E");
+    title.setPadding(new Insets(50,50,50,50));
 
     menu.setAlignment(Pos.CENTER);
     borderPane.setCenter(menu);
@@ -85,9 +86,6 @@ public class GUI extends Application implements ChaosGameObserver {
     scene.setFill(Color.BEIGE);
     primaryStage.setScene(scene);
     primaryStage.show();
-
-
-    //extracted(primaryStage);
   }
 
   private void loadGame(String gameType) {
@@ -218,12 +216,12 @@ public class GUI extends Application implements ChaosGameObserver {
           new Stop(0.9, Color.BLACK),
           new Stop(1, Color.DARKBLUE));
 
-      Rectangle bg = new Rectangle(200, 30);
+      Rectangle bg = new Rectangle(350, 50);
       bg.setOpacity(0.4);
 
       Text text = new Text(name);
       text.setFill(Color.LIGHTGOLDENRODYELLOW);
-      text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD, 20));
+      text.setFont(Font.font("Times New Roman", FontWeight.SEMI_BOLD, 40));
 
       setAlignment(Pos.CENTER);
       getChildren().addAll(bg, text);

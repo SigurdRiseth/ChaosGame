@@ -1,6 +1,5 @@
 package no.ntnu.idatg2003.game_engine;
 
-import java.util.ArrayList;
 import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
 import no.ntnu.idatg2003.math_datatypes.Vector2D;
 import no.ntnu.idatg2003.transformations.AffineTransform2D;
@@ -60,7 +59,7 @@ public class ChaosCanvas {
    */
   public int getPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()];
+    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()]; //TODO: rund av til nærmeste heltall
   }
 
   /**

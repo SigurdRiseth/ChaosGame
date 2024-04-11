@@ -9,7 +9,7 @@ import no.ntnu.idatg2003.transformations.Transform2D;
 public class ChaosGame implements ChaosGameSubject {
 
   private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
-  private Random random;
+  private final Random random;
   private ChaosCanvas canvas;
   private ChaosGameDescription description;
   private Vector2D currentPoint;
