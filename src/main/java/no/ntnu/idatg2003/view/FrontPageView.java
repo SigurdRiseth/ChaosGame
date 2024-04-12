@@ -7,7 +7,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -16,7 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
 
-public class FrontPage2 extends Application {
+public class FrontPageView extends Application {
 
   private Stage primaryStage;
 
@@ -29,12 +28,16 @@ public class FrontPage2 extends Application {
   @Override
   public void start(Stage primaryStage) {
     controller = new FrontPageController();
+
     this.primaryStage = primaryStage;
 
     BorderPane pane = createContent();
 
     Scene scene = new Scene(pane, 800, 600);
     scene.setFill(Color.PURPLE);
+
+    primaryStage.setMinHeight(600);
+    primaryStage.setMinWidth(800);
     primaryStage.setScene(scene);
     primaryStage.setTitle("Chaos Game");
     primaryStage.show();

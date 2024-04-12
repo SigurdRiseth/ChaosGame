@@ -51,7 +51,7 @@ public class RunGameView {
     text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
     content.setTop(text);
     content.setCenter(buttons);
-    content.setStyle("-fx-background-color: #FF0000;");
+    content.setStyle("-fx-background-color: #3b1d5a;");
     return content;
   }
 

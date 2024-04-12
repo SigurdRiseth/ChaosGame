@@ -21,10 +21,6 @@ public class FrontPageController {
     setScene(stage, this.runGameScene);
   }
 
-  //public Scene openCreateGameScene() {
-
-  //}
-
   public void setScene(Stage primaryStage, Scene newScene) {
     primaryStage.hide();
     primaryStage.setScene(newScene);
