@@ -3,6 +3,7 @@ package no.ntnu.idatg2003.view;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
@@ -47,16 +48,19 @@ public class PresetGameView {
     return content;
   }
 
+
+
   private VBox createIterationsContent() {
     VBox iterations = new VBox(10);  // Add spacing between components
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
     Button runButton = new Button("Run");
+    Label infoLabel = new Label("Values for this transformation:");
     runButton.setOnAction(e -> {
       int iterationsValue = Integer.parseInt(iterationsField.getText());
       controller.runGame(iterationsValue);
     });
-    iterations.getChildren().addAll(iterationsText, iterationsField, runButton);
+    iterations.getChildren().addAll(iterationsText, iterationsField, runButton, infoLabel);
     iterations.setPadding(new Insets(10));  // Add padding inside the VBox
     return iterations;
   }
@@ -83,7 +87,7 @@ public class PresetGameView {
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
         int pixelValue = canvasArray[y][x];
-        Color color = (pixelValue == 1) ? Color.RED : Color.WHITE;
+        Color color = (pixelValue == 1) ? Color.LAVENDER : Color.WHITE;
         pixelWriter.setColor(x, y, color);
       }
     }
