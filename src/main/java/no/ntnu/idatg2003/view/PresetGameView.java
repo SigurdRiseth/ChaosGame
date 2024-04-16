@@ -35,7 +35,7 @@ public class PresetGameView {
     text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
     initCanvas();
     VBox iterations = createIterationsContent();
-    contentBox.getChildren().addAll(canvas, iterations);
+    contentBox.getChildren().addAll(iterations, canvas);
 
     content.setTop(text);
     content.setCenter(contentBox);

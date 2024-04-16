@@ -20,6 +20,26 @@ public class PresetGameController implements ChaosGameObserver {
   public PresetGameController(ChaosGameApp app, String type) {
     this.app = app;
     this.view = new PresetGameView(this, type);
+    CreateGame(type);
+  }
+
+  private void CreateGame(String type) {
+    switch (type) {
+      case "julia":
+        ChaosGameDescription juliaDescription = ChaosGameDescriptionFactory.createJuliaSet();
+        game = new ChaosGame(juliaDescription, 400, 400);
+        break;
+      case "sierpinski":
+        ChaosGameDescription sierpinskiDescription = ChaosGameDescriptionFactory.createSierpinskiTriangle();
+        game = new ChaosGame(sierpinskiDescription, 400, 400);
+        break;
+      case "barnsley":
+        ChaosGameDescription barnsleyDescription = ChaosGameDescriptionFactory.createBarnsleyFern();
+        game = new ChaosGame(barnsleyDescription, 400, 400);
+        break;
+      default:
+        throw new IllegalArgumentException("Unknown game type: " + type);
+    }
   }
 
   @Override
@@ -37,5 +57,6 @@ public class PresetGameController implements ChaosGameObserver {
 
   public void runGame(int iterations) {
     game.runSteps(iterations);
+    view.updateCanvas();
   }
 }

@@ -43,7 +43,7 @@ public class ChaosGameApp extends Application {
   }
 
   public void showPresetsGameScene(String type) {
-    PresetGameController controller = new PresetGameController(this, type);
+    PresetGameController controller = new PresetGameController(this, type); //TOOD: if custom ny meny med custom games?
     this.mainScene = controller.getScene();
     primaryStage.setScene(this.mainScene);
   }

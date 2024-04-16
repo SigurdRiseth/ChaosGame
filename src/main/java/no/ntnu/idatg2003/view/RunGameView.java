@@ -39,7 +39,7 @@ public class RunGameView {
     });
 
     sierpinskiButton.setOnAction(e -> {
-      controller.openPresetGameScene("siepinski");
+      controller.openPresetGameScene("sierpinski");
     });
 
     barnsleyButton.setOnAction(e -> {
