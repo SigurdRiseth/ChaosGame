@@ -4,13 +4,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
+import no.ntnu.idatg2003.controller.RunGameController;
 import no.ntnu.idatg2003.model.game_engine.ChaosGame;
 
 public class ChaosGameApp extends Application {
 
   private ChaosGame game;
   private Stage primaryStage;
-
   private Scene mainScene;
 
   public static void appMain(String[] args) {
@@ -20,15 +20,28 @@ public class ChaosGameApp extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     this.primaryStage = primaryStage;
-    FrontPageView frontPage = new FrontPageView();
-    //TODO: set the scene
 
-    FrontPageController controller = new FrontPageController();
+    showMainScene();
 
     primaryStage.setTitle("Chaos Game");
     primaryStage.setMinHeight(600);
-    primaryStage.setMinWidth(1000);
+    primaryStage.setMinWidth(800);
     primaryStage.setScene(this.mainScene);
     primaryStage.show();
+  }
+
+  private void showMainScene() {
+    FrontPageController controller = new FrontPageController(this);
+    this.mainScene = controller.getScene();
+  }
+
+  public void showRunGameScene() {
+    RunGameController controller = new RunGameController(this);
+    this.mainScene = controller.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
+
+  public void exit() {
+    primaryStage.close();
   }
 }

@@ -1,29 +1,28 @@
 package no.ntnu.idatg2003.controller;
 
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import no.ntnu.idatg2003.view.RunGameView;
+import no.ntnu.idatg2003.view.ChaosGameApp;
+import no.ntnu.idatg2003.view.FrontPage;
 
 public class FrontPageController {
 
-  private Scene runGameScene;
+  private FrontPage frontPage;
+  private ChaosGameApp app;
 
-  public void setRunGameScene(Scene runGameScene) {
-    this.runGameScene = runGameScene;
+  public FrontPageController(ChaosGameApp app) {
+    this.app = app;
+    this.frontPage = new FrontPage(this);
   }
 
-  public void openRunGameScene(ActionEvent act){
-    RunGameView runGameView = new RunGameView();
-    setRunGameScene(runGameView.getScene());
-    Stage stage = (Stage)((Node) act.getSource()).getScene().getWindow();
-    setScene(stage, this.runGameScene);
+  public Scene getScene(){
+    return frontPage.getScene();
   }
 
-  public void setScene(Stage primaryStage, Scene newScene) {
-    primaryStage.hide();
-    primaryStage.setScene(newScene);
-    primaryStage.show();
+  public void openRunGameScene(){
+    app.showRunGameScene();
+  }
+
+  public void exit() {
+    app.exit();
   }
 }

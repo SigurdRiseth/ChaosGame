@@ -17,8 +17,6 @@ import no.ntnu.idatg2003.controller.FrontPageController;
 
 public class FrontPageView extends Application {
 
-  private Stage primaryStage;
-
   private FrontPageController controller;
 
   public static void appMain(String[] args) {
@@ -27,9 +25,9 @@ public class FrontPageView extends Application {
 
   @Override
   public void start(Stage primaryStage) {
-    controller = new FrontPageController();
+    //controller = new FrontPageController();
 
-    this.primaryStage = primaryStage;
+    //this.primaryStage = primaryStage;
 
     BorderPane pane = createContent();
 
@@ -55,7 +53,7 @@ public class FrontPageView extends Application {
     Button exitButton = new Button("Exit");
 
     runGameButton.setOnAction(e -> {
-      controller.openRunGameScene(e);
+      //controller.openRunGameScene(e);
     });
 
     createGameButton.setOnAction(e -> {

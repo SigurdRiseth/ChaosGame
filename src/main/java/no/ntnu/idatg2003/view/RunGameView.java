@@ -7,10 +7,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.PresetGameController;
+import no.ntnu.idatg2003.controller.RunGameController;
 
 public class RunGameView {
 
-  private PresetGameController controller;
+  private Scene scene;
+  private RunGameController controller;
+
+  public RunGameView(RunGameController controller) {
+    this.controller = controller;
+    this.scene = new Scene(createContent(), 800, 600);
+  }
 
   public Scene getScene() {
     BorderPane content = createContent();
@@ -18,7 +25,6 @@ public class RunGameView {
   }
 
   private BorderPane createContent() {
-    controller = new PresetGameController();
     VBox buttons = new VBox();
     buttons.setSpacing(10);
     buttons.setAlignment(javafx.geometry.Pos.CENTER);
@@ -29,7 +35,7 @@ public class RunGameView {
     Button customButton = new Button("Custom Game");
 
     juliaButton.setOnAction(e -> {
-      controller.openPresetGameScene(e);
+      //controller.openPresetGameScene(e);
     });
 
     sierpinskiButton.setOnAction(e -> {
