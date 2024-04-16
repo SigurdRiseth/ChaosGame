@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.view;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -8,6 +9,7 @@ import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -21,29 +23,32 @@ public class PresetGameView {
 
   public PresetGameView(PresetGameController controller, String type) {
     this.controller = controller;
+    initCanvas();
   }
 
   public Scene getScene() {
     BorderPane content = createContent();
+    content.setPadding(new Insets(15, 20, 15, 20));  // Add padding around the layout
     return new Scene(content, 800, 600);
   }
 
   private BorderPane createContent() {
     BorderPane content = new BorderPane();
-    HBox contentBox = new HBox();
-    Text text = new Text("This is a Julia Set!");
-    text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-    initCanvas();
-    VBox iterations = createIterationsContent();
-    contentBox.getChildren().addAll(iterations, canvas);
 
-    content.setTop(text);
-    content.setCenter(contentBox);
+    VBox leftPanel = createIterationsContent();
+    content.setLeft(leftPanel);
+    BorderPane.setMargin(leftPanel, new Insets(0, 20, 0, 0));  // Add some margin to separate from the image
+
+    StackPane canvasContainer = new StackPane();
+    canvasContainer.getChildren().add(canvas);
+    canvasContainer.setStyle("-fx-border-color: black; -fx-border-width: 2;");  // Add a border to the ImageView
+    content.setRight(canvasContainer);
+
     return content;
   }
 
   private VBox createIterationsContent() {
-    VBox iterations = new VBox();
+    VBox iterations = new VBox(10);  // Add spacing between components
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
     Button runButton = new Button("Run");
@@ -52,11 +57,14 @@ public class PresetGameView {
       controller.runGame(iterationsValue);
     });
     iterations.getChildren().addAll(iterationsText, iterationsField, runButton);
+    iterations.setPadding(new Insets(10));  // Add padding inside the VBox
     return iterations;
   }
 
   private void initCanvas() {
     canvas = new ImageView();
+    canvas.setPreserveRatio(true);
+    canvas.setFitHeight(500);  // You might want to adjust the size based on your layout needs
   }
 
   public void updateCanvas() {
@@ -72,17 +80,14 @@ public class PresetGameView {
     WritableImage writableImage = new WritableImage(width, height);
     PixelWriter pixelWriter = writableImage.getPixelWriter();
 
-    try {
-      for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-          int pixelValue = canvasArray[y][x];
-          Color color = (pixelValue == 1) ? Color.RED : Color.WHITE;
-          pixelWriter.setColor(x, y, color);
-        }
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        int pixelValue = canvasArray[y][x];
+        Color color = (pixelValue == 1) ? Color.RED : Color.WHITE;
+        pixelWriter.setColor(x, y, color);
       }
-    } catch (Exception e) {
-      System.err.println("Failed to draw canvas to image: " + e.getMessage());
     }
     return writableImage;
   }
+
 }
