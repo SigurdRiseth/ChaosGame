@@ -27,13 +27,13 @@ public class ChaosGameApp extends Application {
     primaryStage.setTitle("Chaos Game");
     primaryStage.setMinHeight(600);
     primaryStage.setMinWidth(800);
-    primaryStage.setScene(this.mainScene);
     primaryStage.show();
   }
 
-  private void showMainScene() {
+  public void showMainScene() {
     FrontPageController controller = new FrontPageController(this);
     this.mainScene = controller.getScene();
+    primaryStage.setScene(this.mainScene);
   }
 
   public void showRunGameScene() {
