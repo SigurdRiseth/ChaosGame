@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
+import no.ntnu.idatg2003.controller.PresetGameController;
 import no.ntnu.idatg2003.controller.RunGameController;
 import no.ntnu.idatg2003.model.game_engine.ChaosGame;
 
@@ -43,5 +44,11 @@ public class ChaosGameApp extends Application {
 
   public void exit() {
     primaryStage.close();
+  }
+
+  public void showPresetsGameScene(String type) {
+    PresetGameController controller = new PresetGameController(this, type);
+    this.mainScene = controller.getScene();
+    primaryStage.setScene(this.mainScene);
   }
 }

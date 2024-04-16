@@ -1,32 +1,11 @@
 package no.ntnu.idatg2003.view;
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
-import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
-import no.ntnu.idatg2003.model.game_engine.ChaosGame;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameDescriptionFactory;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameObserver;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
 import javafx.geometry.*;
-import javafx.scene.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;

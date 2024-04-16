@@ -19,10 +19,8 @@ public class PresetGameView {
   private PresetGameController controller;
   private ImageView canvas;
 
-  public Scene getScene(PresetGameController controller) {
+  public PresetGameView(PresetGameController controller, String type) {
     this.controller = controller;
-    BorderPane content = createContent();
-    return new Scene(content, 800, 600);
   }
 
   public Scene getScene() {

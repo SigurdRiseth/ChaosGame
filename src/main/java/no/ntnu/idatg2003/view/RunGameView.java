@@ -35,19 +35,19 @@ public class RunGameView {
     Button customButton = new Button("Custom Game");
 
     juliaButton.setOnAction(e -> {
-      //controller.openPresetGameScene(e);
+      controller.openPresetGameScene("julia");
     });
 
     sierpinskiButton.setOnAction(e -> {
-      throw new UnsupportedOperationException("Not implemented yet");
+      controller.openPresetGameScene("siepinski");
     });
 
     barnsleyButton.setOnAction(e -> {
-      throw new UnsupportedOperationException("Not implemented yet");
+      controller.openPresetGameScene("barnsley");
     });
 
     customButton.setOnAction(e -> {
-      throw new UnsupportedOperationException("Not implemented yet");
+      controller.openPresetGameScene("custom");
     });
 
     buttons.getChildren().addAll( juliaButton, sierpinskiButton, barnsleyButton, customButton);

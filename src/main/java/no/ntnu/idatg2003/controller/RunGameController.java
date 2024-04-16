@@ -22,4 +22,8 @@ public class RunGameController {
   public Scene getScene(){
     return view.getScene();
   }
+
+  public void openPresetGameScene(String type) {
+    app.showPresetsGameScene(type);
+  }
 }
