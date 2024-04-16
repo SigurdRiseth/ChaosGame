@@ -26,4 +26,8 @@ public class RunGameController {
   public void openPresetGameScene(String type) {
     app.showPresetsGameScene(type);
   }
+
+  public void openFrontPageScene() {
+    app.showMainScene();
+  }
 }
