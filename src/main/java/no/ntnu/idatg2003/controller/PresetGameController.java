@@ -34,4 +34,8 @@ public class PresetGameController implements ChaosGameObserver {
   public Scene getScene() {
     return view.getScene();
   }
+
+  public void runGame(int iterations) {
+    game.runSteps(iterations);
+  }
 }

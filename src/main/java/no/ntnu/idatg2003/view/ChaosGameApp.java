@@ -42,13 +42,14 @@ public class ChaosGameApp extends Application {
     primaryStage.setScene(this.mainScene);
   }
 
-  public void exit() {
-    primaryStage.close();
-  }
-
   public void showPresetsGameScene(String type) {
     PresetGameController controller = new PresetGameController(this, type);
     this.mainScene = controller.getScene();
     primaryStage.setScene(this.mainScene);
   }
+
+  public void exit() {
+    primaryStage.close();
+  }
+
 }

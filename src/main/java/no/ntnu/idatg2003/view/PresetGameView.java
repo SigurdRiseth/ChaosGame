@@ -35,7 +35,7 @@ public class PresetGameView {
     text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
     initCanvas();
     VBox iterations = createIterationsContent();
-    contentBox.getChildren().add(canvas);
+    contentBox.getChildren().addAll(canvas, iterations);
 
     content.setTop(text);
     content.setCenter(contentBox);
@@ -47,6 +47,10 @@ public class PresetGameView {
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
     Button runButton = new Button("Run");
+    runButton.setOnAction(e -> {
+      int iterationsValue = Integer.parseInt(iterationsField.getText());
+      controller.runGame(iterationsValue);
+    });
     iterations.getChildren().addAll(iterationsText, iterationsField, runButton);
     return iterations;
   }
