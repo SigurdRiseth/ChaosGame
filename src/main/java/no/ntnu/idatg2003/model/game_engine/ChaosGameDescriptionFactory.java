@@ -35,10 +35,11 @@ public class ChaosGameDescriptionFactory {
 
   public static ChaosGameDescription createJuliaSet() {
     List<Transform2D> transforms = List.of(
-        new JuliaTransform(new Complex(-.74543, .11301), -1)
+        new JuliaTransform(new Complex(-0.4, 0.6), -1),
+        new JuliaTransform(new Complex(-0.4, 0.6), 1)
     );
-    Vector2D min = new Vector2D(-1, -0.6);
-    Vector2D max = new Vector2D(0, 0.6);
+    Vector2D min = new Vector2D(-2, -2);
+    Vector2D max = new Vector2D(2, 2);
     return new ChaosGameDescription(min, max, transforms);
   }
 }
