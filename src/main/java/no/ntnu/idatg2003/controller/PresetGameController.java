@@ -19,7 +19,7 @@ public class PresetGameController implements ChaosGameObserver {
 
   public PresetGameController(ChaosGameApp app, String type) {
     this.app = app;
-    this.view = new PresetGameView(this, type);
+    this.view = new PresetGameView(this);
     CreateGame(type);
   }
 

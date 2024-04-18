@@ -6,11 +6,9 @@ import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
 import no.ntnu.idatg2003.controller.PresetGameController;
 import no.ntnu.idatg2003.controller.RunGameController;
-import no.ntnu.idatg2003.model.game_engine.ChaosGame;
 
 public class ChaosGameApp extends Application {
 
-  private ChaosGame game;
   private Stage primaryStage;
   private Scene mainScene;
 
