@@ -20,10 +20,10 @@ public class PresetGameController implements ChaosGameObserver {
   public PresetGameController(ChaosGameApp app, String type) {
     this.app = app;
     this.view = new PresetGameView(this);
-    CreateGame(type);
+    createGame(type);
   }
 
-  private void CreateGame(String type) {
+  private void createGame(String type) {
     switch (type) {
       case "julia":
         ChaosGameDescription juliaDescription = ChaosGameDescriptionFactory.createJuliaSet();
@@ -44,7 +44,7 @@ public class PresetGameController implements ChaosGameObserver {
 
   @Override
   public void update() {
-    //presetGameScene.updateCanvas(game.getCanvas());
+    view.updateCanvas();
   }
 
   public ChaosCanvas getCanvas() {
