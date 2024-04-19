@@ -52,7 +52,12 @@ public class PresetGameView {
   }
 
   private VBox createLeftPanel() {
-    VBox iterations = new VBox(10);
+    Button backButton = new Button("Return");
+    backButton.setOnAction(e -> {
+      controller.openRunGameView();
+    });
+
+    VBox content = new VBox(10);
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
     Button runButton = new Button("Run");
@@ -62,9 +67,9 @@ public class PresetGameView {
       int iterationsValue = Integer.parseInt(iterationsField.getText());
       controller.runGame(iterationsValue);
     });
-    iterations.getChildren().addAll(iterationsText, iterationsField, runButton, infoLabel, minMax);
-    iterations.setPadding(new Insets(10));
-    return iterations;
+    content.getChildren().addAll(backButton, iterationsText, iterationsField, runButton, infoLabel, minMax);
+    content.setPadding(new Insets(10));
+    return content;
   }
 
   private HBox createMinMaxBox() {
@@ -80,7 +85,7 @@ public class PresetGameView {
   }
 
   private void initCanvas() {
-    canvas2 = new Canvas(400, 400);
+    canvas2 = new Canvas(800, 800);
     //canvas = new ImageView();
     //canvas.setPreserveRatio(true);
     //canvas.setFitHeight(500);

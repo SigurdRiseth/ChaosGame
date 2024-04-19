@@ -17,17 +17,16 @@ public class PresetGameController implements ChaosGameObserver {
   private ChaosGameApp app;
   private PresetGameView view;
 
-  public PresetGameController(ChaosGameApp app, String type) {
+  public PresetGameController(ChaosGameApp app) {
     this.app = app;
     this.view = new PresetGameView(this);
-    createGame(type);
   }
 
-  private void createGame(String type) {
+  public void createGame(String type) {
     switch (type) {
       case "julia":
         ChaosGameDescription juliaDescription = ChaosGameDescriptionFactory.createJuliaSet();
-        game = new ChaosGame(juliaDescription, 400, 400);
+        game = new ChaosGame(juliaDescription, 800, 800);
         break;
       case "sierpinski":
         ChaosGameDescription sierpinskiDescription = ChaosGameDescriptionFactory.createSierpinskiTriangle();
@@ -59,4 +58,9 @@ public class PresetGameController implements ChaosGameObserver {
     game.runSteps(iterations);
     view.updateCanvas();
   }
+
+  public void openRunGameView() {
+    app.showRunGameScene();
+  }
+
 }
