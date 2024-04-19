@@ -10,6 +10,16 @@ import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 
 public class ChaosGameDescriptionFactory {
 
+  /**
+   * Private constructor to prevent instantiation.
+   */
+  private ChaosGameDescriptionFactory() {}
+
+  /**
+   * Create the Barnsley fern description
+   *
+   * @return a <code>ChaosGameDescription</code> object
+   */
   public static ChaosGameDescription createBarnsleyFern() {
     List<Transform2D> transforms = List.of(
         new AffineTransform2D(new Matrix2x2(0.0, 0.0, 0.0, 0.16), new Vector2D(0.0, 0.0)),
@@ -22,6 +32,11 @@ public class ChaosGameDescriptionFactory {
     return new ChaosGameDescription(min, max, transforms);
   }
 
+  /**
+   * Create the Sierpinski triangle description
+   *
+   * @return a <code>ChaosGameDescription</code> object
+   */
   public static ChaosGameDescription createSierpinskiTriangle() {
     List<Transform2D> transforms = List.of(
         new AffineTransform2D(new Matrix2x2(0.5, 0.0, 0.0, 0.5), new Vector2D(0.0, 0.0)),
@@ -33,10 +48,32 @@ public class ChaosGameDescriptionFactory {
     return new ChaosGameDescription(min, max, transforms);
   }
 
+  /**
+   * Create a Julia set description with the default complex number
+   *
+   * @return a <code>ChaosGameDescription</code> object
+   */
   public static ChaosGameDescription createJuliaSet() {
     List<Transform2D> transforms = List.of(
-        new JuliaTransform(new Complex(-0.4, 0.6), -1),
-        new JuliaTransform(new Complex(-0.4, 0.6), 1)
+        new JuliaTransform(new Complex(0.285, 0.01), -1),
+        new JuliaTransform(new Complex(0.285, 0.01), 1)
+        //-0.4, 0.6
+    );
+    Vector2D min = new Vector2D(-2, -2);
+    Vector2D max = new Vector2D(2, 2);
+    return new ChaosGameDescription(min, max, transforms);
+  }
+
+  /**
+   * Create a Julia set description with a given complex number
+   *
+   * @param complex the complex number to use
+   * @return a <code>ChaosGameDescription</code> object
+   */
+  public static ChaosGameDescription createJuliaSet(Complex complex) {
+    List<Transform2D> transforms = List.of(
+        new JuliaTransform(complex, -1),
+        new JuliaTransform(complex, 1)
     );
     Vector2D min = new Vector2D(-2, -2);
     Vector2D max = new Vector2D(2, 2);
