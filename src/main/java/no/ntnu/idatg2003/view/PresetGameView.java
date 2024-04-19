@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -38,7 +39,7 @@ public class PresetGameView {
   private BorderPane createContent() {
     BorderPane content = new BorderPane();
 
-    VBox leftPanel = createIterationsContent();
+    VBox leftPanel = createLeftPanel();
     content.setLeft(leftPanel);
     BorderPane.setMargin(leftPanel, new Insets(0, 20, 0, 0));
 
@@ -50,19 +51,32 @@ public class PresetGameView {
     return content;
   }
 
-  private VBox createIterationsContent() {
+  private VBox createLeftPanel() {
     VBox iterations = new VBox(10);
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
     Button runButton = new Button("Run");
     Label infoLabel = new Label("Values for this transformation:");
+    HBox minMax = createMinMaxBox();
     runButton.setOnAction(e -> {
       int iterationsValue = Integer.parseInt(iterationsField.getText());
       controller.runGame(iterationsValue);
     });
-    iterations.getChildren().addAll(iterationsText, iterationsField, runButton, infoLabel);
+    iterations.getChildren().addAll(iterationsText, iterationsField, runButton, infoLabel, minMax);
     iterations.setPadding(new Insets(10));
     return iterations;
+  }
+
+  private HBox createMinMaxBox() {
+    HBox minMax = new HBox(10);
+    Label minLabel = new Label("Min: ");
+    Label maxLabel = new Label("Max: ");
+    TextField minField = new TextField("(-2.65, 0.0)");
+    minField.setEditable(false);
+    TextField maxField = new TextField("(2.65, 10)");
+    maxField.setEditable(false);
+    minMax.getChildren().addAll(minLabel, minField, maxLabel, maxField);
+    return minMax;
   }
 
   private void initCanvas() {
