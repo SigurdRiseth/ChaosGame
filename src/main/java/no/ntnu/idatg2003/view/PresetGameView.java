@@ -7,9 +7,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.image.PixelWriter;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -22,8 +19,7 @@ import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
 public class PresetGameView {
 
   private PresetGameController controller;
-  private ImageView canvas;
-  private Canvas canvas2;
+  private Canvas canvas;
 
   public PresetGameView(PresetGameController controller) {
     this.controller = controller;
@@ -44,7 +40,7 @@ public class PresetGameView {
     BorderPane.setMargin(leftPanel, new Insets(0, 20, 0, 0));
 
     StackPane canvasContainer = new StackPane();
-    canvasContainer.getChildren().add(canvas2);
+    canvasContainer.getChildren().add(canvas);
     canvasContainer.setStyle("-fx-border-color: black; -fx-border-width: 2;");
     content.setRight(canvasContainer);
 
@@ -54,6 +50,7 @@ public class PresetGameView {
   private VBox createLeftPanel() {
     Button backButton = new Button("Return");
     backButton.setOnAction(e -> {
+      canvas.getGraphicsContext2D().clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
       controller.openRunGameView();
     });
 
@@ -74,8 +71,8 @@ public class PresetGameView {
 
   private HBox createMinMaxBox() {
     HBox minMax = new HBox(10);
-    Label minLabel = new Label("Min: ");
-    Label maxLabel = new Label("Max: ");
+    Label minLabel = new Label("Min:");
+    Label maxLabel = new Label("Max:");
     TextField minField = new TextField("(-2.65, 0.0)");
     minField.setEditable(false);
     TextField maxField = new TextField("(2.65, 10)");
@@ -85,16 +82,10 @@ public class PresetGameView {
   }
 
   private void initCanvas() {
-    canvas2 = new Canvas(800, 800);
-    //canvas = new ImageView();
-    //canvas.setPreserveRatio(true);
-    //canvas.setFitHeight(500);
+    canvas = new Canvas(800, 800);
   }
 
   public void updateCanvas() {
-    //WritableImage image = drawCanvasToImage(controller.getCanvas());
-    //canvas.setImage(image);
-
     drawCanvas(controller.getCanvas());
   }
 
@@ -103,8 +94,8 @@ public class PresetGameView {
     int width = canvasArray[0].length;
     int height = canvasArray.length;
 
-    GraphicsContext gc = canvas2.getGraphicsContext2D();
-    gc.clearRect(0, 0, canvas2.getWidth(), canvas2.getHeight()); // Clear existing content
+    GraphicsContext gc = canvas.getGraphicsContext2D();
+    gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight()); // Clear existing content
 
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
@@ -114,24 +105,6 @@ public class PresetGameView {
         gc.fillRect(x, y, 1, 1);
       }
     }
-  }
-
-  private WritableImage drawCanvasToImage(ChaosCanvas chaosCanvas) {
-    int[][] canvasArray = chaosCanvas.getCanvasArray();
-    int width = canvasArray[0].length;
-    int height = canvasArray.length;
-
-    WritableImage writableImage = new WritableImage(width, height);
-    PixelWriter pixelWriter = writableImage.getPixelWriter();
-
-    for (int y = 0; y < height; y++) {
-      for (int x = 0; x < width; x++) {
-        int pixelValue = canvasArray[y][x];
-        Color color = (pixelValue == 1) ? Color.BLACK : Color.WHITE;
-        pixelWriter.setColor(x, y, color);
-      }
-    }
-    return writableImage;
   }
 
 }
