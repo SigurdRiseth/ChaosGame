@@ -16,22 +16,46 @@ import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.PresetGameController;
 import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
 
+/**
+ * The view for the PresetGame Page.
+ * <p>
+ *    This class is responsible for displaying the game view for the preset game.
+ * </p>
+ */
 public class PresetGameView {
 
-  private PresetGameController controller;
+  private final PresetGameController controller;
   private Canvas canvas;
 
+  /**
+   * Constructor for the PresetGameView class.
+   * <p>
+   *   Initializes the view with the given controller and initializes the canvas.
+   * </p>
+   *
+   * @param controller The controller for the view.
+   */
   public PresetGameView(PresetGameController controller) {
     this.controller = controller;
-    initCanvas();
+    this.canvas = new Canvas(800, 800);
   }
 
+  /**
+   * Returns the scene for the view.
+   *
+   * @return The scene for the view.
+   */
   public Scene getScene() {
     BorderPane content = createContent();
     content.setPadding(new Insets(15, 20, 15, 20));
     return new Scene(content, 800, 600);
   }
 
+  /**
+   * Creates the content for the view.
+   *
+   * @return BorderPane with the content.
+   */
   private BorderPane createContent() {
     BorderPane content = new BorderPane();
 
@@ -47,6 +71,14 @@ public class PresetGameView {
     return content;
   }
 
+  /**
+   * Creates the left panel for the view.
+   * <p>
+   *    This contains the return button, input field for iterations, run button, and general info.
+   * </p>
+   *
+   * @return VBox with the left panel content.
+   */
   private VBox createLeftPanel() {
     Button backButton = new Button("Return");
     backButton.setOnAction(e -> {
@@ -64,11 +96,17 @@ public class PresetGameView {
       int iterationsValue = Integer.parseInt(iterationsField.getText());
       controller.runGame(iterationsValue);
     });
-    content.getChildren().addAll(backButton, iterationsText, iterationsField, runButton, infoLabel, minMax);
+    content.getChildren().addAll(backButton, iterationsText, iterationsField,
+        runButton, infoLabel, minMax);
     content.setPadding(new Insets(10));
     return content;
   }
 
+  /**
+   * Creates the HBox containing the min and max values for the transformation.
+   *
+   * @return HBox with the min and max values.
+   */
   private HBox createMinMaxBox() {
     HBox minMax = new HBox(10);
     Label minLabel = new Label("Min:");
@@ -81,14 +119,18 @@ public class PresetGameView {
     return minMax;
   }
 
-  private void initCanvas() {
-    canvas = new Canvas(800, 800);
-  }
-
+  /**
+   * Updates the canvas with the current state of the game.
+   */
   public void updateCanvas() {
     drawCanvas(controller.getCanvas());
   }
 
+  /**
+   * Draws the given ChaosCanvas on the canvas.
+   *
+   * @param chaosCanvas The ChaosCanvas to draw.
+   */
   private void drawCanvas(ChaosCanvas chaosCanvas) {
     int[][] canvasArray = chaosCanvas.getCanvasArray();
     int width = canvasArray[0].length;
