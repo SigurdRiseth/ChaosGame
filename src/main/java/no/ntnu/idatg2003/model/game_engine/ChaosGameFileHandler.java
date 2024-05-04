@@ -133,7 +133,7 @@ public class ChaosGameFileHandler {
       writeTransformType(writer, stringType);
       writeMinMaxCoords(writer, description);
       for (Transform2D transform : description.getTransforms()) {
-        writer.write(transform.toString() + "\n");
+        writer.write(transform.toString() + " # transforms \n");
       }
     } catch (IOException e) {
       System.out.println("Failed to create the file: " + e.getMessage());
@@ -150,10 +150,10 @@ public class ChaosGameFileHandler {
     try {
       writer.write(
           String.format(
-              "%f, %f%n", description.getMinCoords().getX0(), description.getMinCoords().getX1()));
+              "%f, %f # Lower Left %n", description.getMinCoords().getX0(), description.getMinCoords().getX1()));
       writer.write(
           String.format(
-              "%f, %f%n", description.getMaxCoords().getX0(), description.getMaxCoords().getX1()));
+              "%f, %f # Upper Right %n", description.getMaxCoords().getX0(), description.getMaxCoords().getX1()));
     } catch (IOException e) {
       System.err.println("Failed to write the min/max coordinates: " + e.getMessage());
     }
@@ -167,7 +167,7 @@ public class ChaosGameFileHandler {
    */
   private static void writeTransformType(BufferedWriter writer, String stringType) {
     try {
-      writer.write(stringType + "\n");
+      writer.write(stringType + " # Type of fractal \n");
     } catch (IOException e) {
       System.err.println("Failed to write the transform type: " + e.getMessage());
     }
