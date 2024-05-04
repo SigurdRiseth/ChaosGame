@@ -1,9 +1,8 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.model.game_engine;
 
-import java.util.ArrayList;
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 
 /**
  * This class represents a canvas for the Chaos Game. It contains a 2D array of integers, and
@@ -16,14 +15,11 @@ import no.ntnu.idatg2003.transformations.AffineTransform2D;
  * @see Matrix2x2
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
-public class ChaosCanvas implements ChaosGameSubject {
-  private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
+public class ChaosCanvas {
   private final AffineTransform2D transformCoordsToIndices;
   private int[][] canvas;
-  private int width;
-  private int height;
-  private Vector2D minCoords;
-  private Vector2D maxCoords;
+  private final int width;
+  private final int height;
 
   /**
    * Constructor for the ChaosCanvas. It initializes the canvas with the given dimensions and
@@ -36,8 +32,6 @@ public class ChaosCanvas implements ChaosGameSubject {
    * @param height the height of the canvas
    */
   public ChaosCanvas(Vector2D minCoords, Vector2D maxCoords, int width, int height) {
-    this.minCoords = minCoords;
-    this.maxCoords = maxCoords;
     this.width = width;
     this.height = height;
     this.canvas = new int[height][width];
@@ -65,7 +59,7 @@ public class ChaosCanvas implements ChaosGameSubject {
    */
   public int getPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()];
+    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()]; //TODO: rund av til nærmeste heltall
   }
 
   /**
@@ -92,20 +86,4 @@ public class ChaosCanvas implements ChaosGameSubject {
     this.canvas = new int[height][width];
   }
 
-  @Override
-  public void registerObserver(ChaosGameObserver observer) {
-    observers.add(observer);
-  }
-
-  @Override
-  public void removeObserver(ChaosGameObserver observer) {
-    observers.remove(observer);
-  }
-
-  @Override
-  public void notifyObservers() {
-    for (ChaosGameObserver observer : observers) {
-      observer.update();
-    }
-  }
 }

@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.model.game_engine;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -7,12 +7,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
-import no.ntnu.idatg2003.math_datatypes.Complex;
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.AffineTransform2D;
-import no.ntnu.idatg2003.transformations.JuliaTransform;
-import no.ntnu.idatg2003.transformations.Transform2D;
+import no.ntnu.idatg2003.model.math_datatypes.Complex;
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.transformations.JuliaTransform;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 /**
  * This class is responsible for handling the file input and output for the ChaosGame. It will read

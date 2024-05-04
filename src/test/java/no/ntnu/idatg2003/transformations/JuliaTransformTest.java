@@ -2,9 +2,9 @@ package no.ntnu.idatg2003.transformations;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import no.ntnu.idatg2003.math_datatypes.Complex;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.JuliaTransform;
+import no.ntnu.idatg2003.model.math_datatypes.Complex;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

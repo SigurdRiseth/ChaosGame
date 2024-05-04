@@ -3,7 +3,9 @@ package no.ntnu.idatg2003.game_engine;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import no.ntnu.idatg2003.transformations.Transform2D;
+import no.ntnu.idatg2003.model.game_engine.ChaosGameDescription;
+import no.ntnu.idatg2003.model.game_engine.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

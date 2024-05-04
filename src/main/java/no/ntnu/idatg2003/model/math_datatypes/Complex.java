@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.math_datatypes;
+package no.ntnu.idatg2003.model.math_datatypes;
 
 /**
  * This class is a subclass of Vector2D and takes in the parameters: realPart and imaginaryPart. The
@@ -35,6 +35,18 @@ public class Complex extends Vector2D {
         Math.signum(getX1())
             * Math.sqrt((magnitude - getX0()) / 2); // Imaginary part of result of square root
 
+    return new Complex(realPart, imaginaryPart);
+  }
+
+  /**
+   * This method multiplies two complex numbers together.
+   *
+   * @param other the other complex number to multiply with.
+   * @return the product of the two complex numbers.
+   */
+  public Complex multiply(Complex other) {  //TODO: Implementere denne for å utføre kvadratiske julia-sett ikke bare kvadratrot-sett
+    double realPart = getX0() * other.getX0() - getX1() * other.getX1();
+    double imaginaryPart = getX0() * other.getX1() + getX1() * other.getX0();
     return new Complex(realPart, imaginaryPart);
   }
 }

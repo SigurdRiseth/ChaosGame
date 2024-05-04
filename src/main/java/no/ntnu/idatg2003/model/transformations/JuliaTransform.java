@@ -1,7 +1,7 @@
-package no.ntnu.idatg2003.transformations;
+package no.ntnu.idatg2003.model.transformations;
 
-import no.ntnu.idatg2003.math_datatypes.Complex;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math_datatypes.Complex;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
 
 /**
  * Class to represent the Julia transformation.
@@ -15,8 +15,10 @@ import no.ntnu.idatg2003.math_datatypes.Vector2D;
  * @see Vector2D
  * @since 12.02.2024
  */
-public class JuliaTransform implements Transform2D {
-
+public class JuliaTransform implements Transform2D { //TODO: Gjøre denne klassen abstrakt så man kan innføre kvadratiske julia-sett?
+//TODO: Nå er det kun kvadratrot julia-sett som kan utføres. Altså z → ±sqrt(z - c) og ikke z → z^2 + c
+  // BLIR DA "PUBLIC ABSTRACT CLASS JULIATRANSFORM implements TRANSFORM2D"
+  // OG transform() blir abstrakt metode som må implementeres i subklassene
   private final Complex complexConstant;
   private final int sign;
 

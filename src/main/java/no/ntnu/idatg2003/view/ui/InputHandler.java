@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.ui;
+package no.ntnu.idatg2003.view.ui;
 
 import java.util.Scanner;
 
