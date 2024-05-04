@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.math_datatypes;
+package no.ntnu.idatg2003.model.math_datatypes;
 
 /**
  * This class forms a 2x2 matrix, and does so using 4 fields that define the places where numbers

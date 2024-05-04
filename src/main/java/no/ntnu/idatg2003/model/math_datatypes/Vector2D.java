@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.math_datatypes;
+package no.ntnu.idatg2003.model.math_datatypes;
 
 /**
  * A class to represent a 2D vector.

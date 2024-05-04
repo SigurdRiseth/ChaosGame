@@ -1,15 +1,15 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.model.game_engine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.Transform2D;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 public class ChaosGame implements ChaosGameSubject {
 
   private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
-  private Random random;
+  private final Random random;
   private ChaosCanvas canvas;
   private ChaosGameDescription description;
   private Vector2D currentPoint;

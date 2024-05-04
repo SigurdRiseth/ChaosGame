@@ -2,6 +2,8 @@ package no.ntnu.idatg2003.math_datatypes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

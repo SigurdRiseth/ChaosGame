@@ -1,9 +1,8 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.model.game_engine;
 
-import java.util.ArrayList;
-import no.ntnu.idatg2003.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.math_datatypes.Vector2D;
-import no.ntnu.idatg2003.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 
 /**
  * This class represents a canvas for the Chaos Game. It contains a 2D array of integers, and
@@ -33,8 +32,6 @@ public class ChaosCanvas {
    * @param height the height of the canvas
    */
   public ChaosCanvas(Vector2D minCoords, Vector2D maxCoords, int width, int height) {
-    this.minCoords = minCoords;
-    this.maxCoords = maxCoords;
     this.width = width;
     this.height = height;
     this.canvas = new int[height][width];
@@ -62,7 +59,7 @@ public class ChaosCanvas {
    */
   public int getPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()];
+    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()]; //TODO: rund av til nærmeste heltall
   }
 
   /**
