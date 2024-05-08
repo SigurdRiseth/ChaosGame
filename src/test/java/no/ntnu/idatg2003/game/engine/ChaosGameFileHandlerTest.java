@@ -11,25 +11,25 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 /**
- * This class is a test class for the ChaosGameFileHandler class.
+ * Test class for the {@link ChaosGameFileHandler} class.
  */
 class ChaosGameFileHandlerTest {
 
   /**
-   * Tests if the readFromFile() method returns the correct ChaosGameDescription for the Julia set
+   * Tests if the <code>readFromFile()</code> method returns the correct {@link ChaosGameDescription} for the preset Julia-set
    */
   @Test
-  public void readFromFileJuliaTest() {
+  void readFromFileJuliaTest() {
     ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
-    assertEquals(description.getMinCoords().getX0(), -1.6, 0.001);
-    assertEquals(description.getMinCoords().getX1(), -1, 0.001);
-    assertEquals(description.getMaxCoords().getX0(), 1.6, 0.001);
-    assertEquals(description.getMaxCoords().getX1(), 1, 0.001);
-    assertEquals(description.getTransforms().getFirst().toString(), "-0.74543, 0.11301", "The transform is not correct");
+    assertEquals(-1.6, description.getMinCoords().getX0(), "The min x0 value is not correct");
+    assertEquals(-1, description.getMinCoords().getX1(), "The min x1 value is not correct");
+    assertEquals(1.6, description.getMaxCoords().getX0(), "The max x0 value is not correct");
+    assertEquals(1, description.getMaxCoords().getX1(), "The max x1 value is not correct");
+    assertEquals("-0.74543, 0.11301", description.getTransforms().getFirst().toString(), "The transform is not correct");
   }
 
   /**
-   * Tests if the readFromFile() method returns the correct ChaosGameDescription for the Barnsley Fern
+   * Tests if the <code>readFromFile()</code> method returns the correct {@link ChaosGameDescription} for the preset Barnsley-Fern
    *
    * @param transformIndex the index of the transform
    * @param a00 the value of a00
@@ -46,32 +46,37 @@ class ChaosGameFileHandlerTest {
       "2, .2, -.26, .23, .22, 0, 1.6",
       "3, -.15, .28, .26, .24, 0, .44"
   })
-  public void readFromFileAffineTest(int transformIndex, double a00, double a01, double a10, double a11, double b0, double b1) {
+  void readFromFileAffineTest(int transformIndex, double a00, double a01, double a10, double a11, double b0, double b1) {
     ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fern.csv");
     String expected = a00 + ", " + a01 + ", " + a10 + ", " + a11 + ", " + b0 + "," + b1;
     List<Transform2D> transforms = description.getTransforms();
 
-    assertEquals(transforms.size(), 4, "The number of transforms is not correct");
-    assertEquals(description.getMinCoords().getX0(), -2.65, 0.001);
-    assertEquals(description.getMinCoords().getX1(), 0, 0.001);
-    assertEquals(description.getMaxCoords().getX0(), 2.65, 0.001);
-    assertEquals(description.getMaxCoords().getX1(), 10, 0.001);
-    assertEquals(description.getTransforms().get(transformIndex).toString(), expected, "The transforms values are not correct");
+    assertEquals(4, transforms.size(), "The number of transforms is not correct");
+    assertEquals(-2.65, description.getMinCoords().getX0(), "The min x0 value is not correct");
+    assertEquals(0, description.getMinCoords().getX1(), "The min x1 value is not correct");
+    assertEquals(2.65, description.getMaxCoords().getX0(), "The max x0 value is not correct");
+    assertEquals(10, description.getMaxCoords().getX1(), "The max x1 value is not correct");
+    assertEquals(expected, description.getTransforms().get(transformIndex).toString(), "The transforms values are not correct");
   }
 
   /**
-   * Tests if the writeToFile() method writes the correct ChaosGameDescription to a file.
+   * Tests if the <code>writeToFile()</code> method writes the correct {@link ChaosGameDescription} to a file.
+   *
+   * <p>
+   *   Note that this test is dependent on that the <code>readFromFile()</code> method works correctly.
+   * </p>
    */
   @Test
-  public void writeToFileTest() {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
-    ChaosGameFileHandler.writeToFile(description, "src/test/resources/csv/preset.games/JuliaTest.csv");
-    ChaosGameDescription newDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/JuliaTest.csv");
+  void writeToFileTest() {
+    ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
 
-    assertEquals(description.getMinCoords().getX0(), newDescription.getMinCoords().getX0(), 0.001);
-    assertEquals(description.getMinCoords().getX1(), newDescription.getMinCoords().getX1(), 0.001);
-    assertEquals(description.getMaxCoords().getX0(), newDescription.getMaxCoords().getX0(), 0.001);
-    assertEquals(description.getMaxCoords().getX1(), newDescription.getMaxCoords().getX1(), 0.001);
-    assertEquals(description.getTransforms().getFirst().toString(), newDescription.getTransforms().getFirst().toString(), "The transform is not correct");
+    ChaosGameFileHandler.writeToFile(expectedDescription, "src/test/resources/csv/preset.games/JuliaTest.csv");
+    ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/JuliaTest.csv");
+
+    assertEquals(expectedDescription.getMinCoords().getX0(), resultDescription.getMinCoords().getX0(), "The min x0 value is not correct");
+    assertEquals(expectedDescription.getMinCoords().getX1(), resultDescription.getMinCoords().getX1(), "The min x1 value is not correct");
+    assertEquals(expectedDescription.getMaxCoords().getX0(), resultDescription.getMaxCoords().getX0(), "The max x0 value is not correct");
+    assertEquals(expectedDescription.getMaxCoords().getX1(), resultDescription.getMaxCoords().getX1(), "The max x1 value is not correct");
+    assertEquals(expectedDescription.getTransforms().getFirst().toString(), resultDescription.getTransforms().getFirst().toString(), "The transform is not correct");
   }
 }

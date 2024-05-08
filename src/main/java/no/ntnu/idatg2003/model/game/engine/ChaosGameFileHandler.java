@@ -24,6 +24,11 @@ import no.ntnu.idatg2003.model.transformations.Transform2D;
 public class ChaosGameFileHandler {
 
   /**
+   * Private constructor to prevent instantiation.
+   */
+  private ChaosGameFileHandler() {}
+
+  /**
    * Method to read a ChaosGameDescription from a file. The file should contain the following
    * information: - The type of transformation (JuliaTransform or AffineTransform2D) - The minimum
    * and maximum coordinates for the game - The transformations to be applied to the points in the
