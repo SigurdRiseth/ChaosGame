@@ -150,10 +150,10 @@ public class ChaosGameFileHandler {
     try {
       writer.write(
           String.format(
-              "%f, %f # Lower Left %n", description.getMinCoords().getX0(), description.getMinCoords().getX1()));
+              "%s # Lower Left %n", description.getMinCoords().toString()));
       writer.write(
           String.format(
-              "%f, %f # Upper Right %n", description.getMaxCoords().getX0(), description.getMaxCoords().getX1()));
+              "%s # Upper Right %n", description.getMaxCoords().toString()));
     } catch (IOException e) {
       System.err.println("Failed to write the min/max coordinates: " + e.getMessage());
     }

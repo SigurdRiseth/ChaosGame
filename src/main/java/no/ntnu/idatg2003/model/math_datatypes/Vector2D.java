@@ -48,6 +48,10 @@ public class Vector2D {
     return this.x1;
   }
 
+  public String toString() {
+    return (x0 + ", " + x1);
+  }
+
   /**
    * Add the input vector to the existing vector.
    *
