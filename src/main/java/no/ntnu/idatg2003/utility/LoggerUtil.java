@@ -5,9 +5,12 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Utility class for logging. This class includes methods used to log messages for:
- * <li>Information</li>
- * <li>Error</li>
- * <li>Debug</li>
+ * <ul>
+ *   <li>Information</li>
+ *   <li>Error</li>
+ *   <li>Debug</li>
+ *   <li>Warning</li>
+ * </ul>
  *
  * @since 08.05.2024
  * @version 0.0.1

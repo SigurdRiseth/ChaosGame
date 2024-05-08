@@ -68,10 +68,10 @@ public class ChaosGameFileHandler {
       Vector2D minCoords = readVector2D(scanner);
       Vector2D maxCoords = readVector2D(scanner);
 
-      while (scanner.hasNext()) {
+      while (scanner.hasNext()) { //TODO: Her oppstår feil med at den også leser tom linje etter siste transformasjon. Da kastes en IllegalArgumentException.
         Transform2D transform = readTransform(scanner, type);
         if (transform != null) {
-          transform2Ds.add(transform);
+          transform2Ds.add(transform); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
         }
       }
       gameDescription = new ChaosGameDescription(minCoords, maxCoords, transform2Ds);
@@ -93,12 +93,11 @@ public class ChaosGameFileHandler {
     Transform2D transform = null;
     try {
       switch (type) {
-        case "Julia" -> transform = readJuliaTransform(scanner); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
+        case "Julia" -> transform = readJuliaTransform(scanner);
         case "Affine2D" -> transform = readAffineTransform2D(scanner);
         default -> throw new IllegalArgumentException("Unsupported transform type: " + type);
-      };
+      }
     } catch (IllegalArgumentException e) {
-      //System.err.println("Failed to create transform: " + e.getMessage()); //TODO: Denne slår ut feil!
       LoggerUtil.logError("Failed to create transform: " + e.getMessage());
     }
     return transform;
@@ -144,6 +143,7 @@ public class ChaosGameFileHandler {
       writeMinMaxCoords(writer, description);
       for (Transform2D transform : description.getTransforms()) {
         writer.write(transform.toString() + " # transforms \n");
+        LoggerUtil.logInfo("Transform written to file");
       }
     } catch (IOException e) {
       LoggerUtil.logError("Failed to create the file: " + e.getMessage());
@@ -161,9 +161,11 @@ public class ChaosGameFileHandler {
       writer.write(
           String.format(
               "%s # Lower Left %n", description.getMinCoords().toString()));
+      LoggerUtil.logInfo("Lower Left written to file");
       writer.write(
           String.format(
               "%s # Upper Right %n", description.getMaxCoords().toString()));
+      LoggerUtil.logInfo("Upper Right written to file");
     } catch (IOException e) {
       LoggerUtil.logError("Failed to write the min/max coordinates: " + e.getMessage());
     }
