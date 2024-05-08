@@ -1,10 +1,10 @@
-package no.ntnu.idatg2003.game_engine;
+package no.ntnu.idatg2003.game.engine;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,7 +20,7 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   public void readFromFileJuliaTest() {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/Julia.csv");
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
     assertEquals(description.getMinCoords().getX0(), -1.6, 0.001);
     assertEquals(description.getMinCoords().getX1(), -1, 0.001);
     assertEquals(description.getMaxCoords().getX0(), 1.6, 0.001);
@@ -47,7 +47,7 @@ class ChaosGameFileHandlerTest {
       "3, -.15, .28, .26, .24, 0, .44"
   })
   public void readFromFileAffineTest(int transformIndex, double a00, double a01, double a10, double a11, double b0, double b1) {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/barnsley-fern.csv");
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fern.csv");
     String expected = a00 + ", " + a01 + ", " + a10 + ", " + a11 + ", " + b0 + "," + b1;
     List<Transform2D> transforms = description.getTransforms();
 
@@ -64,9 +64,9 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   public void writeToFileTest() {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/Julia.csv");
-    ChaosGameFileHandler.writeToFile(description, "src/test/resources/JuliaTest.csv");
-    ChaosGameDescription newDescription = ChaosGameFileHandler.readFromFile("src/test/resources/JuliaTest.csv");
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
+    ChaosGameFileHandler.writeToFile(description, "src/test/resources/csv/preset.games/JuliaTest.csv");
+    ChaosGameDescription newDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/JuliaTest.csv");
 
     assertEquals(description.getMinCoords().getX0(), newDescription.getMinCoords().getX0(), 0.001);
     assertEquals(description.getMinCoords().getX1(), newDescription.getMinCoords().getX1(), 0.001);

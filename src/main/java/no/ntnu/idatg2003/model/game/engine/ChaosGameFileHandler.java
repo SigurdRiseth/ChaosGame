@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.model.game_engine;
+package no.ntnu.idatg2003.model.game.engine;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -7,9 +7,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
-import no.ntnu.idatg2003.model.math_datatypes.Complex;
-import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
@@ -85,12 +85,12 @@ public class ChaosGameFileHandler {
   private static Transform2D readTransform(Scanner scanner, String type) {
     try {
       return switch (type) {
-        case "Julia" -> readJuliaTransform(scanner);
+        case "Julia" -> readJuliaTransform(scanner); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
         case "Affine2D" -> readAffineTransform2D(scanner);
         default -> throw new IllegalArgumentException("Unsupported transform type: " + type);
       };
     } catch (IllegalArgumentException e) {
-      System.err.println("Failed to create transform: " + e.getMessage());
+      System.err.println("Failed to create transform: " + e.getMessage()); //TODO: Denne slår ut feil!
       return null;
     }
   }

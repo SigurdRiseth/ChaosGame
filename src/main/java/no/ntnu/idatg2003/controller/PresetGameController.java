@@ -1,13 +1,10 @@
 package no.ntnu.idatg2003.controller;
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
-import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
-import no.ntnu.idatg2003.model.game_engine.ChaosGame;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameDescriptionFactory;
-import no.ntnu.idatg2003.model.game_engine.ChaosGameObserver;
+import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game.engine.ChaosGame;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.PresetGameView;
 

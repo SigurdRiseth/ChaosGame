@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.PresetGameController;
-import no.ntnu.idatg2003.model.game_engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 
 /**
  * The view for the PresetGame Page.

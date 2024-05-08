@@ -1,7 +1,7 @@
 package no.ntnu.idatg2003.model.transformations;
 
-import no.ntnu.idatg2003.model.math_datatypes.Complex;
-import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 
 /**
  * Class to represent the Julia transformation.

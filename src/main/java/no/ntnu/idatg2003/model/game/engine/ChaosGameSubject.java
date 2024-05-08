@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.model.game_engine;
+package no.ntnu.idatg2003.model.game.engine;
 
 public interface ChaosGameSubject {
   void registerObserver(ChaosGameObserver observer);

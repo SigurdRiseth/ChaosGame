@@ -1,9 +1,9 @@
-package no.ntnu.idatg2003.model.game_engine;
+package no.ntnu.idatg2003.model.game.engine;
 
 import java.util.List;
-import no.ntnu.idatg2003.model.math_datatypes.Complex;
-import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;

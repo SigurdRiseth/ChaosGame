@@ -1,9 +1,9 @@
-package no.ntnu.idatg2003.model.game_engine;
+package no.ntnu.idatg2003.model.game.engine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 public class ChaosGame implements ChaosGameSubject {
