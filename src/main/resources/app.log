@@ -1,1 +1,7 @@
 2024-05-08 15:28:32 INFO Starting Chaos Game application
+2024-05-08 15:40:57 INFO Starting Chaos Game application
+2024-05-08 15:52:29 WARN Empty string encountered when expecting a double.
+2024-05-08 15:54:33 WARN Empty string encountered when expecting a double.
+2024-05-08 15:54:33 ERROR Failed to create transform: Empty string encountered when expecting a double.
+2024-05-08 15:57:13 WARN Empty string encountered when expecting a double.
+2024-05-08 15:57:13 ERROR Failed to create transform: Empty string encountered when expecting a double.2024-05-08 16:06:05 INFO Starting Chaos Game application

@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.view;
 
+import no.ntnu.idatg2003.utility.LoggerUtil;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import javafx.application.Application;
@@ -14,8 +15,6 @@ import no.ntnu.idatg2003.controller.RunGameController;
  */
 public class ChaosGameApp extends Application {
 
-
-  private static final Logger logger = LogManager.getLogger(ChaosGameApp.class);
   private Stage primaryStage;
   private Scene mainScene;
 
@@ -35,7 +34,7 @@ public class ChaosGameApp extends Application {
    */
   @Override
   public void start(Stage primaryStage) throws Exception {
-    logger.info("Starting Chaos Game application");
+    LoggerUtil.logInfo("Starting Chaos Game application");
 
     this.primaryStage = primaryStage;
 

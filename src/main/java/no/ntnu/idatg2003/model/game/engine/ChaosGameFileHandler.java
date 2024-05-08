@@ -7,12 +7,14 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.logging.Logger;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.utility.LoggerUtil;
 
 /**
  * This class is responsible for handling the file input and output for the ChaosGame. It will read
@@ -74,7 +76,7 @@ public class ChaosGameFileHandler {
       }
       gameDescription = new ChaosGameDescription(minCoords, maxCoords, transform2Ds);
     } catch (IOException e) {
-      System.err.println("Failed to read the file: " + e.getMessage());
+      LoggerUtil.logError("Failed to read the file: " + e.getMessage());
     }
     return gameDescription;
   }
@@ -88,16 +90,18 @@ public class ChaosGameFileHandler {
    * @return A Transform2D object corresponding to the specified type.
    */
   private static Transform2D readTransform(Scanner scanner, String type) {
+    Transform2D transform = null;
     try {
-      return switch (type) {
-        case "Julia" -> readJuliaTransform(scanner); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
-        case "Affine2D" -> readAffineTransform2D(scanner);
+      switch (type) {
+        case "Julia" -> transform = readJuliaTransform(scanner); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
+        case "Affine2D" -> transform = readAffineTransform2D(scanner);
         default -> throw new IllegalArgumentException("Unsupported transform type: " + type);
       };
     } catch (IllegalArgumentException e) {
-      System.err.println("Failed to create transform: " + e.getMessage()); //TODO: Denne slår ut feil!
-      return null;
+      //System.err.println("Failed to create transform: " + e.getMessage()); //TODO: Denne slår ut feil!
+      LoggerUtil.logError("Failed to create transform: " + e.getMessage());
     }
+    return transform;
   }
 
   /**
@@ -133,6 +137,7 @@ public class ChaosGameFileHandler {
       } else if (type instanceof JuliaTransform) {
         stringType = "Julia";
       } else {
+        LoggerUtil.logWarning("Unknown transform type");
         throw new IllegalArgumentException("Unknown transform type");
       }
       writeTransformType(writer, stringType);
@@ -141,7 +146,7 @@ public class ChaosGameFileHandler {
         writer.write(transform.toString() + " # transforms \n");
       }
     } catch (IOException e) {
-      System.out.println("Failed to create the file: " + e.getMessage());
+      LoggerUtil.logError("Failed to create the file: " + e.getMessage());
     }
   }
 
@@ -160,7 +165,7 @@ public class ChaosGameFileHandler {
           String.format(
               "%s # Upper Right %n", description.getMaxCoords().toString()));
     } catch (IOException e) {
-      System.err.println("Failed to write the min/max coordinates: " + e.getMessage());
+      LoggerUtil.logError("Failed to write the min/max coordinates: " + e.getMessage());
     }
   }
 
@@ -174,7 +179,7 @@ public class ChaosGameFileHandler {
     try {
       writer.write(stringType + " # Type of fractal \n");
     } catch (IOException e) {
-      System.err.println("Failed to write the transform type: " + e.getMessage());
+      LoggerUtil.logError("Failed to write the transform type: " + e.getMessage());
     }
   }
 
@@ -201,6 +206,7 @@ public class ChaosGameFileHandler {
   private static double readDouble(Scanner scanner) throws IllegalArgumentException {
     String input = scanner.next().trim();
     if (input.isEmpty()) {
+      LoggerUtil.logWarning("Empty string encountered when expecting a double.");
       throw new IllegalArgumentException("Empty string encountered when expecting a double.");
     }
     return Double.parseDouble(input);

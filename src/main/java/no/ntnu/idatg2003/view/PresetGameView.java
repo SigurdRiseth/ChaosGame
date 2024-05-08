@@ -66,6 +66,8 @@ public class PresetGameView {
     StackPane canvasContainer = new StackPane();
     canvasContainer.getChildren().add(canvas);
     canvasContainer.setStyle("-fx-border-color: black; -fx-border-width: 2;");
+
+
     content.setRight(canvasContainer);
 
     return content;
