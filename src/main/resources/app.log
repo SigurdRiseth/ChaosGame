@@ -5,3 +5,26 @@
 2024-05-08 15:54:33 ERROR Failed to create transform: Empty string encountered when expecting a double.
 2024-05-08 15:57:13 WARN Empty string encountered when expecting a double.
 2024-05-08 15:57:13 ERROR Failed to create transform: Empty string encountered when expecting a double.2024-05-08 16:06:05 INFO Starting Chaos Game application
+2024-05-11 12:24:50 INFO Starting Chaos Game application
+2024-05-11 12:26:08 INFO Starting Chaos Game application
+2024-05-11 12:26:35 INFO Starting Chaos Game application
+2024-05-11 12:31:01 INFO Starting Chaos Game application
+2024-05-11 12:32:08 INFO Starting Chaos Game application
+2024-05-11 12:32:35 INFO Starting Chaos Game application
+2024-05-11 12:34:32 INFO Starting Chaos Game application
+2024-05-11 12:35:09 INFO Starting Chaos Game application
+2024-05-11 12:35:31 INFO Starting Chaos Game application
+2024-05-11 12:35:47 INFO Starting Chaos Game application
+2024-05-11 12:36:06 INFO Starting Chaos Game application
+2024-05-11 13:07:26 INFO Starting Chaos Game application
+2024-05-11 13:08:17 INFO Starting Chaos Game application
+2024-05-11 13:09:01 INFO Starting Chaos Game application
+2024-05-11 13:54:51 INFO Starting Chaos Game application
+2024-05-11 13:57:34 INFO Starting Chaos Game application
+2024-05-11 14:25:11 INFO Starting Chaos Game application
+2024-05-11 15:42:55 INFO Starting Chaos Game application
+2024-05-11 16:51:23 INFO Starting Chaos Game application
+2024-05-11 16:51:23 ERROR Failed to read the file: src\main\resources\barnsley-fern.txt
+2024-05-11 16:51:57 INFO Starting Chaos Game application
+2024-05-11 16:51:58 ERROR Failed to read the file: src\main\resources\barnsley-fern.csv
+2024-05-11 16:54:27 INFO Starting Chaos Game application

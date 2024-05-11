@@ -1,11 +1,17 @@
 package no.ntnu.idatg2003.view;
 
+import javafx.beans.property.ReadOnlyDoubleWrapper;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -15,6 +21,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.PresetGameController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 /**
  * The view for the PresetGame Page.
@@ -26,6 +34,7 @@ public class PresetGameView {
 
   private final PresetGameController controller;
   private Canvas canvas;
+  private TableView<AffineTransform2D> transformTable;
 
   /**
    * Constructor for the PresetGameView class.
@@ -38,6 +47,8 @@ public class PresetGameView {
   public PresetGameView(PresetGameController controller) {
     this.controller = controller;
     this.canvas = new Canvas(800, 800);
+    this.transformTable = createTransformTable();
+    //updateTableItems();
   }
 
   /**
@@ -48,7 +59,8 @@ public class PresetGameView {
   public Scene getScene() {
     BorderPane content = createContent();
     content.setPadding(new Insets(15, 20, 15, 20));
-    return new Scene(content, 800, 600);
+    content.setMinWidth(1350);
+    return new Scene(content, 1400, 900);
   }
 
   /**
@@ -99,10 +111,56 @@ public class PresetGameView {
       controller.runGame(iterationsValue);
     });
     content.getChildren().addAll(backButton, iterationsText, iterationsField,
-        runButton, infoLabel, minMax);
+        runButton, infoLabel, minMax, createTransformTable());
     content.setPadding(new Insets(10));
     return content;
   }
+
+  private TableView<AffineTransform2D> createTransformTable() {
+    TableView<AffineTransform2D> table = new TableView<>();
+    configureTransformTable(table);
+    return table;
+  }
+
+  /*public void updateTableItems() {
+    transformTable.setItems(FXCollections.observableArrayList(controller.loadTransformation()));
+  } */
+
+
+  private TableView<AffineTransform2D> configureTransformTable(TableView<AffineTransform2D> table) {
+    // Column for matrix element a00
+    TableColumn<AffineTransform2D, Number> a00Column = new TableColumn<>("a00");
+    a00Column.setCellValueFactory(cellData ->
+        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA00()));
+
+    // Column for matrix element a01
+    TableColumn<AffineTransform2D, Number> a01Column = new TableColumn<>("a01");
+    a01Column.setCellValueFactory(cellData ->
+        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA01()));
+
+    // Additional columns for a10, a11, b0, b1
+    TableColumn<AffineTransform2D, Number> a10Column = new TableColumn<>("a10");
+    a10Column.setCellValueFactory(cellData ->
+        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA10()));
+
+    TableColumn<AffineTransform2D, Number> a11Column = new TableColumn<>("a11");
+    a11Column.setCellValueFactory(cellData ->
+        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA11()));
+
+    TableColumn<AffineTransform2D, Number> b0Column = new TableColumn<>("b0");
+    b0Column.setCellValueFactory(cellData ->
+        new ReadOnlyDoubleWrapper(cellData.getValue().getVector().getX0()));
+
+    TableColumn<AffineTransform2D, Number> b1Column = new TableColumn<>("b1");
+    b1Column.setCellValueFactory(cellData ->
+        new ReadOnlyDoubleWrapper(cellData.getValue().getVector().getX1()));
+
+    table.getColumns().addAll(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
+    return table;
+  }
+
+
+
 
   /**
    * Creates the HBox containing the min and max values for the transformation.
@@ -120,6 +178,8 @@ public class PresetGameView {
     minMax.getChildren().addAll(minLabel, minField, maxLabel, maxField);
     return minMax;
   }
+
+
 
   /**
    * Updates the canvas with the current state of the game.

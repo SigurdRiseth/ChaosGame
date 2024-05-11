@@ -38,6 +38,15 @@ public class AffineTransform2D implements Transform2D {
     return matrix.multiply(point).add(vector);
   }
 
+  public Matrix2x2 getMatrix() {
+    return matrix;
+  }
+
+  public Vector2D getVector() {
+    return vector;
+  }
+
+
   /**
    * Method to get the transformation as a string.
    *
