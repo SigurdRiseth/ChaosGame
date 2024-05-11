@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.view;
 
+import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -80,6 +81,12 @@ public class ChaosGameApp extends Application {
   public void showPresetsGameScene(String type) {
     presetGameController.createGame(type);
     this.mainScene = presetGameController.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
+
+  public void showCreateCustomGameScene() {
+    CreateCustomGameController createCustomGameController = new CreateCustomGameController(this);
+    this.mainScene = createCustomGameController.getScene();
     primaryStage.setScene(this.mainScene);
   }
 
