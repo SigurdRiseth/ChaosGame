@@ -7,7 +7,6 @@ import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
-import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 import no.ntnu.idatg2003.view.ChaosGameApp;
@@ -54,17 +53,26 @@ public class CreateCustomGameController {
    * @param fileName The name of the file to save to.
    */
   public void saveJuliaSet(String fileName) {
-    fileName = formatFileName(fileName);
+    fileName = prepareFilePath(fileName);
     LoggerUtil.logInfo("Saving Julia set to file: " + fileName);
 
+    ChaosGameDescription chaosGameDescription = createJuliaDescription();
+
+    ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
+    LoggerUtil.logInfo("Julia set saved");
+  }
+
+  /**
+   * Creates a ChaosGameDescription for an affine transformation from the input values.
+   *
+   * @return The ChaosGameDescription for the affine transformation.
+   */
+  private ChaosGameDescription createJuliaDescription() {
     Vector2D min = createCustomGameView.getCoords("julia", 0, 1);
     Vector2D max = createCustomGameView.getCoords("julia", 2, 3);
     Complex complexNumber = createCustomGameView.getComplexNumber();
 
-    ChaosGameDescription chaosGameDescription = ChaosGameDescriptionFactory.createJuliaSet(min, max, complexNumber);
-
-    ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
-    LoggerUtil.logInfo("Julia set saved");
+    return ChaosGameDescriptionFactory.createJuliaSet(min, max, complexNumber);
   }
 
   /**
@@ -73,7 +81,7 @@ public class CreateCustomGameController {
    * @param fileName The filename to format.
    * @return The formatted filename.
    */
-  private static String formatFileName(String fileName) {
+  private static String prepareFilePath(String fileName) {
     fileName = fileName.replaceAll("\\s", "_");
     fileName = "src/main/user.files/" + fileName + ".csv";
     return fileName;
@@ -90,16 +98,25 @@ public class CreateCustomGameController {
    * @param fileName The name of the file to save to.
    */
   public void saveAffineTransformation(String fileName) {
-    fileName = formatFileName(fileName);
+    fileName = prepareFilePath(fileName);
     LoggerUtil.logInfo("Saving Affine transformation to file: " + fileName);
+    ChaosGameDescription chaosGameDescription = createAffineDescription();
+
+    ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
+    LoggerUtil.logInfo("Affine transformation saved");
+  }
+
+  /**
+   * Creates a ChaosGameDescription for a Julia set from the input values.
+   *
+   * @return The ChaosGameDescription for the Julia set.
+   */
+  private ChaosGameDescription createAffineDescription() {
     Vector2D min = createCustomGameView.getCoords("affine", 0, 1);
     Vector2D max = createCustomGameView.getCoords("affine", 2, 3);
 
     List<Transform2D> transforms = createCustomGameView.getAffineTransforms();
 
-    ChaosGameDescription chaosGameDescription = new ChaosGameDescription(min, max, transforms);
-
-    ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
-    LoggerUtil.logInfo("Affine transformation saved");
+    return new ChaosGameDescription(min, max, transforms);
   }
 }

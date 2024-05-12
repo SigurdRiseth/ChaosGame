@@ -25,7 +25,6 @@ import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
 
 /**
  * The CreateCustomGame class is a view class that creates the view for the Create Custom Game
@@ -143,27 +142,43 @@ public class CreateCustomGame {
   }
 
   private void addAffineTransformsToGridPane() {
-    affineGrid.addRow(affineGrid.getRowCount(), inputField("a00"), inputField("a01"), inputField("x"));
-    affineGrid.addRow(affineGrid.getRowCount(), inputField("a10"), inputField("a11"), inputField("y"));
+    affineGrid.addRow(affineGrid.getRowCount(), createInputField("a00"), createInputField("a01"), createInputField("x"));
+    affineGrid.addRow(affineGrid.getRowCount(), createInputField("a10"), createInputField("a11"), createInputField("y"));
   }
 
-  private Node inputField(String promptText) {
+  /**
+   * Creates and configures a TextField node for input with the specified prompt text.
+   *
+   * @param promptText The text to be displayed as a prompt inside the TextField.
+   * @return The configured TextField node.
+   */
+  private Node createInputField(String promptText) {
     TextField textField = new TextField();
     textField.setPromptText(promptText);
     textField.setMaxWidth(50);
-    textFieldLimitToDouble(textField);
+    limitTextFieldToDouble(textField);
     return textField;
   }
 
+  /**
+   * Limits the input of text fields within the specified grid to double values only.
+   *
+   * @param grid The GridPane containing the text fields to be limited.
+   */
   private void limitInputsToDouble(GridPane grid) {
     for (Node node : grid.getChildren()) {
       if (node instanceof TextField textField) {
-        textFieldLimitToDouble(textField);
+        limitTextFieldToDouble(textField);
       }
     }
   }
 
-  private static void textFieldLimitToDouble(TextField textField) {
+  /**
+   * Limits the text input of a TextField to double values only.
+   *
+   * @param textField The TextField to limit to double values.
+   */
+  private static void limitTextFieldToDouble(TextField textField) {
     textField.textProperty().addListener((observable, oldValue, newValue) -> {
       if (!newValue.matches("-?\\d{0,7}([.]\\d{0,4})?")) {
         textField.setText(oldValue);
@@ -174,8 +189,8 @@ public class CreateCustomGame {
   /**
    * Creates a save box with a text field and a button.
    *
-   * @param saveText The text to display on the button.
-   * @param saveAction The action to perform when the button is clicked.
+   * @param saveText    The text to display on the button.
+   * @param saveAction  The action to perform when the button is clicked.
    * @return The save box.
    */
   private static HBox createSaveBox(String saveText, Consumer<String> saveAction) {
@@ -219,7 +234,7 @@ public class CreateCustomGame {
   /**
    * Adds the min and max values to a given <code>GridPane</code>.
    *
-   * @param grid The <code>GridPane</code> to add the values to.
+   * @param grid          The <code>GridPane</code> to add the values to.
    */
   private static void addMinMaxToGridPane(GridPane grid) {
     grid.addRow(0, new Label("Min X:"), new TextField());
@@ -228,6 +243,18 @@ public class CreateCustomGame {
     grid.addRow(3, new Label("Max Y:"), new TextField());
   }
 
+  /**
+   * Retrieves the coordinates from the specified grid within the given row index range.
+   *
+   * <p>
+   *   The <code>type</code> parameter specifies the which grid to retrieve the coordinates from.
+   * </p>
+   *
+   * @param type          The type of grid ("julia" or "affine").
+   * @param rowIndexStart The starting row index.
+   * @param rowIndexEnd   The ending row index.
+   * @return The coordinates as a Vector2D.
+   */
   public Vector2D getCoords(String type, int rowIndexStart, int rowIndexEnd) {
     GridPane grid = type.equals("julia") ? juliaGrid : affineGrid;
 
@@ -251,21 +278,30 @@ public class CreateCustomGame {
     return new Vector2D(x0.get(), x1.get());
   }
 
-
+  /**
+   * Retrieves the complex number from the julia grid.
+   *
+   * @return The complex number as a Complex object.
+   */
   public Complex getComplexNumber() {
-    AtomicReference<Double> real = new AtomicReference<>((double) 0);
-    AtomicReference<Double> imaginary = new AtomicReference<>((double) 0);
+    AtomicReference<Double> real = new AtomicReference<>(0.0);
+    AtomicReference<Double> imaginary = new AtomicReference<>(0.0);
+
     juliaGrid.getChildren().forEach(node -> {
       if (node instanceof TextField textField) {
-        if (GridPane.getRowIndex(node) == 4 && GridPane.getColumnIndex(node) == 1) {
+        int rowIndex = GridPane.getRowIndex(node);
+        int colIndex = GridPane.getColumnIndex(node);
+        if (rowIndex == 4 && colIndex == 1) {
           real.set(Double.parseDouble(textField.getText()));
-        } else if (GridPane.getRowIndex(node) == 5 && GridPane.getColumnIndex(node) == 1) {
+        } else if (rowIndex == 5 && colIndex == 1) {
           imaginary.set(Double.parseDouble(textField.getText()));
         }
       }
     });
+
     return new Complex(real.get(), imaginary.get());
   }
+
 
   /**
    * Retrieves a list of affine transformations from the affine grid.
@@ -338,7 +374,5 @@ public class CreateCustomGame {
     TextField textField = (TextField) affineGrid.getChildren().get(index);
     return Double.parseDouble(textField.getText());
   }
-
-
 
 }
