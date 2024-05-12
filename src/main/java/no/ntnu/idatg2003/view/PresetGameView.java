@@ -128,6 +128,8 @@ public class PresetGameView {
 
 
   private void configureTransformTable(TableView<Transform2D> table) {
+    table.getColumns().clear();
+
     TableColumn<Transform2D, Number> a00Column = new TableColumn<>("a00");
     a00Column.setCellValueFactory(cellData ->
         cellData.getValue() instanceof AffineTransform2D ?
