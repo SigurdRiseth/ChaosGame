@@ -1,5 +1,7 @@
 package no.ntnu.idatg2003.view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import javafx.geometry.Insets;
@@ -19,7 +21,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.utility.LoggerUtil;
 
 /**
  * The CreateCustomGame class is a view class that creates the view for the Create Custom Game
@@ -264,35 +270,29 @@ public class CreateCustomGame {
     return textField;
   }
 
-  public Vector2D getMinCoords() {
-    AtomicReference<Double> x0 = new AtomicReference<>((double) 0);
-    AtomicReference<Double> x1 = new AtomicReference<>((double) 0);
-    juliaGrid.getChildren().forEach(node -> {
+  public Vector2D getCoords(String type, int rowIndexStart, int rowIndexEnd) {
+    GridPane grid = type.equals("julia") ? juliaGrid : affineGrid;
+
+    AtomicReference<Double> x0 = new AtomicReference<>(0.0);
+    AtomicReference<Double> x1 = new AtomicReference<>(0.0);
+
+    grid.getChildren().forEach(node -> {
       if (node instanceof TextField textField) {
-        if (GridPane.getRowIndex(node) == 0 && GridPane.getColumnIndex(node) == 1) {
-          x0.set(Double.parseDouble(textField.getText()));
-        } else if (GridPane.getRowIndex(node) == 1 && GridPane.getColumnIndex(node) == 1) {
-          x1.set(Double.parseDouble(textField.getText()));
+        int rowIndex = GridPane.getRowIndex(node);
+        int colIndex = GridPane.getColumnIndex(node);
+        if (rowIndex >= rowIndexStart && rowIndex <= rowIndexEnd && colIndex == 1) {
+          if (rowIndex % 2 == 0) {
+            x0.set(Double.parseDouble(textField.getText()));
+          } else {
+            x1.set(Double.parseDouble(textField.getText()));
+          }
         }
       }
     });
+
     return new Vector2D(x0.get(), x1.get());
   }
 
-  public Vector2D getMaxCoords() {
-    AtomicReference<Double> x0 = new AtomicReference<>((double) 0);
-    AtomicReference<Double> x1 = new AtomicReference<>((double) 0);
-    juliaGrid.getChildren().forEach(node -> {
-      if (node instanceof TextField textField) {
-        if (GridPane.getRowIndex(node) == 2 && GridPane.getColumnIndex(node) == 1) {
-          x0.set(Double.parseDouble(textField.getText()));
-        } else if (GridPane.getRowIndex(node) == 3 && GridPane.getColumnIndex(node) == 1) {
-          x1.set(Double.parseDouble(textField.getText()));
-        }
-      }
-    });
-    return new Vector2D(x0.get(), x1.get());
-  }
 
   public Complex getComplexNumber() {
     AtomicReference<Double> real = new AtomicReference<>((double) 0);
@@ -308,4 +308,29 @@ public class CreateCustomGame {
     });
     return new Complex(real.get(), imaginary.get());
   }
+
+  public List<Transform2D> getAffineTransforms() { //TODO: NON FUNCTIONAL, THROWS INDEX OUT OF BOUNDS EXCEPTION!!!
+    List<Transform2D> transforms = new ArrayList<>();
+
+    // Iterate over the children of the grid
+    int numRows = affineGrid.getRowCount();
+    for (int i = 4; i < numRows; i += 2) { // Increment by 2 as each transformation occupies 2 rows
+      if (i + 1 < numRows) { // Ensure there are enough rows for a complete transformation
+        Matrix2x2 matrix = new Matrix2x2(
+            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 1)).getText()),
+            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 2)).getText()),
+            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 4)).getText()),
+            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 5)).getText())
+        );
+        Vector2D vector = new Vector2D(
+            Double.parseDouble(((TextField) ((VBox) affineGrid.getChildren().get(i * 3 + 6)).getChildren().get(0)).getText()),
+            Double.parseDouble(((TextField) ((VBox) affineGrid.getChildren().get(i * 3 + 6)).getChildren().get(1)).getText())
+        );
+        transforms.add(new AffineTransform2D(matrix, vector));
+      }
+    }
+    return transforms;
+  }
+
+
 }

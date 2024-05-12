@@ -148,3 +148,40 @@
 2024-05-12 14:54:24 INFO Upper Right written to file
 2024-05-12 14:54:24 INFO Transform written to file
 2024-05-12 14:54:24 INFO Julia set saved
+2024-05-12 14:58:23 INFO Starting Chaos Game application
+2024-05-12 14:58:46 INFO Saving Julia set to file: src/main/user.files/myOwnJuliaSet
+2024-05-12 14:58:46 INFO Lower Left written to file
+2024-05-12 14:58:46 INFO Upper Right written to file
+2024-05-12 14:58:46 INFO Transform written to file
+2024-05-12 14:58:46 INFO Julia set saved
+2024-05-12 15:09:49 INFO Starting Chaos Game application
+2024-05-12 15:10:11 INFO Saving Julia set to file: src/main/user.files/My_Very_Own_File.csv
+2024-05-12 15:10:11 INFO Lower Left written to file
+2024-05-12 15:10:11 INFO Upper Right written to file
+2024-05-12 15:10:11 INFO Transform written to file
+2024-05-12 15:10:11 INFO Julia set saved
+2024-05-12 15:13:13 INFO Starting Chaos Game application
+2024-05-12 15:36:39 INFO Starting Chaos Game application
+2024-05-12 15:42:42 INFO Starting Chaos Game application
+2024-05-12 15:43:12 INFO Saving Affine transformation to file: src/main/user.files/AffineTransform.csv
+2024-05-12 15:48:39 INFO Starting Chaos Game application
+2024-05-12 15:48:57 INFO Saving Affine transformation to file: src/main/user.files/Affine.csv
+2024-05-12 15:50:09 INFO Starting Chaos Game application
+2024-05-12 15:50:25 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-12 15:51:08 INFO Starting Chaos Game application
+2024-05-12 15:57:57 INFO Starting Chaos Game application
+2024-05-12 16:00:15 INFO Starting Chaos Game application
+2024-05-12 16:00:35 INFO Saving Affine transformation to file: src/main/user.files/affine.csv
+2024-05-12 16:01:10 INFO Starting Chaos Game application
+2024-05-12 16:01:28 INFO Saving Affine transformation to file: src/main/user.files/affine2.csv
+2024-05-12 16:02:25 INFO Starting Chaos Game application
+2024-05-12 16:02:39 INFO Saving Affine transformation to file: src/main/user.files/affein3.csv
+2024-05-12 16:05:20 INFO Starting Chaos Game application
+2024-05-12 16:05:32 INFO Saving Affine transformation to file: src/main/user.files/affine3.csv
+2024-05-12 16:06:40 INFO Starting Chaos Game application
+2024-05-12 16:06:52 INFO Saving Affine transformation to file: src/main/user.files/affine22.csv
+2024-05-12 16:08:06 INFO Starting Chaos Game application
+2024-05-12 16:08:16 INFO Saving Affine transformation to file: src/main/user.files/afiaosisa.csv
+2024-05-12 16:10:13 INFO Starting Chaos Game application
+2024-05-12 16:10:24 INFO Saving Affine transformation to file: src/main/user.files/asdasdas.csv
+2024-05-12 16:11:32 INFO Starting Chaos Game application

@@ -42,10 +42,21 @@ public class CreateCustomGameController {
     app.showMainScene();
   }
 
+  /**
+   * Saves the Julia set to a given filename.
+   *
+   * <p>
+   *   The file is saved under src/main/user.files/ and is saved as a CSV-file.
+   *   Any spaces in the filename are replaced with underscores.
+   * </p>
+   *
+   * @param fileName The name of the file to save to.
+   */
   public void saveJuliaSet(String fileName) {
+    fileName = formatFileName(fileName);
     LoggerUtil.logInfo("Saving Julia set to file: " + fileName);
-    Vector2D min = createCustomGameView.getMinCoords();
-    Vector2D max = createCustomGameView.getMaxCoords();
+    Vector2D min = createCustomGameView.getCoords("julia", 0, 1);
+    Vector2D max = createCustomGameView.getCoords("julia", 2, 3);
     Complex complexNumber = createCustomGameView.getComplexNumber();
 
     List<Transform2D> transforms = List.of(new JuliaTransform(complexNumber, 1));
@@ -56,7 +67,29 @@ public class CreateCustomGameController {
     LoggerUtil.logInfo("Julia set saved");
   }
 
+  /**
+   * Formats the filename to be saved.
+   *
+   * @param fileName The filename to format.
+   * @return The formatted filename.
+   */
+  private static String formatFileName(String fileName) {
+    fileName = fileName.replaceAll("\\s", "_");
+    fileName = "src/main/user.files/" + fileName + ".csv";
+    return fileName;
+  }
+
   public void saveAffineTransformation(String fileName) {
+    fileName = formatFileName(fileName);
     LoggerUtil.logInfo("Saving Affine transformation to file: " + fileName);
+    Vector2D min = createCustomGameView.getCoords("affine", 0, 1);
+    Vector2D max = createCustomGameView.getCoords("affine", 2, 3);
+
+    List<Transform2D> transforms = createCustomGameView.getAffineTransforms();
+
+    ChaosGameDescription chaosGameDescription = new ChaosGameDescription(min, max, transforms);
+
+    ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
+    LoggerUtil.logInfo("Affine transformation saved");
   }
 }
