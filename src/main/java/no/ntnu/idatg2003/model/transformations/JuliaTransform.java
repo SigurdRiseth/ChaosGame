@@ -52,6 +52,14 @@ public class JuliaTransform implements Transform2D { //TODO: Gjøre denne klasse
     return new Vector2D(sign * complexPoint.getX0(), sign * complexPoint.getX1());
   }
 
+  public Complex getComplexConstant() {
+    return complexConstant;
+  }
+
+  public int getSign() {
+    return sign;
+  }
+
   /**
    * Method to get the transformation as a string.
    *

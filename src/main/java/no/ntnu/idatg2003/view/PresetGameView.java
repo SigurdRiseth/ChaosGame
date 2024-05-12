@@ -1,20 +1,16 @@
 package no.ntnu.idatg2003.view;
 
 import javafx.beans.property.ReadOnlyDoubleWrapper;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,6 +18,7 @@ import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.PresetGameController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
+import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 /**
@@ -34,7 +31,9 @@ public class PresetGameView {
 
   private final PresetGameController controller;
   private Canvas canvas;
-  private TableView<AffineTransform2D> transformTable;
+  private TableView<Transform2D> transformTable;
+  private VBox juliaDetailsBox;
+
 
   /**
    * Constructor for the PresetGameView class.
@@ -48,7 +47,12 @@ public class PresetGameView {
     this.controller = controller;
     this.canvas = new Canvas(800, 800);
     this.transformTable = createTransformTable();
-    //updateTableItems();
+    //transformTable.setItems(controller.getTransformations());
+    this.juliaDetailsBox = createJuliaDetailsBox();
+
+    transformTable.setVisible(false);
+    juliaDetailsBox.setVisible(false);
+
   }
 
   /**
@@ -59,8 +63,7 @@ public class PresetGameView {
   public Scene getScene() {
     BorderPane content = createContent();
     content.setPadding(new Insets(15, 20, 15, 20));
-    content.setMinWidth(1350);
-    return new Scene(content, 1400, 900);
+    return new Scene(content, 1600, 900);
   }
 
   /**
@@ -105,80 +108,104 @@ public class PresetGameView {
     TextField iterationsField = new TextField();
     Button runButton = new Button("Run");
     Label infoLabel = new Label("Values for this transformation:");
-    HBox minMax = createMinMaxBox();
     runButton.setOnAction(e -> {
       int iterationsValue = Integer.parseInt(iterationsField.getText());
       controller.runGame(iterationsValue);
     });
     content.getChildren().addAll(backButton, iterationsText, iterationsField,
-        runButton, infoLabel, minMax, createTransformTable());
+        runButton, infoLabel, juliaDetailsBox, transformTable);
     content.setPadding(new Insets(10));
     return content;
   }
 
-  private TableView<AffineTransform2D> createTransformTable() {
-    TableView<AffineTransform2D> table = new TableView<>();
+  private TableView<Transform2D> createTransformTable() {
+    TableView<Transform2D> table = new TableView<>();
     configureTransformTable(table);
+    table.setItems(controller.getTransformations());
     return table;
   }
 
-  /*public void updateTableItems() {
-    transformTable.setItems(FXCollections.observableArrayList(controller.loadTransformation()));
-  } */
 
 
-  private TableView<AffineTransform2D> configureTransformTable(TableView<AffineTransform2D> table) {
-    // Column for matrix element a00
-    TableColumn<AffineTransform2D, Number> a00Column = new TableColumn<>("a00");
+  private void configureTransformTable(TableView<Transform2D> table) {
+    TableColumn<Transform2D, Number> a00Column = new TableColumn<>("a00");
     a00Column.setCellValueFactory(cellData ->
-        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA00()));
+        cellData.getValue() instanceof AffineTransform2D ?
+            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA00()) :
+            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
-    // Column for matrix element a01
-    TableColumn<AffineTransform2D, Number> a01Column = new TableColumn<>("a01");
+
+    TableColumn<Transform2D, Number> a01Column = new TableColumn<>("a01");
     a01Column.setCellValueFactory(cellData ->
-        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA01()));
+        cellData.getValue() instanceof AffineTransform2D ?
+            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA01()) :
+            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
-    // Additional columns for a10, a11, b0, b1
-    TableColumn<AffineTransform2D, Number> a10Column = new TableColumn<>("a10");
+    TableColumn<Transform2D, Number> a10Column = new TableColumn<>("a10");
     a10Column.setCellValueFactory(cellData ->
-        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA10()));
+        cellData.getValue() instanceof AffineTransform2D ?
+            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA10()) :
+            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
-    TableColumn<AffineTransform2D, Number> a11Column = new TableColumn<>("a11");
+    TableColumn<Transform2D, Number> a11Column = new TableColumn<>("a11");
     a11Column.setCellValueFactory(cellData ->
-        new ReadOnlyDoubleWrapper(cellData.getValue().getMatrix().getA11()));
+        cellData.getValue() instanceof AffineTransform2D ?
+            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA11()) :
+            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
-    TableColumn<AffineTransform2D, Number> b0Column = new TableColumn<>("b0");
+    TableColumn<Transform2D, Number> b0Column = new TableColumn<>("b0");
     b0Column.setCellValueFactory(cellData ->
-        new ReadOnlyDoubleWrapper(cellData.getValue().getVector().getX0()));
+        cellData.getValue() instanceof AffineTransform2D ?
+            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX0()) :
+            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
-    TableColumn<AffineTransform2D, Number> b1Column = new TableColumn<>("b1");
+    TableColumn<Transform2D, Number> b1Column = new TableColumn<>("b1");
     b1Column.setCellValueFactory(cellData ->
-        new ReadOnlyDoubleWrapper(cellData.getValue().getVector().getX1()));
+        cellData.getValue() instanceof AffineTransform2D ?
+            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX1()) :
+            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
     table.getColumns().addAll(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
-    return table;
+
   }
 
-
-
-
-  /**
-   * Creates the HBox containing the min and max values for the transformation.
-   *
-   * @return HBox with the min and max values.
-   */
-  private HBox createMinMaxBox() {
-    HBox minMax = new HBox(10);
-    Label minLabel = new Label("Min:");
-    Label maxLabel = new Label("Max:");
-    TextField minField = new TextField("(-2.65, 0.0)");
-    minField.setEditable(false);
-    TextField maxField = new TextField("(2.65, 10)");
-    maxField.setEditable(false);
-    minMax.getChildren().addAll(minLabel, minField, maxLabel, maxField);
-    return minMax;
+  public void updateTableItems(String type) {
+    transformTable.setItems(controller.getTransformations());
+    transformTable.refresh();
   }
 
+  private VBox createJuliaDetailsBox() {
+    VBox box = new VBox();
+    Label label = new Label("Julia Transformation Details:");
+    box.getChildren().add(label);
+    // Add more details as necessary
+    return box;
+  }
+
+  private void updateJuliaDetails() {
+    Transform2D latestJulia = controller.getTransformations().stream()
+        .filter(t -> t instanceof JuliaTransform)
+        .findFirst().orElse(null);
+
+    if (latestJulia != null) {
+      juliaDetailsBox.getChildren().clear();
+      JuliaTransform julia = (JuliaTransform) latestJulia;
+      Label details = new Label("Complex Constant: " + julia.getComplexConstant());
+      juliaDetailsBox.getChildren().add(details);
+    }
+  }
+
+  public void updateForGameType(String type) {
+    boolean isJulia = "julia".equals(type);
+    transformTable.setVisible(!isJulia);
+    juliaDetailsBox.setVisible(isJulia);
+
+    if (isJulia) {
+      updateJuliaDetails();  // Update Julia details if the game type is Julia
+    } else {
+      transformTable.refresh();  // Refresh the table if it's any other game type
+    }
+  }
 
 
   /**

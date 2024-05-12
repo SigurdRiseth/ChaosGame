@@ -80,6 +80,7 @@ public class ChaosGameApp extends Application {
   public void showPresetsGameScene(String type) {
     presetGameController.createGame(type);
     this.mainScene = presetGameController.getScene();
+    primaryStage.setMinWidth(1600);
     primaryStage.setScene(this.mainScene);
   }
 
