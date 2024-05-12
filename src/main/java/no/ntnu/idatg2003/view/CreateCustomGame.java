@@ -103,7 +103,7 @@ public class CreateCustomGame {
     affineGrid.setVgap(5);
     affineGrid.setHgap(5);
     addMinMaxToGridPane(affineGrid);
-    affineGrid.addRow(4, matrixField(), vectorField());
+    addAffineTransformsToGridPane();
     affineGrid.setAlignment(javafx.geometry.Pos.CENTER);
 
     // Set text color to white
@@ -122,8 +122,7 @@ public class CreateCustomGame {
 
     // Button to add a transformation
     Button addTransformationButton = new Button("Add Transformation");
-    addTransformationButton.setOnAction(e -> affineGrid.addRow(
-        affineGrid.getRowCount(), matrixField(), vectorField()));
+    addTransformationButton.setOnAction(e -> addAffineTransformsToGridPane());
 
     // Titles
     Text juliaTitle = createTitle("Julia-Set Parameters");
@@ -141,6 +140,19 @@ public class CreateCustomGame {
     content.setStyle("-fx-background-color: #3b1d5a;");
 
     return content;
+  }
+
+  private void addAffineTransformsToGridPane() {
+    affineGrid.addRow(affineGrid.getRowCount(), inputField("a00"), inputField("a01"), inputField("x"));
+    affineGrid.addRow(affineGrid.getRowCount(), inputField("a10"), inputField("a11"), inputField("y"));
+  }
+
+  private Node inputField(String promptText) {
+    TextField textField = new TextField();
+    textField.setPromptText(promptText);
+    textField.setMaxWidth(50);
+    textFieldLimitToDouble(textField);
+    return textField;
   }
 
   private void limitInputsToDouble(GridPane grid) {
@@ -185,10 +197,10 @@ public class CreateCustomGame {
    * @return The formatted title.
    */
   private static Text createTitle(String title) {
-    Text juliaTitle = new Text(title);
-    juliaTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-    juliaTitle.setFill(Color.WHITE);
-    return juliaTitle;
+    Text resultingTitle = new Text(title);
+    resultingTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+    resultingTitle.setFill(Color.WHITE);
+    return resultingTitle;
   }
 
   /**
@@ -214,60 +226,6 @@ public class CreateCustomGame {
     grid.addRow(1, new Label("Min Y:"), new TextField());
     grid.addRow(2, new Label("Max X:"), new TextField());
     grid.addRow(3, new Label("Max Y:"), new TextField());
-  }
-
-  /**
-   * Creates a vector field for the affine transformation.
-   *
-   * @return The vector field.
-   */
-  private Node vectorField() {
-    TextField xField = new TextField();
-    xField.setPromptText("x");
-
-    TextField yField = new TextField();
-    yField.setPromptText("y");
-
-    xField.setMaxWidth(50);
-    yField.setMaxWidth(50);
-
-    textFieldLimitToDouble(xField);
-    textFieldLimitToDouble(yField);
-
-    VBox vbox = new VBox(5);
-    vbox.getChildren().addAll(xField, yField);
-    return vbox;
-  }
-
-  /**
-   * Creates a matrix field for the affine transformation.
-   *
-   * @return The matrix field.
-   */
-  private static GridPane matrixField() {
-    GridPane gridPane = new GridPane();
-    gridPane.setVgap(5);
-    gridPane.setHgap(5);
-    gridPane.addRow(0, matrixTextField("a00"));
-    gridPane.addRow(1, matrixTextField("a01"));
-    gridPane.addColumn(1, matrixTextField("a10"));
-    gridPane.addColumn(1, matrixTextField("a11"));
-
-    return gridPane;
-  }
-
-  /**
-   * Creates a <code>TextField</code> for the matrix.
-   *
-   * @param promptText The text to display in the text field.
-   * @return The <code>TextField</code> with the given prompt text.
-   */
-  private static TextField matrixTextField(String promptText) {
-    TextField textField = new TextField();
-    textField.setPromptText(promptText);
-    textField.setMaxWidth(50);
-    textFieldLimitToDouble(textField);
-    return textField;
   }
 
   public Vector2D getCoords(String type, int rowIndexStart, int rowIndexEnd) {
@@ -309,28 +267,78 @@ public class CreateCustomGame {
     return new Complex(real.get(), imaginary.get());
   }
 
-  public List<Transform2D> getAffineTransforms() { //TODO: NON FUNCTIONAL, THROWS INDEX OUT OF BOUNDS EXCEPTION!!!
+  /**
+   * Retrieves a list of affine transformations from the affine grid.
+   *
+   * @return The list of affine transformations.
+   */
+  public List<Transform2D> getAffineTransforms() {
     List<Transform2D> transforms = new ArrayList<>();
 
-    // Iterate over the children of the grid
-    int numRows = affineGrid.getRowCount();
-    for (int i = 4; i < numRows; i += 2) { // Increment by 2 as each transformation occupies 2 rows
-      if (i + 1 < numRows) { // Ensure there are enough rows for a complete transformation
-        Matrix2x2 matrix = new Matrix2x2(
-            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 1)).getText()),
-            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 2)).getText()),
-            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 4)).getText()),
-            Double.parseDouble(((TextField) affineGrid.getChildren().get(i * 3 + 5)).getText())
-        );
-        Vector2D vector = new Vector2D(
-            Double.parseDouble(((TextField) ((VBox) affineGrid.getChildren().get(i * 3 + 6)).getChildren().get(0)).getText()),
-            Double.parseDouble(((TextField) ((VBox) affineGrid.getChildren().get(i * 3 + 6)).getChildren().get(1)).getText())
-        );
-        transforms.add(new AffineTransform2D(matrix, vector));
-      }
+    int amountOfTransforms = calculateAmountOfTransforms();
+
+    for (int i = 0; i < amountOfTransforms; i++) {
+      Matrix2x2 matrix = extractMatrixFromGrid(i);
+      Vector2D vector = extractVectorFromGrid(i);
+      transforms.add(new AffineTransform2D(matrix, vector));
     }
+
     return transforms;
   }
+
+  /**
+   * Calculates the amount of affine transformations based on the number of children in the affine grid.
+   *
+   * @return The number of affine transformations.
+   */
+  private int calculateAmountOfTransforms() {
+    int size = affineGrid.getChildren().size();
+    return (size - 8) / 6;
+  }
+
+  /**
+   * Extracts the matrix components of an affine transformation from the affine grid.
+   *
+   * <p> The index counts from 0 and up starting at first transform. </p>
+   *
+   * @param index The index of the affine transformation.
+   * @return The matrix components.
+   */
+  private Matrix2x2 extractMatrixFromGrid(int index) {
+    int startIndex = 8 + index * 6;
+    double a00 = getDoubleFromTextField(startIndex);
+    double a01 = getDoubleFromTextField(startIndex + 1);
+    double a10 = getDoubleFromTextField(startIndex + 3);
+    double a11 = getDoubleFromTextField(startIndex + 4);
+    return new Matrix2x2(a00, a01, a10, a11);
+  }
+
+  /**
+   * Extracts the translation vector of an affine transformation from the affine grid.
+   *
+   * <p> The index counts from 0 and up starting at first transform. </p>
+   *
+   * @param index The index of the affine transformation.
+   * @return The translation vector.
+   */
+  private Vector2D extractVectorFromGrid(int index) {
+    int startIndex = 8 + index * 6;
+    double x = getDoubleFromTextField(startIndex + 2);
+    double y = getDoubleFromTextField(startIndex + 5);
+    return new Vector2D(x, y);
+  }
+
+  /**
+   * Retrieves the value of a TextField as a double.
+   *
+   * @param index The index of the TextField in the affine grid.
+   * @return The double value of the TextField.
+   */
+  private double getDoubleFromTextField(int index) {
+    TextField textField = (TextField) affineGrid.getChildren().get(index);
+    return Double.parseDouble(textField.getText());
+  }
+
 
 
 }

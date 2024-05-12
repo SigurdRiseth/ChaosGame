@@ -1,4 +1,0 @@
-Julia # Type of fractal 
-0.0, 0.0 # Lower Left 
-1.0, 1.0 # Upper Right 
-1.2, 1.4 # transforms 

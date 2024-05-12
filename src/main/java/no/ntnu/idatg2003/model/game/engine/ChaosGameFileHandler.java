@@ -71,7 +71,7 @@ public class ChaosGameFileHandler {
       while (scanner.hasNext()) { //TODO: Her oppstår feil med at den også leser tom linje etter siste transformasjon. Da kastes en IllegalArgumentException.
         Transform2D transform = readTransform(scanner, type);
         if (transform != null) {
-          transform2Ds.add(transform); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
+          transform2Ds.add(transform);
         }
       }
       gameDescription = new ChaosGameDescription(minCoords, maxCoords, transform2Ds);

@@ -3,6 +3,7 @@ package no.ntnu.idatg2003.controller;
 import java.util.List;
 import javafx.scene.Scene;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
@@ -43,7 +44,7 @@ public class CreateCustomGameController {
   }
 
   /**
-   * Saves the Julia set to a given filename.
+   * Saves the input Julia-set to a given filename.
    *
    * <p>
    *   The file is saved under src/main/user.files/ and is saved as a CSV-file.
@@ -55,20 +56,19 @@ public class CreateCustomGameController {
   public void saveJuliaSet(String fileName) {
     fileName = formatFileName(fileName);
     LoggerUtil.logInfo("Saving Julia set to file: " + fileName);
+
     Vector2D min = createCustomGameView.getCoords("julia", 0, 1);
     Vector2D max = createCustomGameView.getCoords("julia", 2, 3);
     Complex complexNumber = createCustomGameView.getComplexNumber();
 
-    List<Transform2D> transforms = List.of(new JuliaTransform(complexNumber, 1));
-
-    ChaosGameDescription chaosGameDescription = new ChaosGameDescription(min, max, transforms);
+    ChaosGameDescription chaosGameDescription = ChaosGameDescriptionFactory.createJuliaSet(min, max, complexNumber);
 
     ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
     LoggerUtil.logInfo("Julia set saved");
   }
 
   /**
-   * Formats the filename to be saved.
+   * Formats the filename correct folder and csv.
    *
    * @param fileName The filename to format.
    * @return The formatted filename.
@@ -79,6 +79,16 @@ public class CreateCustomGameController {
     return fileName;
   }
 
+  /**
+   * Saves the input affine transformation to a file.
+   *
+   * <p>
+   *   The file is saved under src/main/user.files/ and is saved as a CSV-file.
+   *   Any spaces in the filename are replaced with underscores.
+   * </p>
+   *
+   * @param fileName The name of the file to save to.
+   */
   public void saveAffineTransformation(String fileName) {
     fileName = formatFileName(fileName);
     LoggerUtil.logInfo("Saving Affine transformation to file: " + fileName);
