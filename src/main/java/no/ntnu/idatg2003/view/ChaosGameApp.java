@@ -1,9 +1,8 @@
 package no.ntnu.idatg2003.view;
 
 import no.ntnu.idatg2003.controller.CreateCustomGameController;
+import no.ntnu.idatg2003.controller.RunCustomGameController;
 import no.ntnu.idatg2003.utility.LoggerUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,14 +17,15 @@ public class ChaosGameApp extends Application {
 
   private Stage primaryStage;
   private Scene mainScene;
+  private RunCustomGameController runCustomGameController;
+  private CreateCustomGameController createCustomGameController;
+  private FrontPageController frontPageController;
+  private RunGameController runGameController;
+  private PresetGameController presetGameController;
 
   public static void appMain(String[] args) {
     launch(args);
   }
-
-  private FrontPageController frontPageController;
-  private RunGameController runGameController;
-  private PresetGameController presetGameController;
 
   /**
    * Starts the application by initializing the controllers and showing the front page scene.
@@ -55,6 +55,8 @@ public class ChaosGameApp extends Application {
     frontPageController = new FrontPageController(this);
     runGameController = new RunGameController(this);
     presetGameController = new PresetGameController(this);
+    createCustomGameController = new CreateCustomGameController(this);
+    runCustomGameController = new RunCustomGameController(this);
   }
 
   /**
@@ -85,7 +87,6 @@ public class ChaosGameApp extends Application {
   }
 
   public void showCreateCustomGameScene() {
-    CreateCustomGameController createCustomGameController = new CreateCustomGameController(this);
     this.mainScene = createCustomGameController.getScene();
     primaryStage.setScene(this.mainScene);
   }
@@ -97,4 +98,9 @@ public class ChaosGameApp extends Application {
     primaryStage.close();
   }
 
+  public void showRunCustomGamesScene() {
+    LoggerUtil.logInfo("Showing custom games scene");
+    this.mainScene = runCustomGameController.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
 }

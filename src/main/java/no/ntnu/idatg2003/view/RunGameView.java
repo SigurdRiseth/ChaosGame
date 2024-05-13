@@ -47,7 +47,7 @@ public class RunGameView {
     });
 
     customButton.setOnAction(e -> {
-      controller.openPresetGameScene("custom");
+      controller.openCustomGameMenu();
     });
 
     Button backButton = new Button("Return");

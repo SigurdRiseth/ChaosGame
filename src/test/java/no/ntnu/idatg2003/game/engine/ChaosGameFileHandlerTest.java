@@ -6,7 +6,6 @@ import java.util.List;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
