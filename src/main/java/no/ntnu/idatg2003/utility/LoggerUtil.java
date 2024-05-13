@@ -10,17 +10,20 @@ import org.apache.logging.log4j.Logger;
  *   <li>Error</li>
  *   <li>Debug</li>
  *   <li>Warning</li>
+ *   <li>Fatal</li>
  * </ul>
  *
  * @since 08.05.2024
  * @version 0.0.1
  * @author Theodor Sjetnan Utvik, Sigurd Riseth
  */
-
 public class LoggerUtil {
 
   private static final Logger logger = LogManager.getLogger(LoggerUtil.class);
 
+  /**
+   * Private constructor to prevent instantiation of this class.
+   */
   private LoggerUtil() {}
 
   /**
@@ -42,6 +45,11 @@ public class LoggerUtil {
     logger.error(message, throwable);
   }
 
+  /**
+   * Logs an error message.
+   *
+   * @param message The message to log.
+   */
   public static void logError(String message) {
     logger.error(message);
   }
@@ -55,8 +63,21 @@ public class LoggerUtil {
     logger.debug(message);
   }
 
-
+  /**
+   * Logs a warning message.
+   *
+   * @param message The message to log.
+   */
   public static void logWarning(String message) {
     logger.warn(message);
+  }
+
+  /**
+   * Logs a fatal message.
+   *
+   * @param message The message to log.
+   */
+  public static void logFatal(String message) {
+    logger.fatal(message);
   }
 }

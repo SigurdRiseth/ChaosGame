@@ -12,9 +12,17 @@ import no.ntnu.idatg2003.utility.LoggerUtil;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.CreateCustomGame;
 
+/**
+ * The CreateCustomGameController class is the controller for the CreateCustomGame view.
+ *
+ * <p>
+ *   The CreateCustomGameController class is responsible for handling user input from the
+ *   CreateCustomGame view. It is responsible for saving the input values to a file.
+ * </p>
+ */
 public class CreateCustomGameController {
-  private ChaosGameApp app;
-  private CreateCustomGame createCustomGameView;
+  private final ChaosGameApp app;
+  private final CreateCustomGame createCustomGameView;
 
   /**
    * Constructor for the CreateCustomGameController class.

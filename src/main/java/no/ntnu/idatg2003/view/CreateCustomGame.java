@@ -78,8 +78,6 @@ public class CreateCustomGame {
    * @return The content for the Create Custom Game scene.
    */
   private BorderPane createContent() {
-    BorderPane content = new BorderPane();
-
     // Back button
     Button backButton = new Button("Return");
     backButton.setOnAction(e -> controller.returnToFrontPage());
@@ -134,6 +132,7 @@ public class CreateCustomGame {
     vbox.setAlignment(javafx.geometry.Pos.CENTER);
 
     // Set the content
+    BorderPane content = new BorderPane();
     content.setTop(backButton);
     content.setCenter(vbox);
     content.setStyle("-fx-background-color: #3b1d5a;");
@@ -142,8 +141,10 @@ public class CreateCustomGame {
   }
 
   private void addAffineTransformsToGridPane() {
-    affineGrid.addRow(affineGrid.getRowCount(), createInputField("a00"), createInputField("a01"), createInputField("x"));
-    affineGrid.addRow(affineGrid.getRowCount(), createInputField("a10"), createInputField("a11"), createInputField("y"));
+    affineGrid.addRow(affineGrid.getRowCount(), createInputField("a00"),
+        createInputField("a01"), createInputField("x"));
+    affineGrid.addRow(affineGrid.getRowCount(), createInputField("a10"),
+        createInputField("a11"), createInputField("y"));
   }
 
   /**
