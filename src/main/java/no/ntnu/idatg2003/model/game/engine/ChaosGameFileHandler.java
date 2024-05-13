@@ -142,7 +142,7 @@ public class ChaosGameFileHandler {
       writeTransformType(writer, stringType);
       writeMinMaxCoords(writer, description);
       for (Transform2D transform : description.getTransforms()) {
-        writer.write(transform.toString() + " # transforms \n");
+        writer.write("\n" + transform.toString() + " # transforms");
         LoggerUtil.logInfo("Transform written to file");
       }
     } catch (IOException e) {
@@ -164,7 +164,7 @@ public class ChaosGameFileHandler {
       LoggerUtil.logInfo("Lower Left written to file");
       writer.write(
           String.format(
-              "%s # Upper Right %n", description.getMaxCoords().toString()));
+              "%s # Upper Right", description.getMaxCoords().toString()));
       LoggerUtil.logInfo("Upper Right written to file");
     } catch (IOException e) {
       LoggerUtil.logError("Failed to write the min/max coordinates: " + e.getMessage());

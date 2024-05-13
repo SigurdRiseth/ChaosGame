@@ -68,11 +68,32 @@ class ChaosGameFileHandlerTest {
    * </p>
    */
   @Test
-  void writeToFileTest() {
+  void writeJuliaToFileTest() {
     ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
 
     ChaosGameFileHandler.writeToFile(expectedDescription, "src/test/resources/csv/preset.games/JuliaTest.csv");
     ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/JuliaTest.csv");
+
+    assertEquals(expectedDescription.getMinCoords().getX0(), resultDescription.getMinCoords().getX0(), "The min x0 value is not correct");
+    assertEquals(expectedDescription.getMinCoords().getX1(), resultDescription.getMinCoords().getX1(), "The min x1 value is not correct");
+    assertEquals(expectedDescription.getMaxCoords().getX0(), resultDescription.getMaxCoords().getX0(), "The max x0 value is not correct");
+    assertEquals(expectedDescription.getMaxCoords().getX1(), resultDescription.getMaxCoords().getX1(), "The max x1 value is not correct");
+    assertEquals(expectedDescription.getTransforms().getFirst().toString(), resultDescription.getTransforms().getFirst().toString(), "The transform is not correct");
+  }
+
+  /**
+   * Tests if the <code>writeToFile()</code> method writes the correct {@link ChaosGameDescription} to a file.
+   *
+   * <p>
+   *   Note that this test is dependent on that the <code>readFromFile()</code> method works correctly.
+   * </p>
+   */
+  @Test
+  void writeAffineToFileTest() {
+    ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fern.csv");
+
+    ChaosGameFileHandler.writeToFile(expectedDescription, "src/test/resources/csv/preset.games/barnsley-fernTest.csv");
+    ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fernTest.csv");
 
     assertEquals(expectedDescription.getMinCoords().getX0(), resultDescription.getMinCoords().getX0(), "The min x0 value is not correct");
     assertEquals(expectedDescription.getMinCoords().getX1(), resultDescription.getMinCoords().getX1(), "The min x1 value is not correct");
