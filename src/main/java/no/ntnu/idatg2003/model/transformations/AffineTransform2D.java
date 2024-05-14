@@ -39,6 +39,25 @@ public class AffineTransform2D implements Transform2D {
   }
 
   /**
+   * Method to get the matrix of the transformation.
+   *
+   * @return the matrix of the transformation
+   */
+  public Matrix2x2 getMatrix() {
+    return matrix;
+  }
+
+  /**
+   * Method to get the vector of the transformation.
+   *
+   * @return the vector of the transformation
+   */
+  public Vector2D getVector() {
+    return vector;
+  }
+
+
+  /**
    * Method to get the transformation as a string.
    *
    * @return the transformation as a string

@@ -1,22 +1,17 @@
 package no.ntnu.idatg2003.controller;
 
-import javafx.event.ActionEvent;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 import no.ntnu.idatg2003.view.ChaosGameApp;
-import no.ntnu.idatg2003.view.FrontPage;
-import no.ntnu.idatg2003.view.PresetGameView;
-import no.ntnu.idatg2003.view.RunGameView;
+import no.ntnu.idatg2003.view.RunGameMenu;
 
-public class RunGameController {
+public class RunGameMenuController {
 
-  private RunGameView view;
+  private RunGameMenu view;
   private ChaosGameApp app;
 
-  public RunGameController(ChaosGameApp app) {
+  public RunGameMenuController(ChaosGameApp app) {
     this.app = app;
-    this.view = new RunGameView(this);
+    this.view = new RunGameMenu(this);
   }
 
   public Scene getScene(){
@@ -29,5 +24,9 @@ public class RunGameController {
 
   public void openFrontPageScene() {
     app.showMainScene();
+  }
+
+  public void openCustomGameMenu() {
+    app.showRunCustomGamesScene();
   }
 }

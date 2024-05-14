@@ -79,4 +79,20 @@ public class ChaosGameDescriptionFactory {
     Vector2D max = new Vector2D(2, 2);
     return new ChaosGameDescription(min, max, transforms);
   }
+
+  /**
+   * Create a Julia set description with a given complex number, minimum and maximum coordinates.
+   *
+   * @param minCoord the minimum coordinates
+   * @param maxCoord the maximum coordinates
+   * @param complex the complex number to use
+   * @return The corresponding <code>ChaosGameDescription</code> object
+   */
+  public static ChaosGameDescription createJuliaSet(Vector2D minCoord, Vector2D maxCoord, Complex complex) {
+    List<Transform2D> transforms = List.of(
+        new JuliaTransform(complex, -1),
+        new JuliaTransform(complex, 1)
+    );
+    return new ChaosGameDescription(minCoord, maxCoord, transforms);
+  }
 }
