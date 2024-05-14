@@ -87,7 +87,7 @@ public class ChaosGameApp extends Application {
   }
 
   /**
-   * Shows the create custom game scene of the application.
+   * Shows the choice to create custom game scene of the application.
    */
   public void showCreateCustomGameScene() {
     this.mainScene = createCustomGameController.getScene();

@@ -10,6 +10,14 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
 
+/**
+ * Class for the run game menu view of the application. This class is responsible for creating the
+ * run game menu scene and its content. The run game menu is used to select a game to run.
+ *
+ * @version 0.0.2
+ * @author Sigurd Riseth
+ */
+
 public class RunGameMenu {
 
   private Scene scene;

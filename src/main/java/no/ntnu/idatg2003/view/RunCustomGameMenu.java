@@ -10,6 +10,14 @@ import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 
+/**
+ * View for running a custom game menu. This class is responsible for creating the scene for the
+ * custom game menu. The custom game menu is used to select a custom game to run.
+ *
+ * @version 0.0.2
+ * @author Sigurd Riseth
+ */
+
 public class RunCustomGameMenu {
 
   private final RunCustomGameMenuController controller;

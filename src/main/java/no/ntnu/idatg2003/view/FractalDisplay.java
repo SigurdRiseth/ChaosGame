@@ -276,10 +276,10 @@ public class FractalDisplay implements ChaosGameObserver {
     drawCanvas(controller.getCanvas());
   }
 
-  public void clearCanvas() {
+  /*public void clearCanvas() {
     GraphicsContext gc = canvas.getGraphicsContext2D();
     gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-  }
+  }*/
 
 
   /**

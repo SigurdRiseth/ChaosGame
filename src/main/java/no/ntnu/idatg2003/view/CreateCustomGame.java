@@ -140,6 +140,9 @@ public class CreateCustomGame {
     return content;
   }
 
+  /**
+   * Adds the affine transformation text fields to the affine grid.
+   */
   private void addAffineTransformsToGridPane() {
     affineGrid.addRow(affineGrid.getRowCount(), createInputField("a00"),
         createInputField("a01"), createInputField("x"));

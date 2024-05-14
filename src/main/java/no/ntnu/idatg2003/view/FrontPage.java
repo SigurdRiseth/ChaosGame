@@ -12,6 +12,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.*;
 
+/**
+ * Class for the front page view of the application. This class is responsible for creating the
+ * front page scene and its content.
+ *
+ * @author Theodor Sjetnan Utvik, Sigurd Riseth
+ * @version 0.0.2
+ */
+
 public class FrontPage {
   private FrontPageController controller;
   private Scene scene;

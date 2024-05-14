@@ -22,7 +22,7 @@ import no.ntnu.idatg2003.utility.LoggerUtil;
  * the file and create the game. It will also write the game to a file.
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
- * @version 0.0.1
+ * @version 0.0.2
  */
 public class ChaosGameFileHandler {
 
