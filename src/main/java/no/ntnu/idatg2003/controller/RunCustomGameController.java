@@ -22,4 +22,8 @@ public class RunCustomGameController {
   public Scene getScene() {
     return runCustomGameView.getScene();
   }
+
+  public void runCustomGame(String file) {
+    app.runCustomGame(file);
+  }
 }

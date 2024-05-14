@@ -1,11 +1,15 @@
 package no.ntnu.idatg2003.view;
 
+import java.util.List;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunCustomGameController;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 
 public class RunCustomGame {
 
@@ -43,9 +47,21 @@ public class RunCustomGame {
     VBox vBox = new VBox();
     vBox.setSpacing(10);
     vBox.setPadding(new Insets(10, 10, 10, 10));
+    vBox.setAlignment(javafx.geometry.Pos.CENTER);
 
-    Button button1 = new Button("Game 1");
-    Button button2 = new Button("Game 2");
+    Text text = new Text("Choose which custom game to run!");
+    text.setStyle("-fx-font-size: 24; -fx-fill: white;");
+    vBox.getChildren().add(text);
+
+    List<String> files = ChaosGameFileHandler.getCustomGameFileNames();
+
+    for (String file : files) {
+      Button button = new Button(file);
+      button.setOnAction(e -> {
+        controller.runCustomGame(file);
+      });
+      vBox.getChildren().add(button);
+    }
 
     return vBox;
   }

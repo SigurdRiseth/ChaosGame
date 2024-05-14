@@ -103,4 +103,11 @@ public class ChaosGameApp extends Application {
     this.mainScene = runCustomGameController.getScene();
     primaryStage.setScene(this.mainScene);
   }
+
+  public void runCustomGame(String file) {
+    LoggerUtil.logInfo("Running custom game: " + file);
+    presetGameController.createCustomGame(file);
+    this.mainScene = presetGameController.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
 }

@@ -7,6 +7,7 @@ import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 import no.ntnu.idatg2003.view.ChaosGameApp;
@@ -80,7 +81,7 @@ public class CreateCustomGameController {
     Vector2D max = createCustomGameView.getCoords("julia", 2, 3);
     Complex complexNumber = createCustomGameView.getComplexNumber();
 
-    return ChaosGameDescriptionFactory.createJuliaSet(min, max, complexNumber);
+    return new ChaosGameDescription(min, max, List.of(new JuliaTransform(complexNumber, 1)));
   }
 
   /**
@@ -126,5 +127,9 @@ public class CreateCustomGameController {
     List<Transform2D> transforms = createCustomGameView.getAffineTransforms();
 
     return new ChaosGameDescription(min, max, transforms);
+  }
+
+  public List<String> getCustomGames() {
+    throw new UnsupportedOperationException("Not implemented yet");
   }
 }

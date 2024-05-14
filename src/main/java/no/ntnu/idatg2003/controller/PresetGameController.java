@@ -4,6 +4,7 @@ import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.PresetGameView;
@@ -58,6 +59,11 @@ public class PresetGameController implements ChaosGameObserver {
 
   public void openRunGameView() {
     app.showRunGameScene();
+  }
+
+  public void createCustomGame(String fileName) {
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/main/user.files/" + fileName);
+    game = new ChaosGame(description, 800, 800);
   }
 
 }
