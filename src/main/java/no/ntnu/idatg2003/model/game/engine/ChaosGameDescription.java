@@ -27,7 +27,7 @@ public class ChaosGameDescription {
    *
    * @param minCoords The minimum coordinates (lower-left corner) for the game's boundary.
    * @param maxCoords The maximum coordinates (upper-right corner) for the game's boundary.
-   * @param transforms A list of transformations !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+   * @param transforms A list of transformations
    */
   public ChaosGameDescription(
       Vector2D minCoords, Vector2D maxCoords, List<Transform2D> transforms) {

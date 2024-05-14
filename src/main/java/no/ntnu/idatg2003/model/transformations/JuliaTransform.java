@@ -53,6 +53,19 @@ public class JuliaTransform implements Transform2D { //TODO: Gjøre denne klasse
   }
 
   /**
+   * Method to get the complex constant.
+   *
+   * @return the complex constant
+   */
+  public Complex getComplexConstant() {
+    return complexConstant;
+  }
+
+  public int getSign() {
+    return sign;
+  }
+
+  /**
    * Method to get the transformation as a string.
    *
    * @return the transformation as a string

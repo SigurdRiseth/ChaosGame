@@ -1,10 +1,12 @@
 package no.ntnu.idatg2003.model.game.engine;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
@@ -13,6 +15,7 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.utility.LoggerUtil;
 
 /**
  * This class is responsible for handling the file input and output for the ChaosGame. It will read
@@ -55,7 +58,6 @@ public class ChaosGameFileHandler {
    * @return the ChaosGameDescription
    */
   public static ChaosGameDescription readFromFile(String path) {
-    ArrayList<Transform2D> transform2Ds = new ArrayList<>();
     ChaosGameDescription gameDescription = null;
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
       scanner.useLocale(Locale.US);
@@ -66,38 +68,34 @@ public class ChaosGameFileHandler {
       Vector2D minCoords = readVector2D(scanner);
       Vector2D maxCoords = readVector2D(scanner);
 
+      gameDescription = createGameDescription(type, scanner, minCoords, maxCoords);
+
+    } catch (IOException e) {
+      LoggerUtil.logError("Failed to read the file: " + e.getMessage());
+    }
+    return gameDescription;
+  }
+
+  private static ChaosGameDescription createGameDescription(String type, Scanner scanner, Vector2D minCoords,
+      Vector2D maxCoords) {
+    ChaosGameDescription gameDescription;
+    ArrayList<Transform2D> transform2Ds = new ArrayList<>();
+    if (type.equals("Affine2D")) {
       while (scanner.hasNext()) {
-        Transform2D transform = readTransform(scanner, type);
+        Transform2D transform = readAffineTransform2D(scanner);
         if (transform != null) {
           transform2Ds.add(transform);
         }
       }
       gameDescription = new ChaosGameDescription(minCoords, maxCoords, transform2Ds);
-    } catch (IOException e) {
-      System.err.println("Failed to read the file: " + e.getMessage());
+    } else if (type.equals("Julia")) {
+      Complex complex = readJuliaTransform(scanner);
+      gameDescription = ChaosGameDescriptionFactory.createJuliaSet(minCoords, maxCoords, complex);
+    } else {
+      LoggerUtil.logWarning("Unknown transform type");
+      throw new IllegalArgumentException("Unknown transform type");
     }
     return gameDescription;
-  }
-
-  /**
-   * Reads a specific transformation type based on the type identifier provided and constructs the
-   * corresponding Transform2D object.
-   *
-   * @param scanner The Scanner to read the transformation data from.
-   * @param type    The type of the transformation to be read.
-   * @return A Transform2D object corresponding to the specified type.
-   */
-  private static Transform2D readTransform(Scanner scanner, String type) {
-    try {
-      return switch (type) {
-        case "Julia" -> readJuliaTransform(scanner); //TODO: Må ordne slik at den gir ut pluss og minus versjonen for Julia-set
-        case "Affine2D" -> readAffineTransform2D(scanner);
-        default -> throw new IllegalArgumentException("Unsupported transform type: " + type);
-      };
-    } catch (IllegalArgumentException e) {
-      System.err.println("Failed to create transform: " + e.getMessage()); //TODO: Denne slår ut feil!
-      return null;
-    }
   }
 
   /**
@@ -133,15 +131,17 @@ public class ChaosGameFileHandler {
       } else if (type instanceof JuliaTransform) {
         stringType = "Julia";
       } else {
+        LoggerUtil.logWarning("Unknown transform type");
         throw new IllegalArgumentException("Unknown transform type");
       }
       writeTransformType(writer, stringType);
       writeMinMaxCoords(writer, description);
       for (Transform2D transform : description.getTransforms()) {
-        writer.write(transform.toString() + " # transforms \n");
+        writer.write("\n" + transform.toString() + " # transforms");
+        LoggerUtil.logInfo("Transform written to file");
       }
     } catch (IOException e) {
-      System.out.println("Failed to create the file: " + e.getMessage());
+      LoggerUtil.logError("Failed to create the file: " + e.getMessage());
     }
   }
 
@@ -156,11 +156,13 @@ public class ChaosGameFileHandler {
       writer.write(
           String.format(
               "%s # Lower Left %n", description.getMinCoords().toString()));
+      LoggerUtil.logInfo("Lower Left written to file");
       writer.write(
           String.format(
-              "%s # Upper Right %n", description.getMaxCoords().toString()));
+              "%s # Upper Right", description.getMaxCoords().toString()));
+      LoggerUtil.logInfo("Upper Right written to file");
     } catch (IOException e) {
-      System.err.println("Failed to write the min/max coordinates: " + e.getMessage());
+      LoggerUtil.logError("Failed to write the min/max coordinates: " + e.getMessage());
     }
   }
 
@@ -174,7 +176,7 @@ public class ChaosGameFileHandler {
     try {
       writer.write(stringType + " # Type of fractal \n");
     } catch (IOException e) {
-      System.err.println("Failed to write the transform type: " + e.getMessage());
+      LoggerUtil.logError("Failed to write the transform type: " + e.getMessage());
     }
   }
 
@@ -201,6 +203,7 @@ public class ChaosGameFileHandler {
   private static double readDouble(Scanner scanner) throws IllegalArgumentException {
     String input = scanner.next().trim();
     if (input.isEmpty()) {
+      LoggerUtil.logWarning("Empty string encountered when expecting a double.");
       throw new IllegalArgumentException("Empty string encountered when expecting a double.");
     }
     return Double.parseDouble(input);
@@ -227,10 +230,10 @@ public class ChaosGameFileHandler {
    * @param scanner The Scanner to read the JuliaTransform data from.
    * @return A new JuliaTransform object.
    */
-  private static Transform2D readJuliaTransform(Scanner scanner) {
+  private static Complex readJuliaTransform(Scanner scanner) {
     var real = readDouble(scanner);
     var imaginary = readDouble(scanner);
-    return new JuliaTransform(new Complex(real, imaginary), -1);
+    return new Complex(real, imaginary);
   }
 
   /**
@@ -241,6 +244,29 @@ public class ChaosGameFileHandler {
    */
   private static Transform2D readAffineTransform2D(Scanner scanner) {
     return new AffineTransform2D(readMatrix2x2(scanner), readVector2D(scanner));
+  }
+
+  /**
+   * Returns a list of the name of all created custom game files.
+   *
+   * @return list of all custom games.
+   */
+  public static List<String> getCustomGameFileNames() {
+    String directoryPath = "src/main/user.files";
+
+    File directory = new File(directoryPath);
+
+    File[] files = directory.listFiles();
+
+    List<String> fileNames = new ArrayList<>();
+
+    if (files != null) {
+      for (File file : files) {
+        fileNames.add(file.getName());
+      }
+    }
+
+    return fileNames;
   }
 
 }

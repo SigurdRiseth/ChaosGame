@@ -41,7 +41,7 @@ public class FrontPage {
     });
 
     createGameButton.setOnAction(e -> {
-      throw new UnsupportedOperationException("Not implemented yet");
+      controller.openCreateCustomGameScene();
     });
 
     exitButton.setOnAction(e -> {

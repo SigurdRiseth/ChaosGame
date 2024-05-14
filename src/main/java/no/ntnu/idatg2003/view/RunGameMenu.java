@@ -8,14 +8,14 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import no.ntnu.idatg2003.controller.RunGameController;
+import no.ntnu.idatg2003.controller.RunGameMenuController;
 
-public class RunGameView {
+public class RunGameMenu {
 
   private Scene scene;
-  private RunGameController controller;
+  private RunGameMenuController controller;
 
-  public RunGameView(RunGameController controller) {
+  public RunGameMenu(RunGameMenuController controller) {
     this.controller = controller;
     this.scene = new Scene(createContent(), 800, 600);
   }
@@ -47,7 +47,7 @@ public class RunGameView {
     });
 
     customButton.setOnAction(e -> {
-      controller.openPresetGameScene("custom");
+      controller.openCustomGameMenu();
     });
 
     Button backButton = new Button("Return");

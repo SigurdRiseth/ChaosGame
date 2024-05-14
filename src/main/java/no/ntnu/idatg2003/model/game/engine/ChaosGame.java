@@ -5,13 +5,14 @@ import java.util.List;
 import java.util.Random;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.utility.LoggerUtil;
 
 public class ChaosGame implements ChaosGameSubject {
 
-  private ArrayList<ChaosGameObserver> observers = new ArrayList<>();
+  private final ArrayList<ChaosGameObserver> observers = new ArrayList<>();
   private final Random random;
-  private ChaosCanvas canvas;
-  private ChaosGameDescription description;
+  private final ChaosCanvas canvas;
+  private final ChaosGameDescription description;
   private Vector2D currentPoint;
 
   /**
@@ -44,18 +45,33 @@ public class ChaosGame implements ChaosGameSubject {
    * @param steps the number of steps to run
    */
   public void runSteps(int steps) {
+    canvas.clear();
+    int progress = 0;
     try {
       for (int i = 0; i < steps; i++) {
         int randomTransform = random.nextInt(description.getTransforms().size());
         List<Transform2D> transforms = description.getTransforms();
         currentPoint = transforms.get(randomTransform).transform(currentPoint);
         canvas.putPixel(currentPoint);
+
+        int newProgress = (int) ((i + 1) * 100.0 / steps);
+        if (newProgress > progress) {
+          progress = newProgress;
+          notifyProgress(progress);
+        }
       }
     } catch (Exception e) {
-      System.err.println("Error: " + e.getMessage());
+      LoggerUtil.logError("Error: ",e);
     }
     finally {
       notifyObservers();
+    }
+  }
+
+
+  private void notifyProgress(int progress) {
+    for (ChaosGameObserver observer : observers) {
+      //observer.updateProgress(progress);
     }
   }
 
