@@ -80,6 +80,7 @@ public class PresetGameController implements ChaosGameObserver {
   }
 
   public void runGame(int iterations) {
+    view.clearCanvas();
     game.runSteps(iterations);
     view.updateCanvas();
   }
@@ -88,9 +89,10 @@ public class PresetGameController implements ChaosGameObserver {
     app.showRunGameScene();
   }
 
-  //Get values to give to the view for transformations. get methods for values, and possibly use chaosgamedescription to get the values
 
-
-
+  @Override
+  public void updateProgress(int progress) {
+    javafx.application.Platform.runLater(() -> view.updateProgressBar(progress));
+  }
 
 }

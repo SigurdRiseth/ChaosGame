@@ -21,6 +21,9 @@ import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.control.ProgressIndicator;
+
 
 /**
  * The view for the PresetGame Page.
@@ -36,6 +39,7 @@ public class PresetGameView {
   private final VBox juliaDetailsBox;
   private final Label realPartLabel;
   private final Label imaginaryPartLabel;
+  private final ProgressBar progressBar;
 
 
   /**
@@ -57,6 +61,7 @@ public class PresetGameView {
     transformTable.setVisible(false);
     juliaDetailsBox.setVisible(false);
     setupJuliaDetailsLayout();
+    this.progressBar = new ProgressBar();
   }
 
   /**
@@ -110,6 +115,7 @@ public class PresetGameView {
     VBox content = new VBox(10);
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
+
     Button runButton = new Button("Run");
     Label infoLabel = new Label("Values for this transformation:");
     runButton.setOnAction(e -> {
@@ -117,7 +123,7 @@ public class PresetGameView {
       controller.runGame(iterationsValue);
     });
     content.getChildren().addAll(backButton, iterationsText, iterationsField,
-        runButton, infoLabel, juliaDetailsBox, transformTable);
+        progressBar, runButton, infoLabel, juliaDetailsBox, transformTable);
     content.setPadding(new Insets(10));
     return content;
   }
@@ -269,6 +275,12 @@ public class PresetGameView {
     drawCanvas(controller.getCanvas());
   }
 
+  public void clearCanvas() {
+    GraphicsContext gc = canvas.getGraphicsContext2D();
+    gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+  }
+
+
   /**
    * Draws the given ChaosCanvas on the canvas.
    *
@@ -290,6 +302,10 @@ public class PresetGameView {
         gc.fillRect(x, y, 1, 1);
       }
     }
+  }
+
+  public void updateProgressBar(int progress) {
+    progressBar.setProgress(progress / 100.0);
   }
 
 }
