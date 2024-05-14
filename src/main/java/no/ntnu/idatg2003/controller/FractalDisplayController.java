@@ -8,28 +8,30 @@ import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.view.ChaosGameApp;
-import no.ntnu.idatg2003.view.PresetGameView;
+import no.ntnu.idatg2003.view.FractalDisplay;
 
-public class PresetGameController implements ChaosGameObserver {
+public class FractalDisplayController {
 
   private ChaosGame game;
   private ChaosGameApp app;
-  private PresetGameView view;
+  private FractalDisplay view;
 
   private ObservableList<Transform2D> transformations = FXCollections.observableArrayList();
 
 
-  public PresetGameController(ChaosGameApp app) {
+  public FractalDisplayController(ChaosGameApp app) {
     this.app = app;
-    this.view = new PresetGameView(this);
+    this.view = new FractalDisplay(this);
     //initializeTransformations();
   }
 
   public ObservableList<Transform2D> getTransformations() {
     return transformations;
+    this.view = new FractalDisplay(this);
   }
 
   /*private void initializeTransformations() {
@@ -64,27 +66,48 @@ public class PresetGameController implements ChaosGameObserver {
     game = new ChaosGame(description, 800, 800);
     loadTransformations(description.getTransforms(), type);
     view.updateForGameType(type);
+    observeGame();
   }
 
-  @Override
-  public void update() {
-    view.updateCanvas();
+  /**
+   * Registers the view as an observer of the game.
+   * This allows the view to be updated when the game state changes.
+   */
+  private void observeGame() {
+    game.registerObserver(view);
   }
 
+  /**
+   * Returns the canvas of the game.
+   *
+   * @return The canvas of the game.
+   */
   public ChaosCanvas getCanvas() {
     return game.getCanvas();
   }
 
+  /**
+   * Returns the scene of the view.
+   *
+   * @return The scene of the view.
+   */
   public Scene getScene() {
     return view.getScene();
   }
 
+  /**
+   * Runs the game for a given number of iterations.
+   *
+   * @param iterations The number of iterations to run the game for.
+   */
   public void runGame(int iterations) {
     view.clearCanvas();
     game.runSteps(iterations);
-    view.updateCanvas();
   }
 
+  /**
+   * Returns to the last page.
+   */
   public void openRunGameView() {
     app.showRunGameScene();
   }
@@ -93,6 +116,17 @@ public class PresetGameController implements ChaosGameObserver {
   @Override
   public void updateProgress(int progress) {
     javafx.application.Platform.runLater(() -> view.updateProgressBar(progress));
+  }
+
+  /**
+   * Creates a custom game from a given file.
+   *
+   * @param fileName The name of the file to create the custom game from.
+   */
+  public void createCustomGame(String fileName) {
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/main/user.files/" + fileName);
+    game = new ChaosGame(description, 800, 800);
+    observeGame();
   }
 
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- This file is used to configure the log4j2 logger -->
 <Configuration status="debug" name="chaosgame" packages="">
   <Appenders>
@@ -13,7 +14,6 @@
   <Loggers>
     <!-- Root logger to log all messages -->
     <Root level="INFO">
-      <AppenderRef ref="console" />
       <AppenderRef ref="log"/>
     </Root>
   </Loggers>
