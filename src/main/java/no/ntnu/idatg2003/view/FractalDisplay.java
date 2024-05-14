@@ -15,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
+import no.ntnu.idatg2003.utility.LoggerUtil;
 
 /**
  * The view for the PresetGame Page.
@@ -22,7 +24,7 @@ import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
  *    This class is responsible for displaying the game view for the preset game.
  * </p>
  */
-public class FractalDisplay {
+public class FractalDisplay implements ChaosGameObserver {
 
   private final FractalDisplayController controller;
   private Canvas canvas;
@@ -151,4 +153,12 @@ public class FractalDisplay {
     }
   }
 
+  /**
+   * Updates the view.
+   */
+  @Override
+  public void update() {
+    LoggerUtil.logInfo("Updating fractal display");
+    updateCanvas();
+  }
 }

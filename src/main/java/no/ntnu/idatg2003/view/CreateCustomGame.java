@@ -199,7 +199,7 @@ public class CreateCustomGame {
     inputField.setPromptText("Insert name");
     Button saveButton = new Button(saveText);
     HBox juliaBox = new HBox(10);
-    saveButton.setOnAction(e -> saveAction.accept(inputField.getText()));
+    saveButton.setOnAction(e -> saveAction.accept(inputField.getText())); 
 
     juliaBox.getChildren().addAll(inputField, saveButton);
     juliaBox.setAlignment(javafx.geometry.Pos.CENTER);
