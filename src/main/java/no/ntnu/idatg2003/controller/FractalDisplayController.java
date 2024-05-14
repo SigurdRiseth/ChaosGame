@@ -7,17 +7,17 @@ import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.view.ChaosGameApp;
-import no.ntnu.idatg2003.view.PresetGameView;
+import no.ntnu.idatg2003.view.FractalDisplay;
 
-public class PresetGameController implements ChaosGameObserver {
+public class FractalDisplayController implements ChaosGameObserver {
 
   private ChaosGame game;
   private ChaosGameApp app;
-  private PresetGameView view;
+  private FractalDisplay view;
 
-  public PresetGameController(ChaosGameApp app) {
+  public FractalDisplayController(ChaosGameApp app) {
     this.app = app;
-    this.view = new PresetGameView(this);
+    this.view = new FractalDisplay(this);
   }
 
   public void createGame(String type) {

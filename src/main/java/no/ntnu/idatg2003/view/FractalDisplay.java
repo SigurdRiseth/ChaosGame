@@ -13,7 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import no.ntnu.idatg2003.controller.PresetGameController;
+import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 
 /**
@@ -22,9 +22,9 @@ import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
  *    This class is responsible for displaying the game view for the preset game.
  * </p>
  */
-public class PresetGameView {
+public class FractalDisplay {
 
-  private final PresetGameController controller;
+  private final FractalDisplayController controller;
   private Canvas canvas;
 
   /**
@@ -35,7 +35,7 @@ public class PresetGameView {
    *
    * @param controller The controller for the view.
    */
-  public PresetGameView(PresetGameController controller) {
+  public FractalDisplay(FractalDisplayController controller) {
     this.controller = controller;
     this.canvas = new Canvas(800, 800);
   }

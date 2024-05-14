@@ -2,16 +2,16 @@ package no.ntnu.idatg2003.controller;
 
 import javafx.scene.Scene;
 import no.ntnu.idatg2003.view.ChaosGameApp;
-import no.ntnu.idatg2003.view.RunCustomGame;
+import no.ntnu.idatg2003.view.RunCustomGameMenu;
 
-public class RunCustomGameController {
+public class RunCustomGameMenuController {
 
   private final ChaosGameApp app;
-  private final RunCustomGame runCustomGameView;
+  private final RunCustomGameMenu runCustomGameMenuView;
 
-  public RunCustomGameController(ChaosGameApp app) {
+  public RunCustomGameMenuController(ChaosGameApp app) {
     this.app = app;
-    this.runCustomGameView = new RunCustomGame(this);
+    this.runCustomGameMenuView = new RunCustomGameMenu(this);
   }
 
 
@@ -20,7 +20,7 @@ public class RunCustomGameController {
   }
 
   public Scene getScene() {
-    return runCustomGameView.getScene();
+    return runCustomGameMenuView.getScene();
   }
 
   public void runCustomGame(String file) {

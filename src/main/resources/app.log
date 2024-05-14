@@ -325,3 +325,50 @@
 2024-05-14 13:26:02 INFO Starting Chaos Game application
 2024-05-14 13:26:05 INFO Showing custom games scene
 2024-05-14 13:26:06 INFO Running custom game: Wiki_Julia.csv
+2024-05-14 13:32:55 INFO Starting Chaos Game application
+2024-05-14 13:33:00 INFO Showing custom games scene
+2024-05-14 13:33:01 INFO Running custom game: Wiki_Julia.csv2024-05-14 14:26:38 INFO Starting Chaos Game application
+2024-05-14 14:30:42 INFO Starting Chaos Game application
+2024-05-14 14:35:07 INFO Saving Affine transformation to file: src/main/user.files/Dragon.csv
+2024-05-14 14:35:07 INFO Lower Left written to file
+2024-05-14 14:35:07 INFO Upper Right written to file
+2024-05-14 14:35:07 INFO Transform written to file
+2024-05-14 14:35:07 INFO Transform written to file
+2024-05-14 14:35:07 INFO Affine transformation saved
+2024-05-14 14:35:11 INFO Showing custom games scene
+2024-05-14 14:35:12 INFO Running custom game: Dragon.csv
+2024-05-14 14:35:58 INFO Showing custom games scene
+2024-05-14 14:35:59 INFO Running custom game: Dragon.csv
+2024-05-14 14:39:16 INFO Saving Affine transformation to file: src/main/user.files/Tree_Fractal.csv
+2024-05-14 14:39:16 INFO Lower Left written to file
+2024-05-14 14:39:16 INFO Upper Right written to file
+2024-05-14 14:39:16 INFO Transform written to file
+2024-05-14 14:39:16 INFO Transform written to file
+2024-05-14 14:39:16 INFO Transform written to file
+2024-05-14 14:39:16 INFO Transform written to file
+2024-05-14 14:39:16 INFO Affine transformation saved
+2024-05-14 14:39:21 INFO Showing custom games scene
+2024-05-14 14:39:22 INFO Running custom game: Tree_Fractal.csv
+2024-05-14 14:40:52 INFO Starting Chaos Game application
+2024-05-14 14:40:56 INFO Showing custom games scene
+2024-05-14 14:40:57 INFO Running custom game: Tree_Fractal.csv
+2024-05-14 14:41:16 INFO Starting Chaos Game application
+2024-05-14 14:41:44 INFO Showing custom games scene
+2024-05-14 14:41:44 INFO Running custom game: Tree_Fractal.csv
+2024-05-14 14:42:03 INFO Showing custom games scene
+2024-05-14 14:42:04 INFO Running custom game: Wiki_Julia.csv
+2024-05-14 14:42:23 INFO Showing custom games scene
+2024-05-14 14:42:25 INFO Running custom game: Dragon.csv
+2024-05-14 14:45:11 INFO Lower Left written to file
+2024-05-14 14:45:11 INFO Upper Right written to file
+2024-05-14 14:45:11 INFO Transform written to file
+2024-05-14 14:45:11 INFO Transform written to file
+2024-05-14 14:45:11 INFO Lower Left written to file
+2024-05-14 14:45:11 INFO Upper Right written to file
+2024-05-14 14:45:11 INFO Transform written to file
+2024-05-14 14:45:11 INFO Transform written to file
+2024-05-14 14:45:11 INFO Transform written to file
+2024-05-14 14:45:11 INFO Transform written to file
+2024-05-14 14:45:23 INFO Starting Chaos Game application
+2024-05-14 14:45:29 INFO Showing custom games scene
+2024-05-14 14:45:33 INFO Running custom game: Dragon.csv

@@ -4,18 +4,17 @@ import java.util.List;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import no.ntnu.idatg2003.controller.RunCustomGameController;
+import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 
-public class RunCustomGame {
+public class RunCustomGameMenu {
 
-  private final RunCustomGameController controller;
+  private final RunCustomGameMenuController controller;
 
-  public RunCustomGame(RunCustomGameController controller) {
+  public RunCustomGameMenu(RunCustomGameMenuController controller) {
     this.controller = controller;
   }
 
