@@ -14,6 +14,10 @@ import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.FractalDisplay;
 
+/**
+ *
+ */
+
 public class FractalDisplayController {
 
   private ChaosGame game;
