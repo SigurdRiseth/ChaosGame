@@ -4,37 +4,59 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <!-- Group ID, Artifact ID, and Version for the ChaosGame application-->
+
   <groupId>no.ntnu.idatg2003</groupId>
   <artifactId>chaosgame</artifactId>
   <version>1.0-SNAPSHOT</version>
 
+  <!-- Properties required for the project -->
   <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>21</maven.compiler.source> <!-- Set Java source compatibility -->
+    <maven.compiler.target>21</maven.compiler.target> <!-- Set Java target compatibility -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- Set encoding for source files -->
   </properties>
+
+  <!-- Dependencies required for the project: JUnit-Jupiter and JavaFX-Controls -->
   <dependencies>
     <dependency>
+      <!-- JUnit-Jupiter to test code -->
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>5.10.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- JavaFX-Controls for GUI elements-->
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>21.0.1</version>
     </dependency>
+    <!-- Log4j2 API for logging implementation -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.17.1</version>
+    </dependency>
+    <!-- Log4j2 Core for logging implementation -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.17.1</version>
+    </dependency>
   </dependencies>
 
+  <!-- Required plugins: Maven-Compiler, JavaFX-Maven, Maven-Surefire, and Maven-Javadoc -->
   <build>
     <plugins>
+      <!-- Maven-Compiler to compile the code -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.12.1</version>
       </plugin>
       <plugin>
+        <!-- JavaFX-Maven to run the JavaFX application -->
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
@@ -42,11 +64,13 @@
           <mainClass>no.ntnu.idatg2003.ChaosGameAppLauncher</mainClass>
         </configuration>
       </plugin>
+      <!-- Maven-Surefire to run the tests -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.3</version>
       </plugin>
+      <!-- Maven-Javadoc to generate the Javadoc -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>

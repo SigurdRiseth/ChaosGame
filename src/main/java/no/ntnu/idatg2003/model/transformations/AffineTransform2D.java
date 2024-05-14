@@ -1,7 +1,7 @@
 package no.ntnu.idatg2003.model.transformations;
 
-import no.ntnu.idatg2003.model.math_datatypes.Matrix2x2;
-import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
+import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 
 /**
  * Class to represent the Affine transformation x → Ax+b
@@ -37,6 +37,25 @@ public class AffineTransform2D implements Transform2D {
   public Vector2D transform(Vector2D point) {
     return matrix.multiply(point).add(vector);
   }
+
+  /**
+   * Method to get the matrix of the transformation.
+   *
+   * @return the matrix of the transformation
+   */
+  public Matrix2x2 getMatrix() {
+    return matrix;
+  }
+
+  /**
+   * Method to get the vector of the transformation.
+   *
+   * @return the vector of the transformation
+   */
+  public Vector2D getVector() {
+    return vector;
+  }
+
 
   /**
    * Method to get the transformation as a string.

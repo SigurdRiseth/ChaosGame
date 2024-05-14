@@ -1,7 +1,7 @@
 package no.ntnu.idatg2003.model.transformations;
 
-import no.ntnu.idatg2003.model.math_datatypes.Complex;
-import no.ntnu.idatg2003.model.math_datatypes.Vector2D;
+import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 
 /**
  * Class to represent the Julia transformation.
@@ -50,6 +50,19 @@ public class JuliaTransform implements Transform2D { //TODO: Gjøre denne klasse
             point.getX0() - complexConstant.getX0(), point.getX1() - complexConstant.getX1());
     complexPoint = complexPoint.sqrt();
     return new Vector2D(sign * complexPoint.getX0(), sign * complexPoint.getX1());
+  }
+
+  /**
+   * Method to get the complex constant.
+   *
+   * @return the complex constant
+   */
+  public Complex getComplexConstant() {
+    return complexConstant;
+  }
+
+  public int getSign() {
+    return sign;
   }
 
   /**
