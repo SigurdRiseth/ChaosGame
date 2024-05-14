@@ -3,8 +3,6 @@ package no.ntnu.idatg2003.view;
 import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
 import no.ntnu.idatg2003.utility.LoggerUtil;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -85,7 +83,6 @@ public class ChaosGameApp extends Application {
   public void showPresetsGameScene(String type) {
     fractalDisplayController.createGame(type);
     this.mainScene = fractalDisplayController.getScene();
-    primaryStage.setMinWidth(1600);
     primaryStage.setScene(this.mainScene);
   }
 

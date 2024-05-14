@@ -31,7 +31,6 @@ public class FractalDisplayController {
 
   public ObservableList<Transform2D> getTransformations() {
     return transformations;
-    this.view = new FractalDisplay(this);
   }
 
   /*private void initializeTransformations() {
@@ -112,8 +111,6 @@ public class FractalDisplayController {
     app.showRunGameScene();
   }
 
-
-  @Override
   public void updateProgress(int progress) {
     javafx.application.Platform.runLater(() -> view.updateProgressBar(progress));
   }

@@ -310,9 +310,9 @@ public class FractalDisplay implements ChaosGameObserver {
    */
   @Override
   public void update() {
-    LoggerUtil.logInfo("Updating fractal display");
     updateCanvas();
   }
+
   public void updateProgressBar(int progress) {
     progressBar.setProgress(progress / 100.0);
   }

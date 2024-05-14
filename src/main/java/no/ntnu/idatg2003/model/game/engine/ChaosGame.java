@@ -61,7 +61,6 @@ public class ChaosGame implements ChaosGameSubject {
         }
       }
     } catch (Exception e) {
-      //System.err.println("Error: " + e.getMessage());
       LoggerUtil.logError("Error: ",e);
     }
     finally {
@@ -72,7 +71,7 @@ public class ChaosGame implements ChaosGameSubject {
 
   private void notifyProgress(int progress) {
     for (ChaosGameObserver observer : observers) {
-      observer.updateProgress(progress);
+      //observer.updateProgress(progress);
     }
   }
 
