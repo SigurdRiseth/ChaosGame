@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -199,11 +200,21 @@ public class CreateCustomGame {
     inputField.setPromptText("Insert name");
     Button saveButton = new Button(saveText);
     HBox juliaBox = new HBox(10);
-    saveButton.setOnAction(e -> saveAction.accept(inputField.getText())); 
+    saveButton.setOnAction(e -> {
+      saveAction.accept(inputField.getText());
+    });
 
     juliaBox.getChildren().addAll(inputField, saveButton);
     juliaBox.setAlignment(javafx.geometry.Pos.CENTER);
     return juliaBox;
+  }
+
+  public void showSaveSuccess() {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Transformation Saved");
+    alert.setHeaderText(null);
+    alert.setContentText("The transformation has been saved successfully.");
+    alert.showAndWait();
   }
 
   /**
@@ -376,4 +387,11 @@ public class CreateCustomGame {
     return Double.parseDouble(textField.getText());
   }
 
+  public void showInputError() {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Input Error");
+    alert.setHeaderText(null);
+    alert.setContentText("Please enter valid numbers in the input fields.");
+    alert.showAndWait();
+  }
 }

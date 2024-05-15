@@ -10,3 +10,110 @@
 2024-05-14 19:15:54 INFO Transform written to file
 2024-05-14 19:15:54 INFO Transform written to file
 2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:21:40 INFO Lower Left written to file
+2024-05-14 19:21:40 INFO Upper Right written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Lower Left written to file
+2024-05-14 19:21:40 INFO Upper Right written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:54 INFO Starting Chaos Game application
+2024-05-14 20:07:42 INFO Starting Chaos Game application
+2024-05-14 20:07:52 INFO Showing custom games scene
+2024-05-14 20:07:53 INFO Running custom game: Wiki_Julia.csv
+2024-05-14 20:09:20 INFO Showing custom games scene
+2024-05-14 20:09:23 INFO Running custom game: Dragon.csv
+2024-05-14 20:10:38 INFO Showing custom games scene
+2024-05-14 20:44:54 INFO Starting Chaos Game application
+2024-05-14 20:48:14 INFO Saving Julia set to file: src/main/user.files/Julia.csv
+2024-05-14 20:48:14 INFO Lower Left written to file
+2024-05-14 20:48:14 INFO Upper Right written to file
+2024-05-14 20:48:14 INFO Transform written to file
+2024-05-14 20:48:14 INFO Julia set saved
+2024-05-14 20:48:33 INFO Showing custom games scene
+2024-05-14 20:48:44 INFO Running custom game: Julia.csv
+2024-05-14 20:50:20 INFO Showing custom games scene
+2024-05-14 20:52:35 INFO Showing custom games scene
+2024-05-14 20:53:05 INFO Showing custom games scene
+2024-05-14 20:53:06 INFO Running custom game: Wiki_Julia.csv
+2024-05-14 20:58:11 INFO Starting Chaos Game application
+2024-05-14 20:58:46 INFO Showing custom games scene
+2024-05-14 20:58:48 INFO Running custom game: Julia.csv
+2024-05-14 21:03:16 INFO Starting Chaos Game application
+2024-05-14 21:03:25 INFO Saving Julia set to file: src/main/user.files/1.csv
+2024-05-14 21:03:25 INFO Lower Left written to file
+2024-05-14 21:03:25 INFO Upper Right written to file
+2024-05-14 21:03:25 INFO Transform written to file
+2024-05-14 21:03:25 INFO Julia set saved
+2024-05-14 21:03:35 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-14 21:03:36 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-14 21:06:28 INFO Starting Chaos Game application
+2024-05-14 21:06:32 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:32 ERROR Failed to read input values for Julia set.
+2024-05-14 21:06:40 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:40 ERROR Failed to read input values for Julia set.
+2024-05-14 21:06:41 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:41 ERROR Failed to read input values for Julia set.
+2024-05-14 21:06:50 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:50 ERROR Failed to read input values for Julia set.
+2024-05-14 21:07:09 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:07:09 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:36 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:36 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:38 INFO Lower Left written to file
+2024-05-14 21:47:38 INFO Upper Right written to file
+2024-05-14 21:47:39 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:39 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:40 INFO Lower Left written to file
+2024-05-14 21:47:40 INFO Upper Right written to file
+2024-05-14 21:47:40 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:40 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:44 INFO Lower Left written to file
+2024-05-14 21:47:44 INFO Upper Right written to file
+2024-05-14 21:47:46 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:46 INFO Lower Left written to file
+2024-05-14 21:47:46 INFO Upper Right written to file
+2024-05-14 21:47:46 INFO Transform written to file
+2024-05-14 21:47:46 INFO Julia set saved
+2024-05-14 21:48:31 INFO Starting Chaos Game application
+2024-05-14 21:48:36 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:48:36 ERROR Failed to read input values for Julia set.
+2024-05-15 11:38:40 INFO Starting Chaos Game application
+2024-05-15 11:39:43 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-15 11:39:43 ERROR Failed to read input values for Julia set.
+2024-05-15 11:39:53 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:39:55 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:40:01 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:43:52 INFO Starting Chaos Game application
+2024-05-15 11:44:04 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:44:04 ERROR Failed to read input values for affine transformation.
+2024-05-15 11:44:08 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-15 11:44:08 ERROR Failed to read input values for Julia set.
+2024-05-15 13:00:31 INFO Starting Chaos Game application
+2024-05-15 13:00:34 ERROR Empty filename encoutered when saving Julia set.
+2024-05-15 13:01:05 INFO Starting Chaos Game application
+2024-05-15 13:01:51 ERROR Empty filename encoutered when saving Julia set.
+2024-05-15 13:03:55 INFO Starting Chaos Game application
+2024-05-15 13:03:59 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:01 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:24 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 13:04:27 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:34 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:42 INFO Saving Julia set to file: src/main/user.files/oasda.csv
+2024-05-15 13:04:42 INFO Lower Left written to file
+2024-05-15 13:04:42 INFO Upper Right written to file
+2024-05-15 13:04:42 INFO Transform written to file
+2024-05-15 13:04:42 INFO Julia set saved
+2024-05-15 13:05:22 INFO Starting Chaos Game application
+2024-05-15 13:05:28 INFO Saving Julia set to file: src/main/user.files/111111.csv
+2024-05-15 13:05:29 ERROR Failed to read input values for Julia set.
+2024-05-15 13:05:30 INFO Lower Left written to file
+2024-05-15 13:05:30 INFO Upper Right written to file
+2024-05-15 13:05:32 INFO Saving Julia set to file: src/main/user.files/111111.csv
+2024-05-15 13:05:32 INFO Lower Left written to file
+2024-05-15 13:05:32 INFO Upper Right written to file
+2024-05-15 13:05:32 INFO Transform written to file
+2024-05-15 13:05:33 INFO Julia set saved
