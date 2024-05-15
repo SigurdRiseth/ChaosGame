@@ -18,7 +18,7 @@ import no.ntnu.idatg2003.view.FractalDisplay;
  *
  */
 
-public class FractalDisplayController {
+public class FractalDisplayController implements ControllerInterface {
 
   private ChaosGame game;
   private ChaosGameApp app;
@@ -94,6 +94,7 @@ public class FractalDisplayController {
    *
    * @return The scene of the view.
    */
+  @Override
   public Scene getScene() {
     return view.getScene();
   }
