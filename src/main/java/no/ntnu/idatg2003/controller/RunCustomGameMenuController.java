@@ -15,7 +15,7 @@ import no.ntnu.idatg2003.view.RunCustomGameMenu;
  * @author Sigurd Riseth
  */
 
-public class RunCustomGameMenuController {
+public class RunCustomGameMenuController implements ControllerInterface {
 
   private final ChaosGameApp app;
   private final RunCustomGameMenu runCustomGameMenuView;
@@ -30,6 +30,7 @@ public class RunCustomGameMenuController {
     app.showRunGameScene();
   }
 
+  @Override
   public Scene getScene() {
     return runCustomGameMenuView.getScene();
   }

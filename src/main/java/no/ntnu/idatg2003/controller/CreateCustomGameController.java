@@ -27,7 +27,7 @@ import no.ntnu.idatg2003.view.CreateCustomGame;
  * @see CreateCustomGame
  * @see ChaosGameApp
  */
-public class CreateCustomGameController {
+public class CreateCustomGameController implements ControllerInterface{
   private final ChaosGameApp app;
   private final CreateCustomGame createCustomGameView;
 
@@ -46,6 +46,7 @@ public class CreateCustomGameController {
    *
    * @return The scene for the view.
    */
+  @Override
   public Scene getScene() {
     return createCustomGameView.getScene();
   }

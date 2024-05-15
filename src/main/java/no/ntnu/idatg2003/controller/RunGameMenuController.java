@@ -14,7 +14,7 @@ import no.ntnu.idatg2003.view.RunGameMenu;
  * @author Sigurd Riseth
  */
 
-public class RunGameMenuController {
+public class RunGameMenuController implements ControllerInterface{
 
   private RunGameMenu view;
   private ChaosGameApp app;
@@ -24,6 +24,7 @@ public class RunGameMenuController {
     this.view = new RunGameMenu(this);
   }
 
+  @Override
   public Scene getScene(){
     return view.getScene();
   }

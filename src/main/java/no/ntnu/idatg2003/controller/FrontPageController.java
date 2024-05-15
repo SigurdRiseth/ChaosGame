@@ -15,7 +15,7 @@ import no.ntnu.idatg2003.view.FrontPage;
  * @author Sigurd Riseth
  */
 
-public class FrontPageController {
+public class FrontPageController implements ControllerInterface {
 
   private FrontPage frontPage;
   private ChaosGameApp app;
@@ -38,6 +38,7 @@ public class FrontPageController {
    *
    * @return The scene for the view.
    */
+  @Override
   public Scene getScene(){
     return frontPage.getScene();
   }
