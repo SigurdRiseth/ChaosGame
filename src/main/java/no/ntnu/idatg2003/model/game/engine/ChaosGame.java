@@ -69,6 +69,7 @@ public class ChaosGame implements ChaosGameSubject {
         canvas.putPixel(currentPoint);
 
         int newProgress = (int) ((i + 1) * 100.0 / steps);
+
         if (newProgress > progress) {
           progress = newProgress;
           notifyProgress(progress);
@@ -85,7 +86,7 @@ public class ChaosGame implements ChaosGameSubject {
 
   private void notifyProgress(int progress) {
     for (ChaosGameObserver observer : observers) {
-      //observer.updateProgress(progress);
+      observer.updateProgress(progress);
     }
   }
 
