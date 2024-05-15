@@ -104,7 +104,7 @@ public class FractalDisplayController {
    * @param iterations The number of iterations to run the game for.
    */
   public void runGame(int iterations) {
-    view.clearCanvas();
+
     game.runSteps(iterations);
   }
 
