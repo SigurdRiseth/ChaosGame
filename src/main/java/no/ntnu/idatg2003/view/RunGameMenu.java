@@ -25,7 +25,7 @@ public class RunGameMenu {
 
   public RunGameMenu(RunGameMenuController controller) {
     this.controller = controller;
-    this.scene = new Scene(createContent(), 800, 600);
+    this.scene = new Scene(createContent(),800,600);
   }
 
   public Scene getScene() {

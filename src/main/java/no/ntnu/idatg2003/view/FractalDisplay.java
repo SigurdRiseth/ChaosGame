@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.view;
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -73,7 +75,7 @@ public class FractalDisplay implements ChaosGameObserver {
   public Scene getScene() {
     BorderPane content = createContent();
     content.setPadding(new Insets(15, 20, 15, 20));
-    return new Scene(content, 1600, 900);
+    return new Scene(content, 1400, 900);
   }
 
   /**
@@ -116,15 +118,24 @@ public class FractalDisplay implements ChaosGameObserver {
     VBox content = new VBox(10);
     Text iterationsText = new Text("Iterations: ");
     TextField iterationsField = new TextField();
+    iterationsField.setMaxSize(100,10);
 
     Button runButton = new Button("Run");
     Label infoLabel = new Label("Values for this transformation:");
+    //Checkmark label
+    Label check = new Label("✓");
+    check.setTextFill(Color.GREEN);
+    check.setVisible(false);
+    HBox progressBox = new HBox(progressBar, check);
+    progressBar.setProgress(0);
     runButton.setOnAction(e -> {
+      progressBar.setProgress(0);
       int iterationsValue = Integer.parseInt(iterationsField.getText());
       controller.runGame(iterationsValue);
+      check.setVisible(true);
     });
     content.getChildren().addAll(backButton, iterationsText, iterationsField,
-        progressBar, runButton, infoLabel, juliaDetailsBox, transformTable);
+        progressBox, runButton, infoLabel, juliaDetailsBox, transformTable);
     content.setPadding(new Insets(10));
     return content;
   }
@@ -297,12 +308,24 @@ public class FractalDisplay implements ChaosGameObserver {
 
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
-        int pixelValue = canvasArray[y][x];
-        Color color = (pixelValue == 1) ? Color.BLACK : Color.WHITE;
+        //Value = canvasArray[y][x];
+        Color color = calulateColor(canvasArray[y][x]);
         gc.setFill(color);
         gc.fillRect(x, y, 1, 1);
       }
     }
+  }
+
+  private Color calulateColor(int hits) {
+    int maxHits = 100;
+    if (hits == 0) return Color.WHITE;
+
+    double normalizedHits = Math.min(hits / (double) maxHits, 1.0);
+
+    double red = normalizedHits;  // Increases with more hits
+    double blue = 1 - normalizedHits;
+
+    return Color.color(red, 0, blue); // Green is left out.
   }
 
   /**
@@ -312,6 +335,14 @@ public class FractalDisplay implements ChaosGameObserver {
   public void update() {
     updateCanvas();
   }
+
+  @Override
+  public void updateProgress(int progress) {
+    Platform.runLater(() -> {
+      progressBar.setProgress(progress / 100.0);
+    });
+  }
+
 
   public void updateProgressBar(int progress) {
     progressBar.setProgress(progress / 100.0);
