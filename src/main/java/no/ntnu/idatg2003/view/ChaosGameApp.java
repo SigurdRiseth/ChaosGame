@@ -3,6 +3,7 @@ package no.ntnu.idatg2003.view;
 import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -114,6 +115,13 @@ public class ChaosGameApp extends Application {
   public void runCustomGame(String file) {
     LoggerUtil.logInfo("Running custom game: " + file);
     fractalDisplayController.createCustomGame(file);
+    this.mainScene = fractalDisplayController.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
+
+  public void runCustomGame(ChaosGameDescription description) {
+    LoggerUtil.logInfo("Running custom game");
+    fractalDisplayController.createCustomGame(description);
     this.mainScene = fractalDisplayController.getScene();
     primaryStage.setScene(this.mainScene);
   }

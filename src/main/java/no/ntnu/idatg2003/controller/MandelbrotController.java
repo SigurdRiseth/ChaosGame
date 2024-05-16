@@ -2,7 +2,11 @@ package no.ntnu.idatg2003.controller;
 
 import javafx.scene.Scene;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.Mandelbrot;
+import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.utility.LoggerUtil;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.MandelbrotView;
 
@@ -15,7 +19,7 @@ public class MandelbrotController implements ControllerInterface {
   public MandelbrotController(ChaosGameApp app) {
     this.app = app;
     this.view = new MandelbrotView(this);
-    this.mandelbrot = new Mandelbrot(600, 600);
+    this.mandelbrot = new Mandelbrot(1000, 1000);
   }
 
   public Scene getScene() {
@@ -24,6 +28,7 @@ public class MandelbrotController implements ControllerInterface {
 
   public void createMandelbrotGame() {
     mandelbrot = new Mandelbrot(1000, 1000);
+    LoggerUtil.logInfo("Mandelbrot game created. Starting to draw Mandelbrot set.");
     mandelbrot.drawMandelbrot();
   }
 
@@ -33,5 +38,9 @@ public class MandelbrotController implements ControllerInterface {
 
   public ChaosCanvas getCanvas() {
     return mandelbrot.getCanvas();
+  }
+
+  public void drawJuliaSet(double Re, double Im) {
+    app.runCustomGame(ChaosGameDescriptionFactory.createJuliaSet(new Complex(Re, Im)));
   }
 }

@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -303,20 +305,23 @@ public class FractalDisplay implements ChaosGameObserver {
     int width = canvasArray[0].length;
     int height = canvasArray.length;
 
-    GraphicsContext gc = canvas.getGraphicsContext2D();
-    gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight()); // Clear existing content
+    WritableImage image = new WritableImage(width, height);
+    PixelWriter pixelWriter = image.getPixelWriter();
 
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
-        //Value = canvasArray[y][x];
-        Color color = calulateColor(canvasArray[y][x]);
-        gc.setFill(color);
-        gc.fillRect(x, y, 1, 1);
+        int pixelValue = canvasArray[y][x];
+        Color color = calculateColor(pixelValue);
+        pixelWriter.setColor(x, y, color);
       }
     }
+
+    GraphicsContext gc = canvas.getGraphicsContext2D();
+    gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight()); // Clear existing content
+    gc.drawImage(image, 0, 0);
   }
 
-  private Color calulateColor(int hits) {
+  private Color calculateColor(int hits) {
     int maxHits = 100;
     if (hits == 0) return Color.WHITE;
 

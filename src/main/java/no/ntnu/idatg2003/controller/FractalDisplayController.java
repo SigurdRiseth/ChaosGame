@@ -130,4 +130,9 @@ public class FractalDisplayController implements ControllerInterface {
     observeGame();
   }
 
+  public void createCustomGame(ChaosGameDescription description) {
+    game = new ChaosGame(description, 800, 800);
+    observeGame();
+  }
+
 }
