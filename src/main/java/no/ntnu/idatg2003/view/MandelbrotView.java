@@ -12,22 +12,28 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.paint.Color;
+import javafx.scene.control.ScrollPane;
 import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
-import javafx.scene.paint.Color;
 
 public class MandelbrotView {
 
   private MandelbrotController mandelbrotController;
   private Canvas canvas;
+  private double scale = 1.0;
+  private static final double MIN_SCALE = 1.0;
+  private static final double MAX_SCALE = 5.0;
 
   public MandelbrotView(MandelbrotController mandelbrotController) {
     this.mandelbrotController = mandelbrotController;
@@ -36,15 +42,23 @@ public class MandelbrotView {
   public Scene getScene() {
     BorderPane content = createContent();
     content.setPadding(new Insets(15, 20, 15, 20));
-    return new Scene(content, 1400, 900);  }
+    return new Scene(content, 1400, 900);
+  }
 
   private BorderPane createContent() {
     BorderPane content = new BorderPane();
+
+    // Initialize the canvas and set its dimensions
     canvas = new Canvas(1000, 1000);
+    StackPane canvasContainer = new StackPane(canvas);
+
+    // Add zoom functionality
+    canvasContainer.setOnScroll(event -> handleZoom(event));
+
+    // Set the mouse click event for the canvas
     canvas.setOnMouseClicked(e -> {
       double Re = (e.getX() - 500) / 250;
       double Im = -1 * ((e.getY() - 500) / 250);
-
 
       Alert alert = new Alert(AlertType.CONFIRMATION);
       alert.setTitle("Confirmation");
@@ -57,11 +71,16 @@ public class MandelbrotView {
         mandelbrotController.drawJuliaSet(Re, Im);
       }
     });
+
     drawMandelbrot(mandelbrotController.getCanvas());
+
+    // Create the left panel with the necessary components
     VBox leftPanel = createLeftPanel();
 
+    // Set the left panel and the scroll pane containing the canvas
     content.setLeft(leftPanel);
-    content.setCenter(canvas);
+    content.setCenter(canvasContainer);
+
     return content;
   }
 
@@ -95,8 +114,32 @@ public class MandelbrotView {
     return leftPanel;
   }
 
-  public void drawMandelbrot(ChaosCanvas canvas) {
-    int[][] canvasArray = canvas.getCanvasArray();
+  private void handleZoom(ScrollEvent event) {
+    if (event.getDeltaY() == 0) {
+      return;
+    }
+
+    double scaleFactor = (event.getDeltaY() > 0) ? 1.1 : 0.9;
+    double newScale = scale * scaleFactor;
+
+    if (newScale < MIN_SCALE || newScale > MAX_SCALE) {
+      return;
+    }
+
+    scale = newScale;
+    double f = (scaleFactor - 1);
+
+    double dx = event.getX() - (canvas.getWidth() / 2);
+    double dy = event.getY() - (canvas.getHeight() / 2);
+
+    canvas.setScaleX(scale);
+    canvas.setScaleY(scale);
+    canvas.setTranslateX(canvas.getTranslateX() - f * dx);
+    canvas.setTranslateY(canvas.getTranslateY() - f * dy);
+  }
+
+  public void drawMandelbrot(ChaosCanvas chaosCanvas) {
+    int[][] canvasArray = chaosCanvas.getCanvasArray();
     int width = canvasArray[0].length;
     int height = canvasArray.length;
 
@@ -119,6 +162,4 @@ public class MandelbrotView {
     GraphicsContext gc = this.canvas.getGraphicsContext2D();
     gc.drawImage(writableImage, 0, 0);
   }
-
-
 }
