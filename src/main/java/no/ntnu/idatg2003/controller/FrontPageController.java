@@ -63,4 +63,8 @@ public class FrontPageController implements ControllerInterface {
   public void exit() {
     app.exit();
   }
+
+  public void openMandelbrotScene() {
+    app.showMandelbrotScene();
+  }
 }
