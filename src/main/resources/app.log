@@ -213,3 +213,10 @@
 2024-05-19 12:21:44 INFO Transform written to file
 2024-05-19 12:21:44 INFO Transform written to file
 2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:23:55 ERROR Failed to read the file: invalid/file/path
+2024-05-19 12:24:46 ERROR Failed to read the file: invalid/file/path
+2024-05-19 12:25:37 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 12:30:00 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 12:30:04 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 12:39:01 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 12:39:31 INFO Starting Chaos Game application
