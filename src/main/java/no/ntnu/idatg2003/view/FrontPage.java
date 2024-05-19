@@ -42,6 +42,7 @@ public class FrontPage {
 
     Button runGameButton = new Button("Run a Game");
     Button createGameButton = new Button("Create a Custom Game");
+    Button mandelbrotButton = new Button("Mandelbrot");
     Button exitButton = new Button("Exit");
 
     runGameButton.setOnAction(e -> {
@@ -52,11 +53,15 @@ public class FrontPage {
       controller.openCreateCustomGameScene();
     });
 
+    mandelbrotButton.setOnAction(e -> {
+      controller.openMandelbrotScene();
+    });
+
     exitButton.setOnAction(e -> {
       controller.exit();
     });
 
-    VBox vBox = new VBox(10, runGameButton, createGameButton, exitButton);
+    VBox vBox = new VBox(10, runGameButton, createGameButton, mandelbrotButton, exitButton);
     vBox.setAlignment(javafx.geometry.Pos.CENTER);
     content.setCenter(vBox);
     content.setStyle("-fx-background-color: #3b1d5a;");

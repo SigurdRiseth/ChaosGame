@@ -1,7 +1,0 @@
-Affine2D # Type of transform
--2, -2 # Lower left
-2, 2 # Upper right
-0.195, -0.488, 0.344, 0.443, 0, 0.443 # 1st transform
-0.462, 0.414, -0.252, 0.361, 0.856, 0.27 # 2nd transform
--0.058, -0.07, 0.453, -0.111, 0.856, 0.176 # 3rd transform
--0.035, 0.07, 0.391, 0.163, 0.28, 0.189 # 4th transform

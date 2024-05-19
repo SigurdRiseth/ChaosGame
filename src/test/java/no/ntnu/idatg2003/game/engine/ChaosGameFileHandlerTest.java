@@ -100,4 +100,29 @@ class ChaosGameFileHandlerTest {
     assertEquals(expectedDescription.getMaxCoords().getX1(), resultDescription.getMaxCoords().getX1(), "The max x1 value is not correct");
     assertEquals(expectedDescription.getTransforms().getFirst().toString(), resultDescription.getTransforms().getFirst().toString(), "The transform is not correct");
   }
+
+  /**
+   * Tests if the <code>readFromFile()</code> method returns <code>null</code> for an empty file.
+   */
+  @Test
+  void testEmptyFile() {
+    assertNull(ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/empty.csv"));
+  }
+
+  /**
+   * Tests if the <code>readFromFile()</code> method returns <code>null</code> for a file with an invalid transform type.
+   */
+  @Test
+  void testInvalidTransformType() {
+    assertNull(ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/invalidTransformType.csv"));
+  }
+
+  /**
+   * Tests if the <code>readFromFile()</code> method returns <code>null</code> for a file with invalid coordinates.
+   */
+  @Test
+  void testInvalidCoordinate() {
+    assertNull(ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/invalidCoordinate.csv"));
+  }
+
 }

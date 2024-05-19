@@ -73,6 +73,17 @@ public class ChaosCanvas {
   }
 
   /**
+   * The method places a value at a given pixel.
+   *
+   * @param x the x-coordinate of the pixel
+   * @param y the y-coordinate of the pixel
+   * @param value the color of the pixel
+   */
+  public void putPixel(int x, int y, int value) {
+    this.canvas[y][x] = value;
+  }
+
+  /**
    * The method returns the canvas array.
    *
    * @return the canvas array
