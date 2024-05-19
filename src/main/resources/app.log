@@ -160,3 +160,56 @@
 2024-05-19 12:05:11 INFO Starting Chaos Game application
 2024-05-19 12:05:17 INFO Showing custom games scene
 2024-05-19 12:05:21 INFO Running custom game: Wiki_Julia.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:15:55 ERROR Failed to create the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to create the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:16:29 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:16:42 ERROR Failed to create the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to create the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:16:54 ERROR Failed to create the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:17:50 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:17:50 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:17:50 ERROR Failed to create the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:17:50 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:21:18 INFO Lower Left written to file
+2024-05-19 12:21:18 INFO Upper Right written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Lower Left written to file
+2024-05-19 12:21:18 INFO Upper Right written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:44 INFO Lower Left written to file
+2024-05-19 12:21:44 INFO Upper Right written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Lower Left written to file
+2024-05-19 12:21:44 INFO Upper Right written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
