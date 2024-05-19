@@ -41,6 +41,7 @@ public class JuliaTransform implements Transform2D {
    * @param point the point to transform
    * @return Julia transformed Vector2D
    */
+  @Override
   public Vector2D transform(Vector2D point) {
     Complex complexPoint =
         new Complex(

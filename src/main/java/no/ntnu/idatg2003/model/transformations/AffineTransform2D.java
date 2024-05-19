@@ -34,6 +34,7 @@ public class AffineTransform2D implements Transform2D {
    * @param point the vector to transform, known as x
    * @return Affine transformed Vector2D
    */
+  @Override
   public Vector2D transform(Vector2D point) {
     return matrix.multiply(point).add(vector);
   }
