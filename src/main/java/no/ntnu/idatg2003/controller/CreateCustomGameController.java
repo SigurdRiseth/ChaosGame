@@ -154,8 +154,4 @@ public class CreateCustomGameController {
 
     return new ChaosGameDescription(min, max, transforms);
   }
-
-  public List<String> getCustomGames() {
-    throw new UnsupportedOperationException("Not implemented yet");
-  }
 }

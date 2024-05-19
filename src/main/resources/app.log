@@ -117,3 +117,46 @@
 2024-05-15 13:05:32 INFO Upper Right written to file
 2024-05-15 13:05:32 INFO Transform written to file
 2024-05-15 13:05:33 INFO Julia set saved
+2024-05-15 13:08:31 INFO Starting Chaos Game application
+2024-05-15 13:08:37 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:08:47 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 13:08:50 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 13:08:54 INFO Saving Affine transformation to file: src/main/user.files/Affine.csv
+2024-05-15 13:08:54 INFO Lower Left written to file
+2024-05-15 13:08:54 INFO Upper Right written to file
+2024-05-15 13:08:54 INFO Transform written to file
+2024-05-15 13:08:55 INFO Affine transformation saved
+2024-05-15 14:59:30 INFO Starting Chaos Game application
+2024-05-15 14:59:51 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 14:59:54 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 14:59:55 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 14:59:56 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:06:13 INFO Lower Left written to file
+2024-05-15 15:06:13 INFO Upper Right written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Lower Left written to file
+2024-05-15 15:06:13 INFO Upper Right written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:11:20 INFO Lower Left written to file
+2024-05-15 15:11:20 INFO Upper Right written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Lower Left written to file
+2024-05-15 15:11:20 INFO Upper Right written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:28 INFO Starting Chaos Game application
+2024-05-15 15:12:50 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:12:55 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:12:58 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:13:00 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:13:09 ERROR Empty filename encountered when saving affine transformation.
+2024-05-19 12:05:11 INFO Starting Chaos Game application
+2024-05-19 12:05:17 INFO Showing custom games scene
+2024-05-19 12:05:21 INFO Running custom game: Wiki_Julia.csv
