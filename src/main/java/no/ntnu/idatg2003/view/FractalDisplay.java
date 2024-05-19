@@ -37,7 +37,7 @@ import no.ntnu.idatg2003.utility.LoggerUtil;
  *    This class is responsible for displaying the game view for the preset game.
  * </p>
  */
-public class FractalDisplay implements ChaosGameObserver {
+public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTERN for å vise fraktalenes verdier
 
   private final FractalDisplayController controller;
   private Canvas canvas;

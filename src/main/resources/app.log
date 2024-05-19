@@ -1,99 +1,239 @@
-2024-05-16 20:07:02 INFO Starting Chaos Game application
-2024-05-16 20:07:04 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:07:04 INFO Mandelbrot set drawn.
-2024-05-16 20:07:51 INFO Starting Chaos Game application
-2024-05-16 20:07:52 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:07:52 INFO Mandelbrot set drawn.
-2024-05-16 20:08:17 INFO Starting Chaos Game application
-2024-05-16 20:08:18 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:08:18 INFO Mandelbrot set drawn.
-2024-05-16 20:12:09 INFO Starting Chaos Game application
-2024-05-16 20:12:10 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:12:10 INFO Mandelbrot set drawn.
-2024-05-16 20:13:28 INFO Starting Chaos Game application
-2024-05-16 20:13:32 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:13:32 INFO Mandelbrot set drawn.
-2024-05-16 20:20:48 INFO Starting Chaos Game application
-2024-05-16 20:20:50 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:20:50 INFO Mandelbrot set drawn.
-2024-05-16 20:21:00 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:21:00 INFO Mandelbrot set drawn.
-2024-05-16 20:21:11 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:21:11 INFO Mandelbrot set drawn.
-2024-05-16 20:23:11 INFO Starting Chaos Game application
-2024-05-16 20:23:13 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:23:13 INFO Mandelbrot set drawn.
-2024-05-16 20:23:55 INFO Starting Chaos Game application
-2024-05-16 20:23:57 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:23:57 INFO Mandelbrot set drawn.
-2024-05-16 20:25:29 INFO Starting Chaos Game application
-2024-05-16 20:25:31 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:25:31 INFO Mandelbrot set drawn.
-2024-05-16 20:27:59 INFO Starting Chaos Game application
-2024-05-16 20:28:00 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:28:00 INFO Mandelbrot set drawn.
-2024-05-16 20:28:02 INFO Running custom game
-2024-05-16 20:28:18 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:28:18 INFO Mandelbrot set drawn.
-2024-05-16 20:28:21 INFO Running custom game
-2024-05-16 20:28:38 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:28:38 INFO Mandelbrot set drawn.
-2024-05-16 20:28:55 INFO Running custom game
-2024-05-16 20:30:40 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:30:40 INFO Mandelbrot set drawn.
-2024-05-16 20:35:23 INFO Starting Chaos Game application
-2024-05-16 20:35:25 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:35:25 INFO Mandelbrot set drawn.
-2024-05-16 20:35:35 INFO Running custom game
-2024-05-16 20:36:02 INFO Showing custom games scene
-2024-05-16 20:36:03 INFO Running custom game: Tree_Fractal.csv
-2024-05-16 20:36:11 INFO Showing custom games scene
-2024-05-16 20:36:12 INFO Running custom game: Wiki_Julia.csv
-2024-05-16 20:36:30 INFO Showing custom games scene
-2024-05-16 20:36:32 INFO Running custom game: Dragon.csv
-2024-05-16 20:39:17 INFO Starting Chaos Game application
-2024-05-16 20:39:18 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:39:18 INFO Mandelbrot set drawn.
-2024-05-16 20:39:21 INFO Running custom game
-2024-05-16 20:39:32 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:39:32 INFO Mandelbrot set drawn.
-2024-05-16 20:39:38 INFO Running custom game
-2024-05-16 20:39:48 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:39:48 INFO Mandelbrot set drawn.
-2024-05-16 20:39:50 INFO Running custom game
-2024-05-16 20:40:01 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:40:01 INFO Mandelbrot set drawn.
-2024-05-16 20:40:02 INFO Running custom game
-2024-05-16 20:40:14 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:40:14 INFO Mandelbrot set drawn.
-2024-05-16 20:40:17 INFO Running custom game
-2024-05-16 20:40:26 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:40:26 INFO Mandelbrot set drawn.
-2024-05-16 20:40:32 INFO Running custom game
-2024-05-16 20:42:58 INFO Starting Chaos Game application
-2024-05-16 20:42:59 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:43:00 INFO Mandelbrot set drawn.
-2024-05-16 20:43:25 INFO Running custom game
-2024-05-16 20:44:47 INFO Starting Chaos Game application
-2024-05-16 20:44:48 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:44:48 INFO Mandelbrot set drawn.
-2024-05-16 20:45:50 INFO Running custom game
-2024-05-16 20:46:25 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:46:25 INFO Mandelbrot set drawn.
-2024-05-16 20:46:31 INFO Running custom game
-2024-05-16 20:48:01 INFO Starting Chaos Game application
-2024-05-16 20:48:02 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:48:02 INFO Mandelbrot set drawn.
-2024-05-16 20:48:32 INFO Running custom game
-2024-05-16 20:56:16 INFO Starting Chaos Game application
-2024-05-16 20:56:17 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:56:17 INFO Mandelbrot set drawn.
-2024-05-16 20:56:31 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:56:31 INFO Mandelbrot set drawn.
-2024-05-16 20:59:33 INFO Starting Chaos Game application
-2024-05-16 20:59:35 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 20:59:35 INFO Mandelbrot set drawn.
-2024-05-16 21:00:17 INFO Starting Chaos Game application
-2024-05-16 21:00:19 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
-2024-05-16 21:00:19 INFO Mandelbrot set drawn.
-2024-05-16 21:00:31 INFO Running custom game
+2024-05-14 19:05:44 INFO Starting Chaos Game application
+2024-05-14 19:15:00 INFO Starting Chaos Game application
+2024-05-14 19:15:54 INFO Lower Left written to file
+2024-05-14 19:15:54 INFO Upper Right written to file
+2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:15:54 INFO Lower Left written to file
+2024-05-14 19:15:54 INFO Upper Right written to file
+2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:15:54 INFO Transform written to file
+2024-05-14 19:21:40 INFO Lower Left written to file
+2024-05-14 19:21:40 INFO Upper Right written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Lower Left written to file
+2024-05-14 19:21:40 INFO Upper Right written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:40 INFO Transform written to file
+2024-05-14 19:21:54 INFO Starting Chaos Game application
+2024-05-14 20:07:42 INFO Starting Chaos Game application
+2024-05-14 20:07:52 INFO Showing custom games scene
+2024-05-14 20:07:53 INFO Running custom game: Wiki_Julia.csv
+2024-05-14 20:09:20 INFO Showing custom games scene
+2024-05-14 20:09:23 INFO Running custom game: Dragon.csv
+2024-05-14 20:10:38 INFO Showing custom games scene
+2024-05-14 20:44:54 INFO Starting Chaos Game application
+2024-05-14 20:48:14 INFO Saving Julia set to file: src/main/user.files/Julia.csv
+2024-05-14 20:48:14 INFO Lower Left written to file
+2024-05-14 20:48:14 INFO Upper Right written to file
+2024-05-14 20:48:14 INFO Transform written to file
+2024-05-14 20:48:14 INFO Julia set saved
+2024-05-14 20:48:33 INFO Showing custom games scene
+2024-05-14 20:48:44 INFO Running custom game: Julia.csv
+2024-05-14 20:50:20 INFO Showing custom games scene
+2024-05-14 20:52:35 INFO Showing custom games scene
+2024-05-14 20:53:05 INFO Showing custom games scene
+2024-05-14 20:53:06 INFO Running custom game: Wiki_Julia.csv
+2024-05-14 20:58:11 INFO Starting Chaos Game application
+2024-05-14 20:58:46 INFO Showing custom games scene
+2024-05-14 20:58:48 INFO Running custom game: Julia.csv
+2024-05-14 21:03:16 INFO Starting Chaos Game application
+2024-05-14 21:03:25 INFO Saving Julia set to file: src/main/user.files/1.csv
+2024-05-14 21:03:25 INFO Lower Left written to file
+2024-05-14 21:03:25 INFO Upper Right written to file
+2024-05-14 21:03:25 INFO Transform written to file
+2024-05-14 21:03:25 INFO Julia set saved
+2024-05-14 21:03:35 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-14 21:03:36 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-14 21:06:28 INFO Starting Chaos Game application
+2024-05-14 21:06:32 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:32 ERROR Failed to read input values for Julia set.
+2024-05-14 21:06:40 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:40 ERROR Failed to read input values for Julia set.
+2024-05-14 21:06:41 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:41 ERROR Failed to read input values for Julia set.
+2024-05-14 21:06:50 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:06:50 ERROR Failed to read input values for Julia set.
+2024-05-14 21:07:09 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:07:09 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:36 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:36 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:38 INFO Lower Left written to file
+2024-05-14 21:47:38 INFO Upper Right written to file
+2024-05-14 21:47:39 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:39 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:40 INFO Lower Left written to file
+2024-05-14 21:47:40 INFO Upper Right written to file
+2024-05-14 21:47:40 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:40 ERROR Failed to read input values for Julia set.
+2024-05-14 21:47:44 INFO Lower Left written to file
+2024-05-14 21:47:44 INFO Upper Right written to file
+2024-05-14 21:47:46 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:47:46 INFO Lower Left written to file
+2024-05-14 21:47:46 INFO Upper Right written to file
+2024-05-14 21:47:46 INFO Transform written to file
+2024-05-14 21:47:46 INFO Julia set saved
+2024-05-14 21:48:31 INFO Starting Chaos Game application
+2024-05-14 21:48:36 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-14 21:48:36 ERROR Failed to read input values for Julia set.
+2024-05-15 11:38:40 INFO Starting Chaos Game application
+2024-05-15 11:39:43 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-15 11:39:43 ERROR Failed to read input values for Julia set.
+2024-05-15 11:39:53 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:39:55 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:40:01 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:43:52 INFO Starting Chaos Game application
+2024-05-15 11:44:04 INFO Saving Affine transformation to file: src/main/user.files/.csv
+2024-05-15 11:44:04 ERROR Failed to read input values for affine transformation.
+2024-05-15 11:44:08 INFO Saving Julia set to file: src/main/user.files/.csv
+2024-05-15 11:44:08 ERROR Failed to read input values for Julia set.
+2024-05-15 13:00:31 INFO Starting Chaos Game application
+2024-05-15 13:00:34 ERROR Empty filename encoutered when saving Julia set.
+2024-05-15 13:01:05 INFO Starting Chaos Game application
+2024-05-15 13:01:51 ERROR Empty filename encoutered when saving Julia set.
+2024-05-15 13:03:55 INFO Starting Chaos Game application
+2024-05-15 13:03:59 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:01 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:24 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 13:04:27 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:34 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:04:42 INFO Saving Julia set to file: src/main/user.files/oasda.csv
+2024-05-15 13:04:42 INFO Lower Left written to file
+2024-05-15 13:04:42 INFO Upper Right written to file
+2024-05-15 13:04:42 INFO Transform written to file
+2024-05-15 13:04:42 INFO Julia set saved
+2024-05-15 13:05:22 INFO Starting Chaos Game application
+2024-05-15 13:05:28 INFO Saving Julia set to file: src/main/user.files/111111.csv
+2024-05-15 13:05:29 ERROR Failed to read input values for Julia set.
+2024-05-15 13:05:30 INFO Lower Left written to file
+2024-05-15 13:05:30 INFO Upper Right written to file
+2024-05-15 13:05:32 INFO Saving Julia set to file: src/main/user.files/111111.csv
+2024-05-15 13:05:32 INFO Lower Left written to file
+2024-05-15 13:05:32 INFO Upper Right written to file
+2024-05-15 13:05:32 INFO Transform written to file
+2024-05-15 13:05:33 INFO Julia set saved
+2024-05-15 13:08:31 INFO Starting Chaos Game application
+2024-05-15 13:08:37 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 13:08:47 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 13:08:50 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 13:08:54 INFO Saving Affine transformation to file: src/main/user.files/Affine.csv
+2024-05-15 13:08:54 INFO Lower Left written to file
+2024-05-15 13:08:54 INFO Upper Right written to file
+2024-05-15 13:08:54 INFO Transform written to file
+2024-05-15 13:08:55 INFO Affine transformation saved
+2024-05-15 14:59:30 INFO Starting Chaos Game application
+2024-05-15 14:59:51 ERROR Empty filename encountered when saving affine transformation.
+2024-05-15 14:59:54 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 14:59:55 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 14:59:56 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:06:13 INFO Lower Left written to file
+2024-05-15 15:06:13 INFO Upper Right written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Lower Left written to file
+2024-05-15 15:06:13 INFO Upper Right written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:06:13 INFO Transform written to file
+2024-05-15 15:11:20 INFO Lower Left written to file
+2024-05-15 15:11:20 INFO Upper Right written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Lower Left written to file
+2024-05-15 15:11:20 INFO Upper Right written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:20 INFO Transform written to file
+2024-05-15 15:11:28 INFO Starting Chaos Game application
+2024-05-15 15:12:50 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:12:55 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:12:58 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:13:00 ERROR Empty filename encountered when saving Julia set.
+2024-05-15 15:13:09 ERROR Empty filename encountered when saving affine transformation.
+2024-05-19 12:05:11 INFO Starting Chaos Game application
+2024-05-19 12:05:17 INFO Showing custom games scene
+2024-05-19 12:05:21 INFO Running custom game: Wiki_Julia.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:15:55 ERROR Failed to create the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:15:55 ERROR Failed to create the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:15:55 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:16:29 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:16:42 ERROR Failed to create the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:42 ERROR Failed to create the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:16:42 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:16:54 ERROR Failed to create the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/JuliaTest.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:16:54 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:17:50 ERROR Failed to read the file: src/test/resources/csv/preset.games/Julia.csv
+2024-05-19 12:17:50 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fern.csv
+2024-05-19 12:17:50 ERROR Failed to create the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:17:50 ERROR Failed to read the file: src/test/resources/csv/preset.games/barnsley-fernTest.csv
+2024-05-19 12:21:18 INFO Lower Left written to file
+2024-05-19 12:21:18 INFO Upper Right written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Lower Left written to file
+2024-05-19 12:21:18 INFO Upper Right written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:18 INFO Transform written to file
+2024-05-19 12:21:44 INFO Lower Left written to file
+2024-05-19 12:21:44 INFO Upper Right written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Lower Left written to file
+2024-05-19 12:21:44 INFO Upper Right written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:21:44 INFO Transform written to file
+2024-05-19 12:23:55 ERROR Failed to read the file: invalid/file/path
+2024-05-19 12:24:46 ERROR Failed to read the file: invalid/file/path
+2024-05-19 12:25:37 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 12:30:00 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 12:30:04 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 12:39:01 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 12:39:31 INFO Starting Chaos Game application
+2024-05-19 13:13:03 INFO Starting Chaos Game application
+2024-05-19 13:33:49 INFO Starting Chaos Game application
+2024-05-19 13:44:58 INFO Starting Chaos Game application
+2024-05-19 13:45:16 INFO Saving Affine transformation to file: src/main/user.files/AffineTest.csv
+2024-05-19 13:45:16 INFO Lower Left written to file
+2024-05-19 13:45:16 INFO Upper Right written to file
+2024-05-19 13:45:16 INFO Transform written to file
+2024-05-19 13:45:16 INFO Transform written to file
+2024-05-19 13:45:18 INFO Affine transformation saved
+2024-05-19 13:49:41 INFO Starting Chaos Game application
+2024-05-19 13:50:22 INFO Starting Chaos Game application
+2024-05-19 13:50:39 INFO Saving Julia set to file: src/main/user.files/JuliaTest.csv
+2024-05-19 13:50:39 INFO Lower Left written to file
+2024-05-19 13:50:39 INFO Upper Right written to file
+2024-05-19 13:50:39 INFO Transform written to file
+2024-05-19 13:50:40 INFO Julia set saved
+2024-05-19 14:04:26 INFO Starting Chaos Game application
