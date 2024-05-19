@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.utility;
+package no.ntnu.idatg2003.utility.logging;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

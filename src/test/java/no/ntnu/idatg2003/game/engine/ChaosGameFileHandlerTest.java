@@ -48,7 +48,7 @@ class ChaosGameFileHandlerTest {
   })
   void readFromFileAffineTest(int transformIndex, double a00, double a01, double a10, double a11, double b0, double b1) {
     ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fern.csv");
-    String expected = a00 + ", " + a01 + ", " + a10 + ", " + a11 + ", " + b0 + "," + b1;
+    String expected = a00 + ", " + a01 + ", " + a10 + ", " + a11 + ", " + b0 + ", " + b1;
     List<Transform2D> transforms = description.getTransforms();
 
     assertEquals(4, transforms.size(), "The number of transforms is not correct");

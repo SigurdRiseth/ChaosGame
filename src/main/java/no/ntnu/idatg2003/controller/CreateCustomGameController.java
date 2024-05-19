@@ -1,7 +1,7 @@
 package no.ntnu.idatg2003.controller;
 
-import static no.ntnu.idatg2003.utility.TransformType.AFFINE2D;
-import static no.ntnu.idatg2003.utility.TransformType.JULIA;
+import static no.ntnu.idatg2003.utility.enums.TransformType.AFFINE2D;
+import static no.ntnu.idatg2003.utility.enums.TransformType.JULIA;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
-import no.ntnu.idatg2003.utility.TransformType;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.CreateCustomGame;
 
@@ -84,9 +84,11 @@ public class CreateCustomGameController implements ControllerInterface{
 
       ChaosGameDescription chaosGameDescription = createJuliaDescription();
 
-      ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
-      view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
-      LoggerUtil.logInfo("Julia set saved");
+      if (chaosGameDescription != null) {
+        ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
+        view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
+        LoggerUtil.logInfo("Julia set saved");
+      }
     }
   }
 
@@ -96,19 +98,17 @@ public class CreateCustomGameController implements ControllerInterface{
    * @return The ChaosGameDescription for the affine transformation.
    */
   private ChaosGameDescription createJuliaDescription() {
-    Vector2D min = null;
-    Vector2D max = null;
-    Complex complexNumber = null;
     try {
-      min = getCoords(JULIA, 1);
-      max = getCoords(JULIA, 5);
-      complexNumber = getComplexNumber();
+      Vector2D min = getCoords(JULIA, 1);
+      Vector2D max = getCoords(JULIA, 5);
+      Complex complexNumber = getComplexNumber();
+      return new ChaosGameDescription(min, max, List.of(new JuliaTransform(complexNumber, 1)));
     } catch (NumberFormatException e) {
       LoggerUtil.logError("Failed to read input values for Julia set.");
       view.showInputError("Failed to read input values for Julia set. "
           + "Please check the input values and try again.");
+      return null;
     }
-    return new ChaosGameDescription(min, max, List.of(new JuliaTransform(complexNumber, 1)));
   }
 
   private Complex getComplexNumber() {

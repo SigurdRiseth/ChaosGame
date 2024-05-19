@@ -4,13 +4,14 @@ import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
+import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 
 /**
  * The main application class for the Chaos Game application.
@@ -84,7 +85,7 @@ public class ChaosGameApp extends Application {
    *
    * @param type the type of the game to be created
    */
-  public void showPresetsGameScene(String type) {
+  public void showPresetsGameScene(PresetTransforms type) {
     fractalDisplayController.createGame(type);
     this.mainScene = fractalDisplayController.getScene();
     primaryStage.setScene(this.mainScene);
@@ -119,6 +120,11 @@ public class ChaosGameApp extends Application {
     primaryStage.setScene(this.mainScene);
   }
 
+  /**
+   * Runs a custom game with the given description.
+   *
+   * @param description the description of the game to run
+   */
   public void runCustomGame(ChaosGameDescription description) {
     LoggerUtil.logInfo("Running custom game");
     fractalDisplayController.createCustomGame(description);
@@ -133,9 +139,12 @@ public class ChaosGameApp extends Application {
     primaryStage.close();
   }
 
+  /**
+   * Shows the Mandelbrot scene of the application.
+   */
   public void showMandelbrotScene() {
-    mandelbrotController.createMandelbrotGame();
     this.mainScene = mandelbrotController.getScene();
+    mandelbrotController.createMandelbrotGame();
     primaryStage.setScene(this.mainScene);
   }
 }

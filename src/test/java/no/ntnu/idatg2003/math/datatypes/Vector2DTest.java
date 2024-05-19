@@ -2,6 +2,7 @@ package no.ntnu.idatg2003.math.datatypes;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Locale;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -93,6 +94,20 @@ class Vector2DTest {
     Vector2D result = v1.subtract(v2);
     assertEquals(expected.getX0(), result.getX0(), "Expected x0 to be " + expected.getX0() + ", but was " + result.getX0());
     assertEquals(expected.getX1(), result.getX1(), "Expected x1 to be " + expected.getX1() + ", but was " + result.getX1());
+  }
+
+  @ParameterizedTest(name = "length of Vector2D({0}, {1}) = {2}")
+  @CsvSource({
+      "1, 2, 2.2360679775",
+      "3, 4, 5",
+      "0, 0, 0",
+      "-1, -1, 1.4142135624",
+      "-1, 1, 1.4142135624"
+  })
+  void lengthParameterizedTest(double x0, double x1, double expectedLength) {
+    Vector2D v = new Vector2D(x0, x1);
+    double result = v.getLength();
+    assertEquals(expectedLength, result, 1e-10, "Expected length to be " + expectedLength + ", but was " + result);
   }
 
 }

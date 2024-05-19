@@ -1,7 +1,6 @@
 package no.ntnu.idatg2003.model.game.engine;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,7 +9,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
@@ -18,8 +16,8 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
-import no.ntnu.idatg2003.utility.TransformType;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 import no.ntnu.idatg2003.utility.exceptions.CustomGameFileException;
 
 /**

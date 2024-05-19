@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 
 /**
  * This class represents a Chaos Game. It contains a canvas, a description of the game, a random
@@ -72,7 +72,7 @@ public class ChaosGame implements ChaosGameSubject {
 
         if (newProgress > progress) {
           progress = newProgress;
-          notifyProgress(progress);
+          //notifyProgress(progress);
         }
       }
     } catch (Exception e) {
@@ -80,13 +80,6 @@ public class ChaosGame implements ChaosGameSubject {
     }
     finally {
       notifyObservers();
-    }
-  }
-
-
-  private void notifyProgress(int progress) {
-    for (ChaosGameObserver observer : observers) {
-      observer.updateProgress(progress);
     }
   }
 

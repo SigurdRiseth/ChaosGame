@@ -1,6 +1,7 @@
 package no.ntnu.idatg2003.controller;
 
 import javafx.scene.Scene;
+import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.RunGameMenu;
 
@@ -29,7 +30,7 @@ public class RunGameMenuController implements ControllerInterface{
     return view.getScene();
   }
 
-  public void openPresetGameScene(String type) {
+  public void openPresetGameScene(PresetTransforms type) {
     app.showPresetsGameScene(type);
   }
 

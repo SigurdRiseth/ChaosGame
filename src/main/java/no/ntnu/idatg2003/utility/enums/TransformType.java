@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.utility;
+package no.ntnu.idatg2003.utility.enums;
 
 /**
  * Enum for the different types of transformations that can be applied to the points in the chaos
