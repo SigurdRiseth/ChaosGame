@@ -66,18 +66,20 @@ public class ChaosGameFileHandler {
   public static ChaosGameDescription readFromFile(String path) {
     ChaosGameDescription gameDescription = null;
     try (Scanner scanner = new Scanner(Files.newBufferedReader(Path.of(path)))) {
-      scanner.useLocale(Locale.US);
+      scanner.useLocale(Locale.US); // Use US locale to ensure correct number formatting
       scanner.useDelimiter(
           ",|#(?<=#).+"); // Split on comma or # and everything following it
 
       // Read the transform type
       String typeString = scanner.next().trim();
       // Convert the string to TransformType enum
-      TransformType type = TransformType.valueOf(typeString.toUpperCase());
+      TransformType type = TransformType.fromString(typeString);
 
+      // Read the min and max coordinates
       Vector2D minCoords = readVector2D(scanner);
       Vector2D maxCoords = readVector2D(scanner);
 
+      // Create the game description
       gameDescription = createGameDescription(type, scanner, minCoords, maxCoords);
 
     } catch (IOException e) {
