@@ -130,6 +130,11 @@ public class FractalDisplayController implements ControllerInterface {
     observeGame();
   }
 
+  /**
+   * Creates a custom game from a given description.
+   *
+   * @param description The description of the custom game to create.
+   */
   public void createCustomGame(ChaosGameDescription description) {
     game = new ChaosGame(description, 800, 800);
     observeGame();

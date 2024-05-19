@@ -1,13 +1,16 @@
 package no.ntnu.idatg2003.model.game.engine;
 
+import java.util.ArrayList;
+import java.util.List;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 
 /**
  * A class to generate and draw the Mandelbrot set on a canvas.
  */
-public class Mandelbrot {
+public class Mandelbrot implements ChaosGameSubject {
 
+    private final List<ChaosGameObserver> observers = new ArrayList<>();
     private ChaosCanvas canvas;
     private final int width;
     private final int height;
@@ -45,6 +48,7 @@ public class Mandelbrot {
                 canvas.putPixel(x, y, color); // Set pixel color
             }
         }
+        notifyObservers();
         LoggerUtil.logInfo("Mandelbrot set drawn.");
     }
 
@@ -52,10 +56,13 @@ public class Mandelbrot {
         return (double) (index - 500) / 250;
     }
 
-    // Function to determine color based on iterations
+    /**
+     * Method to get the color of a pixel based on the number of iterations.
+     *
+     * @param iterations The number of iterations.
+     * @return The color of the pixel.
+     */
     private int getColor(int iterations) {
-        // You can implement any coloring scheme here
-        // For simplicity, let's just return a grayscale value
         return iterations * 255 / 40; // Adjust for maximum iterations
     }
 
@@ -66,5 +73,22 @@ public class Mandelbrot {
      */
     public ChaosCanvas getCanvas() {
         return canvas;
+    }
+
+    @Override
+    public void registerObserver(ChaosGameObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(ChaosGameObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (ChaosGameObserver observer : observers) {
+            observer.update();
+        }
     }
 }

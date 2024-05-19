@@ -341,7 +341,7 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
     updateCanvas();
   }
 
-  @Override
+  //@Override
   public void updateProgress(int progress) {
     Platform.runLater(() -> {
       progressBar.setProgress(progress / 100.0);

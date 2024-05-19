@@ -237,3 +237,183 @@
 2024-05-19 13:50:39 INFO Transform written to file
 2024-05-19 13:50:40 INFO Julia set saved
 2024-05-19 14:04:26 INFO Starting Chaos Game application
+2024-05-19 14:51:03 INFO Starting Chaos Game application
+2024-05-19 14:51:08 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
+2024-05-19 14:51:08 INFO Mandelbrot set drawn.
+2024-05-19 14:51:47 INFO Starting Chaos Game application
+2024-05-19 14:51:49 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
+2024-05-19 14:51:49 INFO Mandelbrot set drawn.
+2024-05-19 14:52:09 INFO Running custom game
+2024-05-19 14:52:34 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
+2024-05-19 14:52:34 INFO Mandelbrot set drawn.
+2024-05-19 14:52:41 INFO Running custom game
+2024-05-19 14:52:54 ERROR Empty filename encountered when saving affine transformation.
+2024-05-19 14:52:55 ERROR Empty filename encountered when saving Julia set.
+2024-05-19 14:55:38 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 14:55:38 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 14:55:38 INFO Lower Left written to file
+2024-05-19 14:55:38 INFO Upper Right written to file
+2024-05-19 14:55:38 INFO Transform written to file
+2024-05-19 14:55:38 INFO Transform written to file
+2024-05-19 14:55:38 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 14:55:38 INFO Lower Left written to file
+2024-05-19 14:55:38 INFO Upper Right written to file
+2024-05-19 14:55:38 INFO Transform written to file
+2024-05-19 14:55:38 INFO Transform written to file
+2024-05-19 14:55:38 INFO Transform written to file
+2024-05-19 14:55:38 INFO Transform written to file
+2024-05-19 14:55:49 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 14:55:49 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 14:55:49 INFO Lower Left written to file
+2024-05-19 14:55:49 INFO Upper Right written to file
+2024-05-19 14:55:49 INFO Transform written to file
+2024-05-19 14:55:49 INFO Transform written to file
+2024-05-19 14:55:49 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 14:55:49 INFO Lower Left written to file
+2024-05-19 14:55:49 INFO Upper Right written to file
+2024-05-19 14:55:49 INFO Transform written to file
+2024-05-19 14:55:49 INFO Transform written to file
+2024-05-19 14:55:49 INFO Transform written to file
+2024-05-19 14:55:49 INFO Transform written to file
+2024-05-19 14:57:49 INFO Starting Chaos Game application
+2024-05-19 14:57:51 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
+2024-05-19 14:57:51 INFO Mandelbrot set drawn.
+2024-05-19 14:58:02 INFO Running custom game
+2024-05-19 14:58:09 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
+2024-05-19 14:58:09 INFO Mandelbrot set drawn.
+2024-05-19 15:03:57 INFO Starting Chaos Game application
+2024-05-19 15:04:01 INFO Mandelbrot game created. Starting to draw Mandelbrot set.
+2024-05-19 15:04:01 INFO Mandelbrot set drawn.
+2024-05-19 15:05:15 INFO Running custom game
+2024-05-19 16:04:51 INFO Starting Chaos Game application
+2024-05-19 16:05:38 INFO Starting Chaos Game application
+2024-05-19 16:10:08 INFO Starting Chaos Game application
+2024-05-19 16:22:10 INFO Starting Chaos Game application
+2024-05-19 16:22:13 INFO Starting to draw Mandelbrot set.
+2024-05-19 16:22:13 INFO Mandelbrot set drawn.
+2024-05-19 16:22:57 INFO Starting Chaos Game application
+2024-05-19 16:23:00 INFO Starting to draw Mandelbrot set.
+2024-05-19 16:23:02 INFO Starting to draw Mandelbrot set.
+2024-05-19 17:54:48 INFO Starting Chaos Game application
+2024-05-19 17:54:51 INFO Starting to draw Mandelbrot set.
+2024-05-19 17:54:53 INFO Starting to draw Mandelbrot set.
+2024-05-19 17:56:15 INFO Starting Chaos Game application
+2024-05-19 17:56:51 INFO Starting to draw Mandelbrot set.
+2024-05-19 17:57:24 INFO Starting Chaos Game application
+2024-05-19 17:57:29 INFO Starting to draw Mandelbrot set.
+2024-05-19 17:58:07 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:01:01 INFO Starting Chaos Game application
+2024-05-19 18:01:04 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:02:16 INFO Starting Chaos Game application
+2024-05-19 18:02:29 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:02:31 INFO Starting Chaos Game application
+2024-05-19 18:02:34 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:06:36 INFO Starting Chaos Game application
+2024-05-19 18:06:39 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:06:39 INFO Mandelbrot set drawn.
+2024-05-19 18:07:04 INFO Running custom game
+2024-05-19 18:07:09 ERROR Error: 
+java.lang.ArrayIndexOutOfBoundsException: Index -9 out of bounds for length 800
+	at no.ntnu.idatg2003.model.game.engine.ChaosCanvas.putPixel(ChaosCanvas.java:72) ~[classes/:?]
+	at no.ntnu.idatg2003.model.game.engine.ChaosGame.runSteps(ChaosGame.java:69) ~[classes/:?]
+	at no.ntnu.idatg2003.controller.FractalDisplayController.runGame(FractalDisplayController.java:108) ~[classes/:?]
+	at no.ntnu.idatg2003.view.FractalDisplay.lambda$createLeftPanel$1(FractalDisplay.java:136) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8875) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207) ~[javafx-controls-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3984) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1890) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:400) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:551) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:937) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+2024-05-19 18:07:12 ERROR Error: 
+java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
+	at no.ntnu.idatg2003.model.game.engine.ChaosCanvas.putPixel(ChaosCanvas.java:72) ~[classes/:?]
+	at no.ntnu.idatg2003.model.game.engine.ChaosGame.runSteps(ChaosGame.java:69) ~[classes/:?]
+	at no.ntnu.idatg2003.controller.FractalDisplayController.runGame(FractalDisplayController.java:108) ~[classes/:?]
+	at no.ntnu.idatg2003.view.FractalDisplay.lambda$createLeftPanel$1(FractalDisplay.java:136) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8875) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:207) ~[javafx-controls-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:232) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:189) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3984) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1890) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2708) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:400) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:551) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:937) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+	at com.sun.glass.ui.mac.MacView.notifyMouse(MacView.java:127) [javafx-graphics-21.0.1-mac-aarch64.jar:?]
+2024-05-19 18:07:22 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:07:22 INFO Mandelbrot set drawn.
+2024-05-19 18:07:24 INFO Running custom game
+2024-05-19 18:07:56 ERROR Empty filename encountered when saving affine transformation.
+2024-05-19 18:07:58 ERROR Empty filename encountered when saving Julia set.
+2024-05-19 18:08:02 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:08:02 INFO Mandelbrot set drawn.

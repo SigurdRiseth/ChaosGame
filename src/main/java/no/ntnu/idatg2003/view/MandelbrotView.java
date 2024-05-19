@@ -2,7 +2,6 @@ package no.ntnu.idatg2003.view;
 
 import java.util.Optional;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,13 +22,13 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
-import javafx.scene.control.ScrollPane;
 import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 
-public class MandelbrotView {
+public class MandelbrotView implements ChaosGameObserver {
 
-  private MandelbrotController mandelbrotController;
+  private final MandelbrotController mandelbrotController;
   private Canvas canvas;
   private double scale = 1.0;
   private static final double MIN_SCALE = 1.0;
@@ -53,26 +52,20 @@ public class MandelbrotView {
     StackPane canvasContainer = new StackPane(canvas);
 
     // Add zoom functionality
-    canvasContainer.setOnScroll(event -> handleZoom(event));
+    canvasContainer.setOnScroll(this::handleZoom);
 
     // Set the mouse click event for the canvas
     canvas.setOnMouseClicked(e -> {
-      double Re = (e.getX() - 500) / 250;
-      double Im = -1 * ((e.getY() - 500) / 250);
+      double re = (e.getX() - 500) / 250;
+      double im = -1 * ((e.getY() - 500) / 250);
 
-      Alert alert = new Alert(AlertType.CONFIRMATION);
-      alert.setTitle("Confirmation");
-      alert.setHeaderText("Draw Julia Set");
-      alert.setContentText("Are you sure you want to draw the Julia Set at this location?"
-          + "\n" + "(Re = " + Re + ", Im = " + Im + ")");
+      Alert alert = createJuliaAlert(re, im);
 
       Optional<ButtonType> result = alert.showAndWait();
       if (result.isPresent() && result.get() == ButtonType.OK) {
-        mandelbrotController.drawJuliaSet(Re, Im);
+        mandelbrotController.drawJuliaSet(re, im);
       }
     });
-
-    drawMandelbrot(mandelbrotController.getCanvas());
 
     // Create the left panel with the necessary components
     VBox leftPanel = createLeftPanel();
@@ -82,6 +75,16 @@ public class MandelbrotView {
     content.setCenter(canvasContainer);
 
     return content;
+  }
+
+  private Alert createJuliaAlert(double re, double im) {
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Confirmation");
+    alert.setHeaderText("Draw Julia Set");
+    alert.setContentText("Are you sure you want to draw the Julia Set at this location?"
+        + "\n" + "(Re = " + re + ", Im = " + im + ")");
+    alert.initOwner(canvas.getScene().getWindow());
+    return alert;
   }
 
   private VBox createLeftPanel() {
@@ -106,7 +109,6 @@ public class MandelbrotView {
 
     // Left panel VBox
     VBox leftPanel = new VBox(20, returnButton, title, info);
-    leftPanel.setAlignment(Pos.CENTER_LEFT);
     leftPanel.setPadding(new Insets(20));
     leftPanel.setBackground(new Background(new BackgroundFill(Color.rgb(52, 73, 94), CornerRadii.EMPTY, Insets.EMPTY)));
     leftPanel.setMaxWidth(250);
@@ -161,5 +163,10 @@ public class MandelbrotView {
     // Draw the writable image onto the canvas
     GraphicsContext gc = this.canvas.getGraphicsContext2D();
     gc.drawImage(writableImage, 0, 0);
+  }
+
+  @Override
+  public void update() {
+    drawMandelbrot(mandelbrotController.getCanvas());
   }
 }

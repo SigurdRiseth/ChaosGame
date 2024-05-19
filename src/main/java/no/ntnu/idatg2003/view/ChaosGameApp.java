@@ -119,6 +119,11 @@ public class ChaosGameApp extends Application {
     primaryStage.setScene(this.mainScene);
   }
 
+  /**
+   * Runs a custom game with the given description.
+   *
+   * @param description the description of the game to run
+   */
   public void runCustomGame(ChaosGameDescription description) {
     LoggerUtil.logInfo("Running custom game");
     fractalDisplayController.createCustomGame(description);
@@ -133,9 +138,12 @@ public class ChaosGameApp extends Application {
     primaryStage.close();
   }
 
+  /**
+   * Shows the Mandelbrot scene of the application.
+   */
   public void showMandelbrotScene() {
-    mandelbrotController.createMandelbrotGame();
     this.mainScene = mandelbrotController.getScene();
+    mandelbrotController.createMandelbrotGame();
     primaryStage.setScene(this.mainScene);
   }
 }
