@@ -42,7 +42,7 @@ class ComplexTest {
    * @param expectedX0 expected real part of the resulting complex number
    * @param expectedX1 expected imaginary part of the resulting complex number
    */
-  @ParameterizedTest(name = "sqrt({0}, {1}) = ({2}, {3})")
+  @ParameterizedTest(name = "sqrt({0}^2, {1}^2) = ({2}, {3})")
   @CsvSource({
       "0.1, -0.4, 0.506, -0.395",
       "0.1, 0.4, 0.506, 0.395",
@@ -58,5 +58,37 @@ class ComplexTest {
         "Expected imaginary part to be " + expected.getX1());
   }
 
+  @ParameterizedTest(name = "({0}, {1}i)({2}, {3}i) = ({4}, {5}i)")
+  @CsvSource({
+      "1, 2, 3, 4, -5, 10",
+      "1, 2, -3, 4, -11, -2",
+      "1, 2, 0, 0, 0, 0"
+  })
+  void multiplyTest(double x0, double x1, double y0, double y1, double expectedX0, double expectedX1) {
+    Complex complex = new Complex(x0, x1);
+    Complex other = new Complex(y0, y1);
+    Complex expected = new Complex(expectedX0, expectedX1);
+    Complex result = complex.multiply(other);
+    assertEquals(expected.getX0(), result.getX0(), 0.001,
+        "Expected real part to be " + expected.getX0());
+    assertEquals(expected.getX1(), result.getX1(), 0.001,
+        "Expected imaginary part to be " + expected.getX1());
+  }
 
+  @ParameterizedTest(name = "({0}, {1}i) + ({2}, {3}i) = ({4}, {5}i)")
+  @CsvSource({
+      "1, 2, 3, 4, 4, 6",
+      "1, 2, -3, 4, -2, 6",
+      "1, 2, 0, 0, 1, 2"
+  })
+  void addTest(double x0, double x1, double y0, double y1, double expectedX0, double expectedX1) {
+    Complex complex = new Complex(x0, x1);
+    Complex other = new Complex(y0, y1);
+    Complex expected = new Complex(expectedX0, expectedX1);
+    Complex result = complex.add(other);
+    assertEquals(expected.getX0(), result.getX0(), 0.001,
+        "Expected real part to be " + expected.getX0());
+    assertEquals(expected.getX1(), result.getX1(), 0.001,
+        "Expected imaginary part to be " + expected.getX1());
+  }
 }

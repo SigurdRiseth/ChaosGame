@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.utility;
+package no.ntnu.idatg2003.utility.enums;
 
 public enum PresetTransforms {
   BARNSLEY_FERN("Barnsley Fern", TransformType.AFFINE2D),

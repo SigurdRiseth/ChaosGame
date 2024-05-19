@@ -9,10 +9,8 @@ import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.PresetTransforms;
-import no.ntnu.idatg2003.utility.TransformType;
+import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.FractalDisplay;
 

@@ -5,7 +5,7 @@ import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.Mandelbrot;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
-import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.MandelbrotView;
 

@@ -26,11 +26,10 @@ import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
-import no.ntnu.idatg2003.utility.LoggerUtil;
-import no.ntnu.idatg2003.utility.TransformType;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 
 /**
  * The view for the PresetGame Page.

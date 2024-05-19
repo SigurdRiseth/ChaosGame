@@ -216,7 +216,7 @@
 2024-05-19 12:23:55 ERROR Failed to read the file: invalid/file/path
 2024-05-19 12:24:46 ERROR Failed to read the file: invalid/file/path
 2024-05-19 12:25:37 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
-2024-05-19 12:30:00 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 12:30:00 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
 2024-05-19 12:30:04 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
 2024-05-19 12:39:01 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
 2024-05-19 12:39:31 INFO Starting Chaos Game application
@@ -255,7 +255,7 @@
 2024-05-19 14:55:38 INFO Upper Right written to file
 2024-05-19 14:55:38 INFO Transform written to file
 2024-05-19 14:55:38 INFO Transform written to file
-2024-05-19 14:55:38 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 14:55:38 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
 2024-05-19 14:55:38 INFO Lower Left written to file
 2024-05-19 14:55:38 INFO Upper Right written to file
 2024-05-19 14:55:38 INFO Transform written to file
@@ -268,7 +268,7 @@
 2024-05-19 14:55:49 INFO Upper Right written to file
 2024-05-19 14:55:49 INFO Transform written to file
 2024-05-19 14:55:49 INFO Transform written to file
-2024-05-19 14:55:49 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.TransformType.INVALID
+2024-05-19 14:55:49 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
 2024-05-19 14:55:49 INFO Lower Left written to file
 2024-05-19 14:55:49 INFO Upper Right written to file
 2024-05-19 14:55:49 INFO Transform written to file
@@ -461,3 +461,55 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-19 19:13:54 INFO Starting Chaos Game application
 2024-05-19 19:14:43 INFO Starting to draw Mandelbrot set.
 2024-05-19 19:14:43 INFO Mandelbrot set drawn.
+2024-05-19 19:15:47 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 19:15:47 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 19:15:47 INFO Lower Left written to file
+2024-05-19 19:15:47 INFO Upper Right written to file
+2024-05-19 19:15:47 INFO Transform written to file
+2024-05-19 19:15:47 INFO Transform written to file
+2024-05-19 19:15:47 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
+2024-05-19 19:15:47 INFO Lower Left written to file
+2024-05-19 19:15:47 INFO Upper Right written to file
+2024-05-19 19:15:47 INFO Transform written to file
+2024-05-19 19:15:47 INFO Transform written to file
+2024-05-19 19:15:47 INFO Transform written to file
+2024-05-19 19:15:47 INFO Transform written to file
+2024-05-19 20:04:07 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 20:04:07 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 20:04:07 INFO Lower Left written to file
+2024-05-19 20:04:07 INFO Upper Right written to file
+2024-05-19 20:04:07 INFO Transform written to file
+2024-05-19 20:04:07 INFO Transform written to file
+2024-05-19 20:04:07 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
+2024-05-19 20:04:07 INFO Lower Left written to file
+2024-05-19 20:04:07 INFO Upper Right written to file
+2024-05-19 20:04:07 INFO Transform written to file
+2024-05-19 20:04:07 INFO Transform written to file
+2024-05-19 20:04:07 INFO Transform written to file
+2024-05-19 20:04:07 INFO Transform written to file
+2024-05-19 20:05:00 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 20:05:00 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 20:05:00 INFO Lower Left written to file
+2024-05-19 20:05:00 INFO Upper Right written to file
+2024-05-19 20:05:00 INFO Transform written to file
+2024-05-19 20:05:00 INFO Transform written to file
+2024-05-19 20:05:00 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
+2024-05-19 20:05:00 INFO Lower Left written to file
+2024-05-19 20:05:00 INFO Upper Right written to file
+2024-05-19 20:05:00 INFO Transform written to file
+2024-05-19 20:05:00 INFO Transform written to file
+2024-05-19 20:05:00 INFO Transform written to file
+2024-05-19 20:05:00 INFO Transform written to file
+2024-05-19 20:05:13 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-19 20:05:13 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-19 20:05:13 INFO Lower Left written to file
+2024-05-19 20:05:13 INFO Upper Right written to file
+2024-05-19 20:05:13 INFO Transform written to file
+2024-05-19 20:05:13 INFO Transform written to file
+2024-05-19 20:05:13 ERROR Error creating the game description: No enum constant no.ntnu.idatg2003.utility.enums.TransformType.INVALID
+2024-05-19 20:05:13 INFO Lower Left written to file
+2024-05-19 20:05:13 INFO Upper Right written to file
+2024-05-19 20:05:13 INFO Transform written to file
+2024-05-19 20:05:13 INFO Transform written to file
+2024-05-19 20:05:13 INFO Transform written to file
+2024-05-19 20:05:13 INFO Transform written to file

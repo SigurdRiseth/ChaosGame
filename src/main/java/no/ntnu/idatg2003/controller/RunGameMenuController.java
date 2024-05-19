@@ -1,7 +1,7 @@
 package no.ntnu.idatg2003.controller;
 
 import javafx.scene.Scene;
-import no.ntnu.idatg2003.utility.PresetTransforms;
+import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.RunGameMenu;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 
 /**
  * This class represents a Chaos Game. It contains a canvas, a description of the game, a random

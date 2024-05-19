@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 
 /**
  * A class to generate and draw the Mandelbrot set on a canvas.

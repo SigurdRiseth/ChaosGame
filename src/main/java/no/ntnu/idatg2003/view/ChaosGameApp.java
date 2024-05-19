@@ -4,15 +4,14 @@ import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
-import no.ntnu.idatg2003.utility.PresetTransforms;
-import no.ntnu.idatg2003.utility.TransformType;
+import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 
 /**
  * The main application class for the Chaos Game application.

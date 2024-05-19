@@ -9,7 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
-import no.ntnu.idatg2003.utility.PresetTransforms;
+import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 
 /**
  * Class for the run game menu view of the application. This class is responsible for creating the

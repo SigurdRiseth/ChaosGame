@@ -1,7 +1,7 @@
 package no.ntnu.idatg2003.controller;
 
-import static no.ntnu.idatg2003.utility.TransformType.AFFINE2D;
-import static no.ntnu.idatg2003.utility.TransformType.JULIA;
+import static no.ntnu.idatg2003.utility.enums.TransformType.AFFINE2D;
+import static no.ntnu.idatg2003.utility.enums.TransformType.JULIA;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.LoggerUtil;
-import no.ntnu.idatg2003.utility.TransformType;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.CreateCustomGame;
 
