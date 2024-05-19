@@ -1,8 +1,5 @@
 package no.ntnu.idatg2003.view;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -21,11 +18,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.CreateCustomGameController;
-import no.ntnu.idatg2003.model.math.datatypes.Complex;
-import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
-import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
-import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
-import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.utility.TransformType;
 
 /**
  * The CreateCustomGame class is a view class that creates the view for the Create Custom Game
@@ -200,21 +193,11 @@ public class CreateCustomGame {
     inputField.setPromptText("Insert name");
     Button saveButton = new Button(saveText);
     HBox juliaBox = new HBox(10);
-    saveButton.setOnAction(e -> {
-      saveAction.accept(inputField.getText());
-    });
+    saveButton.setOnAction(e -> saveAction.accept(inputField.getText()));
 
     juliaBox.getChildren().addAll(inputField, saveButton);
     juliaBox.setAlignment(javafx.geometry.Pos.CENTER);
     return juliaBox;
-  }
-
-  public void showSaveSuccess() {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Transformation Saved");
-    alert.setHeaderText(null);
-    alert.setContentText("The transformation has been saved successfully.");
-    alert.showAndWait();
   }
 
   /**
@@ -256,142 +239,52 @@ public class CreateCustomGame {
   }
 
   /**
-   * Retrieves the coordinates from the specified grid within the given row index range.
-   *
-   * <p>
-   *   The <code>type</code> parameter specifies the which grid to retrieve the coordinates from.
-   * </p>
-   *
-   * @param type          The type of grid ("julia" or "affine").
-   * @param rowIndexStart The starting row index.
-   * @param rowIndexEnd   The ending row index.
-   * @return The coordinates as a Vector2D.
-   */
-  public Vector2D getCoords(String type, int rowIndexStart, int rowIndexEnd) {
-    GridPane grid = type.equals("julia") ? juliaGrid : affineGrid;
-
-    AtomicReference<Double> x0 = new AtomicReference<>(0.0);
-    AtomicReference<Double> x1 = new AtomicReference<>(0.0);
-
-    grid.getChildren().forEach(node -> {
-      if (node instanceof TextField textField) {
-        int rowIndex = GridPane.getRowIndex(node);
-        int colIndex = GridPane.getColumnIndex(node);
-        if (rowIndex >= rowIndexStart && rowIndex <= rowIndexEnd && colIndex == 1) {
-          if (rowIndex % 2 == 0) {
-            x0.set(Double.parseDouble(textField.getText()));
-          } else {
-            x1.set(Double.parseDouble(textField.getText()));
-          }
-        }
-      }
-    });
-
-    return new Vector2D(x0.get(), x1.get());
-  }
-
-  /**
-   * Retrieves the complex number from the julia grid.
-   *
-   * @return The complex number as a Complex object.
-   */
-  public Complex getComplexNumber() {
-    AtomicReference<Double> real = new AtomicReference<>(0.0);
-    AtomicReference<Double> imaginary = new AtomicReference<>(0.0);
-
-    juliaGrid.getChildren().forEach(node -> {
-      if (node instanceof TextField textField) {
-        int rowIndex = GridPane.getRowIndex(node);
-        int colIndex = GridPane.getColumnIndex(node);
-        if (rowIndex == 4 && colIndex == 1) {
-          real.set(Double.parseDouble(textField.getText()));
-        } else if (rowIndex == 5 && colIndex == 1) {
-          imaginary.set(Double.parseDouble(textField.getText()));
-        }
-      }
-    });
-
-    return new Complex(real.get(), imaginary.get());
-  }
-
-
-  /**
-   * Retrieves a list of affine transformations from the affine grid.
-   *
-   * @return The list of affine transformations.
-   */
-  public List<Transform2D> getAffineTransforms() {
-    List<Transform2D> transforms = new ArrayList<>();
-
-    int amountOfTransforms = calculateAmountOfTransforms();
-
-    for (int i = 0; i < amountOfTransforms; i++) {
-      Matrix2x2 matrix = extractMatrixFromGrid(i);
-      Vector2D vector = extractVectorFromGrid(i);
-      transforms.add(new AffineTransform2D(matrix, vector));
-    }
-
-    return transforms;
-  }
-
-  /**
-   * Calculates the amount of affine transformations based on the number of children in the affine grid.
+   * Retrieves the number of affine transformations from the affine grid.
    *
    * @return The number of affine transformations.
    */
-  private int calculateAmountOfTransforms() {
+  public int getTransformAmount() {
     int size = affineGrid.getChildren().size();
     return (size - 8) / 6;
   }
 
   /**
-   * Extracts the matrix components of an affine transformation from the affine grid.
+   * Retrieves the text from a given text field in the given grid.
    *
-   * <p> The index counts from 0 and up starting at first transform. </p>
-   *
-   * @param index The index of the affine transformation.
-   * @return The matrix components.
+   * @param type The type of transformation to retrieve the text from.
+   * @param i    The index of the text field.
+   * @return The text from the text field.
    */
-  private Matrix2x2 extractMatrixFromGrid(int index) {
-    int startIndex = 8 + index * 6;
-    double a00 = getDoubleFromTextField(startIndex);
-    double a01 = getDoubleFromTextField(startIndex + 1);
-    double a10 = getDoubleFromTextField(startIndex + 3);
-    double a11 = getDoubleFromTextField(startIndex + 4);
-    return new Matrix2x2(a00, a01, a10, a11);
+  public String getTextFromGrid(TransformType type, int i) {
+    GridPane grid = type.equals(TransformType.AFFINE2D) ? affineGrid : juliaGrid;
+    TextField textField = (TextField) grid.getChildren().get(i);
+    return textField.getText();
   }
 
   /**
-   * Extracts the translation vector of an affine transformation from the affine grid.
+   * Shows an error message to the user.
    *
-   * <p> The index counts from 0 and up starting at first transform. </p>
-   *
-   * @param index The index of the affine transformation.
-   * @return The translation vector.
+   * @param message The message to display.
    */
-  private Vector2D extractVectorFromGrid(int index) {
-    int startIndex = 8 + index * 6;
-    double x = getDoubleFromTextField(startIndex + 2);
-    double y = getDoubleFromTextField(startIndex + 5);
-    return new Vector2D(x, y);
-  }
-
-  /**
-   * Retrieves the value of a TextField as a double.
-   *
-   * @param index The index of the TextField in the affine grid.
-   * @return The double value of the TextField.
-   */
-  private double getDoubleFromTextField(int index) {
-    TextField textField = (TextField) affineGrid.getChildren().get(index);
-    return Double.parseDouble(textField.getText());
-  }
-
-  public void showInputError() {
+  public void showInputError(String message) {
     Alert alert = new Alert(Alert.AlertType.ERROR);
     alert.setTitle("Input Error");
     alert.setHeaderText(null);
-    alert.setContentText("Please enter valid numbers in the input fields.");
+    alert.setContentText(message);
+    alert.showAndWait();
+  }
+
+  /**
+   * Shows an information alert to the user.
+   *
+   * @param title The title of the message.
+   * @param message The message to display.
+   */
+  public void showInfoAlert(String title, String message) {
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
     alert.showAndWait();
   }
 }

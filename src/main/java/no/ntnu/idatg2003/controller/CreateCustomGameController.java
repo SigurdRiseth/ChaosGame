@@ -1,14 +1,21 @@
 package no.ntnu.idatg2003.controller;
 
+import static no.ntnu.idatg2003.utility.TransformType.AFFINE2D;
+import static no.ntnu.idatg2003.utility.TransformType.JULIA;
+
+import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
+import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.TransformType;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.CreateCustomGame;
 
@@ -63,7 +70,7 @@ public class CreateCustomGameController {
   public void saveJuliaSet(String fileName) {
     if (fileName.isBlank()) {
       LoggerUtil.logError("Empty filename encountered when saving Julia set.");
-      view.showInputError();
+      view.showInputError("Filename cannot be empty.");
     } else {
       fileName = prepareFilePath(fileName);
       LoggerUtil.logInfo("Saving Julia set to file: " + fileName);
@@ -71,7 +78,7 @@ public class CreateCustomGameController {
       ChaosGameDescription chaosGameDescription = createJuliaDescription();
 
       ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
-      view.showSaveSuccess();
+      view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
       LoggerUtil.logInfo("Julia set saved");
     }
   }
@@ -86,14 +93,21 @@ public class CreateCustomGameController {
     Vector2D max = null;
     Complex complexNumber = null;
     try {
-      min = view.getCoords("julia", 0, 1);
-      max = view.getCoords("julia", 2, 3);
-      complexNumber = view.getComplexNumber();
+      min = getCoords(JULIA, 1);
+      max = getCoords(JULIA, 5);
+      complexNumber = getComplexNumber();
     } catch (NumberFormatException e) {
       LoggerUtil.logError("Failed to read input values for Julia set.");
-      view.showInputError();
+      view.showInputError("Failed to read input values for Julia set. "
+          + "Please check the input values and try again.");
     }
     return new ChaosGameDescription(min, max, List.of(new JuliaTransform(complexNumber, 1)));
+  }
+
+  private Complex getComplexNumber() {
+    double real = Double.parseDouble(view.getTextFromGrid(JULIA, 9));
+    double imaginary = Double.parseDouble(view.getTextFromGrid(JULIA, 11));
+    return new Complex(real, imaginary);
   }
 
   /**
@@ -121,15 +135,30 @@ public class CreateCustomGameController {
   public void saveAffineTransformation(String fileName) {
     if (fileName.isBlank()) {
       LoggerUtil.logError("Empty filename encountered when saving affine transformation.");
-      view.showInputError();
-    } else {
-      fileName = prepareFilePath(fileName);
-      LoggerUtil.logInfo("Saving Affine transformation to file: " + fileName);
-      ChaosGameDescription chaosGameDescription = createAffineDescription();
+      view.showInputError("Filename cannot be empty.");
+      return;
+    }
 
+    fileName = prepareFilePath(fileName);
+    LoggerUtil.logInfo("Saving Affine transformation to file: " + fileName);
+
+    ChaosGameDescription chaosGameDescription = createAffineDescription();
+    if (chaosGameDescription == null) {
+      // Error occurred during creation, show error and return
+      view.showInputError("Failed to create affine transformation description.");
+      LoggerUtil.logError("Failed to create affine transformation description.");
+      return;
+    }
+
+    try {
       ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
-      view.showSaveSuccess();
+      view.showInfoAlert("Save successful!", "Affine transformation saved to file: "
+          + fileName);
       LoggerUtil.logInfo("Affine transformation saved");
+    } catch (Exception e) {
+      LoggerUtil.logError("Failed to save affine transformation to file.");
+      view.showInputError("Failed to save affine transformation to file."
+          + " Please check the input values and try again.");
     }
   }
 
@@ -139,19 +168,73 @@ public class CreateCustomGameController {
    * @return The ChaosGameDescription for the Julia set.
    */
   private ChaosGameDescription createAffineDescription() {
-    Vector2D min = null;
-    Vector2D max = null;
-    List<Transform2D> transforms = null;
+    Vector2D min;
+    Vector2D max;
+    List<Transform2D> transforms;
     try {
-      min = view.getCoords("affine", 0, 1);
-      max = view.getCoords("affine", 2, 3);
+      min = getCoords(AFFINE2D, 1);
+      max = getCoords(AFFINE2D, 5);
 
-      transforms = view.getAffineTransforms();
+      transforms = getAffineTransforms();
     } catch (NumberFormatException e) {
       LoggerUtil.logError("Failed to read input values for affine transformation.");
-      view.showInputError();
+      return null;
     }
 
     return new ChaosGameDescription(min, max, transforms);
+  }
+
+  /**
+   * Retrieves a list of affine transformations from the affine grid.
+   *
+   * @return The list of affine transformations.
+   */
+  public List<Transform2D> getAffineTransforms() {
+    List<Transform2D> transforms = new ArrayList<>();
+
+    int amountOfTransforms = calculateAmountOfAffineTransforms();
+
+    for (int i = 0; i < amountOfTransforms; i++) {
+      Matrix2x2 matrix = extractMatrixFromGrid(i);
+      Vector2D vector = extractVectorFromGrid(i);
+      transforms.add(new AffineTransform2D(matrix, vector));
+    }
+
+    return transforms;
+  }
+
+  private Vector2D extractVectorFromGrid(int transformNumber) {
+    int startIndex = 8 + transformNumber * 6;
+    double x0 = getDoubleFromTextField(AFFINE2D, startIndex + 2);
+    double x1 = getDoubleFromTextField(AFFINE2D, startIndex + 5);
+    return new Vector2D(x0, x1);
+  }
+
+  private Matrix2x2 extractMatrixFromGrid(int transformNumber) {
+    int startIndex = 8 + transformNumber * 6;
+    double a00 = getDoubleFromTextField(AFFINE2D, startIndex);
+    double a01 = getDoubleFromTextField(AFFINE2D, startIndex + 1);
+    double a10 = getDoubleFromTextField(AFFINE2D, startIndex + 3);
+    double a11 = getDoubleFromTextField(AFFINE2D, startIndex + 4);
+    return new Matrix2x2(a00, a01, a10, a11);
+  }
+
+  private double getDoubleFromTextField(TransformType type, int startIndex) {
+    return Double.parseDouble(view.getTextFromGrid(type, startIndex));
+  }
+
+  /**
+   * Returns the amount of affine transformations.
+   *
+   * @return The amount of affine transformations.
+   */
+  private int calculateAmountOfAffineTransforms() {
+    return view.getTransformAmount();
+  }
+
+  private Vector2D getCoords(TransformType transformType, int i) {
+    double x0 = getDoubleFromTextField(transformType, i);
+    double x1 = getDoubleFromTextField(transformType, i + 2);
+    return new Vector2D(x0, x1);
   }
 }
