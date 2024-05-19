@@ -417,3 +417,47 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-19 18:07:58 ERROR Empty filename encountered when saving Julia set.
 2024-05-19 18:08:02 INFO Starting to draw Mandelbrot set.
 2024-05-19 18:08:02 INFO Mandelbrot set drawn.
+2024-05-19 18:35:49 INFO Starting Chaos Game application
+2024-05-19 18:36:00 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:42:47 INFO Starting Chaos Game application
+2024-05-19 18:42:50 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:49:43 INFO Starting Chaos Game application
+2024-05-19 18:49:50 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:49:51 INFO Mandelbrot set drawn.
+2024-05-19 18:49:56 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:49:56 INFO Mandelbrot set drawn.
+2024-05-19 18:55:48 INFO Starting Chaos Game application
+2024-05-19 18:55:51 INFO Starting to draw Mandelbrot set.
+2024-05-19 18:55:51 INFO Mandelbrot set drawn.
+2024-05-19 18:56:14 INFO Starting Chaos Game application
+2024-05-19 18:56:22 INFO Saving Julia set to file: src/main/user.files/sssss.csv
+2024-05-19 18:56:22 ERROR Failed to read input values for Julia set.
+2024-05-19 18:56:30 ERROR Empty filename encountered when saving affine transformation.
+2024-05-19 18:56:33 INFO Saving Affine transformation to file: src/main/user.files/sssss.csv
+2024-05-19 18:56:33 ERROR Failed to read input values for affine transformation.
+2024-05-19 18:56:37 ERROR Failed to create affine transformation description.
+2024-05-19 19:00:41 INFO Starting Chaos Game application
+2024-05-19 19:00:46 ERROR Empty filename encountered when saving Julia set.
+2024-05-19 19:00:49 INFO Saving Julia set to file: src/main/user.files/asdasd.csv
+2024-05-19 19:00:49 ERROR Failed to read input values for Julia set.
+2024-05-19 19:00:52 ERROR Failed to save Julia set to file.
+2024-05-19 19:00:54 INFO Saving Julia set to file: src/main/user.files/asdasd.csv
+2024-05-19 19:00:54 ERROR Failed to read input values for Julia set.
+2024-05-19 19:00:56 ERROR Failed to save Julia set to file.
+2024-05-19 19:00:57 INFO Saving Julia set to file: src/main/user.files/asdasd.csv
+2024-05-19 19:00:57 ERROR Failed to read input values for Julia set.
+2024-05-19 19:01:01 ERROR Failed to save Julia set to file.
+2024-05-19 19:01:35 INFO Starting Chaos Game application
+2024-05-19 19:01:39 ERROR Empty filename encountered when saving affine transformation.
+2024-05-19 19:01:41 ERROR Empty filename encountered when saving Julia set.
+2024-05-19 19:01:45 INFO Saving Julia set to file: src/main/user.files/sasa.csv
+2024-05-19 19:01:45 ERROR Failed to read input values for Julia set.
+2024-05-19 19:01:50 INFO Saving Affine transformation to file: src/main/user.files/sasa.csv
+2024-05-19 19:01:50 ERROR Failed to read input values for affine transformation.
+2024-05-19 19:01:53 ERROR Failed to create affine transformation description.
+2024-05-19 19:01:54 INFO Saving Affine transformation to file: src/main/user.files/sasa.csv
+2024-05-19 19:01:54 ERROR Failed to read input values for affine transformation.
+2024-05-19 19:01:55 ERROR Failed to create affine transformation description.
+2024-05-19 19:13:54 INFO Starting Chaos Game application
+2024-05-19 19:14:43 INFO Starting to draw Mandelbrot set.
+2024-05-19 19:14:43 INFO Mandelbrot set drawn.

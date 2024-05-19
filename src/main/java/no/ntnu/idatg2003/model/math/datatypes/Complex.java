@@ -44,9 +44,19 @@ public class Complex extends Vector2D {
    * @param other the other complex number to multiply with.
    * @return the product of the two complex numbers.
    */
-  public Complex multiply(Complex other) {  //TODO: Implementere denne for å utføre kvadratiske julia-sett ikke bare kvadratrot-sett
-    double realPart = getX0() * other.getX0() - getX1() * other.getX1();
-    double imaginaryPart = getX0() * other.getX1() + getX1() * other.getX0();
-    return new Complex(realPart, imaginaryPart);
+  public Complex multiply(Vector2D other) {
+    return new Complex(this.getX0() * other.getX0() - this.getX1() * other.getX1(),
+        this.getX0() * other.getX1() + this.getX1() * other.getX0());
+  }
+
+  /**
+   * This method adds two complex numbers together.
+   *
+   * @param other the other complex number to add with.
+   * @return the sum of the two complex numbers.
+   */
+  @Override
+  public Complex add(Vector2D other) {
+    return new Complex(this.getX0() + other.getX0(), this.getX1() + other.getX1());
   }
 }

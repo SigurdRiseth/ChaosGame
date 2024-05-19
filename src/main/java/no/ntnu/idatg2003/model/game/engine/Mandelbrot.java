@@ -2,6 +2,7 @@ package no.ntnu.idatg2003.model.game.engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 
@@ -11,9 +12,10 @@ import no.ntnu.idatg2003.utility.LoggerUtil;
 public class Mandelbrot implements ChaosGameSubject {
 
     private final List<ChaosGameObserver> observers = new ArrayList<>();
-    private ChaosCanvas canvas;
+    private final ChaosCanvas canvas;
     private final int width;
     private final int height;
+    private static final int MAX_ITERATIONS = 40;
 
     /**
      * Constructs a Mandelbrot object with specified width and height.
@@ -30,30 +32,33 @@ public class Mandelbrot implements ChaosGameSubject {
     public void drawMandelbrot() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                double ReC = indexToCoordinate(x); // Convert x index to real part
-                double ImC = indexToCoordinate(y); // Convert y index to imaginary part
-                double ReZ, ImZ, tmp;
-                ReZ = ImZ = 0;
-                int maxIterations = 40;
-                int iterations = 0; // Keep track of iterations
-                while (ReZ * ReZ + ImZ * ImZ < 4 && maxIterations > 0) {
-                    tmp = ReZ * ReZ - ImZ * ImZ + ReC;
-                    ImZ = 2.0 * ReZ * ImZ + ImC;
-                    ReZ = tmp;
-                    maxIterations--;
-                    iterations++; // Increment iterations
-                }
-                // Set pixel color based on iterations
-                int color = getColor(iterations);
-                canvas.putPixel(x, y, color); // Set pixel color
+                Complex c = indexToComplex(x, y);
+                int iterations = calculateMandelbrot(c);
+                canvas.putPixel(x, y, getColor(iterations));
             }
         }
         notifyObservers();
         LoggerUtil.logInfo("Mandelbrot set drawn.");
     }
 
+    private Complex indexToComplex(int x, int y) {
+        double real = indexToCoordinate(x);
+        double imaginary = indexToCoordinate(y);
+        return new Complex(real, imaginary);
+    }
+
     private double indexToCoordinate(int index) {
         return (double) (index - 500) / 250;
+    }
+
+    private int calculateMandelbrot(Complex c) {
+        Complex z = new Complex(0, 0);
+        int iterations = 0;
+        while (z.getLength() < 2 && iterations < MAX_ITERATIONS) {
+            z = z.multiply(z).add(c);
+            iterations++;
+        }
+        return iterations;
     }
 
     /**

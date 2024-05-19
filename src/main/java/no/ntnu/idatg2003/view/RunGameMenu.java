@@ -9,6 +9,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
+import no.ntnu.idatg2003.utility.PresetTransforms;
 
 /**
  * Class for the run game menu view of the application. This class is responsible for creating the
@@ -41,27 +42,13 @@ public class RunGameMenu {
     Button sierpinskiButton = new Button("Sierpinski Triangle");
     Button barnsleyButton = new Button("Barnsley Fern");
     Button customButton = new Button("Custom Game");
-
-    juliaButton.setOnAction(e -> {
-      controller.openPresetGameScene("julia");
-    });
-
-    sierpinskiButton.setOnAction(e -> {
-      controller.openPresetGameScene("sierpinski");
-    });
-
-    barnsleyButton.setOnAction(e -> {
-      controller.openPresetGameScene("barnsley");
-    });
-
-    customButton.setOnAction(e -> {
-      controller.openCustomGameMenu();
-    });
-
     Button backButton = new Button("Return");
-    backButton.setOnAction(e -> {
-      controller.openFrontPageScene();
-    });
+
+    juliaButton.setOnAction(e -> controller.openPresetGameScene(PresetTransforms.JULIA_SET));
+    sierpinskiButton.setOnAction(e -> controller.openPresetGameScene(PresetTransforms.SIERPINSKI_TRIANGLE));
+    barnsleyButton.setOnAction(e -> controller.openPresetGameScene(PresetTransforms.BARNSLEY_FERN));
+    customButton.setOnAction(e -> controller.openCustomGameMenu());
+    backButton.setOnAction(e -> controller.openFrontPageScene());
 
 
     Text text = new Text("Choose a game to run!");

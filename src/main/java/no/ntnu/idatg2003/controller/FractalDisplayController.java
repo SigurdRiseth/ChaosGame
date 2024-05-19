@@ -11,6 +11,8 @@ import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
+import no.ntnu.idatg2003.utility.PresetTransforms;
+import no.ntnu.idatg2003.utility.TransformType;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.FractalDisplay;
 
@@ -43,32 +45,24 @@ public class FractalDisplayController implements ControllerInterface {
     loadTransformations(ChaosGameDescriptionFactory.createSierpinskiTriangle().getTransforms());
   } */
 
-  private void loadTransformations(List<Transform2D> transforms, String type) {
+  private void loadTransformations(List<Transform2D> transforms) {
     transformations.clear();
     transformations.addAll(transforms);
-    view.updateTableItems(type);
+    view.updateTableItems();
   }
 
 
 
-  public void createGame(String type) {
-    ChaosGameDescription description;
-    switch (type) {
-      case "julia":
-        description = ChaosGameDescriptionFactory.createJuliaSet();
-        break;
-      case "sierpinski":
-        description = ChaosGameDescriptionFactory.createSierpinskiTriangle();
-        break;
-      case "barnsley":
-        description = ChaosGameDescriptionFactory.createBarnsleyFern();
-        break;
-      default:
-        throw new IllegalArgumentException("Unknown game type: " + type);
-    }
+  public void createGame(PresetTransforms transformation) {
+    ChaosGameDescription description = switch (transformation) {
+      case JULIA_SET -> ChaosGameDescriptionFactory.createJuliaSet();
+      case SIERPINSKI_TRIANGLE -> ChaosGameDescriptionFactory.createSierpinskiTriangle();
+      case BARNSLEY_FERN -> ChaosGameDescriptionFactory.createBarnsleyFern();
+      default -> throw new IllegalArgumentException("Unknown game transformation: " + transformation);
+    };
     game = new ChaosGame(description, 800, 800);
-    loadTransformations(description.getTransforms(), type);
-    view.updateForGameType(type);
+    loadTransformations(description.getTransforms());
+    view.updateForGameType(transformation.getType());
     observeGame();
   }
 

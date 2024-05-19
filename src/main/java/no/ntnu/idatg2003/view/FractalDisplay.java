@@ -30,6 +30,7 @@ import javafx.scene.control.ProgressIndicator;
 
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.utility.LoggerUtil;
+import no.ntnu.idatg2003.utility.TransformType;
 
 /**
  * The view for the PresetGame Page.
@@ -207,10 +208,8 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
 
   /**
    * Updates the table items with the transformations from the controller.
-   *
-   * @param type The type of the transformation.
    */
-  public void updateTableItems(String type) {
+  public void updateTableItems() {
     transformTable.setItems(controller.getTransformations());
     transformTable.refresh();
   }
@@ -269,15 +268,18 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
    *
    * @param type The type of the game
    */
-  public void updateForGameType(String type) {
-    boolean isJulia = "julia".equals(type);
-    transformTable.setVisible(!isJulia);
-    juliaDetailsBox.setVisible(isJulia);
-
-    if (isJulia) {
-      updateJuliaDetails();  // Update Julia details if the game type is Julia
-    } else {
-      transformTable.refresh();
+  public void updateForGameType(TransformType type) {
+    switch (type) {
+      case JULIA:
+        updateJuliaDetails();
+        juliaDetailsBox.setVisible(true);
+        break;
+      case AFFINE2D:
+        transformTable.refresh();
+        transformTable.setVisible(true);
+        break;
+      default:
+        LoggerUtil.logError("Invalid game type.");
     }
   }
 

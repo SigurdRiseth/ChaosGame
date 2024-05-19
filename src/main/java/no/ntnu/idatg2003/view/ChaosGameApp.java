@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import no.ntnu.idatg2003.controller.FrontPageController;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
+import no.ntnu.idatg2003.utility.PresetTransforms;
+import no.ntnu.idatg2003.utility.TransformType;
 
 /**
  * The main application class for the Chaos Game application.
@@ -84,7 +86,7 @@ public class ChaosGameApp extends Application {
    *
    * @param type the type of the game to be created
    */
-  public void showPresetsGameScene(String type) {
+  public void showPresetsGameScene(PresetTransforms type) {
     fractalDisplayController.createGame(type);
     this.mainScene = fractalDisplayController.getScene();
     primaryStage.setScene(this.mainScene);
