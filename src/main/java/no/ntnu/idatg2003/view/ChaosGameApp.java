@@ -1,7 +1,9 @@
 package no.ntnu.idatg2003.view;
 
 import no.ntnu.idatg2003.controller.CreateCustomGameController;
+import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -22,6 +24,7 @@ public class ChaosGameApp extends Application {
   private FrontPageController frontPageController;
   private RunGameMenuController runGameMenuController;
   private FractalDisplayController fractalDisplayController;
+  private MandelbrotController mandelbrotController;
 
   public static void appMain(String[] args) {
     launch(args);
@@ -57,6 +60,7 @@ public class ChaosGameApp extends Application {
     fractalDisplayController = new FractalDisplayController(this);
     createCustomGameController = new CreateCustomGameController(this);
     runCustomGameMenuController = new RunCustomGameMenuController(this);
+    mandelbrotController = new MandelbrotController(this);
   }
 
   /**
@@ -87,7 +91,7 @@ public class ChaosGameApp extends Application {
   }
 
   /**
-   * Shows the create custom game scene of the application.
+   * Shows the choice to create custom game scene of the application.
    */
   public void showCreateCustomGameScene() {
     this.mainScene = createCustomGameController.getScene();
@@ -115,6 +119,13 @@ public class ChaosGameApp extends Application {
     primaryStage.setScene(this.mainScene);
   }
 
+  public void runCustomGame(ChaosGameDescription description) {
+    LoggerUtil.logInfo("Running custom game");
+    fractalDisplayController.createCustomGame(description);
+    this.mainScene = fractalDisplayController.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
+
   /**
    * Exits the application.
    */
@@ -122,4 +133,9 @@ public class ChaosGameApp extends Application {
     primaryStage.close();
   }
 
+  public void showMandelbrotScene() {
+    mandelbrotController.createMandelbrotGame();
+    this.mainScene = mandelbrotController.getScene();
+    primaryStage.setScene(this.mainScene);
+  }
 }

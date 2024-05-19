@@ -12,6 +12,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.*;
 
+/**
+ * Class for the front page view of the application. This class is responsible for creating the
+ * front page scene and its content.
+ *
+ * @author Theodor Sjetnan Utvik, Sigurd Riseth
+ * @version 0.0.2
+ */
+
 public class FrontPage {
   private FrontPageController controller;
   private Scene scene;
@@ -34,6 +42,7 @@ public class FrontPage {
 
     Button runGameButton = new Button("Run a Game");
     Button createGameButton = new Button("Create a Custom Game");
+    Button mandelbrotButton = new Button("Mandelbrot");
     Button exitButton = new Button("Exit");
 
     runGameButton.setOnAction(e -> {
@@ -44,11 +53,15 @@ public class FrontPage {
       controller.openCreateCustomGameScene();
     });
 
+    mandelbrotButton.setOnAction(e -> {
+      controller.openMandelbrotScene();
+    });
+
     exitButton.setOnAction(e -> {
       controller.exit();
     });
 
-    VBox vBox = new VBox(10, runGameButton, createGameButton, exitButton);
+    VBox vBox = new VBox(10, runGameButton, createGameButton, mandelbrotButton, exitButton);
     vBox.setAlignment(javafx.geometry.Pos.CENTER);
     content.setCenter(vBox);
     content.setStyle("-fx-background-color: #3b1d5a;");

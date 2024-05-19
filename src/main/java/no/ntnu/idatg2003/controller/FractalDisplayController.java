@@ -14,7 +14,11 @@ import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.FractalDisplay;
 
-public class FractalDisplayController {
+/**
+ *
+ */
+
+public class FractalDisplayController implements ControllerInterface {
 
   private ChaosGame game;
   private ChaosGameApp app;
@@ -90,6 +94,7 @@ public class FractalDisplayController {
    *
    * @return The scene of the view.
    */
+  @Override
   public Scene getScene() {
     return view.getScene();
   }
@@ -100,7 +105,6 @@ public class FractalDisplayController {
    * @param iterations The number of iterations to run the game for.
    */
   public void runGame(int iterations) {
-    view.clearCanvas();
     game.runSteps(iterations);
   }
 
@@ -122,6 +126,11 @@ public class FractalDisplayController {
    */
   public void createCustomGame(String fileName) {
     ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/main/user.files/" + fileName);
+    game = new ChaosGame(description, 800, 800);
+    observeGame();
+  }
+
+  public void createCustomGame(ChaosGameDescription description) {
     game = new ChaosGame(description, 800, 800);
     observeGame();
   }

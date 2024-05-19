@@ -26,8 +26,14 @@ import no.ntnu.idatg2003.view.CreateCustomGame;
  *   The CreateCustomGameController class is responsible for handling user input from the
  *   CreateCustomGame view. It is responsible for saving the input values to a file.
  * </p>
+ *
+ * @version 0.0.1
+ * @since 10.05.2024
+ * @author Sigurd Riseth
+ * @see CreateCustomGame
+ * @see ChaosGameApp
  */
-public class CreateCustomGameController {
+public class CreateCustomGameController implements ControllerInterface{
   private final ChaosGameApp app;
   private final CreateCustomGame view;
 
@@ -46,6 +52,7 @@ public class CreateCustomGameController {
    *
    * @return The scene for the view.
    */
+  @Override
   public Scene getScene() {
     return view.getScene();
   }

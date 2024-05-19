@@ -4,7 +4,17 @@ import javafx.scene.Scene;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.RunGameMenu;
 
-public class RunGameMenuController {
+/**
+ * The controller is responsible for handling user choices from the RunGameMenu view.
+ *
+ * @version 0.0.2
+ * @since 8.05.2024
+ * @see RunGameMenu
+ * @see ChaosGameApp
+ * @author Sigurd Riseth
+ */
+
+public class RunGameMenuController implements ControllerInterface{
 
   private RunGameMenu view;
   private ChaosGameApp app;
@@ -14,6 +24,7 @@ public class RunGameMenuController {
     this.view = new RunGameMenu(this);
   }
 
+  @Override
   public Scene getScene(){
     return view.getScene();
   }

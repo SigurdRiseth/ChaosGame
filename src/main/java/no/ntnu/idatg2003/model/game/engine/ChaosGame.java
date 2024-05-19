@@ -7,6 +7,20 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.LoggerUtil;
 
+/**
+ * This class represents a Chaos Game. It contains a canvas, a description of the game, a random
+ * object and a current point. It also contains methods to run the game for a given number of steps
+ * and to get the canvas. It implements the ChaosGameSubject interface.
+ *
+ * @see ChaosGameSubject
+ * @see ChaosGameObserver
+ * @see ChaosCanvas
+ * @see ChaosGameDescription
+ * @see Vector2D
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.2
+ */
+
 public class ChaosGame implements ChaosGameSubject {
 
   private final ArrayList<ChaosGameObserver> observers = new ArrayList<>();
@@ -55,6 +69,7 @@ public class ChaosGame implements ChaosGameSubject {
         canvas.putPixel(currentPoint);
 
         int newProgress = (int) ((i + 1) * 100.0 / steps);
+
         if (newProgress > progress) {
           progress = newProgress;
           notifyProgress(progress);
@@ -71,9 +86,10 @@ public class ChaosGame implements ChaosGameSubject {
 
   private void notifyProgress(int progress) {
     for (ChaosGameObserver observer : observers) {
-      //observer.updateProgress(progress);
+      observer.updateProgress(progress);
     }
   }
+
 
   @Override
   public void registerObserver(ChaosGameObserver observer) {

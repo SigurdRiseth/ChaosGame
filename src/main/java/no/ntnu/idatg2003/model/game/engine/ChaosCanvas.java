@@ -69,7 +69,18 @@ public class ChaosCanvas {
    */
   public void putPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    this.canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()] = 1;
+    this.canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()] += 1;
+  }
+
+  /**
+   * The method places a value at a given pixel.
+   *
+   * @param x the x-coordinate of the pixel
+   * @param y the y-coordinate of the pixel
+   * @param value the color of the pixel
+   */
+  public void putPixel(int x, int y, int value) {
+    this.canvas[y][x] = value;
   }
 
   /**

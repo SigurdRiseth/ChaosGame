@@ -8,6 +8,19 @@ import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 
+/**
+ * This class is a factory for creating different Chaos Game descriptions. It contains methods to
+ * create descriptions for the Barnsley fern, the Sierpinski triangle and the Julia set.
+ *
+ * @see ChaosGameDescription
+ * @see AffineTransform2D
+ * @see JuliaTransform
+ * @see Matrix2x2
+ * @see Vector2D
+ * @see Complex
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ */
+
 public class ChaosGameDescriptionFactory {
 
   /**

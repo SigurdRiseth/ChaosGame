@@ -4,7 +4,18 @@ import javafx.scene.Scene;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.FrontPage;
 
-public class FrontPageController {
+/**
+ * The FrontPageController class is the controller for the FrontPage view. It is responsible for
+ * handling which direction the user wants to take from the front page.
+ *
+ * @version 0.0.2
+ * @since 12.04.2024
+ * @see FrontPage
+ * @see ChaosGameApp
+ * @author Sigurd Riseth
+ */
+
+public class FrontPageController implements ControllerInterface {
 
   private FrontPage frontPage;
   private ChaosGameApp app;
@@ -27,6 +38,7 @@ public class FrontPageController {
    *
    * @return The scene for the view.
    */
+  @Override
   public Scene getScene(){
     return frontPage.getScene();
   }
@@ -50,5 +62,9 @@ public class FrontPageController {
    */
   public void exit() {
     app.exit();
+  }
+
+  public void openMandelbrotScene() {
+    app.showMandelbrotScene();
   }
 }
