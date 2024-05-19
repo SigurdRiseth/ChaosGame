@@ -75,16 +75,29 @@ public class Mandelbrot implements ChaosGameSubject {
         return canvas;
     }
 
+    /**
+     * Registers an observer to the list of observers.
+     *
+     * @param observer The observer to register.
+     */
     @Override
     public void registerObserver(ChaosGameObserver observer) {
         observers.add(observer);
     }
 
+    /**
+     * Removes an observer from the list of observers.
+     *
+     * @param observer The observer to remove.
+     */
     @Override
     public void removeObserver(ChaosGameObserver observer) {
         observers.remove(observer);
     }
 
+    /**
+     * Notifies all observers that the state has changed.
+     */
     @Override
     public void notifyObservers() {
         for (ChaosGameObserver observer : observers) {
