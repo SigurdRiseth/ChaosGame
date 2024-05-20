@@ -54,7 +54,7 @@ public class FractalDisplay implements ChaosGameProgressObserver {
   public FractalDisplay(FractalDisplayController controller) {
     this.controller = controller;
     this.canvas = new Canvas(800, 800);
-    this.transformTable = controller.createTransformTable();
+    this.transformTable = createTransformTable();
     this.realPartLabel = new Label();
     this.imaginaryPartLabel = new Label();
     this.juliaDetailsBox = createJuliaDetailsBox();
@@ -169,6 +169,36 @@ public class FractalDisplay implements ChaosGameProgressObserver {
     box.getChildren().add(grid);
     return box;
   }
+  /**
+   * Initiates the table for the transformations from the controller.
+   *
+   * @return TableView<Transform2D> The table with the transformations.
+   */
+
+  private TableView<Transform2D> createTransformTable() {
+    TableView<Transform2D> table = new TableView<>();
+    setTransformTable(table);
+    table.setItems(controller.getTransformations());
+    return table;
+  }
+
+  private void setTransformTable(TableView<Transform2D> table) {
+    TableColumn<Transform2D, Number> a00Column = new TableColumn<>("a00");
+    TableColumn<Transform2D, Number> a01Column = new TableColumn<>("a01");
+    TableColumn<Transform2D, Number> a10Column = new TableColumn<>("a10");
+    TableColumn<Transform2D, Number> a11Column = new TableColumn<>("a11");
+    TableColumn<Transform2D, Number> b0Column = new TableColumn<>("b0");
+    TableColumn<Transform2D, Number> b1Column = new TableColumn<>("b1");
+
+    // Add columns to table
+    table.getColumns().addAll(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
+
+    // Pass the table and columns to the controller for configuration
+    controller.configureTransformTable(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
+
+    //table.setItems(controller.getTransformations());
+  }
+
 
   /**
    * Sets up the layout for the Julia transformation details.
