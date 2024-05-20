@@ -91,4 +91,34 @@ class ComplexTest {
     assertEquals(expected.getX1(), result.getX1(), 0.001,
         "Expected imaginary part to be " + expected.getX1());
   }
+
+  @Test
+  void constructorNaNTest() {
+    assertThrows(IllegalArgumentException.class, () -> new Complex(Double.NaN, 1),
+        "Expected IllegalArgumentException to be thrown when creating a complex number with NaN");
+    assertThrows(IllegalArgumentException.class, () -> new Complex(1, Double.NaN),
+        "Expected IllegalArgumentException to be thrown when creating a complex number with NaN");
+  }
+
+  @Test
+  void constructorInfiniteTest() {
+    assertThrows(IllegalArgumentException.class, () -> new Complex(Double.POSITIVE_INFINITY, 1),
+        "Expected IllegalArgumentException to be thrown when creating a complex number with infinite value");
+    assertThrows(IllegalArgumentException.class, () -> new Complex(1, Double.NEGATIVE_INFINITY),
+        "Expected IllegalArgumentException to be thrown when creating a complex number with infinite value");
+  }
+
+  @Test
+  void addNullTest() {
+    Complex complex = new Complex(1, 2);
+    assertThrows(IllegalArgumentException.class, () -> complex.add(null),
+        "Expected IllegalArgumentException to be thrown when adding null");
+  }
+
+  @Test
+  void multiplyNullTest() {
+    Complex complex = new Complex(1, 2);
+    assertThrows(IllegalArgumentException.class, () -> complex.multiply(null),
+        "Expected IllegalArgumentException to be thrown when multiplying with null");
+  }
 }
