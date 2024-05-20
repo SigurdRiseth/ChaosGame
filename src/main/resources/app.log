@@ -597,3 +597,33 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 11:46:07 INFO Transform written to file
 2024-05-20 11:46:07 INFO Transform written to file
 2024-05-20 11:46:07 ERROR An error occurred while running the game: Index -163 out of bounds for length 600
+2024-05-20 13:05:10 INFO Starting Chaos Game application
+2024-05-20 13:05:14 INFO Showing custom games scene
+2024-05-20 13:15:14 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 13:15:14 ERROR Failed to read the file: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 13:15:14 INFO Lower Left written to file
+2024-05-20 13:15:14 INFO Upper Right written to file
+2024-05-20 13:15:14 INFO Transform written to file
+2024-05-20 13:15:14 INFO Transform written to file
+2024-05-20 13:15:14 ERROR Failed to read the file: Unknown transform type: invalid
+2024-05-20 13:15:14 INFO Lower Left written to file
+2024-05-20 13:15:14 INFO Upper Right written to file
+2024-05-20 13:15:14 INFO Transform written to file
+2024-05-20 13:15:14 INFO Transform written to file
+2024-05-20 13:15:14 INFO Transform written to file
+2024-05-20 13:15:14 INFO Transform written to file
+2024-05-20 13:15:14 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-20 13:15:33 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 13:15:33 ERROR Failed to read the file: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 13:15:33 INFO Lower Left written to file
+2024-05-20 13:15:33 INFO Upper Right written to file
+2024-05-20 13:15:33 INFO Transform written to file
+2024-05-20 13:15:33 INFO Transform written to file
+2024-05-20 13:15:33 ERROR Failed to read the file: Unknown transform type: invalid
+2024-05-20 13:15:33 INFO Lower Left written to file
+2024-05-20 13:15:33 INFO Upper Right written to file
+2024-05-20 13:15:33 INFO Transform written to file
+2024-05-20 13:15:33 INFO Transform written to file
+2024-05-20 13:15:33 INFO Transform written to file
+2024-05-20 13:15:33 INFO Transform written to file
+2024-05-20 13:15:33 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600

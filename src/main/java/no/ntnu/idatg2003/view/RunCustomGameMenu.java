@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
 
 /**
  * View for running a custom game menu. This class is responsible for creating the scene for the

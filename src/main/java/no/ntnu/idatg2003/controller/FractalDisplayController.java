@@ -4,11 +4,12 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileReader;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 import no.ntnu.idatg2003.view.ChaosGameApp;
@@ -117,7 +118,8 @@ public class FractalDisplayController implements ControllerInterface {
    * @param fileName The name of the file to create the custom game from.
    */
   public void createCustomGame(String fileName) {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/main/user.files/" + fileName);
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile(new ChaosGameTextFileReader(),
+        "src/main/user.files/" + fileName);
     game = new ChaosGame(description, 800, 800);
     observeGame();
   }

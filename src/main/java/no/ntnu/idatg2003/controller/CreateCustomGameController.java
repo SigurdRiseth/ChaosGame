@@ -6,8 +6,9 @@ import static no.ntnu.idatg2003.utility.enums.TransformType.JULIA;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.Scene;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileWriter;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
@@ -85,7 +86,7 @@ public class CreateCustomGameController implements ControllerInterface{
       ChaosGameDescription chaosGameDescription = createJuliaDescription();
 
       if (chaosGameDescription != null) {
-        ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
+        ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileName);
         view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
         LoggerUtil.logInfo("Julia set saved");
       }
@@ -158,7 +159,7 @@ public class CreateCustomGameController implements ControllerInterface{
     }
 
     try {
-      ChaosGameFileHandler.writeToFile(chaosGameDescription, fileName);
+      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileName);
       view.showInfoAlert("Save successful!", "Affine transformation saved to file: "
           + fileName);
       LoggerUtil.logInfo("Affine transformation saved");
