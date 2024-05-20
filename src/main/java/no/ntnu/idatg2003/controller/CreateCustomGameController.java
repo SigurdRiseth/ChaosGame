@@ -79,17 +79,17 @@ public class CreateCustomGameController implements ControllerInterface{
     if (fileName.isBlank()) {
       LoggerUtil.logError("Empty filename encountered when saving Julia set.");
       view.showInputError("Filename cannot be empty.");
-    } else {
-      fileName = prepareFilePath(fileName);
-      LoggerUtil.logInfo("Saving Julia set to file: " + fileName);
+      return;
+    }
+    String fileNameWithPath = prepareFilePath(fileName);
+    LoggerUtil.logInfo("Saving Julia set to file: " + fileNameWithPath);
 
-      ChaosGameDescription chaosGameDescription = createJuliaDescription();
+    ChaosGameDescription chaosGameDescription = createJuliaDescription();
 
-      if (chaosGameDescription != null) {
-        ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileName);
-        view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
-        LoggerUtil.logInfo("Julia set saved");
-      }
+    if (chaosGameDescription != null) {
+      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileNameWithPath);
+      view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
+      LoggerUtil.logInfo("Julia set saved");
     }
   }
 
@@ -147,8 +147,8 @@ public class CreateCustomGameController implements ControllerInterface{
       return;
     }
 
-    fileName = prepareFilePath(fileName);
-    LoggerUtil.logInfo("Saving Affine transformation to file: " + fileName);
+    String fileNameWithPath = prepareFilePath(fileName);
+    LoggerUtil.logInfo("Saving Affine transformation to file: " + fileNameWithPath);
 
     ChaosGameDescription chaosGameDescription = createAffineDescription();
     if (chaosGameDescription == null) {
@@ -159,12 +159,12 @@ public class CreateCustomGameController implements ControllerInterface{
     }
 
     try {
-      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileName);
+      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileNameWithPath);
       view.showInfoAlert("Save successful!", "Affine transformation saved to file: "
           + fileName);
       LoggerUtil.logInfo("Affine transformation saved");
     } catch (Exception e) {
-      LoggerUtil.logError("Failed to save affine transformation to file.");
+      LoggerUtil.logError("Failed to save affine transformation to file." + e.getMessage());
       view.showInputError("Failed to save affine transformation to file."
           + " Please check the input values and try again.");
     }

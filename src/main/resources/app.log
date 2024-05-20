@@ -665,3 +665,17 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 16:43:07 ERROR An error occurred while running the game: Index -368 out of bounds for length 800
 2024-05-20 16:43:07 ERROR An error occurred while running the game: Index 1489 out of bounds for length 800
 2024-05-20 16:43:12 ERROR An error occurred while running the game: Index -606 out of bounds for length 800
+2024-05-20 18:31:31 INFO Starting Chaos Game application
+2024-05-20 18:31:44 INFO Saving Affine transformation to file: src/main/user.files/ssss.csv
+2024-05-20 18:31:44 INFO Lower Left written to file
+2024-05-20 18:31:44 INFO Upper Right written to file
+2024-05-20 18:31:44 INFO Transform written to file
+2024-05-20 18:31:47 INFO Affine transformation saved
+2024-05-20 18:31:51 INFO Showing custom games scene
+2024-05-20 18:31:53 INFO Running custom game: ssss.csv
+2024-05-20 18:31:53 ERROR Failed to run custom game: The input values cannot be infinite
+2024-05-20 18:36:28 INFO Starting Chaos Game application
+2024-05-20 18:36:32 INFO Showing custom games scene
+2024-05-20 18:36:33 INFO Running custom game: Wiki_Julia.csv
+2024-05-20 18:36:41 INFO Showing custom games scene
+2024-05-20 18:36:42 INFO Running custom game: Dragon.csv
