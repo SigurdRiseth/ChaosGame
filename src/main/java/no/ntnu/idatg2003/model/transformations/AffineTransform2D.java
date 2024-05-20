@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.model.transformations;
 
+import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 
@@ -22,8 +23,11 @@ public class AffineTransform2D implements Transform2D {
    *
    * @param matrix the matrix A
    * @param vector the vector b
+   * @throws NullPointerException if the matrix or vector is null
    */
-  public AffineTransform2D(Matrix2x2 matrix, Vector2D vector) {
+  public AffineTransform2D(Matrix2x2 matrix, Vector2D vector) throws NullPointerException {
+    Objects.requireNonNull(matrix, "The matrix cannot be null");
+    Objects.requireNonNull(vector, "The vector cannot be null");
     this.matrix = matrix;
     this.vector = vector;
   }
@@ -33,9 +37,11 @@ public class AffineTransform2D implements Transform2D {
    *
    * @param point the vector to transform, known as x
    * @return Affine transformed Vector2D
+   * @throws NullPointerException if the input vector is null
    */
   @Override
-  public Vector2D transform(Vector2D point) {
+  public Vector2D transform(Vector2D point) throws NullPointerException {
+    Objects.requireNonNull(point, "The input vector cannot be null");
     return matrix.multiply(point).add(vector);
   }
 

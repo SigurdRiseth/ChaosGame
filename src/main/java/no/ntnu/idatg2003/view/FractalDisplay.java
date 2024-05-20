@@ -22,6 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameProgressObserver;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
@@ -37,7 +38,7 @@ import no.ntnu.idatg2003.utility.enums.TransformType;
  *    This class is responsible for displaying the game view for the preset game.
  * </p>
  */
-public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTERN for å vise fraktalenes verdier
+public class FractalDisplay implements ChaosGameProgressObserver {
 
   private final FractalDisplayController controller;
   private final  Canvas canvas;

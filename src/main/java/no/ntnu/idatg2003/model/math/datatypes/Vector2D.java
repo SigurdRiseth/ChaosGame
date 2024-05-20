@@ -24,8 +24,15 @@ public class Vector2D {
    *
    * @param x0 the x0 value of the vector
    * @param x1 the x1 value of the vector
+   * @throws IllegalArgumentException if the input values are NaN or infinite
    */
-  public Vector2D(double x0, double x1) {
+  public Vector2D(double x0, double x1) throws IllegalArgumentException {
+    if (Double.isNaN(x0) || Double.isNaN(x1)) {
+      throw new IllegalArgumentException("The input values cannot be NaN");
+    }
+    if (Double.isInfinite(x0) || Double.isInfinite(x1)) {
+      throw new IllegalArgumentException("The input values cannot be infinite");
+    }
     this.x0 = x0;
     this.x1 = x1;
   }
@@ -58,8 +65,12 @@ public class Vector2D {
    *
    * @param other the vector to add to the existing vector
    * @return the original vector added to the input vector
+   * @throws IllegalArgumentException if the input vector is null
    */
-  public Vector2D add(Vector2D other) {
+  public Vector2D add(Vector2D other) throws IllegalArgumentException {
+    if (other == null) {
+      throw new IllegalArgumentException("The input vector cannot be null");
+    }
     return new Vector2D((other.getX0() + x0), (other.getX1()) + x1);
   }
 
@@ -68,8 +79,12 @@ public class Vector2D {
    *
    * @param other the vector to subtract the existing vector with
    * @return the original vector subtracted the input vector
+   * @throws IllegalArgumentException if the input vector is null
    */
-  public Vector2D subtract(Vector2D other) {
+  public Vector2D subtract(Vector2D other) throws IllegalArgumentException {
+    if (other == null) {
+      throw new IllegalArgumentException("The input vector cannot be null");
+    }
     return new Vector2D((x0 - other.getX0()), (x1 - other.getX1()));
   }
 

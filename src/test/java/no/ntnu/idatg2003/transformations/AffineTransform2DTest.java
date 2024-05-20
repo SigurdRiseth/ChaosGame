@@ -53,4 +53,22 @@ class AffineTransform2DTest {
     assertEquals(expectedX0, transformedPoint.getX0(), 0.001, "Expected x0 to be " + expectedX0);
     assertEquals(expectedX1, transformedPoint.getX1(), 0.001, "Expected x1 to be " + expectedX1);
   }
+
+  @Test
+  void nullMatrixTest() {
+    Vector2D vector = new Vector2D(1, 1);
+    assertThrows(NullPointerException.class, () -> new AffineTransform2D(null, vector));
+  }
+
+  @Test
+  void nullVectorTest() {
+    Matrix2x2 matrix = new Matrix2x2(1, 1, 1, 1);
+    assertThrows(NullPointerException.class, () -> new AffineTransform2D(matrix, null));
+  }
+
+  @Test
+  void nullTransformTest() {
+    AffineTransform2D affineTransform2D = new AffineTransform2D(new Matrix2x2(1, 1, 1, 1), new Vector2D(1, 1));
+    assertThrows(NullPointerException.class, () -> affineTransform2D.transform(null));
+  }
 }
