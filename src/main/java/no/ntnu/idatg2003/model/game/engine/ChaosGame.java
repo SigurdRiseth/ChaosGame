@@ -72,7 +72,7 @@ public class ChaosGame implements ChaosGameSubject {
 
         if (newProgress > progress) {
           progress = newProgress;
-          //notifyProgress(progress);
+          notifyProgress(progress);
         }
       }
     } catch (Exception e) {
@@ -98,6 +98,14 @@ public class ChaosGame implements ChaosGameSubject {
   public void notifyObservers() {
     for (ChaosGameObserver observer : observers) {
       observer.update();
+    }
+  }
+
+  public void notifyProgress(int progress) {
+    for (ChaosGameObserver observer : observers) {
+      if (observer instanceof ChaosGameProgressObserver) {
+        ((ChaosGameProgressObserver) observer).updateProgress(progress);
+      }
     }
   }
 

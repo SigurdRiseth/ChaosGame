@@ -513,3 +513,13 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-19 20:05:13 INFO Transform written to file
 2024-05-19 20:05:13 INFO Transform written to file
 2024-05-19 20:05:13 INFO Transform written to file
+2024-05-20 00:06:47 INFO Starting Chaos Game application
+2024-05-20 00:06:52 INFO Starting to draw Mandelbrot set.
+2024-05-20 00:06:52 INFO Mandelbrot set drawn.
+2024-05-20 00:07:16 ERROR Empty filename encountered when saving affine transformation.
+2024-05-20 00:07:18 ERROR Empty filename encountered when saving Julia set.
+2024-05-20 09:23:17 INFO Starting Chaos Game application
+2024-05-20 09:23:29 INFO Starting to draw Mandelbrot set.
+2024-05-20 09:23:29 INFO Mandelbrot set drawn.
+2024-05-20 09:24:01 INFO Running custom game
+2024-05-20 09:43:50 INFO Starting Chaos Game application
