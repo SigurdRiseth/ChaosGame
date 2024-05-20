@@ -1,6 +1,7 @@
 package no.ntnu.idatg2003.model.game.engine;
 
 import java.util.List;
+import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 
@@ -16,9 +17,9 @@ import no.ntnu.idatg2003.model.transformations.Transform2D;
  */
 public class ChaosGameDescription {
 
-  private Vector2D minCoords;
-  private Vector2D maxCoords;
-  private List<Transform2D> transforms;
+  private final Vector2D minCoords;
+  private final Vector2D maxCoords;
+  private final List<Transform2D> transforms;
 
   /**
    * Constructs a new ChaosGameDescription instance to define the boundaries and transformation
@@ -28,9 +29,15 @@ public class ChaosGameDescription {
    * @param minCoords The minimum coordinates (lower-left corner) for the game's boundary.
    * @param maxCoords The maximum coordinates (upper-right corner) for the game's boundary.
    * @param transforms A list of transformations
+   * @throws NullPointerException if any of the parameters are null
    */
   public ChaosGameDescription(
       Vector2D minCoords, Vector2D maxCoords, List<Transform2D> transforms) {
+
+    Objects.requireNonNull(minCoords, "The minimum coordinates cannot be null");
+    Objects.requireNonNull(maxCoords, "The maximum coordinates cannot be null");
+    Objects.requireNonNull(transforms, "The list of transformations cannot be null");
+
     this.minCoords = minCoords;
     this.maxCoords = maxCoords;
     this.transforms = transforms;
@@ -55,11 +62,11 @@ public class ChaosGameDescription {
   }
 
   /**
-   * Returns a list of transformations. !!!!!!!!!!!!!!!!!!!!
+   * Returns a list of the transformations.
    *
    * @return a list of transformations
    */
-  public List<Transform2D> getTransforms() { // TODO: Sho uld this be an iterator?
+  public List<Transform2D> getTransforms() {
     return transforms;
   }
 }

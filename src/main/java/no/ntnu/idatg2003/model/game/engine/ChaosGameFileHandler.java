@@ -115,8 +115,8 @@ public class ChaosGameFileHandler {
           Complex complex = readJuliaTransform(scanner);
           yield ChaosGameDescriptionFactory.createJuliaSet(minCoords, maxCoords, complex);
         }
-        // Should never happen. Included in case of future changes to the TransformType enum. (19.5.24)
-        default -> throw new IllegalArgumentException("Unknown transform type: " + type);
+        // Should never happen. Included in case of future changes to the TransformType enum.
+        default -> throw new IllegalArgumentException("Unknown transform type: " + type.getTypeString());
       };
     } catch (IllegalArgumentException e) {
       LoggerUtil.logError("Invalid transform data for type: " + type + ". " + e.getMessage());
@@ -162,23 +162,15 @@ public class ChaosGameFileHandler {
    * maxX, maxY <br>
    * Re, Im #Transform<br>
    *
-   * @throws IllegalArgumentException if the transform type is unknown
    * @param description the ChaosGameDescription to write to the file
    * @param path the path to the file
+   * @throws IllegalArgumentException if the transform type is unknown
    */
   public static void writeToFile(ChaosGameDescription description, String path) {
     try (BufferedWriter writer = Files.newBufferedWriter(Path.of(path))) {
-      Transform2D type = description.getTransforms().getFirst();
-      String stringType;
-      if (type instanceof AffineTransform2D) {
-        stringType = "Affine2D";
-      } else if (type instanceof JuliaTransform) {
-        stringType = "Julia";
-      } else {
-        LoggerUtil.logWarning("Unknown transform type");
-        throw new IllegalArgumentException("Unknown transform type");
-      }
-      writeTransformType(writer, stringType);
+      TransformType type = getTransformType(description);
+
+      writeTransformType(writer, type);
       writeMinMaxCoords(writer, description);
       for (Transform2D transform : description.getTransforms()) {
         writer.write("\n" + transform.toString() + " # transforms");
@@ -187,6 +179,26 @@ public class ChaosGameFileHandler {
     } catch (IOException e) {
       LoggerUtil.logError("Failed to create the file: " + e.getMessage());
     }
+  }
+
+  /**
+   * Determines the type of transformation used in the ChaosGameDescription.
+   *
+   * @param description The ChaosGameDescription to determine the transform type of.
+   * @return The TransformType enum representing the transform type.
+   */
+  private static TransformType getTransformType(ChaosGameDescription description) {
+    Transform2D transform = description.getTransforms().getFirst();
+    TransformType type;
+    if (transform instanceof AffineTransform2D) {
+      type = TransformType.AFFINE2D;
+    } else if (transform instanceof JuliaTransform) {
+      type = TransformType.JULIA;
+    } else {
+      LoggerUtil.logError("Unknown transform type encountered.");
+      throw new IllegalArgumentException("Unknown transform type");
+    }
+    return type;
   }
 
   /**
@@ -214,11 +226,11 @@ public class ChaosGameFileHandler {
    * Writes the transform type to the provided BufferedWriter instance.
    *
    * @param writer The BufferedWriter to write the transform type to.
-   * @param stringType The string representation of the transform type.
+   * @param type The string representation of the transform type.
    */
-  private static void writeTransformType(BufferedWriter writer, String stringType) {
+  private static void writeTransformType(BufferedWriter writer, TransformType type) {
     try {
-      writer.write(stringType + " # Type of fractal \n");
+      writer.write(type.getTypeString() + " # Type of fractal \n");
     } catch (IOException e) {
       LoggerUtil.logError("Failed to write the transform type: " + e.getMessage());
     }

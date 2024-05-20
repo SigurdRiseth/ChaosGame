@@ -62,4 +62,25 @@ class JuliaTransformTest {
     assertEquals(expectedX1, transformedPoint.getX1(), 0.001,
         "Expected x1 to be " + expectedX1);
   }
+
+  /**
+   * Test for the constructor in the JuliaTransform class.
+   *
+   * <p>Tests if the constructor throws a NullPointerException when the complex constant is null.</p>
+   */
+  @Test
+  void nullComplexConstantTest() {
+    assertThrows(NullPointerException.class, () -> new JuliaTransform(null, 1));
+  }
+
+  /**
+   * Test for the transform method in the JuliaTransform class.
+   *
+   * <p>Tests if the method throws a NullPointerException when the input vector is null.</p>
+   */
+  @Test
+  void nullPointTest() {
+    JuliaTransform juliaTransform = new JuliaTransform(new Complex(0.3, 0.6), 1);
+    assertThrows(NullPointerException.class, () -> juliaTransform.transform(null));
+  }
 }

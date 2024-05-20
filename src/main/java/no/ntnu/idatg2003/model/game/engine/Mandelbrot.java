@@ -22,8 +22,12 @@ public class Mandelbrot implements ChaosGameSubject {
      *
      * @param width  The width of the canvas.
      * @param height The height of the canvas.
+     * @throws IllegalArgumentException if the width or height is less than or equal to 0
      */
     public Mandelbrot(int width, int height) {
+        if (width <= 0 || height <= 0) {
+            throw new IllegalArgumentException("The width and height must be positive");
+        }
         this.width = width;
         this.height = height;
         canvas = new ChaosCanvas(new Vector2D(-2, -2), new Vector2D(2, 2), width, height);
@@ -68,7 +72,7 @@ public class Mandelbrot implements ChaosGameSubject {
      * @return The color of the pixel.
      */
     private int getColor(int iterations) {
-        return iterations * 255 / 40; // Adjust for maximum iterations
+        return iterations * 255 / MAX_ITERATIONS; // Grayscale
     }
 
     /**

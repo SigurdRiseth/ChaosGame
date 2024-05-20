@@ -542,3 +542,58 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 10:59:41 INFO Transform written to file
 2024-05-20 10:59:41 INFO Transform written to file
 2024-05-20 10:59:41 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-20 11:33:52 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 11:33:52 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 11:33:52 INFO Lower Left written to file
+2024-05-20 11:33:52 INFO Upper Right written to file
+2024-05-20 11:33:52 INFO Transform written to file
+2024-05-20 11:33:52 INFO Transform written to file
+2024-05-20 11:33:52 ERROR Error creating the game description: Unknown transform type: invalid
+2024-05-20 11:33:52 INFO Lower Left written to file
+2024-05-20 11:33:52 INFO Upper Right written to file
+2024-05-20 11:33:52 INFO Transform written to file
+2024-05-20 11:33:52 INFO Transform written to file
+2024-05-20 11:33:52 INFO Transform written to file
+2024-05-20 11:33:52 INFO Transform written to file
+2024-05-20 11:40:05 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 11:40:05 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 11:40:05 INFO Lower Left written to file
+2024-05-20 11:40:05 INFO Upper Right written to file
+2024-05-20 11:40:05 INFO Transform written to file
+2024-05-20 11:40:05 INFO Transform written to file
+2024-05-20 11:40:05 ERROR Error creating the game description: Unknown transform type: invalid
+2024-05-20 11:40:05 INFO Lower Left written to file
+2024-05-20 11:40:05 INFO Upper Right written to file
+2024-05-20 11:40:05 INFO Transform written to file
+2024-05-20 11:40:05 INFO Transform written to file
+2024-05-20 11:40:05 INFO Transform written to file
+2024-05-20 11:40:05 INFO Transform written to file
+2024-05-20 11:40:05 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-20 11:40:15 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 11:40:15 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 11:40:15 INFO Lower Left written to file
+2024-05-20 11:40:15 INFO Upper Right written to file
+2024-05-20 11:40:15 INFO Transform written to file
+2024-05-20 11:40:15 INFO Transform written to file
+2024-05-20 11:40:15 ERROR Error creating the game description: Unknown transform type: invalid
+2024-05-20 11:40:15 INFO Lower Left written to file
+2024-05-20 11:40:15 INFO Upper Right written to file
+2024-05-20 11:40:15 INFO Transform written to file
+2024-05-20 11:40:15 INFO Transform written to file
+2024-05-20 11:40:15 INFO Transform written to file
+2024-05-20 11:40:15 INFO Transform written to file
+2024-05-20 11:40:15 ERROR An error occurred while running the game: Index -163 out of bounds for length 600
+2024-05-20 11:46:07 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 11:46:07 ERROR Error creating the game description: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 11:46:07 INFO Lower Left written to file
+2024-05-20 11:46:07 INFO Upper Right written to file
+2024-05-20 11:46:07 INFO Transform written to file
+2024-05-20 11:46:07 INFO Transform written to file
+2024-05-20 11:46:07 ERROR Error creating the game description: Unknown transform type: invalid
+2024-05-20 11:46:07 INFO Lower Left written to file
+2024-05-20 11:46:07 INFO Upper Right written to file
+2024-05-20 11:46:07 INFO Transform written to file
+2024-05-20 11:46:07 INFO Transform written to file
+2024-05-20 11:46:07 INFO Transform written to file
+2024-05-20 11:46:07 INFO Transform written to file
+2024-05-20 11:46:07 ERROR An error occurred while running the game: Index -163 out of bounds for length 600
