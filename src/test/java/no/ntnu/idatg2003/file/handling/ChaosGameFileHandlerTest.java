@@ -1,11 +1,14 @@
-package no.ntnu.idatg2003.game.engine;
+package no.ntnu.idatg2003.file.handling;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileReader;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileWriter;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -15,12 +18,21 @@ import org.junit.jupiter.params.provider.CsvSource;
  */
 class ChaosGameFileHandlerTest {
 
+  private static ChaosGameTextFileReader filereader;
+  private static ChaosGameTextFileWriter filewriter;
+
+  @BeforeAll
+  static void setUp() {
+    filereader = new ChaosGameTextFileReader();
+    filewriter = new ChaosGameTextFileWriter();
+  }
+
   /**
    * Tests if the <code>readFromFile()</code> method returns the correct {@link ChaosGameDescription} for the preset Julia-set
    */
   @Test
   void readFromFileJuliaTest() {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile(filereader,"src/test/resources/csv/preset.games/Julia.csv");
     assertEquals(-1.6, description.getMinCoords().getX0(), "The min x0 value is not correct");
     assertEquals(-1, description.getMinCoords().getX1(), "The min x1 value is not correct");
     assertEquals(1.6, description.getMaxCoords().getX0(), "The max x0 value is not correct");
@@ -47,7 +59,7 @@ class ChaosGameFileHandlerTest {
       "3, -.15, .28, .26, .24, 0, .44"
   })
   void readFromFileAffineTest(int transformIndex, double a00, double a01, double a10, double a11, double b0, double b1) {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fern.csv");
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/barnsley-fern.csv");
     String expected = a00 + ", " + a01 + ", " + a10 + ", " + a11 + ", " + b0 + ", " + b1;
     List<Transform2D> transforms = description.getTransforms();
 
@@ -68,10 +80,10 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   void writeJuliaToFileTest() {
-    ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/Julia.csv");
+    ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/Julia.csv");
 
-    ChaosGameFileHandler.writeToFile(expectedDescription, "src/test/resources/csv/preset.games/JuliaTest.csv");
-    ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/JuliaTest.csv");
+    ChaosGameFileHandler.writeToFile(filewriter, expectedDescription, "src/test/resources/csv/preset.games/JuliaTest.csv");
+    ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/JuliaTest.csv");
 
     assertEquals(expectedDescription.getMinCoords().getX0(), resultDescription.getMinCoords().getX0(), "The min x0 value is not correct");
     assertEquals(expectedDescription.getMinCoords().getX1(), resultDescription.getMinCoords().getX1(), "The min x1 value is not correct");
@@ -89,10 +101,10 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   void writeAffineToFileTest() {
-    ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fern.csv");
+    ChaosGameDescription expectedDescription = ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/barnsley-fern.csv");
 
-    ChaosGameFileHandler.writeToFile(expectedDescription, "src/test/resources/csv/preset.games/barnsley-fernTest.csv");
-    ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/barnsley-fernTest.csv");
+    ChaosGameFileHandler.writeToFile(filewriter, expectedDescription, "src/test/resources/csv/preset.games/barnsley-fernTest.csv");
+    ChaosGameDescription resultDescription = ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/barnsley-fernTest.csv");
 
     assertEquals(expectedDescription.getMinCoords().getX0(), resultDescription.getMinCoords().getX0(), "The min x0 value is not correct");
     assertEquals(expectedDescription.getMinCoords().getX1(), resultDescription.getMinCoords().getX1(), "The min x1 value is not correct");
@@ -106,7 +118,7 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   void testEmptyFile() {
-    assertNull(ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/empty.csv"));
+    assertNull(ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/empty.csv"));
   }
 
   /**
@@ -114,7 +126,7 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   void testInvalidTransformType() {
-    assertNull(ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/invalidTransformType.csv"));
+    assertNull(ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/invalidTransformType.csv"));
   }
 
   /**
@@ -122,7 +134,7 @@ class ChaosGameFileHandlerTest {
    */
   @Test
   void testInvalidCoordinate() {
-    assertNull(ChaosGameFileHandler.readFromFile("src/test/resources/csv/preset.games/invalidCoordinate.csv"));
+    assertNull(ChaosGameFileHandler.readFromFile(filereader, "src/test/resources/csv/preset.games/invalidCoordinate.csv"));
   }
 
 }

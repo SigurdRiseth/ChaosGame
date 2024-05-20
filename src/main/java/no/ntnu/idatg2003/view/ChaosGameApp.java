@@ -115,9 +115,14 @@ public class ChaosGameApp extends Application {
    */
   public void runCustomGame(String file) {
     LoggerUtil.logInfo("Running custom game: " + file);
-    fractalDisplayController.createCustomGame(file);
-    this.mainScene = fractalDisplayController.getScene();
-    primaryStage.setScene(this.mainScene);
+    try {
+      fractalDisplayController.createCustomGame(file);
+      this.mainScene = fractalDisplayController.getScene();
+      primaryStage.setScene(this.mainScene);
+    } catch (Exception e) {
+      LoggerUtil.logError("Failed to run custom game: " + e.getMessage());
+      runCustomGameMenuController.showErrorMessage();
+    }
   }
 
   /**
