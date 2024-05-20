@@ -3,12 +3,13 @@ package no.ntnu.idatg2003.view;
 import java.util.List;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
 
 /**
  * View for running a custom game menu. This class is responsible for creating the scene for the
@@ -26,6 +27,11 @@ public class RunCustomGameMenu {
     this.controller = controller;
   }
 
+  /**
+   * Returns the scene for the custom game menu.
+   *
+   * @return the scene for the custom game menu
+   */
   public Scene getScene() {
     BorderPane content = createContent();
     content.setPadding(new Insets(15, 20, 15, 20));
@@ -33,6 +39,11 @@ public class RunCustomGameMenu {
     return new Scene(content, 800, 600);
   }
 
+  /**
+   * Creates the content for the custom game menu.
+   *
+   * @return the BorderPane with the content
+   */
   private BorderPane createContent() {
     // Back button
     Button backButton = new Button("Return");
@@ -50,6 +61,11 @@ public class RunCustomGameMenu {
     return content;
   }
 
+  /**
+   * Initializes the VBox with buttons for the custom games.
+   *
+   * @return the VBox with buttons
+   */
   private VBox initializeBox() {
     VBox vBox = new VBox();
     vBox.setSpacing(10);
@@ -73,4 +89,16 @@ public class RunCustomGameMenu {
     return vBox;
   }
 
+  /**
+   * Shows an error message to the user.
+   *
+   * @param message the message to show
+   */
+  public void showErrorMessage(String message) {
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.showAndWait();
+  }
 }

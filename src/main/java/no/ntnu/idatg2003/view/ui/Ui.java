@@ -2,9 +2,11 @@ package no.ntnu.idatg2003.view.ui;
 
 import java.util.ArrayList;
 import java.util.List;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileReader;
+import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileWriter;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
@@ -108,7 +110,7 @@ public class Ui {
     String filePath = "src/main/resources/" + fileName + ".csv";
 
     if (description != null) {
-      ChaosGameFileHandler.writeToFile(description, filePath);
+      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), description, filePath);
     } else {
       System.out.println("Failed to create game file");
     }
@@ -240,7 +242,7 @@ public class Ui {
    */
   private void runGame(String gameName, int steps) {
     ChaosGameDescription description =
-        ChaosGameFileHandler.readFromFile("src/main/resources/" + gameName + ".csv");
+        ChaosGameFileHandler.readFromFile(new ChaosGameTextFileReader(),"src/main/resources/" + gameName + ".csv");
 
     ChaosGame game = new ChaosGame(description, 50 * 3, 50);
 

@@ -38,4 +38,8 @@ public class RunCustomGameMenuController implements ControllerInterface {
   public void runCustomGame(String file) {
     app.runCustomGame(file);
   }
+
+  public void showErrorMessage() {
+    runCustomGameMenuView.showErrorMessage("Failed to run custom game. Please ensure values are correct and try again.");
+  }
 }

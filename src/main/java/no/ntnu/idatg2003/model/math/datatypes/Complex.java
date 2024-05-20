@@ -43,8 +43,12 @@ public class Complex extends Vector2D {
    *
    * @param other the other complex number to multiply with.
    * @return the product of the two complex numbers.
+   * @throws IllegalArgumentException if the input vector is null
    */
-  public Complex multiply(Vector2D other) {
+  public Complex multiply(Vector2D other) throws IllegalArgumentException {
+    if (other == null) {
+      throw new IllegalArgumentException("The input vector cannot be null");
+    }
     return new Complex(this.getX0() * other.getX0() - this.getX1() * other.getX1(),
         this.getX0() * other.getX1() + this.getX1() * other.getX0());
   }
@@ -54,9 +58,13 @@ public class Complex extends Vector2D {
    *
    * @param other the other complex number to add with.
    * @return the sum of the two complex numbers.
+   * @throws IllegalArgumentException if the input vector is null
    */
   @Override
-  public Complex add(Vector2D other) {
+  public Complex add(Vector2D other) throws IllegalArgumentException {
+    if (other == null) {
+      throw new IllegalArgumentException("The input vector cannot be null");
+    }
     return new Complex(this.getX0() + other.getX0(), this.getX1() + other.getX1());
   }
 }

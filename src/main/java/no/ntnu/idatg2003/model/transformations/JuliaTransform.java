@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.model.transformations;
 
+import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 
@@ -28,6 +29,7 @@ public class JuliaTransform implements Transform2D {
    * @param sign the sign of the transformation
    */
   public JuliaTransform(Complex complexConstant, int sign) {
+    Objects.requireNonNull(complexConstant, "The complex constant cannot be null");
     this.complexConstant = complexConstant;
     this.sign = (int) Math.signum(sign);
   }
@@ -43,6 +45,7 @@ public class JuliaTransform implements Transform2D {
    */
   @Override
   public Vector2D transform(Vector2D point) {
+    Objects.requireNonNull(point, "The input vector cannot be null");
     Complex complexPoint =
         new Complex(
             point.getX0() - complexConstant.getX0(), point.getX1() - complexConstant.getX1());

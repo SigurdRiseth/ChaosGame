@@ -1,5 +1,6 @@
 package no.ntnu.idatg2003.model.game.engine;
 
+import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
@@ -30,8 +31,15 @@ public class ChaosCanvas {
    * @param maxCoords the maximum coordinates for the canvas
    * @param width the width of the canvas
    * @param height the height of the canvas
+   * @throws NullPointerException if the minimum or maximum coordinates are null
+   * @throws IllegalArgumentException if the width or height is less than or equal to 0
    */
   public ChaosCanvas(Vector2D minCoords, Vector2D maxCoords, int width, int height) {
+    Objects.requireNonNull(minCoords, "The minimum coordinates cannot be null");
+    Objects.requireNonNull(maxCoords, "The maximum coordinates cannot be null");
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("The width and height must be positive");
+    }
     this.width = width;
     this.height = height;
     this.canvas = new int[height][width];
@@ -52,24 +60,29 @@ public class ChaosCanvas {
   }
 
   /**
-   * The method return the value of a pixel at a given point.
+   * The method returns the value of a pixel at a given point.
    *
    * @param point the point to get the pixel value from
    * @return the value of the pixel at the given point
    */
   public int getPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()]; //TODO: rund av til nærmeste heltall
+    int xIndex = (int) Math.round(indexPoint.getX0());
+    int yIndex = (int) Math.round(indexPoint.getX1());
+    return canvas[xIndex][yIndex];
   }
 
   /**
    * The method places a point at the given index on the canvas.
    *
    * @param point the point to place on the canvas
+   * @throws IndexOutOfBoundsException if the point is outside the canvas
    */
-  public void putPixel(Vector2D point) {
+  public void putPixel(Vector2D point) throws IndexOutOfBoundsException {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    this.canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()] += 1;
+    int xIndex = (int) Math.round(indexPoint.getX0());
+    int yIndex = (int) Math.round(indexPoint.getX1());
+    this.canvas[xIndex][yIndex] += 1;
   }
 
   /**
@@ -78,6 +91,7 @@ public class ChaosCanvas {
    * @param x the x-coordinate of the pixel
    * @param y the y-coordinate of the pixel
    * @param value the color of the pixel
+   * @throws IndexOutOfBoundsException if the pixel is outside the canvas
    */
   public void putPixel(int x, int y, int value) {
     this.canvas[y][x] = value;

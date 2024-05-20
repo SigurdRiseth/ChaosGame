@@ -96,7 +96,14 @@ class Vector2DTest {
     assertEquals(expected.getX1(), result.getX1(), "Expected x1 to be " + expected.getX1() + ", but was " + result.getX1());
   }
 
-  @ParameterizedTest(name = "length of Vector2D({0}, {1}) = {2}")
+  /**
+   * Test for the length method in the Vector2D class.
+   *
+   * @param x0 x0 value of the vector
+   * @param x1 x1 value of the vector
+   * @param expectedLength expected length of the vector
+   */
+  @ParameterizedTest(name = "|({0}, {1})| = {2}")
   @CsvSource({
       "1, 2, 2.2360679775",
       "3, 4, 5",
@@ -108,6 +115,42 @@ class Vector2DTest {
     Vector2D v = new Vector2D(x0, x1);
     double result = v.getLength();
     assertEquals(expectedLength, result, 1e-10, "Expected length to be " + expectedLength + ", but was " + result);
+  }
+
+  /**
+   * Test for the constructor in the Vector2D class for NaN inputs.
+   */
+  @Test
+  void constructorNaN() {
+    assertThrows(IllegalArgumentException.class, () -> new Vector2D(Double.NaN, 0), "Constructor should throw IllegalArgumentException when x0 is NaN");
+    assertThrows(IllegalArgumentException.class, () -> new Vector2D(0, Double.NaN), "Constructor should throw IllegalArgumentException when x1 is NaN");
+  }
+
+  /**
+   * Test for the constructor in the Vector2D class for infinite inputs.
+   */
+  @Test
+  void constructorInfinite() {
+    assertThrows(IllegalArgumentException.class, () -> new Vector2D(Double.POSITIVE_INFINITY, 0), "Constructor should throw IllegalArgumentException when x0 is infinite");
+    assertThrows(IllegalArgumentException.class, () -> new Vector2D(0, Double.POSITIVE_INFINITY), "Constructor should throw IllegalArgumentException when x1 is infinite");
+  }
+
+  /**
+   * Test for the add method in the Vector2D class for null inputs.
+   */
+  @Test
+  void addNull() {
+    Vector2D v = new Vector2D(1, 2);
+    assertThrows(IllegalArgumentException.class, () -> v.add(null), "add should throw NullPointerException when other is null");
+  }
+
+  /**
+   * Test for the subtract method in the Vector2D class for null inputs.
+   */
+  @Test
+  void subtractNull() {
+    Vector2D v = new Vector2D(1, 2);
+    assertThrows(IllegalArgumentException.class, () -> v.subtract(null), "subtract should throw NullPointerException when other is null");
   }
 
 }

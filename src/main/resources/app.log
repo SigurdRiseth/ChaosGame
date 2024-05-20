@@ -513,3 +513,16 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-19 20:05:13 INFO Transform written to file
 2024-05-19 20:05:13 INFO Transform written to file
 2024-05-19 20:05:13 INFO Transform written to file
+2024-05-20 13:24:28 INFO Starting Chaos Game application
+2024-05-20 13:35:13 INFO Starting Chaos Game application
+2024-05-20 13:35:22 INFO Starting to draw Mandelbrot set.
+2024-05-20 13:35:22 INFO Mandelbrot set drawn.
+2024-05-20 13:35:27 INFO Running custom game
+2024-05-20 13:35:31 INFO Starting to draw Mandelbrot set.
+2024-05-20 13:35:32 INFO Mandelbrot set drawn.
+2024-05-20 13:36:05 INFO Starting Chaos Game application
+2024-05-20 13:36:06 INFO Starting to draw Mandelbrot set.
+2024-05-20 13:36:06 INFO Mandelbrot set drawn.
+2024-05-20 13:41:04 INFO Starting Chaos Game application
+2024-05-20 13:55:52 INFO Starting Chaos Game application
+2024-05-20 14:00:09 INFO Starting Chaos Game application
