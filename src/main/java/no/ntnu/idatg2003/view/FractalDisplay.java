@@ -1,14 +1,12 @@
 package no.ntnu.idatg2003.view;
 
 import javafx.application.Platform;
-import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.PixelWriter;
@@ -21,14 +19,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
-import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameProgressObserver;
-import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import javafx.scene.control.ProgressBar;
 
-import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import no.ntnu.idatg2003.utility.enums.TransformType;
 
@@ -268,7 +263,8 @@ public class FractalDisplay implements ChaosGameProgressObserver {
    *
    * @param progress progress of the transformations
    */
-  public void updateProgressBar(int progress) {
+  @Override
+  public void updateProgress(int progress) {
     progressBar.setProgress(progress / 100.0);
   }
 

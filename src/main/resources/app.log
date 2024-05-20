@@ -526,3 +526,15 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 13:41:04 INFO Starting Chaos Game application
 2024-05-20 13:55:52 INFO Starting Chaos Game application
 2024-05-20 14:00:09 INFO Starting Chaos Game application
+2024-05-20 18:44:02 INFO Starting Chaos Game application
+2024-05-20 18:44:37 INFO Showing custom games scene
+2024-05-20 18:44:37 INFO Running custom game: Dragon.csv
+2024-05-20 18:44:48 INFO Starting to draw Mandelbrot set.
+2024-05-20 18:44:48 INFO Mandelbrot set drawn.
+2024-05-20 18:44:56 INFO Running custom game
+2024-05-20 18:45:15 INFO Starting to draw Mandelbrot set.
+2024-05-20 18:45:15 INFO Mandelbrot set drawn.
+2024-05-20 18:45:47 INFO Running custom game
+2024-05-20 18:46:17 ERROR Empty filename encountered when saving Julia set.
+2024-05-20 18:46:19 ERROR Empty filename encountered when saving affine transformation.
+2024-05-20 18:49:18 INFO Starting Chaos Game application

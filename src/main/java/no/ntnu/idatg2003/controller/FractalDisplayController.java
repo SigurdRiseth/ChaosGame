@@ -10,11 +10,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
 import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileReader;
-import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.enums.PresetTransforms;
@@ -72,15 +70,6 @@ public class FractalDisplayController implements ControllerInterface {
   }
 
   /**
-   * Returns the canvas of the game.
-   *
-   * @return The canvas of the game.
-   */
-  public ChaosCanvas getCanvas() {
-    return game.getCanvas();
-  }
-
-  /**
    * Returns the scene of the view.
    *
    * @return The scene of the view.
@@ -104,10 +93,6 @@ public class FractalDisplayController implements ControllerInterface {
    */
   public void openRunGameView() {
     app.showRunGameScene();
-  }
-
-  public void updateProgress(int progress) {
-    javafx.application.Platform.runLater(() -> view.updateProgressBar(progress));
   }
 
   /**
@@ -142,10 +127,9 @@ public class FractalDisplayController implements ControllerInterface {
 
     double normalizedHits = Math.min(hits / (double) maxHits, 1.0);
 
-    double red = normalizedHits;  // Increases with more hits
     double blue = 1 - normalizedHits;
 
-    return Color.color(red, 0, blue); // Green is left out.
+    return Color.color(normalizedHits, 0, blue); // Green is left out.
   }
 
   /**
