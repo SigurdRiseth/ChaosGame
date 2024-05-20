@@ -58,7 +58,7 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
   public FractalDisplay(FractalDisplayController controller) {
     this.controller = controller;
     this.canvas = new Canvas(800, 800);
-    this.transformTable = createTransformTable();
+    this.transformTable = controller.createTransformTable();
     this.realPartLabel = new Label();
     this.imaginaryPartLabel = new Label();
     this.juliaDetailsBox = createJuliaDetailsBox();
@@ -140,69 +140,6 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
         progressBox, runButton, infoLabel, juliaDetailsBox, transformTable);
     content.setPadding(new Insets(10));
     return content;
-  }
-
-  /**
-   * Initiates the table for the transformations from the controller.
-   *
-   * @return TableView<Transform2D> The table with the transformations.
-   */
-  private TableView<Transform2D> createTransformTable() {
-    TableView<Transform2D> table = new TableView<>();
-    configureTransformTable(table);
-    table.setItems(controller.getTransformations());
-    return table;
-  }
-
-  /**
-   * Configures the table for the transformations. Creates columns for each part of the matrix
-   * and the vector. Checks if the transformation is an AffineTransform2D, and if so, adds the values
-   * to the table.
-   *
-   * @param table The table to configure.
-   */
-  private void configureTransformTable(TableView<Transform2D> table) {
-    table.getColumns().clear();
-
-    TableColumn<Transform2D, Number> a00Column = new TableColumn<>("a00"); //Sets column header
-    a00Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D
-            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA00()) //Reads data from the matrix
-            : new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
-
-
-    TableColumn<Transform2D, Number> a01Column = new TableColumn<>("a01");
-    a01Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D
-            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA01())
-            : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    TableColumn<Transform2D, Number> a10Column = new TableColumn<>("a10");
-    a10Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D
-            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA10())
-            : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    TableColumn<Transform2D, Number> a11Column = new TableColumn<>("a11");
-    a11Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D
-            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA11())
-            : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    TableColumn<Transform2D, Number> b0Column = new TableColumn<>("b0");
-    b0Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D
-            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX0())
-            : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    TableColumn<Transform2D, Number> b1Column = new TableColumn<>("b1");
-    b1Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D
-            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX1())
-            : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    table.getColumns().addAll(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
-
   }
 
   /**
@@ -325,16 +262,11 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
     Platform.runLater(() -> drawCanvas(canvasArray));
   }
 
-
-  /*
-  //@Override
-  public void updateProgress(int progress) {
-    Platform.runLater(() -> {
-      progressBar.setProgress(progress / 100.0);
-    });
-  }
-*/
-
+  /**
+   * Method to upgrade the progress bar
+   *
+   * @param progress progress of the transformations
+   */
   public void updateProgressBar(int progress) {
     progressBar.setProgress(progress / 100.0);
   }
