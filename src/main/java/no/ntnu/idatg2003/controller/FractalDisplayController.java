@@ -4,6 +4,7 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
@@ -30,25 +31,17 @@ public class FractalDisplayController implements ControllerInterface {
   public FractalDisplayController(ChaosGameApp app) {
     this.app = app;
     this.view = new FractalDisplay(this);
-    //initializeTransformations();
   }
 
   public ObservableList<Transform2D> getTransformations() {
     return transformations;
   }
 
-  /*private void initializeTransformations() {
-    loadTransformations(ChaosGameDescriptionFactory.createBarnsleyFern().getTransforms());
-    loadTransformations(ChaosGameDescriptionFactory.createJuliaSet().getTransforms());
-    loadTransformations(ChaosGameDescriptionFactory.createSierpinskiTriangle().getTransforms());
-  } */
-
   private void loadTransformations(List<Transform2D> transforms) {
     transformations.clear();
     transformations.addAll(transforms);
     view.updateTableItems();
   }
-
 
 
   public void createGame(PresetTransforms transformation) {
@@ -130,6 +123,22 @@ public class FractalDisplayController implements ControllerInterface {
   public void createCustomGame(ChaosGameDescription description) {
     game = new ChaosGame(description, 800, 800);
     observeGame();
+  }
+
+  public void updateCanvas() {
+    view.updateCanvas(game.getCanvas().getCanvasArray());
+  }
+
+  public Color calculateColor(int hits) {
+    int maxHits = 100;
+    if (hits == 0) return Color.WHITE;
+
+    double normalizedHits = Math.min(hits / (double) maxHits, 1.0);
+
+    double red = normalizedHits;  // Increases with more hits
+    double blue = 1 - normalizedHits;
+
+    return Color.color(red, 0, blue); // Green is left out.
   }
 
 }

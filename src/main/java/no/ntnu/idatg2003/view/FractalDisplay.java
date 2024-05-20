@@ -40,7 +40,7 @@ import no.ntnu.idatg2003.utility.enums.TransformType;
 public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTERN for å vise fraktalenes verdier
 
   private final FractalDisplayController controller;
-  private Canvas canvas;
+  private final  Canvas canvas;
   private final TableView<Transform2D> transformTable;
   private final VBox juliaDetailsBox;
   private final Label realPartLabel;
@@ -166,40 +166,40 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
 
     TableColumn<Transform2D, Number> a00Column = new TableColumn<>("a00"); //Sets column header
     a00Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D ?
-            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA00()) : //Reads data from the matrix
-            new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA00()) //Reads data from the matrix
+            : new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
 
 
     TableColumn<Transform2D, Number> a01Column = new TableColumn<>("a01");
     a01Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D ?
-            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA01()) :
-            new ReadOnlyDoubleWrapper(Double.NaN));
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA01())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
 
     TableColumn<Transform2D, Number> a10Column = new TableColumn<>("a10");
     a10Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D ?
-            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA10()) :
-            new ReadOnlyDoubleWrapper(Double.NaN));
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA10())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
 
     TableColumn<Transform2D, Number> a11Column = new TableColumn<>("a11");
     a11Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D ?
-            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA11()) :
-            new ReadOnlyDoubleWrapper(Double.NaN));
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA11())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
 
     TableColumn<Transform2D, Number> b0Column = new TableColumn<>("b0");
     b0Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D ?
-            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX0()) :
-            new ReadOnlyDoubleWrapper(Double.NaN));
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX0())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
 
     TableColumn<Transform2D, Number> b1Column = new TableColumn<>("b1");
     b1Column.setCellValueFactory(cellData ->
-        cellData.getValue() instanceof AffineTransform2D ?
-            new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX1()) :
-            new ReadOnlyDoubleWrapper(Double.NaN));
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX1())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
 
     table.getColumns().addAll(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
 
@@ -278,31 +278,16 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
         transformTable.setVisible(true);
         break;
       default:
-        LoggerUtil.logError("Invalid game type.");
+        LoggerUtil.logError("Invalid game type");
     }
   }
-
-
-  /**
-   * Updates the canvas with the current state of the game.
-   */
-  public void updateCanvas() {
-    drawCanvas(controller.getCanvas());
-  }
-
-  /*public void clearCanvas() {
-    GraphicsContext gc = canvas.getGraphicsContext2D();
-    gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-  }*/
-
 
   /**
    * Draws the given ChaosCanvas on the canvas.
    *
-   * @param chaosCanvas The ChaosCanvas to draw.
+   * @param canvasArray The ChaosCanvas to draw.
    */
-  private void drawCanvas(ChaosCanvas chaosCanvas) {
-    int[][] canvasArray = chaosCanvas.getCanvasArray();
+  private void drawCanvas(int[][] canvasArray) {
     int width = canvasArray[0].length;
     int height = canvasArray.length;
 
@@ -311,8 +296,7 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
 
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
-        int pixelValue = canvasArray[y][x];
-        Color color = calculateColor(pixelValue);
+        Color color = controller.calculateColor(canvasArray[y][x]);
         pixelWriter.setColor(x, y, color);
       }
     }
@@ -322,33 +306,34 @@ public class FractalDisplay implements ChaosGameObserver { //TODO: BUILDER PATTE
     gc.drawImage(image, 0, 0);
   }
 
-  private Color calculateColor(int hits) {
-    int maxHits = 100;
-    if (hits == 0) return Color.WHITE;
 
-    double normalizedHits = Math.min(hits / (double) maxHits, 1.0);
-
-    double red = normalizedHits;  // Increases with more hits
-    double blue = 1 - normalizedHits;
-
-    return Color.color(red, 0, blue); // Green is left out.
-  }
 
   /**
    * Updates the view.
    */
   @Override
   public void update() {
-    updateCanvas();
+    controller.updateCanvas();
   }
 
+  /**
+   * Method to update the draw process of canvas array
+   *
+   * @param canvasArray the canvas array
+   */
+  public void updateCanvas(int[][] canvasArray) {
+    Platform.runLater(() -> drawCanvas(canvasArray));
+  }
+
+
+  /*
   //@Override
   public void updateProgress(int progress) {
     Platform.runLater(() -> {
       progressBar.setProgress(progress / 100.0);
     });
   }
-
+*/
 
   public void updateProgressBar(int progress) {
     progressBar.setProgress(progress / 100.0);
