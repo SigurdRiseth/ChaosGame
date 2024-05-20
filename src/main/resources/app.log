@@ -627,3 +627,41 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 13:15:33 INFO Transform written to file
 2024-05-20 13:15:33 INFO Transform written to file
 2024-05-20 13:15:33 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-20 14:09:29 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-20 14:09:29 ERROR Failed to read the file: java.lang.NumberFormatException: For input string: "invalid"
+2024-05-20 14:09:29 INFO Lower Left written to file
+2024-05-20 14:09:29 INFO Upper Right written to file
+2024-05-20 14:09:29 INFO Transform written to file
+2024-05-20 14:09:29 INFO Transform written to file
+2024-05-20 14:09:29 ERROR Failed to read the file: Unknown transform type: invalid
+2024-05-20 14:09:29 INFO Lower Left written to file
+2024-05-20 14:09:29 INFO Upper Right written to file
+2024-05-20 14:09:29 INFO Transform written to file
+2024-05-20 14:09:29 INFO Transform written to file
+2024-05-20 14:09:29 INFO Transform written to file
+2024-05-20 14:09:29 INFO Transform written to file
+2024-05-20 14:09:29 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-20 15:45:32 INFO Starting Chaos Game application
+2024-05-20 15:45:40 INFO Starting to draw Mandelbrot set.
+2024-05-20 15:45:40 INFO Mandelbrot set drawn.
+2024-05-20 15:45:56 INFO Running custom game
+2024-05-20 15:57:07 INFO Starting Chaos Game application
+2024-05-20 15:58:46 INFO Showing custom games scene
+2024-05-20 15:58:59 INFO Showing custom games scene
+2024-05-20 15:59:00 INFO Running custom game: Dragon.csv
+2024-05-20 15:59:02 INFO Showing custom games scene
+2024-05-20 15:59:03 INFO Running custom game: AffineTest.csv
+2024-05-20 15:59:05 INFO Running custom game: AffineTest.csv
+2024-05-20 15:59:18 INFO Running custom game: Wiki_Julia.csv
+2024-05-20 15:59:26 INFO Showing custom games scene
+2024-05-20 15:59:27 INFO Running custom game: Dragon.csv
+2024-05-20 16:36:39 INFO Starting Chaos Game application
+2024-05-20 16:36:44 INFO Showing custom games scene
+2024-05-20 16:36:45 INFO Running custom game: AffineTest.csv
+2024-05-20 16:42:54 INFO Starting Chaos Game application
+2024-05-20 16:43:01 INFO Showing custom games scene
+2024-05-20 16:43:03 INFO Running custom game: JuliaTest.csv
+2024-05-20 16:43:07 ERROR An error occurred while running the game: Index -505 out of bounds for length 800
+2024-05-20 16:43:07 ERROR An error occurred while running the game: Index -368 out of bounds for length 800
+2024-05-20 16:43:07 ERROR An error occurred while running the game: Index 1489 out of bounds for length 800
+2024-05-20 16:43:12 ERROR An error occurred while running the game: Index -606 out of bounds for length 800

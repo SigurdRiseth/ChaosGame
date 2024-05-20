@@ -1,4 +1,4 @@
-package no.ntnu.idatg2003.game.engine;
+package no.ntnu.idatg2003.file.handling;
 
 import static org.junit.jupiter.api.Assertions.*;
 

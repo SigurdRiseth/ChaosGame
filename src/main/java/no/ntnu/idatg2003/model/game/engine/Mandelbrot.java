@@ -2,6 +2,7 @@ package no.ntnu.idatg2003.model.game.engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.utility.logging.LoggerUtil;
@@ -91,6 +92,7 @@ public class Mandelbrot implements ChaosGameSubject {
      */
     @Override
     public void registerObserver(ChaosGameObserver observer) {
+        Objects.requireNonNull(observer);
         observers.add(observer);
     }
 
@@ -101,6 +103,7 @@ public class Mandelbrot implements ChaosGameSubject {
      */
     @Override
     public void removeObserver(ChaosGameObserver observer) {
+        Objects.requireNonNull(observer);
         observers.remove(observer);
     }
 
