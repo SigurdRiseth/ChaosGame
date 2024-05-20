@@ -52,14 +52,16 @@ public class ChaosCanvas {
   }
 
   /**
-   * The method return the value of a pixel at a given point.
+   * The method returns the value of a pixel at a given point.
    *
    * @param point the point to get the pixel value from
    * @return the value of the pixel at the given point
    */
   public int getPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    return canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()]; //TODO: rund av til nærmeste heltall
+    int xIndex = (int) Math.round(indexPoint.getX0());
+    int yIndex = (int) Math.round(indexPoint.getX1());
+    return canvas[xIndex][yIndex];
   }
 
   /**
@@ -69,7 +71,9 @@ public class ChaosCanvas {
    */
   public void putPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
-    this.canvas[(int) indexPoint.getX0()][(int) indexPoint.getX1()] += 1;
+    int xIndex = (int) Math.round(indexPoint.getX0());
+    int yIndex = (int) Math.round(indexPoint.getX1());
+    this.canvas[xIndex][yIndex] += 1;
   }
 
   /**

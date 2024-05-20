@@ -523,3 +523,7 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 09:23:29 INFO Mandelbrot set drawn.
 2024-05-20 09:24:01 INFO Running custom game
 2024-05-20 09:43:50 INFO Starting Chaos Game application
+2024-05-20 10:54:43 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-20 10:55:02 ERROR An error occurred while running the game: Index -163 out of bounds for length 600
+2024-05-20 10:55:22 ERROR An error occurred while running the game: Index -163 out of bounds for length 600
+2024-05-20 10:56:32 ERROR An error occurred while running the game: Index -163 out of bounds for length 600

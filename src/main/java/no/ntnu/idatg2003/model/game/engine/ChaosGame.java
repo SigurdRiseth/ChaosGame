@@ -2,6 +2,7 @@ package no.ntnu.idatg2003.model.game.engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
@@ -35,8 +36,14 @@ public class ChaosGame implements ChaosGameSubject {
    * @param description the description of the game
    * @param width the width of the canvas
    * @param height the height of the canvas
+   * @throws NullPointerException if the description is null
+   * @throws IllegalArgumentException if the width or height is less than or equal to 0
    */
-  public ChaosGame(ChaosGameDescription description, int width, int height) {
+  public ChaosGame(ChaosGameDescription description, int width, int height) throws IllegalArgumentException {
+    Objects.requireNonNull(description, "The description cannot be null");
+    if (width <= 0 || height <= 0) {
+      throw new IllegalArgumentException("The width and height must be positive");
+    }
     this.description = description;
     this.canvas =
         new ChaosCanvas(description.getMinCoords(), description.getMaxCoords(), width, height);
@@ -57,8 +64,12 @@ public class ChaosGame implements ChaosGameSubject {
    * Method to run the game for a given number of steps.
    *
    * @param steps the number of steps to run
+   * @throws IllegalArgumentException if steps is negative
    */
   public void runSteps(int steps) {
+    if (steps < 0) {
+      throw new IllegalArgumentException("Steps must be non-negative");
+    }
     canvas.clear();
     int progress = 0;
     try {
@@ -76,24 +87,40 @@ public class ChaosGame implements ChaosGameSubject {
         }
       }
     } catch (Exception e) {
-      LoggerUtil.logError("Error: ",e);
+      LoggerUtil.logError("An error occurred while running the game: " + e.getMessage());
     }
     finally {
       notifyObservers();
     }
   }
 
-
+  /**
+   * Method to register an observer.
+   *
+   * @param observer The observer to register.
+   * @throws NullPointerException if the observer is null
+   */
   @Override
   public void registerObserver(ChaosGameObserver observer) {
+    Objects.requireNonNull(observer, "The observer to add cannot be null");
     observers.add(observer);
   }
 
+  /**
+   * Method to remove an observer from the list of observers.
+   *
+   * @param observer The observer to remove.
+   * @throws NullPointerException if the observer is null
+   */
   @Override
   public void removeObserver(ChaosGameObserver observer) {
+    Objects.requireNonNull(observer, "The observer to remove cannot be null");
     observers.remove(observer);
   }
 
+  /**
+   * Method to notify all observers.
+   */
   @Override
   public void notifyObservers() {
     for (ChaosGameObserver observer : observers) {
@@ -101,10 +128,15 @@ public class ChaosGame implements ChaosGameSubject {
     }
   }
 
+  /**
+   * Method to notify all progress observers.
+   *
+   * @param progress The progress to notify.
+   */
   public void notifyProgress(int progress) {
     for (ChaosGameObserver observer : observers) {
-      if (observer instanceof ChaosGameProgressObserver) {
-        ((ChaosGameProgressObserver) observer).updateProgress(progress);
+      if (observer instanceof ChaosGameProgressObserver progressObserver) {
+        progressObserver.updateProgress(progress);
       }
     }
   }
