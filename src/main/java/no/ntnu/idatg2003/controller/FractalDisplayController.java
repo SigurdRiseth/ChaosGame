@@ -1,15 +1,21 @@
 package no.ntnu.idatg2003.controller;
 
 import java.util.List;
+import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.paint.Color;
 import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileReader;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGame;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescriptionFactory;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameFileHandler;
+import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.enums.PresetTransforms;
 import no.ntnu.idatg2003.view.ChaosGameApp;
@@ -31,25 +37,17 @@ public class FractalDisplayController implements ControllerInterface {
   public FractalDisplayController(ChaosGameApp app) {
     this.app = app;
     this.view = new FractalDisplay(this);
-    //initializeTransformations();
   }
 
   public ObservableList<Transform2D> getTransformations() {
     return transformations;
   }
 
-  /*private void initializeTransformations() {
-    loadTransformations(ChaosGameDescriptionFactory.createBarnsleyFern().getTransforms());
-    loadTransformations(ChaosGameDescriptionFactory.createJuliaSet().getTransforms());
-    loadTransformations(ChaosGameDescriptionFactory.createSierpinskiTriangle().getTransforms());
-  } */
-
   private void loadTransformations(List<Transform2D> transforms) {
     transformations.clear();
     transformations.addAll(transforms);
     view.updateTableItems();
   }
-
 
 
   public void createGame(PresetTransforms transformation) {
@@ -133,5 +131,87 @@ public class FractalDisplayController implements ControllerInterface {
     game = new ChaosGame(description, 800, 800);
     observeGame();
   }
+
+  public void updateCanvas() {
+    view.updateCanvas(game.getCanvas().getCanvasArray());
+  }
+
+  public Color calculateColor(int hits) {
+    int maxHits = 100;
+    if (hits == 0) return Color.WHITE;
+
+    double normalizedHits = Math.min(hits / (double) maxHits, 1.0);
+
+    double red = normalizedHits;  // Increases with more hits
+    double blue = 1 - normalizedHits;
+
+    return Color.color(red, 0, blue); // Green is left out.
+  }
+
+  /**
+   * Initiates the table for the transformations from the controller.
+   *
+   * @return TableView<Transform2D> The table with the transformations.
+   */
+
+  public TableView<Transform2D> createTransformTable() {
+    TableView<Transform2D> table = new TableView<>();
+    configureTransformTable(table);
+    table.setItems(getTransformations());
+    return table;
+  }
+
+  /**
+   * Configures the table for the transformations. Creates columns for each part of the matrix
+   * and the vector. Checks if the transformation is an AffineTransform2D, and if so, adds the values
+   * to the table.
+   *
+   * @param table The table to configure.
+   */
+  public void configureTransformTable(TableView<Transform2D> table) {
+    table.getColumns().clear();
+
+    TableColumn<Transform2D, Number> a00Column = new TableColumn<>("a00"); //Sets column header
+    a00Column.setCellValueFactory(cellData ->
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA00()) //Reads data from the matrix
+            : new ReadOnlyDoubleWrapper(Double.NaN));  // Handle non-applicable cases
+
+
+    TableColumn<Transform2D, Number> a01Column = new TableColumn<>("a01");
+    a01Column.setCellValueFactory(cellData ->
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA01())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
+
+    TableColumn<Transform2D, Number> a10Column = new TableColumn<>("a10");
+    a10Column.setCellValueFactory(cellData ->
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA10())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
+
+    TableColumn<Transform2D, Number> a11Column = new TableColumn<>("a11");
+    a11Column.setCellValueFactory(cellData ->
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getMatrix().getA11())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
+
+    TableColumn<Transform2D, Number> b0Column = new TableColumn<>("b0");
+    b0Column.setCellValueFactory(cellData ->
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX0())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
+
+    TableColumn<Transform2D, Number> b1Column = new TableColumn<>("b1");
+    b1Column.setCellValueFactory(cellData ->
+        cellData.getValue() instanceof AffineTransform2D
+            ? new ReadOnlyDoubleWrapper(((AffineTransform2D) cellData.getValue()).getVector().getX1())
+            : new ReadOnlyDoubleWrapper(Double.NaN));
+
+    table.getColumns().addAll(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
+
+  }
+
+
 
 }
