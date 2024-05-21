@@ -7,14 +7,16 @@ import java.util.Scanner;
  * and strings from the console.
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
- * @since 05.03.2024
  * @version 0.0.1
+ * @since 05.03.2024
  */
 public class InputHandler {
 
   private Scanner scanner;
 
-  /** Constructor for the InputHandler class. It initializes the scanner. */
+  /**
+   * Constructor for the InputHandler class. It initializes the scanner.
+   */
   public InputHandler() {
     scanner = new Scanner(System.in);
   }
@@ -51,8 +53,8 @@ public class InputHandler {
    * Method to read a double from the console. If the input is not a double, an exception will be
    * thrown.
    *
-   * @throws IllegalArgumentException if the input is not a double
    * @return the double
+   * @throws IllegalArgumentException if the input is not a double
    */
   public double readDouble() {
     double input;

@@ -8,14 +8,17 @@ import no.ntnu.idatg2003.utility.enums.TransformType;
 /**
  * Class to represent the Affine transformation x → Ax+b
  *
- * @since 12.02.2024
+ * <p>This class represents an Affine transformation, which maps a vector x to Ax+b, where A is a 2x2 matrix and b is a 2D vector.</p>
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.1
  * @see Transform2D
  * @see Matrix2x2
  * @see Vector2D
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @since 12.02.2024
  */
 public class AffineTransform2D implements Transform2D {
+
   private final Matrix2x2 matrix;
   private final Vector2D vector;
 

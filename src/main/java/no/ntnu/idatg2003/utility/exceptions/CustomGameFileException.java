@@ -7,8 +7,9 @@ public class CustomGameFileException extends RuntimeException {
 
   /**
    * Constructs a new CustomGameFileException with the specified detail message.
+   *
    * @param message the detail message
-   * @param cause the cause
+   * @param cause   the cause
    */
   public CustomGameFileException(String message, Throwable cause) {
     super(message, cause);

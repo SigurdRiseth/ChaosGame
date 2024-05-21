@@ -6,21 +6,24 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 
 /**
- * This class represents a canvas for the Chaos Game. It contains a 2D array of integers, and
- * methods to get and put pixels on the canvas. It also contains a method to clear the canvas.
+ * Represents a canvas for the Chaos Game, providing methods to manipulate pixel values.
+ * The canvas is represented as a 2D array of integers.
  *
- * @since 27.02.2024
+ * <p>This class includes methods to retrieve and set pixel values, as well as clearing the canvas.
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.1
+ * @since 27.02.2024
  * @see Vector2D
  * @see AffineTransform2D
  * @see Matrix2x2
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
 public class ChaosCanvas {
+
   private final AffineTransform2D transformCoordsToIndices;
-  private int[][] canvas;
   private final int width;
   private final int height;
+  private int[][] canvas;
 
   /**
    * Constructor for the ChaosCanvas. It initializes the canvas with the given dimensions and
@@ -29,9 +32,9 @@ public class ChaosCanvas {
    *
    * @param minCoords the minimum coordinates for the canvas
    * @param maxCoords the maximum coordinates for the canvas
-   * @param width the width of the canvas
-   * @param height the height of the canvas
-   * @throws NullPointerException if the minimum or maximum coordinates are null
+   * @param width     the width of the canvas
+   * @param height    the height of the canvas
+   * @throws NullPointerException     if the minimum or maximum coordinates are null
    * @throws IllegalArgumentException if the width or height is less than or equal to 0
    */
   public ChaosCanvas(Vector2D minCoords, Vector2D maxCoords, int width, int height) {
@@ -60,10 +63,10 @@ public class ChaosCanvas {
   }
 
   /**
-   * The method returns the value of a pixel at a given point.
+   * Retrieves the value of the pixel at the specified point on the canvas.
    *
-   * @param point the point to get the pixel value from
-   * @return the value of the pixel at the given point
+   * @param point the point for which to retrieve the pixel value
+   * @return the value of the pixel at the specified point
    */
   public int getPixel(Vector2D point) {
     Vector2D indexPoint = transformCoordsToIndices.transform(point);
@@ -73,9 +76,9 @@ public class ChaosCanvas {
   }
 
   /**
-   * The method places a point at the given index on the canvas.
+   * Increases the value of the pixel at the specified point on the canvas.
    *
-   * @param point the point to place on the canvas
+   * @param point the point at which to set the pixel value
    * @throws IndexOutOfBoundsException if the point is outside the canvas
    */
   public void putPixel(Vector2D point) throws IndexOutOfBoundsException {
@@ -86,19 +89,19 @@ public class ChaosCanvas {
   }
 
   /**
-   * The method places a value at a given pixel.
+   * Sets the value of the pixel at the specified coordinates on the canvas.
    *
-   * @param x the x-coordinate of the pixel
-   * @param y the y-coordinate of the pixel
-   * @param value the color of the pixel
-   * @throws IndexOutOfBoundsException if the pixel is outside the canvas
+   * @param x     the x-coordinate of the pixel
+   * @param y     the y-coordinate of the pixel
+   * @param value the value to set for the pixel
+   * @throws IndexOutOfBoundsException if the coordinates are outside the canvas
    */
   public void putPixel(int x, int y, int value) {
     this.canvas[y][x] = value;
   }
 
   /**
-   * The method returns the canvas array.
+   * Retrieves the 2D array representing the canvas.
    *
    * @return the canvas array
    */
@@ -106,7 +109,9 @@ public class ChaosCanvas {
     return this.canvas;
   }
 
-  /** The method clears the canvas by creating a new canvas array. */
+  /**
+   * Clears the canvas by creating a new empty canvas array.
+   */
   public void clear() {
     this.canvas = new int[height][width];
   }

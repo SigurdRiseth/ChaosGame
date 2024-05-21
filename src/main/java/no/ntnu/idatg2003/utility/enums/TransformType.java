@@ -5,17 +5,13 @@ package no.ntnu.idatg2003.utility.enums;
  * game.
  */
 public enum TransformType {
-  AFFINE2D ("Affine2D"),
+  AFFINE2D("Affine2D"),
   JULIA("Julia");
 
   private final String typeString;
 
   TransformType(String typeString) {
     this.typeString = typeString;
-  }
-
-  public String getTypeString() {
-    return typeString;
   }
 
   /**
@@ -32,5 +28,9 @@ public enum TransformType {
       }
     }
     throw new IllegalArgumentException("Unknown transform type: " + typeString);
+  }
+
+  public String getTypeString() {
+    return typeString;
   }
 }

@@ -6,28 +6,29 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.utility.enums.TransformType;
 
 /**
- * Class to represent the Julia transformation.
+ * Represents the Julia transformation.
  *
- * <p>This class is used to represent the Julia transformation and perform operations on it.</p>
+ * <p>The Julia transformation is applied to points in the complex plane, transforming them according to the formula: z → ±sqrt(z - c),
+ * where z is the parameter, c is the complex constant, and ± depends on the sign field.</p>
  *
  * @author Sigurd Riseth, Theodor Sjetnan Utvik
- * @version 0.0.1
+ * @version 1.0.0
+ * @since 12.02.2024
  * @see Transform2D
  * @see Complex
  * @see Vector2D
- * @since 12.02.2024
  */
 public class JuliaTransform implements Transform2D {
+
   private final Complex complexConstant;
   private final int sign;
 
   /**
-   * Constructor for the Julia transformation.
+   * Constructs a Julia transformation.
    *
-   * <p>Field <code>sign</code> is set to either positive or negative 1 depending on input sign</p>
-   *
-   * @param complexConstant the complex constant
-   * @param sign the sign of the transformation
+   * @param complexConstant The complex constant.
+   * @param sign            The sign of the transformation.
+   * @throws NullPointerException if the complex constant is null
    */
   public JuliaTransform(Complex complexConstant, int sign) {
     Objects.requireNonNull(complexConstant, "The complex constant cannot be null");
@@ -43,6 +44,7 @@ public class JuliaTransform implements Transform2D {
    *
    * @param point the point to transform
    * @return Julia transformed Vector2D
+   * @throws NullPointerException if the input vector is null
    */
   @Override
   public Vector2D transform(Vector2D point) {

@@ -15,8 +15,8 @@ import no.ntnu.idatg2003.utility.enums.PresetTransforms;
  * Class for the run game menu view of the application. This class is responsible for creating the
  * run game menu scene and its content. The run game menu is used to select a game to run.
  *
- * @version 0.0.2
  * @author Sigurd Riseth
+ * @version 0.0.2
  */
 
 public class RunGameMenu {
@@ -26,7 +26,7 @@ public class RunGameMenu {
 
   public RunGameMenu(RunGameMenuController controller) {
     this.controller = controller;
-    this.scene = new Scene(createContent(),800,600);
+    this.scene = new Scene(createContent(), 800, 600);
   }
 
   public Scene getScene() {
@@ -45,11 +45,11 @@ public class RunGameMenu {
     Button backButton = new Button("Return");
 
     juliaButton.setOnAction(e -> controller.openPresetGameScene(PresetTransforms.JULIA_SET));
-    sierpinskiButton.setOnAction(e -> controller.openPresetGameScene(PresetTransforms.SIERPINSKI_TRIANGLE));
+    sierpinskiButton.setOnAction(
+        e -> controller.openPresetGameScene(PresetTransforms.SIERPINSKI_TRIANGLE));
     barnsleyButton.setOnAction(e -> controller.openPresetGameScene(PresetTransforms.BARNSLEY_FERN));
     customButton.setOnAction(e -> controller.openCustomGameMenu());
     backButton.setOnAction(e -> controller.openFrontPageScene());
-
 
     Text text = new Text("Choose a game to run!");
     text.setStyle("-fx-font-size: 24; -fx-fill: white;");

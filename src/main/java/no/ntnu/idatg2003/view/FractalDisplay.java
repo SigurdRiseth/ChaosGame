@@ -8,6 +8,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -24,21 +25,19 @@ import no.ntnu.idatg2003.controller.FractalDisplayController;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameProgressObserver;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import javafx.scene.control.ProgressBar;
-
-import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import no.ntnu.idatg2003.utility.enums.TransformType;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 
 /**
  * The view for the PresetGame Page.
  * <p>
- *    This class is responsible for displaying the game view for the preset game.
+ * This class is responsible for displaying the game view for the preset game.
  * </p>
  */
 public class FractalDisplay implements ChaosGameProgressObserver {
 
   private final FractalDisplayController controller;
-  private final  Canvas canvas;
+  private final Canvas canvas;
   private final TableView<Transform2D> transformTable;
   private final VBox juliaDetailsBox;
   private final Label realPartLabel;
@@ -48,7 +47,7 @@ public class FractalDisplay implements ChaosGameProgressObserver {
   /**
    * Constructor for the PresetGameView class.
    * <p>
-   *   Initializes the view with the given controller and initializes the canvas.
+   * Initializes the view with the given controller and initializes the canvas.
    * </p>
    *
    * @param controller The controller for the view.
@@ -65,6 +64,23 @@ public class FractalDisplay implements ChaosGameProgressObserver {
     juliaDetailsBox.setVisible(false);
     setupJuliaDetailsLayout();
     this.progressBar = new ProgressBar();
+  }
+
+  /**
+   * Builds the iterations field for the view.
+   *
+   * @return TextField The iterations field.
+   */
+  private static TextField buildIterationsField() {
+    TextField iterationsField = new TextField();
+    iterationsField.setMaxSize(100, 10);
+    // limit iterations filed to values from 0 to 100,000,000
+    iterationsField.textProperty().addListener((observable, oldValue, newValue) -> {
+      if (!newValue.matches("\\d{0,8}")) {
+        iterationsField.setText(oldValue);
+      }
+    });
+    return iterationsField;
   }
 
   /**
@@ -94,7 +110,6 @@ public class FractalDisplay implements ChaosGameProgressObserver {
     canvasContainer.getChildren().add(canvas);
     canvasContainer.setStyle("-fx-border-color: black; -fx-border-width: 2;");
 
-
     content.setRight(canvasContainer);
 
     return content;
@@ -103,7 +118,7 @@ public class FractalDisplay implements ChaosGameProgressObserver {
   /**
    * Creates the left panel for the view.
    * <p>
-   *    This contains the return button, input field for iterations, run button, and general info.
+   * This contains the return button, input field for iterations, run button, and general info.
    * </p>
    *
    * @return VBox with the left panel content.
@@ -141,7 +156,7 @@ public class FractalDisplay implements ChaosGameProgressObserver {
    * Builds the run button for the view.
    *
    * @param iterationsField The field for the iterations.
-   * @param check The checkmark label.
+   * @param check           The checkmark label.
    * @return Button The run button.
    */
   private Button buildRunButton(TextField iterationsField, Label check) {
@@ -153,23 +168,6 @@ public class FractalDisplay implements ChaosGameProgressObserver {
       check.setVisible(true);
     });
     return runButton;
-  }
-
-  /**
-   * Builds the iterations field for the view.
-   *
-   * @return TextField The iterations field.
-   */
-  private static TextField buildIterationsField() {
-    TextField iterationsField = new TextField();
-    iterationsField.setMaxSize(100,10);
-    // limit iterations filed to values from 0 to 100,000,000
-    iterationsField.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!newValue.matches("\\d{0,8}")) {
-        iterationsField.setText(oldValue);
-      }
-    });
-    return iterationsField;
   }
 
   /**
@@ -236,11 +234,13 @@ public class FractalDisplay implements ChaosGameProgressObserver {
     TableColumn<Transform2D, Number> b1Column = new TableColumn<>("b1");
 
     // Add columns to the table using a List to avoid the unchecked generics array creation warning
-    List<TableColumn<Transform2D, ?>> columns = List.of(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
+    List<TableColumn<Transform2D, ?>> columns = List.of(a00Column, a01Column, a10Column, a11Column,
+        b0Column, b1Column);
     table.getColumns().addAll(columns);
 
     // Pass the table and columns to the controller for configuration
-    controller.configureTransformTable(a00Column, a01Column, a10Column, a11Column, b0Column, b1Column);
+    controller.configureTransformTable(a00Column, a01Column, a10Column, a11Column, b0Column,
+        b1Column);
   }
 
 
@@ -253,8 +253,8 @@ public class FractalDisplay implements ChaosGameProgressObserver {
   }
 
   /**
-   * Updates the Julia details in the view details, and sets those values to the  labels assigned
-   * to the real and imaginary parts.
+   * Updates the Julia details in the view details, and sets those values to the  labels assigned to
+   * the real and imaginary parts.
    */
   private void updateJuliaDetails() {
     Transform2D latestJulia = controller.getTransformations().stream()
@@ -312,7 +312,6 @@ public class FractalDisplay implements ChaosGameProgressObserver {
     gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight()); // Clear existing content
     gc.drawImage(image, 0, 0);
   }
-
 
 
   /**

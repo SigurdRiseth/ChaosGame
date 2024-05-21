@@ -83,7 +83,7 @@ public class Ui {
    * they want to create, and then the file name. The file will be saved in the resources folder.
    */
   private void
-      createGameFile() { // TODO: Add input validation. Catch exceptions and allow users to return
+  createGameFile() { // TODO: Add input validation. Catch exceptions and allow users to return
     // to main menu.
     ChaosGameDescription description = null;
     System.out.println("What type of transformation do you want to create?");
@@ -242,7 +242,8 @@ public class Ui {
    */
   private void runGame(String gameName, int steps) {
     ChaosGameDescription description =
-        ChaosGameFileHandler.readFromFile(new ChaosGameTextFileReader(),"src/main/resources/" + gameName + ".csv");
+        ChaosGameFileHandler.readFromFile(new ChaosGameTextFileReader(),
+            "src/main/resources/" + gameName + ".csv");
 
     ChaosGame game = new ChaosGame(description, 50 * 3, 50);
 

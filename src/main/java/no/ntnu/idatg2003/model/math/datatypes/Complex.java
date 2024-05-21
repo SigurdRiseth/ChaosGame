@@ -1,31 +1,34 @@
 package no.ntnu.idatg2003.model.math.datatypes;
 
 /**
- * This class is a subclass of Vector2D and takes in the parameters: realPart and imaginaryPart. The
- * class has method which returns the square root of a complex number, using methods from Vector2D.
+ * This class represents complex numbers and extends the Vector2D class. It contains methods for performing
+ * operations specific to complex numbers, such as calculating the square root, multiplying two complex
+ * numbers, and adding two complex numbers.
  *
+ * <p>A complex number is represented as a vector in the complex plane, where the x-coordinate corresponds
+ * to the real part and the y-coordinate corresponds to the imaginary part.
+ *
+ * @author Theodor Sjetnan Utvik, Sigurd Riseth
+ * @version 1.0.0
  * @see Vector2D
  * @since 08.02.2024
- * @author Theodor Sjetnan Utvik, Sigurd Riseth
- * @version 0.0.1
  */
 public class Complex extends Vector2D {
 
   /**
-   * The constructor takes two parameters: realPart and imaginaryPart which will make an imaginary
-   * number as a vector form.
+   * Constructs a Complex object with the specified real and imaginary parts.
    *
-   * @param realPart the real part of the imaginary number.
-   * @param imaginaryPart the imaginary part of the imaginary number.
+   * @param realPart      The real part of the complex number.
+   * @param imaginaryPart The imaginary part of the complex number.
    */
   public Complex(double realPart, double imaginaryPart) {
     super(realPart, imaginaryPart);
   }
 
   /**
-   * This method return the square root of the complex number.
+   * Computes the square root of the complex number.
    *
-   * @return square root of the complex number.
+   * @return The square root of the complex number.
    */
   public Complex sqrt() {
     double magnitude =
@@ -39,11 +42,11 @@ public class Complex extends Vector2D {
   }
 
   /**
-   * This method multiplies two complex numbers together.
+   * Multiplies this complex number with another complex number.
    *
-   * @param other the other complex number to multiply with.
-   * @return the product of the two complex numbers.
-   * @throws IllegalArgumentException if the input vector is null
+   * @param other The other complex number to multiply with.
+   * @return The product of the two complex numbers.
+   * @throws IllegalArgumentException If the input vector is null.
    */
   public Complex multiply(Vector2D other) throws IllegalArgumentException {
     if (other == null) {
@@ -54,11 +57,11 @@ public class Complex extends Vector2D {
   }
 
   /**
-   * This method adds two complex numbers together.
+   * Adds this complex number to another complex number.
    *
-   * @param other the other complex number to add with.
-   * @return the sum of the two complex numbers.
-   * @throws IllegalArgumentException if the input vector is null
+   * @param other The other complex number to add with.
+   * @return The sum of the two complex numbers.
+   * @throws IllegalArgumentException If the input vector is null.
    */
   @Override
   public Complex add(Vector2D other) throws IllegalArgumentException {

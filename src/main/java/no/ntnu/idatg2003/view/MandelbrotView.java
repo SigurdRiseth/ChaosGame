@@ -18,21 +18,21 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.paint.Color;
 import no.ntnu.idatg2003.controller.MandelbrotController;
 import no.ntnu.idatg2003.model.game.engine.ChaosCanvas;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameObserver;
 
 public class MandelbrotView implements ChaosGameObserver {
 
+  private static final double MIN_SCALE = 1.0;
+  private static final double MAX_SCALE = 5.0;
   private final MandelbrotController mandelbrotController;
   private Canvas canvas;
   private double scale = 1.0;
-  private static final double MIN_SCALE = 1.0;
-  private static final double MAX_SCALE = 5.0;
 
   public MandelbrotView(MandelbrotController mandelbrotController) {
     this.mandelbrotController = mandelbrotController;
@@ -110,7 +110,8 @@ public class MandelbrotView implements ChaosGameObserver {
     // Left panel VBox
     VBox leftPanel = new VBox(20, returnButton, title, info);
     leftPanel.setPadding(new Insets(20));
-    leftPanel.setBackground(new Background(new BackgroundFill(Color.rgb(52, 73, 94), CornerRadii.EMPTY, Insets.EMPTY)));
+    leftPanel.setBackground(
+        new Background(new BackgroundFill(Color.rgb(52, 73, 94), CornerRadii.EMPTY, Insets.EMPTY)));
     leftPanel.setMaxWidth(250);
 
     return leftPanel;

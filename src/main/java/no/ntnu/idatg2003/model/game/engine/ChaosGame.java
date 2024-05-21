@@ -9,19 +9,21 @@ import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 
 /**
- * This class represents a Chaos Game. It contains a canvas, a description of the game, a random
- * object and a current point. It also contains methods to run the game for a given number of steps
- * and to get the canvas. It implements the ChaosGameSubject interface.
+ * Represents a Chaos Game, which involves creating an image by repeatedly applying transformations to points.
+ * This class contains a canvas, a description of the game, a random number generator, and the current point.
+ * It provides methods to run the game for a specified number of steps and to retrieve the canvas.
  *
+ * <p>It implements the {@link ChaosGameSubject} interface.
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.2
+ * @since 27.02.2024
  * @see ChaosGameSubject
  * @see ChaosGameObserver
  * @see ChaosCanvas
  * @see ChaosGameDescription
  * @see Vector2D
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
- * @version 0.0.2
  */
-
 public class ChaosGame implements ChaosGameSubject {
 
   private final ArrayList<ChaosGameObserver> observers = new ArrayList<>();
@@ -34,12 +36,13 @@ public class ChaosGame implements ChaosGameSubject {
    * Constructor for the ChaosGame.
    *
    * @param description the description of the game
-   * @param width the width of the canvas
-   * @param height the height of the canvas
-   * @throws NullPointerException if the description is null
+   * @param width       the width of the canvas
+   * @param height      the height of the canvas
+   * @throws NullPointerException     if the description is null
    * @throws IllegalArgumentException if the width or height is less than or equal to 0
    */
-  public ChaosGame(ChaosGameDescription description, int width, int height) throws IllegalArgumentException {
+  public ChaosGame(ChaosGameDescription description, int width, int height)
+      throws IllegalArgumentException {
     Objects.requireNonNull(description, "The description cannot be null");
     if (width <= 0 || height <= 0) {
       throw new IllegalArgumentException("The width and height must be positive");
@@ -52,7 +55,7 @@ public class ChaosGame implements ChaosGameSubject {
   }
 
   /**
-   * Method to get the canvas.
+   * Retrieves the canvas used in the chaos game.
    *
    * @return the canvas
    */
@@ -61,7 +64,7 @@ public class ChaosGame implements ChaosGameSubject {
   }
 
   /**
-   * Method to run the game for a given number of steps.
+   * Runs the chaos game for the specified number of steps.
    *
    * @param steps the number of steps to run
    * @throws IllegalArgumentException if steps is negative
@@ -88,8 +91,7 @@ public class ChaosGame implements ChaosGameSubject {
       }
     } catch (Exception e) {
       LoggerUtil.logError("An error occurred while running the game: " + e.getMessage());
-    }
-    finally {
+    } finally {
       notifyObservers();
     }
   }

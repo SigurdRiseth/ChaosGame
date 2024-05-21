@@ -9,12 +9,14 @@ public interface ChaosGameSubject {
 
   /**
    * Method to register an observer.
+   *
    * @param observer The observer to register.
    */
   void registerObserver(ChaosGameObserver observer);
 
   /**
    * Method to remove an observer.
+   *
    * @param observer The observer to remove.
    */
   void removeObserver(ChaosGameObserver observer);

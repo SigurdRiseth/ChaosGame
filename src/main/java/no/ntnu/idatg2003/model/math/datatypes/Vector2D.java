@@ -1,30 +1,25 @@
 package no.ntnu.idatg2003.model.math.datatypes;
 
 /**
- * A class to represent a 2D vector.
+ * This class represents a 2D vector. It encapsulates two double values: x0 and x1.
  *
- * <p>his class is used to represent a 2D vector and perform operations on it. The operations are
- * listed below:
+ * <p>The class provides methods to perform basic vector operations such as addition and subtraction.
  *
- * <ul>
- *   <li>add
- *   <li>subtract
- * </ul>
- *
- * @version 0.0.1
- * @since 06.02.2024
  * @author Sigurd Riseth
+ * @version 1.0.0
+ * @since 06.02.2024
  */
 public class Vector2D {
+
   private final double x0;
   private final double x1;
 
   /**
-   * Constructor for the Vector2D class.
+   * Constructs a 2D vector with the specified x0 and x1 values.
    *
-   * @param x0 the x0 value of the vector
-   * @param x1 the x1 value of the vector
-   * @throws IllegalArgumentException if the input values are NaN or infinite
+   * @param x0 The value along the x-axis.
+   * @param x1 The value along the y-axis.
+   * @throws IllegalArgumentException If any of the input values are NaN or infinite.
    */
   public Vector2D(double x0, double x1) throws IllegalArgumentException {
     if (Double.isNaN(x0) || Double.isNaN(x1)) {
@@ -61,11 +56,11 @@ public class Vector2D {
   }
 
   /**
-   * Add the input vector to the existing vector.
+   * Adds another vector to this vector.
    *
-   * @param other the vector to add to the existing vector
-   * @return the original vector added to the input vector
-   * @throws IllegalArgumentException if the input vector is null
+   * @param other The vector to add.
+   * @return The sum of this vector and the other vector.
+   * @throws IllegalArgumentException If the input vector is null.
    */
   public Vector2D add(Vector2D other) throws IllegalArgumentException {
     if (other == null) {
@@ -75,11 +70,11 @@ public class Vector2D {
   }
 
   /**
-   * Subtract the input vector from the existing vector.
+   * Subtracts another vector from this vector.
    *
-   * @param other the vector to subtract the existing vector with
-   * @return the original vector subtracted the input vector
-   * @throws IllegalArgumentException if the input vector is null
+   * @param other The vector to subtract.
+   * @return The difference between this vector and the other vector.
+   * @throws IllegalArgumentException If the input vector is null.
    */
   public Vector2D subtract(Vector2D other) throws IllegalArgumentException {
     if (other == null) {
@@ -88,6 +83,11 @@ public class Vector2D {
     return new Vector2D((x0 - other.getX0()), (x1 - other.getX1()));
   }
 
+  /**
+   * Gets the length of the vector.
+   *
+   * @return The length of the vector.
+   */
   public double getLength() {
     return Math.sqrt(x0 * x0 + x1 * x1);
   }

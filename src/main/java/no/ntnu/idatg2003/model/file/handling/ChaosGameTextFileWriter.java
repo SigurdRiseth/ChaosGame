@@ -4,9 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.NoSuchElementException;
 import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
-import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.utility.enums.TransformType;
 import no.ntnu.idatg2003.utility.logging.LoggerUtil;
@@ -17,27 +16,91 @@ import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 public class ChaosGameTextFileWriter implements ChaosGameFileHandler.ChaosGameFileWriter {
 
   /**
-   * Method to write a ChaosGameDescription to a file. The file will be in the format: <br>
-   * <br>
-   * <b>AffineTransform2D:</b>
+   * Determines the type of transformation used in the given ChaosGameDescription.
    *
-   * <p>Affine2D <br>
-   * maxX, maxY <br>
-   * a00, a01, a10, a11, b0, b1 #1. Transform<br>
-   * minX, minY <br>
-   * a00, a01, a10, a11, b0, b1 #2. Transform<br>
-   * ...<br>
-   * a00, a01, a10, a11, b0, b1 #n. Transform<br>
-   * <br>
-   * <b>JuliaTransform:</b>
+   * @param description the ChaosGameDescription to determine the transform type of
+   * @return the TransformType enum representing the transform type
+   * @throws IllegalArgumentException if the ChaosGameDescription is empty or if the transformation
+   *                                  type is unknown
+   */
+  private static TransformType getTransformType(ChaosGameDescription description) {
+    try {
+      Transform2D firstTransform = description.getTransforms().getFirst();
+      return firstTransform.getType();
+    } catch (NoSuchElementException e) {
+      LoggerUtil.logError("ChaosGameDescription is empty.");
+      throw new IllegalArgumentException("ChaosGameDescription is empty");
+    } catch (NullPointerException | IllegalArgumentException e) {
+      LoggerUtil.logError("Unknown or unsupported transform type encountered.");
+      throw new IllegalArgumentException("Unknown or unsupported transform type");
+    }
+  }
+
+  /**
+   * Writes the transform type to the provided BufferedWriter instance.
    *
-   * <p>Julia <br>
-   * minX, minY <br>
-   * maxX, maxY <br>
-   * Re, Im #Transform<br>
+   * @param writer the BufferedWriter instance to write the transform type to
+   * @param type   the transform type to be written
+   */
+  private static void writeTransformType(BufferedWriter writer, TransformType type) {
+    try {
+      writer.write(type.getTypeString() + " # Type of fractal \n");
+    } catch (IOException e) {
+      LoggerUtil.logError("Failed to write the transform type: " + e.getMessage());
+    }
+  }
+
+  /**
+   * Writes the minimum and maximum coordinates to the provided BufferedWriter instance.
+   *
+   * @param writer      the BufferedWriter instance to write the coordinates to
+   * @param description the ChaosGameDescription containing the minimum and maximum coordinates
+   */
+  private static void writeMinMaxCoords(BufferedWriter writer, ChaosGameDescription description) {
+    try {
+      writer.write(
+          String.format(
+              "%s # Lower Left %n", description.getMinCoords().toString()));
+      LoggerUtil.logInfo("Lower Left written to file");
+      writer.write(
+          String.format(
+              "%s # Upper Right", description.getMaxCoords().toString()));
+      LoggerUtil.logInfo("Upper Right written to file");
+    } catch (IOException e) {
+      LoggerUtil.logError("Failed to write the min/max coordinates: " + e.getMessage());
+    }
+  }
+
+  /**
+   * Writes a ChaosGameDescription to a file.
+   * <p>
+   * This method writes the provided ChaosGameDescription to a file specified by the given path. The
+   * file will be formatted according to the type of transformations in the ChaosGameDescription. If
+   * the description contains AffineTransform2D transformations, they will be written with the
+   * format:
+   * </p>
+   * <pre>{@code
+   * AffineTransform2D:
+   * minX, minY
+   * maxX, maxY
+   * a00, a01, a10, a11, b0, b1 #1. Transform
+   * minX, minY
+   * a00, a01, a10, a11, b0, b1 #2. Transform
+   * ...
+   * a00, a01, a10, a11, b0, b1 #n. Transform
+   * }</pre>
+   * <p>
+   * If the description contains JuliaTransform, it will be written with the format:
+   * </p>
+   * <pre>{@code
+   * JuliaTransform:
+   * minX, minY
+   * maxX, maxY
+   * Re, Im #Transform
+   * }</pre>
    *
    * @param description the ChaosGameDescription to write to the file
-   * @param path the path to the file
+   * @param path        the path to the file
    * @throws IllegalArgumentException if the transform type is unknown
    */
   @Override
@@ -53,61 +116,6 @@ public class ChaosGameTextFileWriter implements ChaosGameFileHandler.ChaosGameFi
       }
     } catch (IOException e) {
       LoggerUtil.logError("Failed to create the file: " + e.getMessage());
-    }
-  }
-
-  /**
-   * Determines the type of transformation used in the ChaosGameDescription.
-   *
-   * @param description The ChaosGameDescription to determine the transform type of.
-   * @return The TransformType enum representing the transform type.
-   */
-  private static TransformType getTransformType(ChaosGameDescription description) {
-    Transform2D transform = description.getTransforms().getFirst();
-    TransformType type;
-    if (transform instanceof AffineTransform2D) {
-      type = TransformType.AFFINE2D;
-    } else if (transform instanceof JuliaTransform) {
-      type = TransformType.JULIA;
-    } else {
-      LoggerUtil.logError("Unknown transform type encountered.");
-      throw new IllegalArgumentException("Unknown transform type");
-    }
-    return type;
-  }
-
-  /**
-   * Writes the transform type to the provided BufferedWriter instance.
-   *
-   * @param writer The BufferedWriter to write the transform type to.
-   * @param type The string representation of the transform type.
-   */
-  private static void writeTransformType(BufferedWriter writer, TransformType type) {
-    try {
-      writer.write(type.getTypeString() + " # Type of fractal \n");
-    } catch (IOException e) {
-      LoggerUtil.logError("Failed to write the transform type: " + e.getMessage());
-    }
-  }
-
-  /**
-   * Writes the min and max coordinates to the provided BufferedWriter instance.
-   *
-   * @param writer The BufferedWriter to write the coordinates to.
-   * @param description The ChaosGameDescription containing the min and max coordinates.
-   */
-  private static void writeMinMaxCoords(BufferedWriter writer, ChaosGameDescription description) {
-    try {
-      writer.write(
-          String.format(
-              "%s # Lower Left %n", description.getMinCoords().toString()));
-      LoggerUtil.logInfo("Lower Left written to file");
-      writer.write(
-          String.format(
-              "%s # Upper Right", description.getMaxCoords().toString()));
-      LoggerUtil.logInfo("Upper Right written to file");
-    } catch (IOException e) {
-      LoggerUtil.logError("Failed to write the min/max coordinates: " + e.getMessage());
     }
   }
 }

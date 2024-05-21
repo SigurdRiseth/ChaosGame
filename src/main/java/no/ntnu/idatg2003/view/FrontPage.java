@@ -1,16 +1,16 @@
 package no.ntnu.idatg2003.view;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import no.ntnu.idatg2003.controller.FrontPageController;
-import javafx.geometry.*;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.*;
+import javafx.scene.text.Text;
+import no.ntnu.idatg2003.controller.FrontPageController;
 
 /**
  * Class for the front page view of the application. This class is responsible for creating the
@@ -21,6 +21,7 @@ import javafx.scene.text.*;
  */
 
 public class FrontPage {
+
   private FrontPageController controller;
   private Scene scene;
 
@@ -69,6 +70,7 @@ public class FrontPage {
   }
 
   private static class Title extends StackPane {
+
     public Title(String name) {
       Rectangle bg = new Rectangle(500, 70);
       bg.setStroke(javafx.scene.paint.Color.WHITE);

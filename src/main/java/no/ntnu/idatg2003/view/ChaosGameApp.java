@@ -1,17 +1,17 @@
 package no.ntnu.idatg2003.view;
 
-import no.ntnu.idatg2003.controller.CreateCustomGameController;
-import no.ntnu.idatg2003.controller.MandelbrotController;
-import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
-import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
-import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import no.ntnu.idatg2003.controller.FrontPageController;
+import no.ntnu.idatg2003.controller.CreateCustomGameController;
 import no.ntnu.idatg2003.controller.FractalDisplayController;
+import no.ntnu.idatg2003.controller.FrontPageController;
+import no.ntnu.idatg2003.controller.MandelbrotController;
+import no.ntnu.idatg2003.controller.RunCustomGameMenuController;
 import no.ntnu.idatg2003.controller.RunGameMenuController;
+import no.ntnu.idatg2003.model.game.engine.ChaosGameDescription;
 import no.ntnu.idatg2003.utility.enums.PresetTransforms;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 
 /**
  * The main application class for the Chaos Game application.
@@ -75,7 +75,7 @@ public class ChaosGameApp extends Application {
   /**
    * Shows the run game scene of the application.
    */
-  public void showRunGameScene() {
+  public void showRunGameMenu() {
     this.mainScene = runGameMenuController.getScene();
     primaryStage.setScene(this.mainScene);
   }

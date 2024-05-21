@@ -15,8 +15,8 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
-import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import no.ntnu.idatg2003.utility.enums.TransformType;
+import no.ntnu.idatg2003.utility.logging.LoggerUtil;
 import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.CreateCustomGame;
 
@@ -24,17 +24,18 @@ import no.ntnu.idatg2003.view.CreateCustomGame;
  * The CreateCustomGameController class is the controller for the CreateCustomGame view.
  *
  * <p>
- *   The CreateCustomGameController class is responsible for handling user input from the
- *   CreateCustomGame view. It is responsible for saving the input values to a file.
+ * The CreateCustomGameController class is responsible for handling user input from the
+ * CreateCustomGame view. It is responsible for saving the input values to a file.
  * </p>
  *
- * @version 0.0.1
- * @since 10.05.2024
  * @author Sigurd Riseth
+ * @version 0.0.1
  * @see CreateCustomGame
  * @see ChaosGameApp
+ * @since 10.05.2024
  */
-public class CreateCustomGameController implements ControllerInterface{
+public class CreateCustomGameController implements ControllerInterface {
+
   private final ChaosGameApp app;
   private final CreateCustomGame view;
 
@@ -46,6 +47,18 @@ public class CreateCustomGameController implements ControllerInterface{
   public CreateCustomGameController(ChaosGameApp app) {
     this.app = app;
     this.view = new CreateCustomGame(this);
+  }
+
+  /**
+   * Formats the filename correct folder and csv.
+   *
+   * @param fileName The filename to format.
+   * @return The formatted filename.
+   */
+  private static String prepareFilePath(String fileName) {
+    fileName = fileName.replaceAll("\\s", "_");
+    fileName = "src/main/user.files/" + fileName + ".csv";
+    return fileName;
   }
 
   /**
@@ -69,8 +82,8 @@ public class CreateCustomGameController implements ControllerInterface{
    * Saves the input Julia-set to a given filename.
    *
    * <p>
-   *   The file is saved under src/main/user.files/ and is saved as a CSV-file.
-   *   Any spaces in the filename are replaced with underscores.
+   * The file is saved under src/main/user.files/ and is saved as a CSV-file. Any spaces in the
+   * filename are replaced with underscores.
    * </p>
    *
    * @param fileName The name of the file to save to.
@@ -87,7 +100,8 @@ public class CreateCustomGameController implements ControllerInterface{
     ChaosGameDescription chaosGameDescription = createJuliaDescription();
 
     if (chaosGameDescription != null) {
-      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileNameWithPath);
+      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription,
+          fileNameWithPath);
       view.showInfoAlert("Save successful!", "Julia set saved to file: " + fileName);
       LoggerUtil.logInfo("Julia set saved");
     }
@@ -119,23 +133,11 @@ public class CreateCustomGameController implements ControllerInterface{
   }
 
   /**
-   * Formats the filename correct folder and csv.
-   *
-   * @param fileName The filename to format.
-   * @return The formatted filename.
-   */
-  private static String prepareFilePath(String fileName) {
-    fileName = fileName.replaceAll("\\s", "_");
-    fileName = "src/main/user.files/" + fileName + ".csv";
-    return fileName;
-  }
-
-  /**
    * Saves the input affine transformation to a file.
    *
    * <p>
-   *   The file is saved under src/main/user.files/ and is saved as a CSV-file.
-   *   Any spaces in the filename are replaced with underscores.
+   * The file is saved under src/main/user.files/ and is saved as a CSV-file. Any spaces in the
+   * filename are replaced with underscores.
    * </p>
    *
    * @param fileName The name of the file to save to.
@@ -159,7 +161,8 @@ public class CreateCustomGameController implements ControllerInterface{
     }
 
     try {
-      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription, fileNameWithPath);
+      ChaosGameFileHandler.writeToFile(new ChaosGameTextFileWriter(), chaosGameDescription,
+          fileNameWithPath);
       view.showInfoAlert("Save successful!", "Affine transformation saved to file: "
           + fileName);
       LoggerUtil.logInfo("Affine transformation saved");

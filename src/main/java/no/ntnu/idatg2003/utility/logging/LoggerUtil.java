@@ -13,9 +13,9 @@ import org.apache.logging.log4j.Logger;
  *   <li>Fatal</li>
  * </ul>
  *
- * @since 08.05.2024
- * @version 0.0.1
  * @author Theodor Sjetnan Utvik, Sigurd Riseth
+ * @version 0.0.1
+ * @since 08.05.2024
  */
 public class LoggerUtil {
 
@@ -24,7 +24,8 @@ public class LoggerUtil {
   /**
    * Private constructor to prevent instantiation of this class.
    */
-  private LoggerUtil() {}
+  private LoggerUtil() {
+  }
 
   /**
    * Logs an information message.
@@ -38,7 +39,7 @@ public class LoggerUtil {
   /**
    * Logs an error message.
    *
-   * @param message The message to log.
+   * @param message   The message to log.
    * @param throwable The throwable to log.
    */
   public static void logError(String message, Throwable throwable) {

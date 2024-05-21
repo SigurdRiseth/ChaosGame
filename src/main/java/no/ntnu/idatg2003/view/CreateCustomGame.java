@@ -50,6 +50,76 @@ public class CreateCustomGame {
   }
 
   /**
+   * Limits the text input of a TextField to double values only.
+   *
+   * @param textField The TextField to limit to double values.
+   */
+  private static void limitTextFieldToDouble(TextField textField) {
+    textField.textProperty().addListener((observable, oldValue, newValue) -> {
+      if (!newValue.matches("-?\\d{0,7}([.]\\d{0,4})?")) {
+        textField.setText(oldValue);
+      }
+    });
+  }
+
+  /**
+   * Creates a save box with a text field and a button.
+   *
+   * @param saveText   The text to display on the button.
+   * @param saveAction The action to perform when the button is clicked.
+   * @return The save box.
+   */
+  private static HBox createSaveBox(String saveText, Consumer<String> saveAction) {
+    TextField inputField = new TextField();
+    inputField.setPromptText("Insert name");
+    Button saveButton = new Button(saveText);
+    HBox juliaBox = new HBox(10);
+    saveButton.setOnAction(e -> saveAction.accept(inputField.getText()));
+
+    juliaBox.getChildren().addAll(inputField, saveButton);
+    juliaBox.setAlignment(javafx.geometry.Pos.CENTER);
+    return juliaBox;
+  }
+
+  /**
+   * Creates a title for a given text.
+   *
+   * @param title The text to create a title for.
+   * @return The formatted title.
+   */
+  private static Text createTitle(String title) {
+    Text resultingTitle = new Text(title);
+    resultingTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+    resultingTitle.setFill(Color.WHITE);
+    return resultingTitle;
+  }
+
+  /**
+   * Changes the text color of the nodes in a given <code>GridPane</code> to white.
+   *
+   * @param grid The <code>GridPane</code> to change the text color of.
+   */
+  private static void changeNodeColor(GridPane grid) {
+    for (Node node : grid.getChildren()) {
+      if (node instanceof Label label) {
+        label.setTextFill(Color.WHITE);
+      }
+    }
+  }
+
+  /**
+   * Adds the min and max values to a given <code>GridPane</code>.
+   *
+   * @param grid The <code>GridPane</code> to add the values to.
+   */
+  private static void addMinMaxToGridPane(GridPane grid) {
+    grid.addRow(0, new Label("Min X:"), new TextField());
+    grid.addRow(1, new Label("Min Y:"), new TextField());
+    grid.addRow(2, new Label("Max X:"), new TextField());
+    grid.addRow(3, new Label("Max Y:"), new TextField());
+  }
+
+  /**
    * Returns the scene for the view.
    *
    * @return The scene for the view.
@@ -172,76 +242,6 @@ public class CreateCustomGame {
   }
 
   /**
-   * Limits the text input of a TextField to double values only.
-   *
-   * @param textField The TextField to limit to double values.
-   */
-  private static void limitTextFieldToDouble(TextField textField) {
-    textField.textProperty().addListener((observable, oldValue, newValue) -> {
-      if (!newValue.matches("-?\\d{0,7}([.]\\d{0,4})?")) {
-        textField.setText(oldValue);
-      }
-    });
-  }
-
-  /**
-   * Creates a save box with a text field and a button.
-   *
-   * @param saveText    The text to display on the button.
-   * @param saveAction  The action to perform when the button is clicked.
-   * @return The save box.
-   */
-  private static HBox createSaveBox(String saveText, Consumer<String> saveAction) {
-    TextField inputField = new TextField();
-    inputField.setPromptText("Insert name");
-    Button saveButton = new Button(saveText);
-    HBox juliaBox = new HBox(10);
-    saveButton.setOnAction(e -> saveAction.accept(inputField.getText()));
-
-    juliaBox.getChildren().addAll(inputField, saveButton);
-    juliaBox.setAlignment(javafx.geometry.Pos.CENTER);
-    return juliaBox;
-  }
-
-  /**
-   * Creates a title for a given text.
-   *
-   * @param title The text to create a title for.
-   * @return The formatted title.
-   */
-  private static Text createTitle(String title) {
-    Text resultingTitle = new Text(title);
-    resultingTitle.setFont(Font.font("Arial", FontWeight.BOLD, 20));
-    resultingTitle.setFill(Color.WHITE);
-    return resultingTitle;
-  }
-
-  /**
-   * Changes the text color of the nodes in a given <code>GridPane</code> to white.
-   *
-   * @param grid The <code>GridPane</code> to change the text color of.
-   */
-  private static void changeNodeColor(GridPane grid) {
-    for (Node node : grid.getChildren()) {
-      if (node instanceof Label label) {
-        label.setTextFill(Color.WHITE);
-      }
-    }
-  }
-
-  /**
-   * Adds the min and max values to a given <code>GridPane</code>.
-   *
-   * @param grid          The <code>GridPane</code> to add the values to.
-   */
-  private static void addMinMaxToGridPane(GridPane grid) {
-    grid.addRow(0, new Label("Min X:"), new TextField());
-    grid.addRow(1, new Label("Min Y:"), new TextField());
-    grid.addRow(2, new Label("Max X:"), new TextField());
-    grid.addRow(3, new Label("Max Y:"), new TextField());
-  }
-
-  /**
    * Retrieves the number of affine transformations from the affine grid.
    *
    * @return The number of affine transformations.
@@ -280,7 +280,7 @@ public class CreateCustomGame {
   /**
    * Shows an information alert to the user.
    *
-   * @param title The title of the message.
+   * @param title   The title of the message.
    * @param message The message to display.
    */
   public void showInfoAlert(String title, String message) {

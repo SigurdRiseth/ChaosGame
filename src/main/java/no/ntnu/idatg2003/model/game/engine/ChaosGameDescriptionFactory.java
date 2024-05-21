@@ -4,29 +4,33 @@ import java.util.List;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
-import no.ntnu.idatg2003.model.transformations.Transform2D;
 import no.ntnu.idatg2003.model.transformations.AffineTransform2D;
 import no.ntnu.idatg2003.model.transformations.JuliaTransform;
+import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 /**
- * This class is a factory for creating different Chaos Game descriptions. It contains methods to
- * create descriptions for the Barnsley fern, the Sierpinski triangle and the Julia set.
+ * Factory class for creating various Chaos Game descriptions. It provides methods to create descriptions
+ * for the Barnsley fern, the Sierpinski triangle, and the Julia set.
  *
+ * <p>The ChaosGameDescriptionFactory is responsible for creating ChaosGameDescription objects with specific
+ * transformation rules and boundary coordinates.
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @see ChaosGameDescription
  * @see AffineTransform2D
  * @see JuliaTransform
  * @see Matrix2x2
  * @see Vector2D
  * @see Complex
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @since 27.02.2024
  */
-
 public class ChaosGameDescriptionFactory {
 
   /**
    * Private constructor to prevent instantiation.
    */
-  private ChaosGameDescriptionFactory() {}
+  private ChaosGameDescriptionFactory() {
+  }
 
   /**
    * Create the Barnsley fern description
@@ -98,10 +102,11 @@ public class ChaosGameDescriptionFactory {
    *
    * @param minCoord the minimum coordinates
    * @param maxCoord the maximum coordinates
-   * @param complex the complex number to use
+   * @param complex  the complex number to use
    * @return The corresponding <code>ChaosGameDescription</code> object
    */
-  public static ChaosGameDescription createJuliaSet(Vector2D minCoord, Vector2D maxCoord, Complex complex) {
+  public static ChaosGameDescription createJuliaSet(Vector2D minCoord, Vector2D maxCoord,
+      Complex complex) {
     List<Transform2D> transforms = List.of(
         new JuliaTransform(complex, -1),
         new JuliaTransform(complex, 1)

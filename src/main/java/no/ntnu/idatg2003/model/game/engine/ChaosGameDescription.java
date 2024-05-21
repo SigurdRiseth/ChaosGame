@@ -6,14 +6,16 @@ import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
 import no.ntnu.idatg2003.model.transformations.Transform2D;
 
 /**
- * This class gives the description for the Chaos Game. It contains the minimum and maximum
- * coordinates for the game, as well as a list of transformations.
+ * Represents the description of a Chaos Game, specifying its boundaries and transformation rules.
+ * It contains the minimum and maximum coordinates for the game area, as well as a list of transformations.
  *
- * @since 27.02.2024
+ * <p>This class is responsible for defining the spatial limits and transformation rules applied to points within these bounds.
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
  * @version 0.0.1
+ * @since 27.02.2024
  * @see Vector2D
  * @see Transform2D
- * @author Sigurd Riseth, Theodor Sjetnan Utvik
  */
 public class ChaosGameDescription {
 
@@ -23,12 +25,11 @@ public class ChaosGameDescription {
 
   /**
    * Constructs a new ChaosGameDescription instance to define the boundaries and transformation
-   * rules of the Chaos Game. This constructor initializes the game's spatial limits and sets up the
-   * transformations that will be applied to points within these bounds.
+   * rules of the Chaos Game.
    *
-   * @param minCoords The minimum coordinates (lower-left corner) for the game's boundary.
-   * @param maxCoords The maximum coordinates (upper-right corner) for the game's boundary.
-   * @param transforms A list of transformations
+   * @param minCoords  The minimum coordinates (lower-left corner) for the game's boundary.
+   * @param maxCoords  The maximum coordinates (upper-right corner) for the game's boundary.
+   * @param transforms A list of transformations to be applied within the game's boundaries.
    * @throws NullPointerException if any of the parameters are null
    */
   public ChaosGameDescription(

@@ -8,13 +8,12 @@ import no.ntnu.idatg2003.view.FrontPage;
  * The FrontPageController class is the controller for the FrontPage view. It is responsible for
  * handling which direction the user wants to take from the front page.
  *
+ * @author Sigurd Riseth
  * @version 0.0.2
- * @since 12.04.2024
  * @see FrontPage
  * @see ChaosGameApp
- * @author Sigurd Riseth
+ * @since 12.04.2024
  */
-
 public class FrontPageController implements ControllerInterface {
 
   private FrontPage frontPage;
@@ -23,7 +22,7 @@ public class FrontPageController implements ControllerInterface {
   /**
    * Constructor for the FrontPageController class.
    * <p>
-   *   Initializes the controller with the given ChaosGameApp.
+   * Initializes the controller with the given ChaosGameApp.
    * </p>
    *
    * @param app The ChaosGameApp to use.
@@ -39,21 +38,21 @@ public class FrontPageController implements ControllerInterface {
    * @return The scene for the view.
    */
   @Override
-  public Scene getScene(){
+  public Scene getScene() {
     return frontPage.getScene();
   }
 
   /**
    * Opens the RunGame scene.
    */
-  public void openRunGameScene(){
-    app.showRunGameScene();
+  public void openRunGameScene() {
+    app.showRunGameMenu();
   }
 
   /**
    * Opens the PresetGame scene.
    */
-  public void openCreateCustomGameScene(){
+  public void openCreateCustomGameScene() {
     app.showCreateCustomGameScene();
   }
 

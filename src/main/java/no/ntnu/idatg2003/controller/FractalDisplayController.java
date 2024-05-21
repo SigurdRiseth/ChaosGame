@@ -20,9 +20,21 @@ import no.ntnu.idatg2003.view.ChaosGameApp;
 import no.ntnu.idatg2003.view.FractalDisplay;
 
 /**
+ * The FractalDisplayController class is the controller for the FractalDisplay view.
  *
+ * <p>
+ * The FractalDisplayController class is responsible for handling user input from the FractalDisplay
+ * view. It is responsible for creating a game based on the user input and updating the view with
+ * the game state.
+ * </p>
+ *
+ * @author Sigurd Riseth, Theodor Sjetnan Utvik
+ * @version 0.0.1
+ * @see FractalDisplay
+ * @see ChaosGameApp
+ * @see ChaosGame
+ * @since 10.05.2024
  */
-
 public class FractalDisplayController implements ControllerInterface {
 
   private ChaosGame game;
@@ -53,7 +65,8 @@ public class FractalDisplayController implements ControllerInterface {
       case JULIA_SET -> ChaosGameDescriptionFactory.createJuliaSet();
       case SIERPINSKI_TRIANGLE -> ChaosGameDescriptionFactory.createSierpinskiTriangle();
       case BARNSLEY_FERN -> ChaosGameDescriptionFactory.createBarnsleyFern();
-      default -> throw new IllegalArgumentException("Unknown game transformation: " + transformation);
+      default ->
+          throw new IllegalArgumentException("Unknown game transformation: " + transformation);
     };
     game = new ChaosGame(description, 800, 800);
     loadTransformations(description.getTransforms());
@@ -62,8 +75,8 @@ public class FractalDisplayController implements ControllerInterface {
   }
 
   /**
-   * Registers the view as an observer of the game.
-   * This allows the view to be updated when the game state changes.
+   * Registers the view as an observer of the game. This allows the view to be updated when the game
+   * state changes.
    */
   private void observeGame() {
     game.registerObserver(view);
@@ -92,7 +105,7 @@ public class FractalDisplayController implements ControllerInterface {
    * Returns to the last page.
    */
   public void openRunGameView() {
-    app.showRunGameScene();
+    app.showRunGameMenu();
   }
 
   /**
@@ -101,7 +114,8 @@ public class FractalDisplayController implements ControllerInterface {
    * @param fileName The name of the file to create the custom game from.
    */
   public void createCustomGame(String fileName) {
-    ChaosGameDescription description = ChaosGameFileHandler.readFromFile(new ChaosGameTextFileReader(),
+    ChaosGameDescription description = ChaosGameFileHandler.readFromFile(
+        new ChaosGameTextFileReader(),
         "src/main/user.files/" + fileName);
     game = new ChaosGame(description, 800, 800);
     loadTransformations(description.getTransforms());
@@ -136,7 +150,9 @@ public class FractalDisplayController implements ControllerInterface {
    */
   public Color calculateColor(int hits) {
     int maxHits = 100;
-    if (hits == 0) return Color.WHITE;
+    if (hits == 0) {
+      return Color.WHITE;
+    }
 
     double normalizedHits = Math.min(hits / (double) maxHits, 1.0);
 
@@ -146,8 +162,8 @@ public class FractalDisplayController implements ControllerInterface {
   }
 
   /**
-   * Configures the columns of the transformation table to display the appropriate values
-   * from the Transform2D objects.
+   * Configures the columns of the transformation table to display the appropriate values from the
+   * Transform2D objects.
    *
    * @param a00Column column for the a00 values
    * @param a01Column column for the a01 values
@@ -175,7 +191,7 @@ public class FractalDisplayController implements ControllerInterface {
   /**
    * Helper method to configure a table column with the appropriate value extractor.
    *
-   * @param column the table column to configure
+   * @param column    the table column to configure
    * @param extractor the function to extract the value from the AffineTransform2D
    */
   private void configureColumn(TableColumn<Transform2D, Number> column,
@@ -187,7 +203,6 @@ public class FractalDisplayController implements ControllerInterface {
       return new ReadOnlyDoubleWrapper(Double.NaN);
     });
   }
-
 
 
 }

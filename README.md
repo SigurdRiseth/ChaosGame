@@ -1,5 +1,4 @@
 # Portfolio project IDATG2003 - 2024
-This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
 
 Project Name: ChaosGame
 
@@ -9,6 +8,8 @@ Group Members: Theodor Sjetnan Utvik, Sigurd Riseth
 
 [//]: # (TODO: Write a short description of your project/product here.)
 ChaosGame is an application for generating and visualizing [fractals](https://en.wikipedia.org/wiki/Fractal) digitally.
+The application allows users to create and run their own fractals, as well as run pre-defined fractals.
+The application also includes the Mandelbrot set, which allows users to explore it and generate Julia-sets from it.
 
 ## Project structure
 
@@ -104,11 +105,23 @@ mvn compile
 ```
 
 3. **Interact with the Program:**
-  - Once the program is running, you'll be prompted with a menu offering 10 choices.
-  - Navigate through the menu using text inputs to interact with different functionalities.
-
+  - Navigate the menus using the buttons.
+  - **Main Menu:**
+    - **Run a Game:**
+      - Select if you want to run a pre-defined game or a custom game.
+      - Choose an amount of iterations and press the 'Run' button.
+    - **Create Custom Game:**
+      - Enter the values for the game you want to create
+      - Give it a name and press the 'Save' button.
+      - The chaosgame is now ready to be played under 'Run a Game' -> 'Custom Games'.
+    - **Mandelbrot Set:**
+      - Press the 'Open' button to view the Mandelbrot set.
+      - Click on the mandelbrot set to generate a julia set.
+      - You can zoom in and out by scrolling.
+    - **Exit:**
+      - Press the 'Exit' button to close the application.
 4. **Exit the Program:**
-  - To exit the program, choose option 0 in the menu. This will gracefully terminate the program.
+    - Close the application window or return to the main menu and press the exit button.
 
 
 ## How to run the tests
@@ -116,5 +129,17 @@ mvn compile
 To execute all tests, right-click on the 'java' folder within the 'test' directory and choose 'Run All Tests'.
 Alternatively, you can run individual test classes by right-clicking on the specific test class.
 If you wish to test a particular method within a test class, right-click on the desired method.
+
+You can also run the tests from the terminal using Maven. This can be done by running the following command:
+    
+```text
+mvn test
+```
+
+The application also allows you to generate the JavaDoc documentation by running the following command:
+
+```text
+mvn javadoc:javadoc
+```
 
 [//]: # (TODO: Describe how to run the tests here.)
