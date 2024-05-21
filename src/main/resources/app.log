@@ -529,3 +529,38 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-20 19:14:19 INFO Starting Chaos Game application
 2024-05-20 19:17:27 INFO Starting Chaos Game application
 2024-05-20 19:18:02 INFO Starting Chaos Game application
+2024-05-20 20:02:17 INFO Starting Chaos Game application
+2024-05-20 20:02:49 INFO Starting to draw Mandelbrot set.
+2024-05-20 20:02:49 INFO Mandelbrot set drawn.
+2024-05-20 20:03:48 INFO Running custom game
+2024-05-20 20:55:10 INFO Starting Chaos Game application
+2024-05-20 20:55:13 INFO Starting to draw Mandelbrot set.
+2024-05-20 20:55:14 INFO Mandelbrot set drawn.
+2024-05-21 12:48:57 INFO Starting Chaos Game application
+2024-05-21 13:37:38 INFO Starting Chaos Game application
+2024-05-21 13:38:46 INFO Starting Chaos Game application
+2024-05-21 13:39:45 INFO Starting Chaos Game application
+2024-05-21 13:39:49 INFO Starting Chaos Game application
+2024-05-21 13:40:21 INFO Starting Chaos Game application
+2024-05-21 13:41:01 INFO Starting Chaos Game application
+2024-05-21 13:56:11 INFO Starting Chaos Game application
+2024-05-21 13:58:41 INFO Starting Chaos Game application
+2024-05-21 14:00:38 INFO Starting Chaos Game application
+2024-05-21 14:00:49 INFO Showing custom games scene
+2024-05-21 14:05:09 INFO Starting Chaos Game application
+2024-05-21 14:05:15 INFO Showing custom games scene
+2024-05-21 14:05:16 INFO Running custom game: Wiki_Julia.csv
+2024-05-21 14:05:36 INFO Starting to draw Mandelbrot set.
+2024-05-21 14:05:36 INFO Mandelbrot set drawn.
+2024-05-21 14:05:38 INFO Running custom game
+2024-05-21 14:05:44 INFO Starting to draw Mandelbrot set.
+2024-05-21 14:05:44 INFO Mandelbrot set drawn.
+2024-05-21 14:05:49 INFO Running custom game
+2024-05-21 14:06:00 INFO Showing custom games scene
+2024-05-21 14:06:01 INFO Running custom game: Dragon.csv
+2024-05-21 14:10:03 INFO Starting Chaos Game application
+2024-05-21 14:10:21 INFO Showing custom games scene
+2024-05-21 14:10:23 INFO Running custom game: Dragon.csv
+2024-05-21 14:13:12 INFO Starting Chaos Game application
+2024-05-21 14:13:46 INFO Starting Chaos Game application
+2024-05-21 14:23:47 INFO Starting Chaos Game application

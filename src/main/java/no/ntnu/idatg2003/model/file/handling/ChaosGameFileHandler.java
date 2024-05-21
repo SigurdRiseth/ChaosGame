@@ -28,12 +28,12 @@ public class ChaosGameFileHandler {
     /**
      * Reads a ChaosGameDescription from a file.
      *
-     * @param path the path to the file
-     * @return the ChaosGameDescription
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if the file content is invalid
+     * @param path the path to the file. It should be a valid file path pointing to a readable file containing a ChaosGameDescription.
+     * @return the ChaosGameDescription read from the file
+     * @throws IllegalArgumentException if the file content is invalid or cannot be parsed into a ChaosGameDescription
+     * @throws IOException if an I/O error occurs during reading the file
      */
-    ChaosGameDescription readFromFile(String path) throws IOException, IllegalArgumentException;
+    ChaosGameDescription readFromFile(String path) throws IllegalArgumentException, IOException;
   }
 
   /**
@@ -43,13 +43,14 @@ public class ChaosGameFileHandler {
     /**
      * Writes a ChaosGameDescription to a file.
      *
-     * @param description the ChaosGameDescription to write
-     * @param path the path to the file
-     * @throws IOException if an I/O error occurs
-     * @throws IllegalArgumentException if the description is invalid
+     * @param description the ChaosGameDescription to write. It should be a valid and fully populated description.
+     * @param path the path to the file. It should be a valid file path where the description can be written.
+     * @throws IllegalArgumentException if the description is invalid or cannot be serialized into a valid file format
+     * @throws IOException if an I/O error occurs during writing to the file
      */
-    void writeToFile(ChaosGameDescription description, String path) throws IOException, IllegalArgumentException;
+    void writeToFile(ChaosGameDescription description, String path) throws IllegalArgumentException, IOException;
   }
+
 
   /**
    * Reads a ChaosGameDescription from a file using the provided reader implementation.

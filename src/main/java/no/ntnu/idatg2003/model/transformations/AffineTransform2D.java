@@ -3,6 +3,7 @@ package no.ntnu.idatg2003.model.transformations;
 import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Matrix2x2;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 
 /**
  * Class to represent the Affine transformation x → Ax+b
@@ -79,5 +80,15 @@ public class AffineTransform2D implements Transform2D {
         matrix.getA11(),
         vector.getX0(),
         vector.getX1());
+  }
+
+  /**
+   * Method to get the type of the transformation.
+   *
+   * @return the type of the transformation
+   */
+  @Override
+  public TransformType getType() {
+    return TransformType.AFFINE2D;
   }
 }

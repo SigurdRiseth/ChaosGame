@@ -1,6 +1,7 @@
 package no.ntnu.idatg2003.model.transformations;
 
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 
 /**
  * Interface for 2D transformations.
@@ -31,4 +32,11 @@ public interface Transform2D {
    * @return the transformation as a string
    */
   String toString();
+
+  /**
+   * Method to get the type of the transformation.
+   *
+   * @return the type of the transformation
+   */
+  TransformType getType();
 }

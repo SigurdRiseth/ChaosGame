@@ -3,6 +3,7 @@ package no.ntnu.idatg2003.model.transformations;
 import java.util.Objects;
 import no.ntnu.idatg2003.model.math.datatypes.Complex;
 import no.ntnu.idatg2003.model.math.datatypes.Vector2D;
+import no.ntnu.idatg2003.utility.enums.TransformType;
 
 /**
  * Class to represent the Julia transformation.
@@ -70,5 +71,15 @@ public class JuliaTransform implements Transform2D {
   @Override
   public String toString() {
     return String.format("%s, %s", complexConstant.getX0(), complexConstant.getX1());
+  }
+
+  /**
+   * Method to get the type of the transformation.
+   *
+   * @return the type of the transformation
+   */
+  @Override
+  public TransformType getType() {
+    return TransformType.JULIA;
   }
 }

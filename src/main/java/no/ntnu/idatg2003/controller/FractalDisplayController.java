@@ -1,12 +1,12 @@
 package no.ntnu.idatg2003.controller;
 
 import java.util.List;
+import java.util.function.Function;
 import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
 import no.ntnu.idatg2003.model.file.handling.ChaosGameFileHandler;
 import no.ntnu.idatg2003.model.file.handling.ChaosGameTextFileReader;
@@ -104,6 +104,8 @@ public class FractalDisplayController implements ControllerInterface {
     ChaosGameDescription description = ChaosGameFileHandler.readFromFile(new ChaosGameTextFileReader(),
         "src/main/user.files/" + fileName);
     game = new ChaosGame(description, 800, 800);
+    loadTransformations(description.getTransforms());
+    view.updateForGameType(description.getTransforms().getFirst().getType());
     observeGame();
   }
 
@@ -114,13 +116,24 @@ public class FractalDisplayController implements ControllerInterface {
    */
   public void createCustomGame(ChaosGameDescription description) {
     game = new ChaosGame(description, 800, 800);
+    loadTransformations(description.getTransforms());
+    view.updateForGameType(description.getTransforms().getFirst().getType());
     observeGame();
   }
 
+  /**
+   * Updates the canvas with the current state of the game.
+   */
   public void updateCanvas() {
     view.updateCanvas(game.getCanvas().getCanvasArray());
   }
 
+  /**
+   * Calculates the color of a pixel based on the number of hits.
+   *
+   * @param hits The number of hits for the pixel.
+   * @return The color of the pixel.
+   */
   public Color calculateColor(int hits) {
     int maxHits = 100;
     if (hits == 0) return Color.WHITE;
@@ -132,8 +145,17 @@ public class FractalDisplayController implements ControllerInterface {
     return Color.color(normalizedHits, 0, blue); // Green is left out.
   }
 
-
-
+  /**
+   * Configures the columns of the transformation table to display the appropriate values
+   * from the Transform2D objects.
+   *
+   * @param a00Column column for the a00 values
+   * @param a01Column column for the a01 values
+   * @param a10Column column for the a10 values
+   * @param a11Column column for the a11 values
+   * @param b0Column  column for the b0 values
+   * @param b1Column  column for the b1 values
+   */
   public void configureTransformTable(
       TableColumn<Transform2D, Number> a00Column,
       TableColumn<Transform2D, Number> a01Column,
@@ -141,49 +163,31 @@ public class FractalDisplayController implements ControllerInterface {
       TableColumn<Transform2D, Number> a11Column,
       TableColumn<Transform2D, Number> b0Column,
       TableColumn<Transform2D, Number> b1Column) {
-    a00Column.setCellValueFactory(
-        cellData ->
-            cellData.getValue() instanceof AffineTransform2D
-                ? new ReadOnlyDoubleWrapper(
-                    ((AffineTransform2D) cellData.getValue()).getMatrix().getA00())
-                : new ReadOnlyDoubleWrapper(Double.NaN));
 
-    a01Column.setCellValueFactory(
-        cellData ->
-            cellData.getValue() instanceof AffineTransform2D
-                ? new ReadOnlyDoubleWrapper(
-                    ((AffineTransform2D) cellData.getValue()).getMatrix().getA01())
-                : new ReadOnlyDoubleWrapper(Double.NaN));
+    configureColumn(a00Column, transform -> transform.getMatrix().getA00());
+    configureColumn(a01Column, transform -> transform.getMatrix().getA01());
+    configureColumn(a10Column, transform -> transform.getMatrix().getA10());
+    configureColumn(a11Column, transform -> transform.getMatrix().getA11());
+    configureColumn(b0Column, transform -> transform.getVector().getX0());
+    configureColumn(b1Column, transform -> transform.getVector().getX1());
+  }
 
-    a10Column.setCellValueFactory(
-        cellData ->
-            cellData.getValue() instanceof AffineTransform2D
-                ? new ReadOnlyDoubleWrapper(
-                    ((AffineTransform2D) cellData.getValue()).getMatrix().getA10())
-                : new ReadOnlyDoubleWrapper(Double.NaN));
+  /**
+   * Helper method to configure a table column with the appropriate value extractor.
+   *
+   * @param column the table column to configure
+   * @param extractor the function to extract the value from the AffineTransform2D
+   */
+  private void configureColumn(TableColumn<Transform2D, Number> column,
+      Function<AffineTransform2D, Number> extractor) {
+    column.setCellValueFactory(cellData -> {
+      if (cellData.getValue() instanceof AffineTransform2D transform) {
+        return new ReadOnlyDoubleWrapper((Double) extractor.apply(transform));
+      }
+      return new ReadOnlyDoubleWrapper(Double.NaN);
+    });
+  }
 
-    a11Column.setCellValueFactory(
-        cellData ->
-            cellData.getValue() instanceof AffineTransform2D
-                ? new ReadOnlyDoubleWrapper(
-                    ((AffineTransform2D) cellData.getValue()).getMatrix().getA11())
-                : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    b0Column.setCellValueFactory(
-        cellData ->
-            cellData.getValue() instanceof AffineTransform2D
-                ? new ReadOnlyDoubleWrapper(
-                    ((AffineTransform2D) cellData.getValue()).getVector().getX0())
-                : new ReadOnlyDoubleWrapper(Double.NaN));
-
-    b1Column.setCellValueFactory(
-        cellData ->
-            cellData.getValue() instanceof AffineTransform2D
-                ? new ReadOnlyDoubleWrapper(
-                    ((AffineTransform2D) cellData.getValue()).getVector().getX1())
-                : new ReadOnlyDoubleWrapper(Double.NaN));
-
- }
 
 
 }

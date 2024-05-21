@@ -84,13 +84,31 @@ public class ChaosGameTextFileReader implements ChaosGameFileHandler.ChaosGameFi
     }
   }
 
-  private double readDouble(Scanner scanner) throws IllegalArgumentException {
+  /**
+   * Reads the next input from the provided Scanner, trims it, and attempts to parse it as a double.
+   * <p>
+   * This method will log errors and throw an {@link IllegalArgumentException} if the input is empty
+   * or cannot be parsed as a double.
+   * </p>
+   *
+   * @param scanner the {@link Scanner} instance from which to read the input
+   * @return the parsed double value
+   * @throws IllegalArgumentException if the input is an empty string or cannot be parsed as a double
+   */
+  private double readDouble(Scanner scanner) {
     String input = scanner.next().trim();
     if (input.isEmpty()) {
+      LoggerUtil.logError("Empty string encountered when expecting a double.");
       throw new IllegalArgumentException("Empty string encountered when expecting a double.");
     }
-    return Double.parseDouble(input);
+    try {
+      return Double.parseDouble(input);
+    } catch (NumberFormatException e) {
+      LoggerUtil.logError("Invalid double format: " + input + ". Error: " + e.getMessage());
+      throw new IllegalArgumentException("Invalid double format: " + input, e);
+    }
   }
+
 
   private Matrix2x2 readMatrix2x2(Scanner scanner) throws IllegalArgumentException {
     try {
