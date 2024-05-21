@@ -16,66 +16,93 @@ The application also includes the Mandelbrot set, which allows users to explore 
 The project structure is displayed in the directory tree below.
 
 ```text
-📦 ChaosGame
-├─ src
-│  ├─ main
-│  │  ├─ java.no.ntnu.idatg2003
-│  │  │  ├─ controller
-│  │  │  │  ├─ FrontPageController.java
-│  │  │  │  ├─ PresetGameController.java
-│  │  │  │  └─ RunGameController.java
-│  │  │  ├─ model
-│  │  │  │  ├─ game.engine
-│  │  │  │  │  ├─ ChaosCanvas.java
-│  │  │  │  │  ├─ ChaosGame.java
-│  │  │  │  │  ├─ ChaosGameDescription.java
-│  │  │  │  │  ├─ ChaosGameDescriptionFactory.java
-│  │  │  │  │  ├─ ChaosGameFileHandler.java
-│  │  │  │  │  ├─ ChaosGameObserver.java
-│  │  │  │  │  └─ ChaosGameSubject.java
-│  │  │  │  ├─ math.datatypes
-│  │  │  │  │  ├─ Complex.java
-│  │  │  │  │  ├─ Matrix2x2.java
-│  │  │  │  │  └─ Vector2D.java
-│  │  │  │  └─ transformation
-│  │  │  │     ├─ AffineTransform2D.java
-│  │  │  │     ├─ JuliaTransform.java
-│  │  │  │     └─ Transform2D.java
-│  │  │  ├─ view
-│  │  │  │  ├─ ui
-│  │  │  │  ├─ ChaosGameApp.java
-│  │  │  │  ├─ FrontPage.java
-│  │  │  │  ├─ FrontPageView.java
-│  │  │  │  ├─ PresetGameView.java
-│  │  │  │  └─ RunGameView.java
-│  │  │  ├─ utility
-│  │  │  │  └─ LoggerUtil.java
-│  │  │  └─ ChaosGameAppLauncher.java
-│  │  └─ resources
-│  │     ├─ csv
-│  │     │  ├─ preset.games
-│  │     │  ├─ Julia.csv
-│  │     │  ├─ Sierpinski.csv
-│  │     │  └─ barnsley-fern.csv
-│  │     ├─ app.log
-│  │     └─ log4j2.xml
-│  └─ test
-│     ├─ java.no.ntnu.idatg2003
-│     │  ├─ game.engine
-│     │  │  ├─ ChaosCanvasTest.java
-│     │  │  └─ ChaosGameFileHandlerTest.java
-│     │  ├─ math.datatypes
-│     │  │  ├─ ComplexTest.java
-│     │  │  ├─ Matrix2x2Test.java
-│     │  │  └─ Vector2DTest.java
-│     │  └─ transformations
-│     │     ├─ AffineTransformation2DTest.java
-│     │     └─ JuliaTransformationTest.java
-│     └─ resources/csv/preset.games
-│        └─ // csv-files used in testing
-├─ .gitignore
-├─ README.md
-└─ pom.xml
+.
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── no.ntnu.idatg2003/
+│   │   │       ├── controller/
+│   │   │       │   ├── ControllerInterface
+│   │   │       │   ├── CreateCustomGameController
+│   │   │       │   ├── FractalDisplayController
+│   │   │       │   ├── FrontPageController
+│   │   │       │   ├── MandelbrotController
+│   │   │       │   ├── RunCustomGameMenuController
+│   │   │       │   └── RunGameMenuController
+│   │   │       ├── model/
+│   │   │       │   ├── file.handling/
+│   │   │       │   │   ├── ChaosGameFileHandler
+│   │   │       │   │   ├── ChaosGameTextFileReader
+│   │   │       │   │   └── ChaosGameTextFileWriter
+│   │   │       │   ├── game.engine/
+│   │   │       │   │   ├── ChaosCanvas
+│   │   │       │   │   ├── ChaosGame
+│   │   │       │   │   ├── ChaosGameDescription
+│   │   │       │   │   ├── ChaosGameDescriptionFactory
+│   │   │       │   │   ├── ChaosGameObserver
+│   │   │       │   │   ├── ChaosGameProgressObserver
+│   │   │       │   │   ├── ChaosGameSubject
+│   │   │       │   │   └── Mandelbrot
+│   │   │       │   ├── math.datatypes/
+│   │   │       │   │   ├── Complex
+│   │   │       │   │   ├── Vector2D
+│   │   │       │   │   └── Matrix2x2
+│   │   │       │   └── transformations/
+│   │   │       │       ├── AffineTransform2D
+│   │   │       │       ├── JuliaTransform
+│   │   │       │       └── Transform2D
+│   │   │       ├── utility/
+│   │   │       │   ├── enums/
+│   │   │       │   │   ├── PresetTransforms
+│   │   │       │   │   └── TransformType
+│   │   │       │   ├── exceptions/
+│   │   │       │   │   └── CustomGameFileException
+│   │   │       │   └── logging/
+│   │   │       │       └── LoggerUtil
+│   │   │       ├── view/
+│   │   │       │   ├── ui/
+│   │   │       │   │   ├── InputHandler
+│   │   │       │   │   └── Ui
+│   │   │       │   ├── ChaosGameApp
+│   │   │       │   ├── CreateCustomGame
+│   │   │       │   ├── FractalDisplay
+│   │   │       │   ├── FrontPage
+│   │   │       │   ├── MandelbrotView
+│   │   │       │   ├── RunCustomGameMenu
+│   │   │       │   └── RunGameMenu
+│   │   │       └── ChaosGameAppLauncher
+│   │   ├── resources/
+│   │   │   ├── csv.preset.games/
+│   │   │   │   ├── barnssley-fern.csv
+│   │   │   │   ├── Julia.csv
+│   │   │   │   └── Sierpinski.csv
+│   │   │   ├── app.log
+│   │   │   └── log4j2.xml
+│   │   └── user.files/
+│   │       └── // user created files
+│   └── test/
+│       ├── java/
+│       │   └── no.ntnu.idatg2003/
+│       │       ├── file.handling/
+│       │       │   └── ChaosGameFileHandlerTest
+│       │       ├── game.engine/
+│       │       │   ├── ChaosCanvasTest
+│       │       │   ├── ChaosGameDescriptionTest
+│       │       │   ├── ChaosGameTest
+│       │       │   └── MandelbrotTest
+│       │       ├── math.datatypes/
+│       │       │   ├── ComplexTest
+│       │       │   ├── Matrix2x2Test
+│       │       │   └── Vector2DTest
+│       │       └── transformations/
+│       │           ├── AffineTransform2DTest
+│       │           └── JuliaTransformTest
+│       └── resources/
+│           └── csv.preset.games/
+│               └── // csv files used in testing
+├── .gitignore
+├── pom.xml
+└── README.md
 ```
 
 [//]: # (TODO: Describe the structure of your project here. How have you used packages in your structure. Where are all sourcefiles stored. Where are all JUnit-test classes stored. etc.)
