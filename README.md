@@ -1,15 +1,15 @@
 # Portfolio project IDATG2003 - 2024
-This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
+
+Project Name: ChaosGame
 
 Group Members: Theodor Sjetnan Utvik, Sigurd Riseth
 
 ## Project description
 
 [//]: # (TODO: Write a short description of your project/product here.)
-A system for displaying traindepartures from a single station. Shows planned departure time, delays (if any), line name and destination, train number and what track the train will depart from.
-Allows user to create new and edit existing train departures. The system revolves around a "station-clock" and only trains with departure times after it are displayed (unless delayed).
-
-The system is limited by the fact that it does not consider the date or if there are any departures the next day. It only supports one station, and the clock has to be manually updated from the UI.
+ChaosGame is an application for generating and visualizing [fractals](https://en.wikipedia.org/wiki/Fractal) digitally.
+The application allows users to create and run their own fractals, as well as run pre-defined fractals.
+The application also includes the Mandelbrot set, which allows users to explore it and generate Julia-sets from it.
 
 ## Project structure
 
@@ -17,37 +17,97 @@ The project structure is displayed in the directory tree below.
 
 ```text
 .
-├── src
-│   ├── main
-│   │   └── java
-│   │       └── edu.ntnu.stud
-│   │           ├── station
-│   │           │   └── Station.java
-│   │           ├── traindeparture
-│   │           │   └── TrainDeparture.java
-│   │           ├── userinterface
-│   │           │   ├── InputReader.java
-│   │           │   ├── Printer.java
-│   │           │   └── UserInterface.java
-│   │           └── TrainDispatchApp.java
-│   └── test
-│       └── java
-│           └── edu.ntnu.stud
-│               ├── station
-│               │   └── StationTest.java
-│               └── traindeparture
-│                   └── TrainDepartureTest.java
-├── target
-│   └── // Compiled bytecode and generated JAR files
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── no.ntnu.idatg2003/
+│   │   │       ├── controller/
+│   │   │       │   ├── ControllerInterface
+│   │   │       │   ├── CreateCustomGameController
+│   │   │       │   ├── FractalDisplayController
+│   │   │       │   ├── FrontPageController
+│   │   │       │   ├── MandelbrotController
+│   │   │       │   ├── RunCustomGameMenuController
+│   │   │       │   └── RunGameMenuController
+│   │   │       ├── model/
+│   │   │       │   ├── file.handling/
+│   │   │       │   │   ├── ChaosGameFileHandler
+│   │   │       │   │   ├── ChaosGameTextFileReader
+│   │   │       │   │   └── ChaosGameTextFileWriter
+│   │   │       │   ├── game.engine/
+│   │   │       │   │   ├── ChaosCanvas
+│   │   │       │   │   ├── ChaosGame
+│   │   │       │   │   ├── ChaosGameDescription
+│   │   │       │   │   ├── ChaosGameDescriptionFactory
+│   │   │       │   │   ├── ChaosGameObserver
+│   │   │       │   │   ├── ChaosGameProgressObserver
+│   │   │       │   │   ├── ChaosGameSubject
+│   │   │       │   │   └── Mandelbrot
+│   │   │       │   ├── math.datatypes/
+│   │   │       │   │   ├── Complex
+│   │   │       │   │   ├── Vector2D
+│   │   │       │   │   └── Matrix2x2
+│   │   │       │   └── transformations/
+│   │   │       │       ├── AffineTransform2D
+│   │   │       │       ├── JuliaTransform
+│   │   │       │       └── Transform2D
+│   │   │       ├── utility/
+│   │   │       │   ├── enums/
+│   │   │       │   │   ├── PresetTransforms
+│   │   │       │   │   └── TransformType
+│   │   │       │   ├── exceptions/
+│   │   │       │   │   └── CustomGameFileException
+│   │   │       │   └── logging/
+│   │   │       │       └── LoggerUtil
+│   │   │       ├── view/
+│   │   │       │   ├── ui/
+│   │   │       │   │   ├── InputHandler
+│   │   │       │   │   └── Ui
+│   │   │       │   ├── ChaosGameApp
+│   │   │       │   ├── CreateCustomGame
+│   │   │       │   ├── FractalDisplay
+│   │   │       │   ├── FrontPage
+│   │   │       │   ├── MandelbrotView
+│   │   │       │   ├── RunCustomGameMenu
+│   │   │       │   └── RunGameMenu
+│   │   │       └── ChaosGameAppLauncher
+│   │   ├── resources/
+│   │   │   ├── csv.preset.games/
+│   │   │   │   ├── barnssley-fern.csv
+│   │   │   │   ├── Julia.csv
+│   │   │   │   └── Sierpinski.csv
+│   │   │   ├── app.log
+│   │   │   └── log4j2.xml
+│   │   └── user.files/
+│   │       └── // user created files
+│   └── test/
+│       ├── java/
+│       │   └── no.ntnu.idatg2003/
+│       │       ├── file.handling/
+│       │       │   └── ChaosGameFileHandlerTest
+│       │       ├── game.engine/
+│       │       │   ├── ChaosCanvasTest
+│       │       │   ├── ChaosGameDescriptionTest
+│       │       │   ├── ChaosGameTest
+│       │       │   └── MandelbrotTest
+│       │       ├── math.datatypes/
+│       │       │   ├── ComplexTest
+│       │       │   ├── Matrix2x2Test
+│       │       │   └── Vector2DTest
+│       │       └── transformations/
+│       │           ├── AffineTransform2DTest
+│       │           └── JuliaTransformTest
+│       └── resources/
+│           └── csv.preset.games/
+│               └── // csv files used in testing
 ├── .gitignore
 ├── pom.xml
-├── README.md
-└── TrainDispatchSystem.iml
+└── README.md
 ```
 
 [//]: # (TODO: Describe the structure of your project here. How have you used packages in your structure. Where are all sourcefiles stored. Where are all JUnit-test classes stored. etc.)
 
-The src-folder is divided into two parts; main containing the main source code of the application, and test containing the test classes for the source code. 
+The src-folder is divided into two parts; Main containing the main source code of the application, and test containing the test classes for the source code. These are divided in the same package structure for ease of navigation.
 
 ## Link to repository
 
@@ -72,11 +132,23 @@ mvn compile
 ```
 
 3. **Interact with the Program:**
-  - Once the program is running, you'll be prompted with a menu offering 10 choices.
-  - Navigate through the menu using text inputs to interact with different functionalities.
-
+  - Navigate the menus using the buttons.
+  - **Main Menu:**
+    - **Run a Game:**
+      - Select if you want to run a pre-defined game or a custom game.
+      - Choose an amount of iterations and press the 'Run' button.
+    - **Create Custom Game:**
+      - Enter the values for the game you want to create
+      - Give it a name and press the 'Save' button.
+      - The chaosgame is now ready to be played under 'Run a Game' -> 'Custom Games'.
+    - **Mandelbrot Set:**
+      - Press the 'Open' button to view the Mandelbrot set.
+      - Click on the mandelbrot set to generate a julia set.
+      - You can zoom in and out by scrolling.
+    - **Exit:**
+      - Press the 'Exit' button to close the application.
 4. **Exit the Program:**
-  - To exit the program, choose option 0 in the menu. This will gracefully terminate the program.
+    - Close the application window or return to the main menu and press the exit button.
 
 
 ## How to run the tests
@@ -84,5 +156,17 @@ mvn compile
 To execute all tests, right-click on the 'java' folder within the 'test' directory and choose 'Run All Tests'.
 Alternatively, you can run individual test classes by right-clicking on the specific test class.
 If you wish to test a particular method within a test class, right-click on the desired method.
+
+You can also run the tests from the terminal using Maven. This can be done by running the following command:
+    
+```text
+mvn test
+```
+
+The application also allows you to generate the JavaDoc documentation by running the following command:
+
+```text
+mvn javadoc:javadoc
+```
 
 [//]: # (TODO: Describe how to run the tests here.)
