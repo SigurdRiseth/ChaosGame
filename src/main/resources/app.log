@@ -565,3 +565,37 @@ java.lang.ArrayIndexOutOfBoundsException: Index 804 out of bounds for length 800
 2024-05-21 14:13:46 INFO Starting Chaos Game application
 2024-05-21 14:23:47 INFO Starting Chaos Game application
 2024-05-21 14:33:59 INFO Starting Chaos Game application
+2024-05-22 10:11:24 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-22 10:11:24 ERROR Invalid double format: invalid. Error: For input string: "invalid"
+2024-05-22 10:11:24 ERROR Failed to read the file: Invalid double format: invalid
+2024-05-22 10:11:24 INFO Lower Left written to file
+2024-05-22 10:11:24 INFO Upper Right written to file
+2024-05-22 10:11:24 INFO Transform written to file
+2024-05-22 10:11:24 INFO Transform written to file
+2024-05-22 10:11:24 ERROR Failed to read the file: Unknown transform type: invalid
+2024-05-22 10:11:24 INFO Lower Left written to file
+2024-05-22 10:11:24 INFO Upper Right written to file
+2024-05-22 10:11:24 INFO Transform written to file
+2024-05-22 10:11:24 INFO Transform written to file
+2024-05-22 10:11:24 INFO Transform written to file
+2024-05-22 10:11:24 INFO Transform written to file
+2024-05-22 10:11:24 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-22 10:11:30 ERROR Failed to read the file: src/test/resources/csv/preset.games/empty.csv
+2024-05-22 10:11:30 ERROR Invalid double format: invalid. Error: For input string: "invalid"
+2024-05-22 10:11:30 ERROR Failed to read the file: Invalid double format: invalid
+2024-05-22 10:11:30 INFO Lower Left written to file
+2024-05-22 10:11:30 INFO Upper Right written to file
+2024-05-22 10:11:30 INFO Transform written to file
+2024-05-22 10:11:30 INFO Transform written to file
+2024-05-22 10:11:30 ERROR Failed to read the file: Unknown transform type: invalid
+2024-05-22 10:11:30 INFO Lower Left written to file
+2024-05-22 10:11:30 INFO Upper Right written to file
+2024-05-22 10:11:30 INFO Transform written to file
+2024-05-22 10:11:30 INFO Transform written to file
+2024-05-22 10:11:30 INFO Transform written to file
+2024-05-22 10:11:30 INFO Transform written to file
+2024-05-22 10:11:30 ERROR An error occurred while running the game: Index 1361 out of bounds for length 600
+2024-05-22 10:11:41 INFO Starting Chaos Game application
+2024-05-22 10:12:06 INFO Starting to draw Mandelbrot set.
+2024-05-22 10:12:06 INFO Mandelbrot set drawn.
+2024-05-22 10:12:13 INFO Running custom game

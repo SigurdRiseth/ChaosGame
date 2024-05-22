@@ -10,6 +10,11 @@ public enum TransformType {
 
   private final String typeString;
 
+  /**
+   * Constructor for the TransformType enum.
+   *
+   * @param typeString the string representation of the TransformType
+   */
   TransformType(String typeString) {
     this.typeString = typeString;
   }
@@ -30,6 +35,11 @@ public enum TransformType {
     throw new IllegalArgumentException("Unknown transform type: " + typeString);
   }
 
+  /**
+   * Method to get the string representation of the TransformType.
+   *
+   * @return the string representation of the TransformType
+   */
   public String getTypeString() {
     return typeString;
   }
